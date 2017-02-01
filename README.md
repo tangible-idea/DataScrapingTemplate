@@ -43,6 +43,25 @@ For now, it supports 34 columns.
 34. connections
 For further information, please refer to comments of a python script.
 
+##Installation
+------------
+* BeautifulSoup4
+Clone this repository:
+
+    pip install git+https://github.com/milesrichardson/ParsePy.git
+or manually download the package from here : 
+https://pypi.python.org/pypi/beautifulsoup4
+
+* lxml 3.6.4
+Download the packpage here : 
+    https://pypi.python.org/pypi/lxml/3.6.4)
+
+* ParsePy (https://github.com/milesrichardson/ParsePy)
+The easiest way to install this package is by downloading or
+cloning this repository:
+
+    pip install git+https://github.com/milesrichardson/ParsePy.git
+    
 ##Introduction
 I wrote about this project more than 50 commits at TFS privately.
 Meanwhile, I thought it might be useful to make it public for people who like data mining.
