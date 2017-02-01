@@ -1,0 +1,261 @@
+﻿<Controls:MetroWindow x:Class="IMDBUtils.MainWindow"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IMDBUtils"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+        Title="IMDB Parse Utility" Height="650" Width="1000">
+
+    <TabControl Controls:TabControlHelper.IsUnderlined="True"
+                SelectionChanged="TabControl_SelectionChanged"
+                SelectedIndex="3">
+        <TabItem Controls:ControlsHelper.HeaderFontSize="18" Header="Acqusition">
+
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="88*"/>
+                    <RowDefinition Height="12*"/>
+                </Grid.RowDefinitions>
+
+
+                <ListBox x:Name="lstFiles" HorizontalAlignment="Stretch" Margin="5" VerticalContentAlignment="Stretch" Background="LightGray"
+                         ItemsSource="{Binding AcqList}">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Title}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+
+                <StackPanel Grid.Column="1">
+                    <Button x:Name="btnLoad" Content="Load" Margin="3"
+                            Command="{Binding LoadFiles}" Height="36"/>
+                    <Button x:Name="btnExportToXLS" Content="Export to XLS" Margin="3"  Height="36" Click="btnExportToXLS_Click"/>
+                    <Controls:DropDownButton Name="btnExportSetting"
+                                         Content="Export to"
+                                         DisplayMemberPath="Title"
+                                         ItemsSource="{Binding Path=ExportSets, Mode=TwoWay}"
+                                         Orientation="Horizontal">
+                        <Controls:DropDownButton.Icon>
+                            <iconPacks:PackIconModern Kind="CabinetFiles" Margin="6"/>
+                        </Controls:DropDownButton.Icon>
+                    </Controls:DropDownButton>
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                        
+                    <ProgressBar x:Name="prgExport_Single" Margin="3,0,3,0" Height="10" Background="GhostWhite"/>
+                    <ProgressBar Name="prgExport" Margin="3,0,3,0" Height="10" Background="GhostWhite"/>
+                        
+                    <Grid  Margin="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnDelete" Content="DELETE" Margin="3"/>
+                    <Button x:Name="btnUp" Content="UP" Margin="3" Grid.Column="1"/>
+                    <Button x:Name="btnDown" Content="DOWN" Margin="3" Grid.Column="2"/>
+                </Grid>
+
+                </StackPanel>
+            </Grid>
+        </TabItem>
+        <TabItem Controls:ControlsHelper.HeaderFontSize="18" Header="Arragement">
+            <StackPanel>
+
+                <Button Name="btnLoadExcelData" Content="Show data" Margin="3"
+                        Command="{Binding ShowSheet}"></Button>
+                <ProgressBar x:Name="prgPresent" Margin="3,0,3,0" Height="10" Background="GhostWhite"/>
+
+                <ContentControl Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="10,5,5,5"
+                        DataContext="{Binding ElementName=MetroDataGrid}"/>
+                
+
+            <DataGrid x:Name="dgData1"
+                  Grid.Column="0"
+                  Margin="5"
+                  RowHeaderWidth="20"
+                  AutoGenerateColumns="False"
+                  HeadersVisibility="All"
+                  ItemsSource="{Binding Path=Movies}"
+                  SelectionUnit="FullRow">
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn Binding="{Binding RelativeSource={RelativeSource AncestorType=DataGridRow}, Path=IsSelected, Mode=OneWay}"
+                                        EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        ElementStyle="{DynamicResource MetroDataGridCheckBox}"
+                                        Header="X" />
+                        <DataGridTextColumn Binding="{Binding Title}" Header="Title" />
+                        <DataGridTextColumn Binding="{Binding URL}" Header="URL" />
+                        <DataGridTextColumn Binding="{Binding Director}" Header="Director" />
+                        <DataGridTextColumn Binding="{Binding Writers}" Header="Writers" />
+                        <DataGridTextColumn Binding="{Binding Stars}" Header="Stars" />
+                        <DataGridTextColumn Binding="{Binding Nominations}" Header="Nominations" />
+                        <DataGridTextColumn Binding="{Binding Reviews}" Header="Reviews" />
+                        <DataGridTextColumn Binding="{Binding Critics}" Header="Critics" />
+                        <DataGridTextColumn Binding="{Binding Popularity}" Header="Popularity" />
+                        <DataGridTextColumn Binding="{Binding MetaScore}" Header="MetaScore" />
+                        <DataGridTextColumn Binding="{Binding Genre}" Header="Genre" />
+                        <DataGridTextColumn Binding="{Binding Rating}" Header="Rating" />
+                        <DataGridTextColumn Binding="{Binding Country}" Header="Country" />
+                        <DataGridTextColumn Binding="{Binding Langs}" Header="Langs" />
+                        <DataGridTextColumn Binding="{Binding Budget_outside}" Header="Budget (outside)" />
+                        <DataGridTextColumn Binding="{Binding Release_date}" Header="Release Date" />
+                        <DataGridTextColumn Binding="{Binding Opening_Weekend_outside}" Header="Opening weekend (outside)" />
+                        <DataGridTextColumn Binding="{Binding Gross_outside}" Header="Gross (outside)" />
+                        <DataGridTextColumn Binding="{Binding Budget_detail}" Header="Budget (detail)" />
+                        <DataGridTextColumn Binding="{Binding Opening_weekind_detail}" Header="Opening weekind (detail)" />
+                        <DataGridTextColumn Binding="{Binding Gross_detail}" Header="Gross (detail)" />
+                        <DataGridTextColumn Binding="{Binding World_Gross_detail}" Header="World Gross (detail)" />
+                        <DataGridTextColumn Binding="{Binding Adminissions_detail}" Header="Adminissions (detail)" />
+                        <DataGridTextColumn Binding="{Binding Rentals_detail}" Header="Rentals (detail)" />
+                        <DataGridTextColumn Binding="{Binding Fliming_dates_detail}" Header="Fliming Dates (detail)" />
+                        <DataGridTextColumn Binding="{Binding Copyright_detail}" Header="Copyright (detail)" />
+                        <DataGridTextColumn Binding="{Binding Production_company}" Header="Production Company" />
+                        <DataGridTextColumn Binding="{Binding Distributors}" Header="Distributors" />
+                        <DataGridTextColumn Binding="{Binding Runtime_detail}" Header="Runtime (detail)" />
+                        <DataGridTextColumn Binding="{Binding Color}" Header="Color" />
+                        <DataGridTextColumn Binding="{Binding Flim_length}" Header="Flim Length" />
+                        <DataGridTextColumn Binding="{Binding Rating_value}" Header="Rating value" />
+                        <DataGridTextColumn Binding="{Binding Rating_count}" Header="Rating count" />
+                    </DataGrid.Columns>
+                    <DataGrid.Style>
+                        <Style BasedOn="{StaticResource MetroDataGrid}" TargetType="{x:Type DataGrid}">
+                            <Setter Property="AlternatingRowBackground" Value="{DynamicResource GrayBrush10}" />
+                        </Style>
+                    </DataGrid.Style>
+                </DataGrid>
+            </StackPanel>
+        </TabItem>
+        <TabItem Controls:ControlsHelper.HeaderFontSize="18" Header="TextSpliter">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel>
+                <Grid Margin="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBox Name="txtAutoFilePath" IsReadOnly="True"/>
+                    <Button Name="btnLoadForAuto"  Content="Load File"
+                            Grid.Column="1" Click="btnLoadForAuto_Click"></Button>
+                    <Button Name="btnRunForAuto"  Content="Run"
+                            Grid.Column="2" Click="btnRunForAuto_Click"></Button>
+                </Grid>
+                    <ProgressBar Name="prgGrossAuto" Margin="3,0,3,0" Height="10" Background="GhostWhite"/>
+                </StackPanel>
+
+                <Grid Grid.Row="1" Margin="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="45*"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox Name="txtBefore" Grid.Column="0" Text="" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+         AcceptsReturn="True"></TextBox>
+
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Button Name="btnSplit"  Content="Single Split" Click="btnSplit_Click"></Button>
+                    </StackPanel>
+
+                    <DataGrid Name="dgAfter" Grid.Column="2" BorderBrush="Gray" BorderThickness="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Binding="{Binding Country}" Header="Country" />
+                            <DataGridTextColumn Binding="{Binding Releasedate, StringFormat=\{0:dd/MM/yyyy\}}" Header="Releasedate" />
+                            <DataGridTextColumn Binding="{Binding Amount}" Header="Amount" />
+                            <DataGridTextColumn Binding="{Binding Else}" Header="Else" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <StackPanel Grid.Column="3" Margin="5">
+                        <Label Content="Country Filter : "></Label>
+                        <TextBox Name="txtFilter" TextChanged="txtFilter_TextChanged"></TextBox>
+                    </StackPanel>
+
+                    <!--<TextBox Name="txtAfter" Grid.Column="2" Text="" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 
+         AcceptsReturn="True"></TextBox>-->
+                </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Controls:ControlsHelper.HeaderFontSize="18" Header="Remote" Name="TabRemote">
+            <Grid>
+                <!--<Grid.RowDefinitions>
+                    <RowDefinition Height="400"/>
+                    <RowDefinition Height="400"/>
+                </Grid.RowDefinitions>-->
+
+                <Controls:ProgressRing x:Name="prgRing" IsActive="false" Panel.ZIndex="10"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                    <StackPanel>
+                    <Button Name="btnRefreshRemote" Content="Refresh" Click="btnRefreshRemote_Click"/>
+                    <ListView x:Name="lstWorks" Margin="5"
+                                  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                   Height="650"
+                                  Background="LightGray" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                ItemsSource="{Binding ElementName=MainWindow, Path=TaskList}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Width="100" Header="Range" DisplayMemberBinding="{Binding Range}"/>
+                                    <GridViewColumn Width="100" Header="Range end" DisplayMemberBinding="{Binding RangeEnd}"/>
+                                    <GridViewColumn Width="100" Header="Status">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Label Content="{Binding Status}"/>
+                                                    <Controls:ProgressRing IsActive="{Binding Status2}" Width="10" Height="10"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="100" Header="Last page">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock>           
+                                            <Hyperlink NavigateUri="{Binding LastPage}" RequestNavigate="Hyperlink_RequestNavigate">
+                                                Click here
+                                            </Hyperlink>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="200" Header="Progress">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Controls:MetroProgressBar Foreground="Aqua" Maximum="{Binding ProgressMax}" Value="{Binding Progress}"/>
+                                                    <Label Content="{Binding ProgressCaption}" Foreground="Magenta" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Width="140" Header="Started at" DisplayMemberBinding="{Binding StartedAt}"/>
+                                    <GridViewColumn Width="140" Header="Finished at" DisplayMemberBinding="{Binding FinishedAt}"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </StackPanel>
+            </Grid>
+        </TabItem>
+    </TabControl>
+
+</Controls:MetroWindow>
