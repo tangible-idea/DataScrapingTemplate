@@ -44,15 +44,18 @@ For now, it supports 34 columns.
 For further information, please refer to comments of a python script.
 
 ##Installation
-------------
 * BeautifulSoup4
 Clone this repository:
 
-    pip install git+https://github.com/milesrichardson/ParsePy.git
+    pip install BeautifulSoup4
 or manually download the package from here : 
 https://pypi.python.org/pypi/beautifulsoup4
 
-* lxml 3.6.4
+* lxml 3.6.4 or higher
+Clone this repository:
+
+    yum install libxslt-devel libxml2-devel
+    
 Download the packpage here : 
     https://pypi.python.org/pypi/lxml/3.6.4)
 
