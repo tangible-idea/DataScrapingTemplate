@@ -560,6 +560,7 @@ namespace IMDBUtils
 
                     task.StartedAt = PO["starting_time"] as string;
                     task.FinishedAt = PO["ending_time"] as string;
+
                     task.ProgressCaption = task.Progress + " / " + task.ProgressMax;
                     //task.rawDataURI = PO["rawdata"] as string;
                     //var applicantResumeFile = anotherApplication.Get<ParseFile>("applicantResumeFile");

@@ -103,9 +103,9 @@
       <HintPath>..\packages\Parse.1.7.0\lib\net45\Parse.NetFx45.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SX, Version=2.6.2.1, Culture=neutral, PublicKeyToken=882b9c044052e7f6, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\SX.dll</HintPath>
+    <Reference Include="SX, Version=2.6.2.6, Culture=neutral, PublicKeyToken=882b9c044052e7f6, processorArchitecture=MSIL">
+      <HintPath>..\packages\SPSuite.SmartXLS.2.6.2.1\lib\net45\SX.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

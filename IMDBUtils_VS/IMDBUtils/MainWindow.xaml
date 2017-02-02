@@ -247,10 +247,10 @@
                                                 </Grid>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                    <GridViewColumn Width="140" Header="Started at" DisplayMemberBinding="{Binding StartedAt}"/>
-                                    <GridViewColumn Width="140" Header="Finished at" DisplayMemberBinding="{Binding FinishedAt}"/>
-                                </GridView>
+                                    </GridViewColumn>                                    <GridViewColumn Width="122" Header="Started at" DisplayMemberBinding="{Binding StartedAt}"/>
+                                    <GridViewColumn Width="122" Header="Finished at" DisplayMemberBinding="{Binding FinishedAt}"/>
+                                <GridViewColumn Width="122" Header="Time spent" DisplayMemberBinding="{Binding TimeSpent}"/>
+                            </GridView>
                             </ListView.View>
                         </ListView>
                     </StackPanel>

@@ -6,9 +6,9 @@ import sys
 from datetime import datetime
 from bs4 import BeautifulSoup  
 import logging  
-logging.basicConfig(filename=Config.LOG_PATH,level=logging.DEBUG)
 import ssl
 import Config
+logging.basicConfig(filename=Config.LOG_PATH,level=logging.DEBUG)
 
 ssl._create_default_https_context = ssl._create_unverified_context
 os.environ["PARSE_API_ROOT"] = Config.PARSE_SERVER_URI
@@ -593,6 +593,7 @@ def get_all_movies(session, task, single_test_mode):
                "&page=" + str(num))
         print url
         try:
+            idx= 0
             page = urllib2.urlopen(url)        
             soup = BeautifulSoup(page, "lxml")
 
