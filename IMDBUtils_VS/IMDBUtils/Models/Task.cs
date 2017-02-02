@@ -22,7 +22,7 @@ namespace IMDBUtils.Models
         public string RangeEnd { get; set; }
 
         private string m_status;
-        public string Status
+        public string Status    // (string) pending, working, done
         {
             get { return m_status; }
             set
@@ -34,7 +34,7 @@ namespace IMDBUtils.Models
         }
 
 
-        public bool Status2 { get; set; }
+        public bool Status2 { get; set; }   // (bool) working : true.
         public double Progress { get; set; }
         public double ProgressMax { get; set; }
         public string rawDataURI { get; set; }
@@ -77,7 +77,8 @@ namespace IMDBUtils.Models
                     m_dtFinishedAt = DateTime.ParseExact(value, format, provider);
                     var duration = m_dtFinishedAt.Subtract(m_dtStartedAt);
                     TimeSpent = String.Format("{0:hh}h{0:mm}m{0:ss}s", duration);
-                    TimeSpentPerTask= String.Format("{0:F3}secs", duration.TotalSeconds / this.ProgressMax);
+                    lfTimeSpentPerTask = duration.TotalSeconds / this.ProgressMax;
+                    TimeSpentPerTask = String.Format("{0:F3}secs", lfTimeSpentPerTask);
                 }
                 m_FinishedAt = value;
             }
@@ -85,5 +86,6 @@ namespace IMDBUtils.Models
 
         public string TimeSpent { get; set; }
         public string TimeSpentPerTask { get; set; }
+        public double lfTimeSpentPerTask { get; set; }
     }
 }

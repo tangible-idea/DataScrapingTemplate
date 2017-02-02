@@ -207,6 +207,7 @@
                 <Controls:ProgressRing x:Name="prgRing" IsActive="false" Panel.ZIndex="10"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                     <StackPanel>
+                    <TextBlock Name="txtDetails" />
                     <Button Name="btnRefreshRemote" Content="Refresh" Click="btnRefreshRemote_Click"/>
                     <ListView x:Name="lstWorks" Margin="5"
                                   VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
@@ -254,7 +255,7 @@
                             </GridView>
                             </ListView.View>
                         </ListView>
-                    </StackPanel>
+                </StackPanel>
             </Grid>
         </TabItem>
     </TabControl>

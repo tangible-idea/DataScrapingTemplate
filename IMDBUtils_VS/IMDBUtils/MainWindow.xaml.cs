@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -543,6 +544,10 @@ namespace IMDBUtils
                 IEnumerable<ParseObject> lstParsingRange = await query.FindAsync();
 
                 TaskList.Clear();
+                int nCountTodo = 0;
+                double lfTotalSpeed = 0.0f;
+                int nCountDoneTasks = 0;
+                int nCountWorkingServer = 0;
                 foreach (var PO in lstParsingRange)
                 {
                     var task = new Models.Task();
@@ -565,8 +570,16 @@ namespace IMDBUtils
                     //task.rawDataURI = PO["rawdata"] as string;
                     //var applicantResumeFile = anotherApplication.Get<ParseFile>("applicantResumeFile");
                     //string resumeText = await new HttpClient().GetStringAsync(applicantResumeFile.Url);
+
+                    this.AnalTask(task, ref nCountTodo, ref lfTotalSpeed, ref nCountDoneTasks, ref nCountWorkingServer);
+
                     TaskList.Add(task);
                 }
+                double lfTotalEstimateTime = ((double)nCountTodo * (lfTotalSpeed / (double)nCountDoneTasks)) / (double)nCountWorkingServer;
+                var tsEstimate = TimeSpan.FromSeconds(lfTotalEstimateTime);
+                string strDetails = String.Format("Remaining tasks : {0},\tAverage speed : {1:F3} movie/sec,\tTotal remaining : {2} (estimate)"
+                    , nCountTodo, lfTotalSpeed / (double)nCountDoneTasks, String.Format("{0:dd}day(s) {0:hh}h{0:mm}m{0:ss}s", tsEstimate));
+                txtDetails.Text = strDetails;
                 lstWorks.ItemsSource = null;
                 lstWorks.ItemsSource = TaskList;
                 prgRing.IsActive = false;
@@ -577,7 +590,31 @@ namespace IMDBUtils
                 MessageBox.Show("Got connection pbm\n" + ex.Message);
             }
         }
-        
+
+        private void AnalTask(Models.Task task, ref int nCount, ref double totalSpeed, ref int nCountDoneTasks, ref int nCountWorkingServer)
+        {
+            if(task.ProgressMax == 0)
+            {
+                nCount += 10000;    // estimation
+            }
+            else
+            {
+                nCount += ((int)task.ProgressMax - (int)task.Progress);
+            }
+
+            if (task.Status2)
+                nCountWorkingServer++;
+
+            if (task.TimeSpentPerTask == null)
+                return;
+
+            if(task.TimeSpentPerTask.Equals(string.Empty) == false)
+            {
+                ++nCountDoneTasks;
+                totalSpeed += task.lfTimeSpentPerTask;
+            }
+        }
+
         public void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (e.Source is TabControl)
