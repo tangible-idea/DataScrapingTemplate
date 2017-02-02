@@ -215,9 +215,9 @@
                                 ItemsSource="{Binding ElementName=MainWindow, Path=TaskList}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="100" Header="Range" DisplayMemberBinding="{Binding Range}"/>
-                                    <GridViewColumn Width="100" Header="Range end" DisplayMemberBinding="{Binding RangeEnd}"/>
-                                    <GridViewColumn Width="100" Header="Status">
+                                    <GridViewColumn Width="80" Header="Range" DisplayMemberBinding="{Binding Range}"/>
+                                <GridViewColumn Width="80" Header="Range end" DisplayMemberBinding="{Binding RangeEnd}"/>
+                                <GridViewColumn Width="80" Header="Status">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
@@ -249,7 +249,8 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>                                    <GridViewColumn Width="122" Header="Started at" DisplayMemberBinding="{Binding StartedAt}"/>
                                     <GridViewColumn Width="122" Header="Finished at" DisplayMemberBinding="{Binding FinishedAt}"/>
-                                <GridViewColumn Width="122" Header="Time spent" DisplayMemberBinding="{Binding TimeSpent}"/>
+                                    <GridViewColumn Width="90" Header="Time spent" DisplayMemberBinding="{Binding TimeSpent}"/>
+                                <GridViewColumn Width="90" Header="Per one movie" DisplayMemberBinding="{Binding TimeSpentPerTask}"/>
                             </GridView>
                             </ListView.View>
                         </ListView>

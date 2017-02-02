@@ -52,8 +52,13 @@ namespace IMDBUtils.Models
                 if (!value.Equals(string.Empty))
                 {
                     m_dtStartedAt = DateTime.ParseExact(value, format, provider);
-                    var duration = DateTime.Now.Subtract(m_dtStartedAt);
-                    TimeSpent = String.Format("{0:dd}day {0:hh}h{0:mm}m{0:ss}s", duration);
+                    // TODO : unify all timezone to UTC
+                    //var EasternTimeNow= TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now
+                    //    , "Eastern Standard Time"
+                    //    , "Korea Standard Time");
+                    //var duration = EasternTimeNow.Subtract(m_dtStartedAt);
+
+                    //TimeSpent = String.Format("{0:dd}day {0:hh}h{0:mm}m{0:ss}s", duration);
                 }
                 
                 m_StartedAt = value;
@@ -71,12 +76,14 @@ namespace IMDBUtils.Models
                 {
                     m_dtFinishedAt = DateTime.ParseExact(value, format, provider);
                     var duration = m_dtFinishedAt.Subtract(m_dtStartedAt);
-                    TimeSpent = String.Format("{0:dd}day {0:hh}h{0:mm}m{0:ss}s", duration);
+                    TimeSpent = String.Format("{0:hh}h{0:mm}m{0:ss}s", duration);
+                    TimeSpentPerTask= String.Format("{0:F3}secs", duration.TotalSeconds / this.ProgressMax);
                 }
                 m_FinishedAt = value;
             }
         }
 
         public string TimeSpent { get; set; }
+        public string TimeSpentPerTask { get; set; }
     }
 }
