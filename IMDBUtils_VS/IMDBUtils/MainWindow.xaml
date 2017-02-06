@@ -9,7 +9,7 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
-        Title="IMDB Parse Utility" Height="650" Width="1000">
+        Title="IMDB Parse Utility" Height="650" Width="1024">
 
     <TabControl Controls:TabControlHelper.IsUnderlined="True"
                 SelectionChanged="TabControl_SelectionChanged"
@@ -256,7 +256,9 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Grid>
-                                                <Button Name="btnDownload" Content="Download" Click="btnDownload_Click"></Button>
+                                                <Button Name="btnDownload" Content="Download"
+                                                        Click="btnDownload_Click"
+                                                        IsEnabled="{Binding IsDownloadable}"></Button>
                                             </Grid>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>

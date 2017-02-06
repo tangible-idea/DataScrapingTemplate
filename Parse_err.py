@@ -36,7 +36,7 @@ class Parsing_err2(Object):
     pass
 
 def check_errsheets(currServer):
-    errsheets = Parsing_err.Query.all()
+    errsheets = Parsing_err.Query.all().limit(1000)
     todo = None
     for sheet in errsheets:
         if (sheet.status == "pend") or (sheet.status == "pending") or (sheet.status == ""):

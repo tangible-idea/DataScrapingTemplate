@@ -35,7 +35,18 @@ namespace IMDBUtils.Models
         }
 
 
-        public bool Status2 { get; set; }   // (bool) working : true.
+        private bool m_Status2;
+
+        public bool Status2// (bool) working : true.
+        {
+            get { return m_Status2; }
+            set
+            {
+                IsDownloadable = !value;    // working : is not downloadable
+                m_Status2 = value;
+            }
+        }
+
         public double Progress { get; set; }
         public double ProgressMax { get; set; }
         public string rawDataURI { get; set; }
@@ -88,6 +99,7 @@ namespace IMDBUtils.Models
         public string TimeSpent { get; set; }
         public string TimeSpentPerTask { get; set; }
         public double lfTimeSpentPerTask { get; set; }
+        public bool IsDownloadable { get; set; }
 
         public ParseObject PO { get; set; }
     }
