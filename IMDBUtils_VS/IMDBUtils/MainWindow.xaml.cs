@@ -155,11 +155,11 @@ namespace IMDBUtils
                 prgExport.Maximum = lstFiles.Items.Count;
             }));
 
-            foreach (string existFN in lstFiles.Items)
+            foreach (FilePath existFN in lstFiles.Items)
             {
                 // Read the file line by line.
                 EStatus = EMode.ReadDataFile;
-                System.IO.StreamReader file = new System.IO.StreamReader(existFN);
+                System.IO.StreamReader file = new System.IO.StreamReader(existFN.Title);
                 while ((line = file.ReadLine()) != null)
                 {
                     arrStrings.Add(line.Split('|'));
@@ -187,7 +187,7 @@ namespace IMDBUtils
             }));
 
             EStatus = EMode.WritingFile;
-            nRes = AddToWorkbook(@".\\Test.xlsx", arrStrings);
+            nRes = AddToWorkbook(@".\\Export.xlsx", arrStrings);
             if (nRes == -1)
             {
                 MessageBox.Show("error!");
