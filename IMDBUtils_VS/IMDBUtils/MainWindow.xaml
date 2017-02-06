@@ -211,7 +211,7 @@
                     <Button Name="btnRefreshRemote" Content="Refresh" Click="btnRefreshRemote_Click"/>
                     <ListView x:Name="lstWorks" Margin="5"
                                   VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                                   Height="650"
+                                   Height="529"
                                   Background="LightGray" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" 
                                 ItemsSource="{Binding ElementName=MainWindow, Path=TaskList}">
                             <ListView.View>
