@@ -28,8 +28,11 @@ namespace IMDBUtils.Models
             get { return m_status; }
             set
             {
-                if(value != null)
+                if (value != null)
+                {
                     Status2 = value.Equals("working");
+                    IsDownloadable = value.Equals("done");  // done : is downloadable
+                }
                 m_status = value;
             }
         }
@@ -42,7 +45,6 @@ namespace IMDBUtils.Models
             get { return m_Status2; }
             set
             {
-                IsDownloadable = !value;    // working : is not downloadable
                 m_Status2 = value;
             }
         }
