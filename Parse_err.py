@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 import logging  
 import ssl
 import Config
-from AllMovies_imdb import add_empty_data, get_connections, get_business_of_movie, get_companycredits_of_movie, get_fullcredits_of_movie, get_releaseinfo_of_movie, get_techinfo_of_movie, get_detail_of_movie, register_toServer, upload_data, init_page
+from AllMovies_imdb import upload_data, add_empty_data, get_connections, get_business_of_movie, get_companycredits_of_movie, get_fullcredits_of_movie, get_releaseinfo_of_movie, get_techinfo_of_movie, get_detail_of_movie, register_toServer, init_page
 
 logging.basicConfig(filename=Config.LOG_PATH,level=logging.DEBUG)
 
@@ -81,7 +81,7 @@ def get_err_movies(session, task):
         print "item count in this page : "+ str(len(items))
 
         for idx,item in enumerate(items):
-            print "page : "+str(ERR_PAGE)+"- idx : "+str(idx) + " out of " + str(ITEMS_PER_PAGE) + ", ERR_IDX was " + str(ERR_IDX)
+            print "page : "+str(ERR_PAGE)+", idx : "+str(idx) + " out of " + str(ITEMS_PER_PAGE) + ", ERR_IDX was " + str(ERR_IDX)
             if idx < ERR_IDX:
                 print "skip"
                 continue

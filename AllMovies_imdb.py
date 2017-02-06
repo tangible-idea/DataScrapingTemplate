@@ -533,7 +533,7 @@ def upload_data(session, task, uri):
         with open(uri, 'rb') as fh:
             data = fh.read()
 
-        txtdata = File("results_"+str(task.range)+"_"+str(task.range_end), data,  "text/plain")
+        txtdata = File(uri, data,  "text/plain")
         txtdata.save()
         print "file has been saved."
 
