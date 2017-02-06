@@ -216,9 +216,9 @@
                                 ItemsSource="{Binding ElementName=MainWindow, Path=TaskList}">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="80" Header="Range" DisplayMemberBinding="{Binding Range}"/>
-                                <GridViewColumn Width="80" Header="Range end" DisplayMemberBinding="{Binding RangeEnd}"/>
-                                <GridViewColumn Width="80" Header="Status">
+                                    <GridViewColumn Width="60" Header="Range" DisplayMemberBinding="{Binding Range}"/>
+                                <GridViewColumn Width="60" Header="Range end" DisplayMemberBinding="{Binding RangeEnd}"/>
+                                <GridViewColumn Width="70" Header="Status">
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
@@ -252,6 +252,16 @@
                                     <GridViewColumn Width="122" Header="Finished at" DisplayMemberBinding="{Binding FinishedAt}"/>
                                     <GridViewColumn Width="90" Header="Time spent" DisplayMemberBinding="{Binding TimeSpent}"/>
                                 <GridViewColumn Width="90" Header="Per one movie" DisplayMemberBinding="{Binding TimeSpentPerTask}"/>
+                                <GridViewColumn Width="90" Header="RawData">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Button Name="btnDownload" Content="Download" Click="btnDownload_Click"></Button>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
                             </GridView>
                             </ListView.View>
                         </ListView>

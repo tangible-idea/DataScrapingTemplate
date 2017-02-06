@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -551,6 +552,7 @@ namespace IMDBUtils
                 foreach (var PO in lstParsingRange)
                 {
                     var task = new Models.Task();
+                    task.PO = PO;
                     task.Progress = Convert.ToDouble(PO["done_count"]);
                     task.ProgressMax = Convert.ToDouble(PO["quantity"]);
                     task.Range = PO["range"] as string;
@@ -567,9 +569,6 @@ namespace IMDBUtils
                     task.FinishedAt = PO["ending_time"] as string;
 
                     task.ProgressCaption = task.Progress + " / " + task.ProgressMax;
-                    //task.rawDataURI = PO["rawdata"] as string;
-                    //var applicantResumeFile = anotherApplication.Get<ParseFile>("applicantResumeFile");
-                    //string resumeText = await new HttpClient().GetStringAsync(applicantResumeFile.Url);
 
                     this.AnalTask(task, ref nCountTodo, ref lfTotalSpeed, ref nCountDoneTasks, ref nCountWorkingServer);
 
@@ -635,6 +634,42 @@ namespace IMDBUtils
         private void btnRefreshRemote_Click(object sender, RoutedEventArgs e)
         {
             RefreshRemoteTable();
+        }
+
+        private async void btnDownload_Click(object sender, RoutedEventArgs e)
+        {
+            string myPath = Environment.CurrentDirectory;
+            Button button = sender as Button;
+            var task = button.DataContext as Models.Task;
+
+            if(button.Content.Equals("Open"))
+            {
+                Process.Start(myPath);
+                return;
+            }
+            try
+            {
+                var rawFile = task.PO.Get<ParseFile>("rawdata");
+                button.Content = "...";
+                button.IsEnabled = false;
+                string dataText = await new HttpClient().GetStringAsync(rawFile.Url);
+                string onlyFN= System.IO.Path.GetFileName(rawFile.Url.ToString());
+
+                using (StreamWriter outputFile = new StreamWriter(myPath + onlyFN))
+                {
+                    outputFile.Write(dataText);
+                }
+
+                button.Content = "Open";
+                button.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                button.Content = "Error";
+                button.Foreground = Brushes.Red;
+                MessageBox.Show("Access denied\n" + ex.Message);
+            }
+            
         }
     }
 }

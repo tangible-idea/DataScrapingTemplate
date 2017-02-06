@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Parse;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -87,5 +88,7 @@ namespace IMDBUtils.Models
         public string TimeSpent { get; set; }
         public string TimeSpentPerTask { get; set; }
         public double lfTimeSpentPerTask { get; set; }
+
+        public ParseObject PO { get; set; }
     }
 }
