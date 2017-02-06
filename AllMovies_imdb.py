@@ -565,6 +565,10 @@ def get_all_movies(session, task, single_test_mode):
     PAGE_MIN= 1
     PAGE_MAX= 201
     ITEMS_PER_PAGE= 50.0
+    
+    GOT_ERROR = False
+    LAST_ERR_PAGE= 0
+    LAST_ERR_IDX= 0
 
     if single_test_mode is True:
         PAGE_MIN = 1
@@ -611,7 +615,7 @@ def get_all_movies(session, task, single_test_mode):
                 if single_test_mode is True:
                     if idx != 49:
                         continue
-
+                
                 item_href= item.span.findNext('span').a['href']
                 item_name= item.span.findNext('span').text
 
@@ -638,6 +642,9 @@ def get_all_movies(session, task, single_test_mode):
                 #
         except Exception, e:
             logging.exception(e)
+            LAST_ERR_IDX = idx
+            LAST_ERR_PAGE = num
+            GOT_ERROR = True
             currError = Parsing_err(page_num=num, entity_num=idx, err_url=url)
             currError.save()
             relation= currError.relation("Parsing_range")
@@ -646,19 +653,3 @@ def get_all_movies(session, task, single_test_mode):
 
     return filePath
 
-#Here's the main
-while True:
-    session= register_toServer() # 1. try to register
-    todo = check_worksheets(session) # 2. obtain the todo list
-
-    if todo is None:    # 3. if no longer things to do, exit
-        print "Done."
-        break
-    else:
-        fileuri= get_all_movies(session, todo, Config.SINGLE_TEST_MODE)   # 4. if it has things to do, do work.
-        if fileuri == "":
-            print "There's no file."
-            todo.status = "done"
-            todo.save()
-        else:
-            upload_data(session, todo, fileuri)
