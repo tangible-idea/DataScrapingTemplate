@@ -645,10 +645,9 @@ def get_all_movies(session, task, single_test_mode):
             LAST_ERR_IDX = idx
             LAST_ERR_PAGE = num
             GOT_ERROR = True
-            currError = Parsing_err(page_num=num, entity_num=idx, err_url=url)
+            currError = Parsing_err(page_num=num, entity_num=idx, err_url=url, status="pending")
             currError.save()
             relation= currError.relation("Parsing_range")
-            relation.add(task)
 
 
     return filePath
