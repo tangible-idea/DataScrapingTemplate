@@ -103,6 +103,9 @@ namespace IMDBUtils.Models
         public double lfTimeSpentPerTask { get; set; }
         public bool IsDownloadable { get; set; }
 
+        public string strErrPage { get; set; }
+        public string strErrIdx { get; set; }
+
         public ParseObject PO { get; set; }
     }
 }

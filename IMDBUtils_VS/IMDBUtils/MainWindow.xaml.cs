@@ -89,6 +89,7 @@ namespace IMDBUtils
         private static string strSelectedFile = string.Empty;
         ObservableCollection<Gross> lstGross = new ObservableCollection<Gross>();
         ObservableCollection<Models.Task> TaskList= new ObservableCollection<Models.Task>();
+        ObservableCollection<Models.Task> TaskErrList = new ObservableCollection<Models.Task>();
 
         public MainWindow()
         {
@@ -574,8 +575,13 @@ namespace IMDBUtils
 
                     TaskList.Add(task);
                 }
-                double lfTotalEstimateTime = ((double)nCountTodo * (lfTotalSpeed / (double)nCountDoneTasks)) / (double)nCountWorkingServer;
-                var tsEstimate = TimeSpan.FromSeconds(lfTotalEstimateTime);
+
+                TimeSpan tsEstimate = TimeSpan.FromSeconds(0);
+                if(nCountWorkingServer != 0)
+                {
+                    double lfTotalEstimateTime = ((double)nCountTodo * (lfTotalSpeed / (double)nCountDoneTasks)) / (double)nCountWorkingServer;
+                    tsEstimate = TimeSpan.FromSeconds(lfTotalEstimateTime);
+                }
                 string strDetails = String.Format("Remaining tasks : {0},\tAverage speed : {1:F3} movie/sec,\tTotal remaining : {2} (estimate)"
                     , nCountTodo, lfTotalSpeed / (double)nCountDoneTasks, String.Format("{0:dd}day(s) {0:hh}h{0:mm}m{0:ss}s", tsEstimate));
                 txtDetails.Text = strDetails;
@@ -618,10 +624,10 @@ namespace IMDBUtils
         {
             if (e.Source is TabControl)
             {
-                if (TabRemote.IsSelected == false)
-                    return;
-
-                RefreshRemoteTable();
+                if (TabRemote.IsSelected)
+                    RefreshRemoteTable();
+                else if(TabErrMonitor.IsSelected)
+                    RefreshErrTable();
             }
         }
 
@@ -670,6 +676,50 @@ namespace IMDBUtils
                 MessageBox.Show("Access denied\n" + ex.Message);
             }
             
+        }
+
+        private void btnRefreshErr_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshErrTable();
+        }
+
+        private async void RefreshErrTable()
+        {
+            prgRingErr.IsActive = true;
+            try
+            {
+                var query = ParseObject.GetQuery("Parsing_err").Limit(1000);
+                IEnumerable<ParseObject> lstParsingRange = await query.FindAsync();
+
+                TaskErrList.Clear();
+                foreach (var PO in lstParsingRange)
+                {
+                    var task = new Models.Task();
+                    task.PO = PO;
+                    task.Progress = Convert.ToDouble(PO["done_count"]);
+                    task.ProgressMax = 50 - Convert.ToInt32(PO["entity_num"]);
+                    task.Status = PO["status"] as string;
+                    task.strErrIdx = Convert.ToString(PO["entity_num"]);
+                    task.strErrPage = Convert.ToString(PO["page_num"]);
+
+                    task.LastPage = PO["err_url"] as string;
+                    task.ProgressCaption = task.Progress + " / " + task.ProgressMax;
+
+                    if (task.LastPage.Equals(""))
+                        task.LastPage = "about:blank";
+
+                    TaskErrList.Add(task);
+                }
+
+                lstWorks2.ItemsSource = null;
+                lstWorks2.ItemsSource = TaskErrList;
+                prgRingErr.IsActive = false;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Got connection pbm\n" + ex.Message);
+            }
         }
     }
 }

@@ -199,11 +199,6 @@
         </TabItem>
         <TabItem Controls:ControlsHelper.HeaderFontSize="18" Header="Remote" Name="TabRemote">
             <Grid>
-                <!--<Grid.RowDefinitions>
-                    <RowDefinition Height="400"/>
-                    <RowDefinition Height="400"/>
-                </Grid.RowDefinitions>-->
-
                 <Controls:ProgressRing x:Name="prgRing" IsActive="false" Panel.ZIndex="10"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                     <StackPanel>
@@ -269,6 +264,71 @@
                         </ListView>
                 </StackPanel>
             </Grid>
+        </TabItem>
+        
+        <TabItem Controls:ControlsHelper.HeaderFontSize="18" Header="ErrorMonitor" Name="TabErrMonitor">
+        <Grid>
+            <Controls:ProgressRing x:Name="prgRingErr" IsActive="false" Panel.ZIndex="10"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <StackPanel>
+                <Button Name="btnRefreshErr" Content="Refresh" Click="btnRefreshErr_Click"/>
+                <ListView x:Name="lstWorks2" Margin="5"
+                                  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                   Height="529"
+                                  Background="LightGray" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                                ItemsSource="{Binding ElementName=MainWindow, Path=TaskErrList}">
+                    <ListView.View>
+                            <GridView>
+                                <GridViewColumn Width="70" Header="Err page" DisplayMemberBinding="{Binding strErrPage}"/>
+                                <GridViewColumn Width="70" Header="Err idx" DisplayMemberBinding="{Binding strErrIdx}"/>
+                                <GridViewColumn Width="70" Header="Status">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="{Binding Status}"/>
+                                            <Controls:ProgressRing IsActive="{Binding Status2}" Width="10" Height="10"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="100" Header="ERR page">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock>           
+                                            <Hyperlink NavigateUri="{Binding LastPage}" RequestNavigate="Hyperlink_RequestNavigate">
+                                                Click here
+                                            </Hyperlink>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                                <GridViewColumn Width="550" Header="Progress">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Controls:MetroProgressBar Foreground="Aqua" Maximum="{Binding ProgressMax}" Value="{Binding Progress}"/>
+                                                <Label Content="{Binding ProgressCaption}" Foreground="Magenta" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Width="90" Header="RawData">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Button Name="btnDownload" Content="Download"
+                                                        Click="btnDownload_Click"
+                                                        IsEnabled="{Binding IsDownloadable}"></Button>
+                                        </Grid>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </StackPanel>
+        </Grid>
         </TabItem>
     </TabControl>
 
