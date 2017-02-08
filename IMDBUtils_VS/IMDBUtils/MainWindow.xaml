@@ -302,7 +302,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                                <GridViewColumn Width="550" Header="Progress">
+                                <GridViewColumn Width="450" Header="Progress">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Grid>
@@ -324,7 +324,18 @@
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
 
-                        </GridView>
+                                <GridViewColumn Width="90" Header="Erase">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Grid>
+                                                <Button Name="btnErase" Content="Initialize"
+                                                        Click="btnErase_Click"></Button>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                            </GridView>
                     </ListView.View>
                 </ListView>
             </StackPanel>
