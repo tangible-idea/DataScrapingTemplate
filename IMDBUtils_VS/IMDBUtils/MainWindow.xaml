@@ -111,7 +111,7 @@
                             <GridViewColumn Width="100" Header="Maximum">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <TextBox Text="{Binding strMaximum}"></TextBox>
+                                        <TextBox Text="{Binding strMaximum}"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>

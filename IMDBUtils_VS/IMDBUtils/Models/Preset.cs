@@ -12,11 +12,24 @@ namespace IMDBUtils.Models
     {
         public Preset()
         {
+            UpgradeDelimitsVersion();
+            nSelectedDelim = 0;
+        }
+
+        public void UpgradeDelimitsVersion()
+        {
             m_srcDelimits = new ObservableCollection<Delimeters>();
+            srcDelimits.Clear();
             srcDelimits.Add(new Delimeters("None"));
             srcDelimits.Add(new Delimeters("Comma"));
-            srcDelimits.Add(new Delimeters("Gross"));
-            nSelectedDelim = 0;
+            srcDelimits.Add(new Delimeters("Currency Symbols"));
+            srcDelimits.Add(new Delimeters("Double Space"));
+
+            // if the new verison has more delimeters than older version, just init as 0.
+            if(nSelectedDelim > srcDelimits.Count)
+            {
+                nSelectedDelim = 0;
+            }
         }
 
 
@@ -26,7 +39,6 @@ namespace IMDBUtils.Models
             get { return m_nSelectedDelim; }
             set
             {
-                //srcDelimits.
                 m_nSelectedDelim = value;
             }
         }
@@ -53,6 +65,8 @@ namespace IMDBUtils.Models
             get { return m_strMaximum; }
             set { m_strMaximum = value; }
         }
+
+        //public bool isMaximumTextEnabled { get; set; }
 
     }
 }

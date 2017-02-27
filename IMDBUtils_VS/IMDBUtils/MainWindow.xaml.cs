@@ -780,6 +780,10 @@ namespace IMDBUtils
                     }
                     PresetList.Clear();
                     PresetList = formatter.Deserialize(stream) as ObservableCollection<Preset>;
+                    foreach(var p in PresetList)
+                    {
+                        p.UpgradeDelimitsVersion();
+                    }
                     lstPreset.ItemsSource = PresetList;
                     lstPreset.Items.Refresh();
                     stream.Close();
@@ -824,8 +828,6 @@ namespace IMDBUtils
 
             if (comboBox.SelectedIndex == -1)
                 return;
-
-            PresetList[itemIndex].nSelectedDelim = comboBox.SelectedIndex;
         }
 
         private void btnPresetDelete_Click(object sender, RoutedEventArgs e)
