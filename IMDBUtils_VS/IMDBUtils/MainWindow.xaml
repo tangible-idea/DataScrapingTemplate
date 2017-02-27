@@ -91,7 +91,7 @@
                          ItemsSource="{Binding PresetList}">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Width="100" Header="Title">
+                            <GridViewColumn Width="200" Header="Title">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBox Text="{Binding strTitle}"></TextBox>
@@ -115,7 +115,7 @@
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
-                            <GridViewColumn Width="300">
+                            <GridViewColumn Width="200">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <Rectangle/>

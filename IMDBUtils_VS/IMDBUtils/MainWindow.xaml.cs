@@ -211,8 +211,12 @@ namespace IMDBUtils
                 lstFiles.SelectedIndex = nFileCounter;
             }));
 
+            var path= lstFiles.Items[nFileCounter] as FilePath;
+            var strCurrName = System.IO.Path.GetFileNameWithoutExtension(path.Title);
+            var strCurrPath = System.IO.Path.GetDirectoryName(path.Title);
+
             EStatus = EMode.WritingFile;
-            nRes = AddToWorkbook(@".\\Export.xlsx", arrStrings);
+            nRes = AddToWorkbook(strCurrPath + "\\" + strCurrName + ".xlsx", arrStrings);
             if (nRes == -1)
             {
                 MessageBox.Show("error!");
@@ -253,13 +257,18 @@ namespace IMDBUtils
                 prgExport_Single.Value = 0;
             }));
 
-            int nRowOffset = 0;
             WorkBook m_book = new WorkBook();
             if (File.Exists(strPath) == true)    // if it already exists change into read mode.
             {
-                m_book.readXLSX(strPath);
-                nRowOffset = m_book.LastRow;
+                File.Delete(strPath);
             }
+            //int nRowOffset = 0;
+            //WorkBook m_book = new WorkBook();
+            //if (File.Exists(strPath) == true)    // if it already exists change into read mode.
+            //{
+            //    m_book.readXLSX(strPath);
+            //    nRowOffset = m_book.LastRow;
+            //}
             this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate ()
             {
                 prgExport_Single.Maximum = arrStrings.Count;
@@ -284,14 +293,14 @@ namespace IMDBUtils
                     for (int col = 0; col < arrStrings[row].Length; ++col)
                     {
                         nMaxCol = Math.Max(nMaxCol, col);
-                        m_book.setText(row + nRowOffset, col, arrStrings[row][col]);
+                        m_book.setText(row/* + nRowOffset*/, col, arrStrings[row][col]);
                     }
                 }
 
                 #region Apply Style
-                RangeStyle rangeStyle = m_book.getRangeStyle(0, 0, nMaxRow + nRowOffset, nMaxCol);//get format from range B2:C3
+                RangeStyle rangeStyle = m_book.getRangeStyle(0, 0, nMaxRow /*+ nRowOffset*/, nMaxCol);//get format from range B2:C3
                 rangeStyle.FontName = "Arial";
-                m_book.setRangeStyle(rangeStyle, 0, 0, nMaxRow + nRowOffset, nMaxCol); //set format for range B2:C3
+                m_book.setRangeStyle(rangeStyle, 0, 0, nMaxRow /*+ nRowOffset*/, nMaxCol); //set format for range B2:C3
                 #endregion
 
                 //m_book.AutoRecalc = false;
