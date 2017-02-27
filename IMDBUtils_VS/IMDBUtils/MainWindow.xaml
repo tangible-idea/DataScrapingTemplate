@@ -9,13 +9,13 @@
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
         DataContext="{Binding Main, Source={StaticResource Locator}}"
-        Title="IMDB Parse Utility" Height="650" Width="1024">
+        Title="IMDB Parse Utility" Height="650" Width="1024" Loaded="MetroWindow_Loaded">
 
     <TabControl Controls:TabControlHelper.IsUnderlined="True"
                 SelectionChanged="TabControl_SelectionChanged"
-                SelectedIndex="3">
-        <TabItem Controls:ControlsHelper.HeaderFontSize="18" Header="Acqusition">
-
+                SelectedIndex="3"
+                  >
+        <TabItem Header="Converting">
             <Grid Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -28,19 +28,21 @@
                 </Grid.RowDefinitions>
 
 
-                <ListBox x:Name="lstFiles" HorizontalAlignment="Stretch" Margin="5" VerticalContentAlignment="Stretch" Background="LightGray"
+                <ListView x:Name="lstFiles" HorizontalAlignment="Stretch" Margin="5" VerticalContentAlignment="Stretch" Background="LightGray"
                          ItemsSource="{Binding AcqList}">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Title}" />
                         </DataTemplate>
                     </ListBox.ItemTemplate>
-                </ListBox>
+                </ListView>
 
                 <StackPanel Grid.Column="1">
                     <Button x:Name="btnLoad" Content="Load" Margin="3"
                             Command="{Binding LoadFiles}" Height="36"/>
-                    <Button x:Name="btnExportToXLS" Content="Export to XLS" Margin="3"  Height="36" Click="btnExportToXLS_Click"/>
+                    <Button x:Name="btnExportToXLS" Content="Export to XLS"
+                            Margin="3"  Height="36"
+                            Click="btnExportToXLS_Click"/>
                     <Controls:DropDownButton Name="btnExportSetting"
                                          Content="Export to"
                                          DisplayMemberPath="Title"
@@ -71,11 +73,67 @@
                 </StackPanel>
             </Grid>
         </TabItem>
-        <TabItem Controls:ControlsHelper.HeaderFontSize="18" Header="Arragement">
+        
+        <TabItem Header="Preset">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="88*"/>
+                    <RowDefinition Height="12*"/>
+                </Grid.RowDefinitions>
+
+
+                <ListView x:Name="lstPreset" HorizontalAlignment="Stretch" Margin="5" VerticalContentAlignment="Stretch" Background="LightGray"
+                         ItemsSource="{Binding PresetList}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Width="100" Header="Title">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding strTitle}"></TextBox>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="150" Header="Delimit">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox ItemsSource="{Binding srcDelimits}"
+                                                  DisplayMemberPath="{Binding strDelimiter}"
+                                                  SelectedValuePath="{Binding strDelimiter}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="100" Header="Maximum">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox Text="{Binding strMaximum}"></TextBox>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <StackPanel Grid.Column="1">
+                    <Button x:Name="btnLoadPreset" Content="Load Preset"
+                            Margin="3" Height="36"
+                            Click="btnLoadPreset_Click"/>
+                    <Button x:Name="btnSavePreset" Content="Save Preset"
+                            Margin="3"  Height="36"
+                            Click="btnSavePreset_Click"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+        
+        <TabItem  Header="Arragement">
             <StackPanel>
 
                 <Button Name="btnLoadExcelData" Content="Show data" Margin="3"
-                        Command="{Binding ShowSheet}"></Button>
+                        Command="{Binding ShowSheet}"/>
                 <ProgressBar x:Name="prgPresent" Margin="3,0,3,0" Height="10" Background="GhostWhite"/>
 
                 <ContentControl Grid.Row="1"
@@ -139,7 +197,7 @@
                 </DataGrid>
             </StackPanel>
         </TabItem>
-        <TabItem Controls:ControlsHelper.HeaderFontSize="18" Header="TextSpliter">
+        <TabItem  Header="TextSpliter">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -197,7 +255,7 @@
                 </Grid>
             </Grid>
         </TabItem>
-        <TabItem Controls:ControlsHelper.HeaderFontSize="18" Header="Remote" Name="TabRemote">
+        <TabItem  Header="Remote" Name="TabRemote">
             <Grid>
                 <Controls:ProgressRing x:Name="prgRing" IsActive="false" Panel.ZIndex="10"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
@@ -266,7 +324,7 @@
             </Grid>
         </TabItem>
         
-        <TabItem Controls:ControlsHelper.HeaderFontSize="18" Header="ErrorMonitor" Name="TabErrMonitor">
+        <TabItem  Header="ErrorMonitor" Name="TabErrMonitor">
         <Grid>
             <Controls:ProgressRing x:Name="prgRingErr" IsActive="false" Panel.ZIndex="10"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
 

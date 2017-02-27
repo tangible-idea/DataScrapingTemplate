@@ -13,6 +13,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -91,10 +93,22 @@ namespace IMDBUtils
         ObservableCollection<Models.Task> TaskList= new ObservableCollection<Models.Task>();
         ObservableCollection<Models.Task> TaskErrList = new ObservableCollection<Models.Task>();
 
+        ObservableCollection<Preset> PresetList = new ObservableCollection<Preset>();
+
         public MainWindow()
         {
             InitializeComponent();
 
+        }
+
+
+        private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            var a = new Preset();
+            a.strTitle = "Name";
+            a.strMaximum = "0";
+            PresetList.Add(a);
+            lstPreset.ItemsSource = PresetList;
         }
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
@@ -733,6 +747,30 @@ namespace IMDBUtils
             await task.PO.SaveAsync();
 
             this.RefreshErrTable();
+        }
+
+        private void btnLoadPreset_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSavePreset_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+
+            dlg.DefaultExt = ".imdbpreset";
+            dlg.Filter = "IMDB Preset File (*.imdbpreset)|*.imdbpreset";
+
+            Nullable<bool> result = dlg.ShowDialog();
+
+            if (result == true)
+            {
+                IFormatter formatter = new BinaryFormatter();
+                Stream stream = new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                formatter.Serialize(stream, PresetList);
+                stream.Close();
+            }
+
         }
     }
 }
