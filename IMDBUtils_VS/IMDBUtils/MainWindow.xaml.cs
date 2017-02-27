@@ -93,7 +93,16 @@ namespace IMDBUtils
         ObservableCollection<Models.Task> TaskList= new ObservableCollection<Models.Task>();
         ObservableCollection<Models.Task> TaskErrList = new ObservableCollection<Models.Task>();
 
-        ObservableCollection<Preset> PresetList = new ObservableCollection<Preset>();
+        ObservableCollection<Preset> m_PresetList = new ObservableCollection<Preset>();
+        ObservableCollection<Preset> PresetList
+        {
+            get { return m_PresetList; }
+            set
+            {
+                m_PresetList = value;
+            }
+        }
+
 
         public MainWindow()
         {
@@ -749,28 +758,93 @@ namespace IMDBUtils
             this.RefreshErrTable();
         }
 
-        private void btnLoadPreset_Click(object sender, RoutedEventArgs e)
+        private async void btnLoadPreset_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
 
+                dlg.DefaultExt = ".imdbpreset";
+                dlg.Filter = "IMDB Preset File (*.imdbpreset)|*.imdbpreset";
+
+                Nullable<bool> result = dlg.ShowDialog();
+
+                if (result == true)
+                {
+                    IFormatter formatter = new BinaryFormatter();
+                    Stream stream = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read, FileShare.None);
+                    if (stream.Length == 0)
+                    {
+                        await this.ShowMessageAsync("Abnormal file", "empty file.");
+                        return;
+                    }
+                    PresetList.Clear();
+                    PresetList = formatter.Deserialize(stream) as ObservableCollection<Preset>;
+                    lstPreset.ItemsSource = PresetList;
+                    lstPreset.Items.Refresh();
+                    stream.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                await this.ShowMessageAsync("Abnormal file", ex.Message);
+            }
         }
 
-        private void btnSavePreset_Click(object sender, RoutedEventArgs e)
+        private async void btnSavePreset_Click(object sender, RoutedEventArgs e)
         {
-            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-
-            dlg.DefaultExt = ".imdbpreset";
-            dlg.Filter = "IMDB Preset File (*.imdbpreset)|*.imdbpreset";
-
-            Nullable<bool> result = dlg.ShowDialog();
-
-            if (result == true)
+            try
             {
-                IFormatter formatter = new BinaryFormatter();
-                Stream stream = new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, PresetList);
-                stream.Close();
-            }
+                Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
 
+                dlg.DefaultExt = ".imdbpreset";
+                dlg.Filter = "IMDB Preset File (*.imdbpreset)|*.imdbpreset";
+
+                Nullable<bool> result = dlg.ShowDialog();
+
+                if (result == true)
+                {
+                    IFormatter formatter = new BinaryFormatter();
+                    Stream stream = new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                    formatter.Serialize(stream, PresetList);
+                    stream.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                await this.ShowMessageAsync("Failed to save file", ex.Message);
+            }
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            Int32 itemIndex = lstPreset.Items.IndexOf(comboBox.DataContext);
+
+            if (comboBox.SelectedIndex == -1)
+                return;
+
+            PresetList[itemIndex].nSelectedDelim = comboBox.SelectedIndex;
+        }
+
+        private void btnPresetDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            Int32 itemIndex = lstPreset.Items.IndexOf(btn.DataContext);
+
+            PresetList.RemoveAt(itemIndex);
+        }
+
+        private void btnPresetInsert_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            Int32 itemIndex = lstPreset.Items.IndexOf(btn.DataContext);
+
+            var p = new Preset();
+            p.strMaximum = "0";
+            p.nSelectedDelim = 0;
+            PresetList.Insert(itemIndex + 1, p);
         }
     }
 }

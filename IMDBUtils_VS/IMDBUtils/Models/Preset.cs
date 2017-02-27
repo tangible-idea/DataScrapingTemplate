@@ -16,7 +16,21 @@ namespace IMDBUtils.Models
             srcDelimits.Add(new Delimeters("None"));
             srcDelimits.Add(new Delimeters("Comma"));
             srcDelimits.Add(new Delimeters("Gross"));
+            nSelectedDelim = 0;
         }
+
+
+        private int m_nSelectedDelim;
+        public int nSelectedDelim
+        {
+            get { return m_nSelectedDelim; }
+            set
+            {
+                //srcDelimits.
+                m_nSelectedDelim = value;
+            }
+        }
+
 
         private ObservableCollection<Delimeters> m_srcDelimits;
         public ObservableCollection<Delimeters> srcDelimits

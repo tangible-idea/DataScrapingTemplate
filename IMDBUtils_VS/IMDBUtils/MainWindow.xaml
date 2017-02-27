@@ -13,7 +13,7 @@
 
     <TabControl Controls:TabControlHelper.IsUnderlined="True"
                 SelectionChanged="TabControl_SelectionChanged"
-                SelectedIndex="3"
+                SelectedIndex="1"
                   >
         <TabItem Header="Converting">
             <Grid Margin="5">
@@ -103,7 +103,8 @@
                                     <DataTemplate>
                                         <ComboBox ItemsSource="{Binding srcDelimits}"
                                                   DisplayMemberPath="{Binding strDelimiter}"
-                                                  SelectedValuePath="{Binding strDelimiter}"/>
+                                                  SelectedIndex="{Binding nSelectedDelim}"
+                                                  SelectionChanged="ComboBox_SelectionChanged"/>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -111,6 +112,27 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <TextBox Text="{Binding strMaximum}"></TextBox>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="300">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Rectangle/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="50" Header="Insert">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnPresetInsert" Content="+" Click="btnPresetInsert_Click"></Button>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="50" Header="Delete">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Name="btnPresetDelete" Content="-" Click="btnPresetDelete_Click"></Button>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
