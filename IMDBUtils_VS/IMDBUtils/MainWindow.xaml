@@ -43,7 +43,15 @@
                     <Button x:Name="btnExportToXLS" Content="Export to XLS"
                             Margin="3"  Height="36"
                             Click="btnExportToXLS_Click"/>
-                    <Controls:DropDownButton Name="btnExportSetting"
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox Name="txtConvertingPresetFile"
+                                 Width="120"
+                                 IsReadOnly="True"/>
+                        <Button Name="btnLoadConvertingPresetFile"
+                                Content="Load Preset"
+                                Click="btnLoadConvertingPresetFile_Click"/>
+                    </StackPanel>
+                    <!--<Controls:DropDownButton Name="btnExportSetting"
                                          Content="Export to"
                                          DisplayMemberPath="Title"
                                          ItemsSource="{Binding Path=ExportSets, Mode=TwoWay}"
@@ -51,7 +59,7 @@
                         <Controls:DropDownButton.Icon>
                             <iconPacks:PackIconModern Kind="CabinetFiles" Margin="6"/>
                         </Controls:DropDownButton.Icon>
-                    </Controls:DropDownButton>
+                    </Controls:DropDownButton>-->
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">

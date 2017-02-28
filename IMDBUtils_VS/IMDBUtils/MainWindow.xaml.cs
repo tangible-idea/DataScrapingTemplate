@@ -767,6 +767,11 @@ namespace IMDBUtils
             this.RefreshErrTable();
         }
 
+
+        private void btnLoadConvertingPresetFile_Click(object sender, RoutedEventArgs e)
+        {
+            btnLoadPreset_Click(sender, e);
+        }
         private async void btnLoadPreset_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -796,6 +801,8 @@ namespace IMDBUtils
                     lstPreset.ItemsSource = PresetList;
                     lstPreset.Items.Refresh();
                     stream.Close();
+
+                    txtConvertingPresetFile.Text = dlg.FileName;
                 }
             }
             catch (Exception ex)
