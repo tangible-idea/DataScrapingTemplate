@@ -162,8 +162,13 @@ namespace IMDBUtils
 
         private readonly BackgroundWorker worker = new BackgroundWorker();
 
-        private void btnExportToXLS_Click(object sender, RoutedEventArgs e)
+        private async void btnExportToXLS_Click(object sender, RoutedEventArgs e)
         {
+            if(lstFiles.Items.Count == 0)
+            {
+                await this.ShowMessageAsync("Error", "Please load at least one file.");
+                return;
+            }
             worker.DoWork += Do_ExportWork;
             worker.RunWorkerCompleted += Done_ExportWork;
 
@@ -294,10 +299,21 @@ namespace IMDBUtils
                     {
                         int nSelDelim = PresetList[col].nSelectedDelim;
                         int nDelimMax = Convert.ToInt32(PresetList[col].strMaximum);
-                        this.DelimitWithSelectedDelimiter(nSelDelim, nDelimMax, arrStrings[row][col]);
 
+                        var arrDelimitedString = new List<string>();
+                        if (nSelDelim == (int)EDelimiters.None)
+                        {
+                            m_book.setText(row/* + nRowOffset*/, col, arrStrings[row][col]);
+                        }
+                        else
+                        {
+                            arrDelimitedString = this.DelimitWithSelectedDelimiter(nSelDelim, nDelimMax, arrStrings[row][col]);
+
+                            if(arrDelimitedString.Count != 0)
+                                m_book.setText(row/* + nRowOffset*/, col, arrDelimitedString[0]);
+
+                        }
                         nMaxCol = Math.Max(nMaxCol, col);
-                        m_book.setText(row/* + nRowOffset*/, col, arrStrings[row][col]);
                     }
                 }
 
@@ -337,18 +353,14 @@ namespace IMDBUtils
         private List<string> DelimitWithSelectedDelimiter(int nSelDelim, int nDelimMax, string strContent)
         {
             var arrRes = new List<string>();
-            if (nSelDelim == (int)EDelimiters.None)
+            if (nSelDelim == (int)EDelimiters.Comma)
             {
-
-            }
-            else if (nSelDelim == (int)EDelimiters.Comma)
-            {
-                arrRes= strContent.Split(',').ToList();
+                arrRes = strContent.Split(',').ToList();
             }
             else if (nSelDelim == (int)EDelimiters.CurrencySymbols)
             {
                 this.SplitGrossText(strContent, false);
-                foreach(var g in lstGross)
+                foreach (var g in lstGross)
                 {
                     arrRes.Add(g.AsString());
                 }
@@ -891,7 +903,7 @@ namespace IMDBUtils
             var p = new Preset();
             p.strMaximum = "0";
             p.nSelectedDelim = 0;
-            PresetList.Insert(itemIndex + 1, p);
+            PresetList.Insert(itemIndex, p);
         }
         
     }
