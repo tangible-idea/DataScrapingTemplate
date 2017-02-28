@@ -7,13 +7,21 @@ using System.Threading.Tasks;
 
 namespace IMDBUtils.Models
 {
+    public enum EDelimeters
+    {
+        None= 0,
+        Comma,
+        CurrencySymbols,
+        DoubleSpace
+    }
+
     [Serializable]
     class Preset
     {
         public Preset()
         {
             UpgradeDelimitsVersion();
-            nSelectedDelim = 0;
+            nSelectedDelim = (int)EDelimeters.None;
         }
 
         public void UpgradeDelimitsVersion()
@@ -28,7 +36,7 @@ namespace IMDBUtils.Models
             // if the new verison has more delimeters than older version, just init as 0.
             if(nSelectedDelim > srcDelimits.Count)
             {
-                nSelectedDelim = 0;
+                nSelectedDelim = (int)EDelimeters.None;
             }
         }
 

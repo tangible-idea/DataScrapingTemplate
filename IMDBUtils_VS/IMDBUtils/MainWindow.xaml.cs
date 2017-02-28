@@ -292,6 +292,10 @@ namespace IMDBUtils
                     }));
                     for (int col = 0; col < arrStrings[row].Length; ++col)
                     {
+                        int nSelDelim = PresetList[col].nSelectedDelim;
+                        int nDelimMax = Convert.ToInt32(PresetList[col].strMaximum);
+                        this.DelimitWithSelectedDelimiter(nSelDelim, nDelimMax, arrStrings[row][col]);
+
                         nMaxCol = Math.Max(nMaxCol, col);
                         m_book.setText(row/* + nRowOffset*/, col, arrStrings[row][col]);
                     }
@@ -322,6 +326,25 @@ namespace IMDBUtils
             return nMaxRow;
         }
 
+        private void DelimitWithSelectedDelimiter(int nSelDelim, int nDelimMax, string strContent)
+        {
+            if (nSelDelim == (int)EDelimeters.None)
+            {
+
+            }
+            else if (nSelDelim == (int)EDelimeters.Comma)
+            {
+
+            }
+            else if (nSelDelim == (int)EDelimeters.CurrencySymbols)
+            {
+
+            }
+            else if (nSelDelim == (int)EDelimeters.DoubleSpace)
+            {
+
+            }
+        }
 
         private void Do_ShowSheet(object sender, DoWorkEventArgs e)
         {
