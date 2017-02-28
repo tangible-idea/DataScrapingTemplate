@@ -864,5 +864,6 @@ namespace IMDBUtils
             p.nSelectedDelim = 0;
             PresetList.Insert(itemIndex + 1, p);
         }
+        
     }
 }

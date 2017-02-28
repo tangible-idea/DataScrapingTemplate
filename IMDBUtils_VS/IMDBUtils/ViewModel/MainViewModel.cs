@@ -50,6 +50,8 @@ namespace IMDBUtils.ViewModel
 
         public ICommand LoadFiles { get; private set; }
         public ICommand ShowSheet { get; private set; }
+        public ICommand btnDelete_Conv { get; private set; }
+        public ICommand btnClear_Conv { get; private set; }
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
@@ -57,6 +59,8 @@ namespace IMDBUtils.ViewModel
         {
             ShowSheet = new RelayCommand(() => ShowSheetExecute(), () => true);
             LoadFiles = new RelayCommand(() => LoadFilesExecute(), () => true);
+            btnDelete_Conv = new RelayCommand(() => btnDelete_Conv_Click(), () => true);
+            btnClear_Conv = new RelayCommand(() => btnClear_Conv_Click(), () => true);
 
             AcqList = new ObservableCollection<FilePath>();
             ExportSets = new ObservableCollection<FileFormat>();
@@ -87,6 +91,17 @@ namespace IMDBUtils.ViewModel
                 file.Close();
             }
         }
+
+        private void btnDelete_Conv_Click()
+        {
+            //AcqList.RemoveAt()
+        }
+        private void btnClear_Conv_Click()
+        {
+            AcqList.Clear();
+        }
+
+        
 
         private void LoadFilesExecute()
         {
