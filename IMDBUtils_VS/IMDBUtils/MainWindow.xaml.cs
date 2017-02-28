@@ -88,6 +88,7 @@ namespace IMDBUtils
                 m_eWorking = value;
             }
         }
+        public bool m_bPresetLoaded = false;
         private static string strSelectedFile = string.Empty;
         ObservableCollection<Gross> lstGross = new ObservableCollection<Gross>();
         ObservableCollection<Models.Task> TaskList= new ObservableCollection<Models.Task>();
@@ -295,25 +296,50 @@ namespace IMDBUtils
                     {
                         prgExport_Single.Value = row;
                     }));
+
+                    int nShift = 0;
                     for (int col = 0; col < arrStrings[row].Length; ++col)
                     {
-                        int nSelDelim = PresetList[col].nSelectedDelim;
-                        int nDelimMax = Convert.ToInt32(PresetList[col].strMaximum);
-
-                        var arrDelimitedString = new List<string>();
-                        if (nSelDelim == (int)EDelimiters.None)
+                        // without preset file
+                        if(m_bPresetLoaded == false)
                         {
                             m_book.setText(row/* + nRowOffset*/, col, arrStrings[row][col]);
                         }
-                        else
+                        else    // converting with preset 
                         {
-                            arrDelimitedString = this.DelimitWithSelectedDelimiter(nSelDelim, nDelimMax, arrStrings[row][col]);
+                            if(row == 0)
+                            {
+                                this.MakeHeaders(ref m_book, nShift);
+                                continue;
+                            }
+                            int nSelDelim = PresetList[col].nSelectedDelim;
+                            int nDelimMax = Convert.ToInt32(PresetList[col].strMaximum);
 
-                            if(arrDelimitedString.Count != 0)
-                                m_book.setText(row/* + nRowOffset*/, col, arrDelimitedString[0]);
+                            var arrDelimitedString = new List<string>();
+                            if (nSelDelim == (int)EDelimiters.None)
+                            {
+                                m_book.setText(row/* + nRowOffset*/, col+ nShift, arrStrings[row][col]);
+                            }
+                            else
+                            {
+                                arrDelimitedString = this.DelimitWithSelectedDelimiter(nSelDelim, nDelimMax, arrStrings[row][col]);
 
+                                if (arrDelimitedString.Count != 0)
+                                {
+                                    for (int s = 0; s < nDelimMax; s++)
+                                    {
+                                        if (arrDelimitedString.Count <= s)
+                                            break;
+
+                                        m_book.setText(row, col+s+nShift, arrDelimitedString[s]);
+                                        //string joined = string.Join(" / ", arrDelimitedString.ToArray());
+                                        //m_book.setText(row, col, joined);
+                                    }
+                                }
+                                nShift += nDelimMax - 1;
+                            }
                         }
-                        nMaxCol = Math.Max(nMaxCol, col);
+                        nMaxCol = Math.Max(nMaxCol, col+ nShift);
                     }
                 }
 
@@ -343,6 +369,28 @@ namespace IMDBUtils
         }
 
 
+        private void MakeHeaders(ref WorkBook book, int nShift)
+        {
+            for (int header_col = 0; header_col < PresetList.Count; ++header_col)
+            {
+                int nHeaderDelimMax = Convert.ToInt32(PresetList[header_col].strMaximum);
+                int nHeaderSelDelim = PresetList[header_col].nSelectedDelim;
+                if ((nHeaderSelDelim != (int)EDelimiters.None)
+                    && (nHeaderDelimMax != 0))
+                {
+                    for (int s = 0; s < nHeaderDelimMax; s++)
+                    {
+                        book.setText(0, header_col + nShift + s, PresetList[header_col].strTitle + (s + 1));
+                    }
+                    nShift += nHeaderDelimMax - 1;
+                }
+                else
+                {
+                    book.setText(0, header_col + nShift, PresetList[header_col].strTitle);
+                }
+            }
+        }
+
         /// <summary>
         /// 
         /// </summary>
@@ -355,7 +403,7 @@ namespace IMDBUtils
             var arrRes = new List<string>();
             if (nSelDelim == (int)EDelimiters.Comma)
             {
-                arrRes = strContent.Split(',').ToList();
+                arrRes = strContent.Split(new[] { "," }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
             else if (nSelDelim == (int)EDelimiters.CurrencySymbols)
             {
@@ -433,7 +481,7 @@ namespace IMDBUtils
 
         private void SplitGrossText(string strTarget, bool bViewing)
         {
-            string strPattern = @"(\€|\$|\£| FRF | DEM | ARS)";
+            string strPattern = @"(\€|\$|\£| FRF | DEM | ARS | ESP | ITL | FIM | SEK | HKD | NLG )";
             List<string> substrings = Regex.Split(strTarget, strPattern).ToList();
             List<string> arrResult = new List<string>();
             string strSet = string.Empty;
@@ -459,11 +507,26 @@ namespace IMDBUtils
                 {
                     var gross = new Gross();
                     string[] arrGross = str.Split('(');
-                    gross.Amount = arrGross[0].Replace(')', ' ').Trim();
-                    gross.Country = arrGross[1].Replace(')', ' ').Trim();
-                    gross.SetReleaseDate(arrGross[2].Replace(')', ' ').Trim());
-                    gross.Else = arrGross[3].Replace(')', ' ').Trim();
-                    lstGross.Add(gross);
+
+                    if(arrGross.Length >= 4)
+                    {
+                        gross.Amount = arrGross[0].Replace(')', ' ').Trim();
+                        gross.Country = arrGross[1].Replace(')', ' ').Trim();
+                        gross.SetReleaseDate(arrGross[2].Replace(')', ' ').Trim());
+                        gross.Else = arrGross[3].Replace(')', ' ').Trim();
+                        lstGross.Add(gross);
+                    }
+                    else if (arrGross.Length == 2)
+                    {
+                        gross.Amount = arrGross[0].Replace(')', ' ').Trim();
+                        gross.Else = arrGross[1].Replace(')', ' ').Trim();
+                        lstGross.Add(gross);
+                    }
+                    else if (arrGross.Length == 1)
+                    {
+                        gross.Amount = arrGross[0].Replace(')', ' ').Trim();
+                        lstGross.Add(gross);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -844,6 +907,7 @@ namespace IMDBUtils
                     stream.Close();
 
                     txtConvertingPresetFile.Text = dlg.FileName;
+                    m_bPresetLoaded = true;
                 }
             }
             catch (Exception ex)
