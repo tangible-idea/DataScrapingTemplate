@@ -29,9 +29,9 @@ namespace IMDBUtils.Models
         {
             string str = string.Empty;
             str += "Country : " + Country;
-            str += " | Gross : " + Amount;
-            str += " | Releasedate : " + Releasedate.ToShortDateString();
-            str += " | Else : " + Else;
+            str += " / Gross : " + Amount;
+            str += " / Releasedate : " + Releasedate.ToShortDateString();
+            str += " / Else : " + Else;
             return str;
         }
 

@@ -326,24 +326,38 @@ namespace IMDBUtils
             return nMaxRow;
         }
 
-        private void DelimitWithSelectedDelimiter(int nSelDelim, int nDelimMax, string strContent)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nSelDelim"></param>
+        /// <param name="nDelimMax"></param>
+        /// <param name="strContent"></param>
+        /// <returns></returns>
+        private List<string> DelimitWithSelectedDelimiter(int nSelDelim, int nDelimMax, string strContent)
         {
-            if (nSelDelim == (int)EDelimeters.None)
+            var arrRes = new List<string>();
+            if (nSelDelim == (int)EDelimiters.None)
             {
 
             }
-            else if (nSelDelim == (int)EDelimeters.Comma)
+            else if (nSelDelim == (int)EDelimiters.Comma)
             {
-
+                arrRes= strContent.Split(',').ToList();
             }
-            else if (nSelDelim == (int)EDelimeters.CurrencySymbols)
+            else if (nSelDelim == (int)EDelimiters.CurrencySymbols)
             {
-
+                this.SplitGrossText(strContent, false);
+                foreach(var g in lstGross)
+                {
+                    arrRes.Add(g.AsString());
+                }
             }
-            else if (nSelDelim == (int)EDelimeters.DoubleSpace)
+            else if (nSelDelim == (int)EDelimiters.DoubleSpace)
             {
-
+                arrRes = strContent.Split(new[] { "  " }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
+            return arrRes;
         }
 
         private void Do_ShowSheet(object sender, DoWorkEventArgs e)
@@ -407,7 +421,7 @@ namespace IMDBUtils
 
         private void SplitGrossText(string strTarget, bool bViewing)
         {
-            string strPattern = @"(\€|\$|\£| FRF | DEM )";
+            string strPattern = @"(\€|\$|\£| FRF | DEM | ARS)";
             List<string> substrings = Regex.Split(strTarget, strPattern).ToList();
             List<string> arrResult = new List<string>();
             string strSet = string.Empty;
@@ -425,16 +439,8 @@ namespace IMDBUtils
                     arrResult.Add(strSet);
                 }
             }
-
-            if(bViewing)
-            {
-                this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate ()
-                {
-                    lstGross.Clear();
-                }));
-            }
             
-
+            lstGross.Clear();
             foreach (string str in arrResult)
             {
                 try
