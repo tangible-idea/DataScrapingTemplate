@@ -256,9 +256,11 @@ namespace IMDBUtils
 
             IWorkbook m_book = new XSSFWorkbook();
             //WorkBook m_book = new WorkBook();
+            Console.WriteLine("This file alreay exist.");
             if (File.Exists(strPath) == true)    // if it already exists change into read mode.
             {
                 File.Delete(strPath);
+                Console.WriteLine("Old file has deleted.");
             }
             //int nRowOffset = 0;
             //WorkBook m_book = new WorkBook();
@@ -353,6 +355,8 @@ namespace IMDBUtils
                 FileStream sw = File.Create(strPath);
                 m_book.Write(sw);
                 sw.Close();
+
+                Console.WriteLine("All done. file path : "+strPath);
                 //m_book.recalc();
                 //m_book.writeXLSX(strPath);
             }
@@ -394,6 +398,7 @@ namespace IMDBUtils
                     //book.setText(0, header_col + nShift, PresetList[header_col].strTitle);
                 }
             }
+            Console.WriteLine("done to add headers.");
         }
 
         /// <summary>
