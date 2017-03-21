@@ -1,32 +1,24 @@
 ﻿using IMDBUtils.Models;
-using IMDBUtils.ViewModel;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using Parse;
-using SmartXLS;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace IMDBUtils
@@ -58,7 +50,7 @@ namespace IMDBUtils
                     switch (value)
                     {
                         case EMode.Idle:
-                            btnExportToXLS.Content = "Export to XLS";
+                            btnExportToXLS.Content = "Export as XLS";
                             btnExportToXLS.IsEnabled = true;
                             btnLoad.IsEnabled = true;
                             btnLoadConvertingPresetFile.IsEnabled = true;
@@ -118,8 +110,7 @@ namespace IMDBUtils
                 m_PresetList = value;
             }
         }
-
-
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -278,10 +269,13 @@ namespace IMDBUtils
                 prgExport_Single.Value = 0;
             }));
 
-            WorkBook m_book = new WorkBook();
+            IWorkbook m_book = new XSSFWorkbook();
+            //WorkBook m_book = new WorkBook();
+            Console.WriteLine("This file alreay exist.");
             if (File.Exists(strPath) == true)    // if it already exists change into read mode.
             {
                 File.Delete(strPath);
+                Console.WriteLine("Old file has deleted.");
             }
             //int nRowOffset = 0;
             //WorkBook m_book = new WorkBook();
@@ -301,8 +295,10 @@ namespace IMDBUtils
 
             try
             {
-                m_book.setSheetName(0, "IMDB");
-                m_book.Sheet = 0;
+                m_book.CreateSheet("IMDB");
+                var currSheet = m_book.GetSheet("IMDB") as XSSFSheet;
+                //m_book.setSheetName(0, "IMDB");
+                //m_book.Sheet = 0;
 
                 for (int row = 0; row < arrStrings.Count; ++row)
                 {
@@ -312,19 +308,21 @@ namespace IMDBUtils
                         prgExport_Single.Value = row;
                     }));
 
+                    IRow _row= currSheet.CreateRow(row);
                     int nShift = 0;
                     for (int col = 0; col < arrStrings[row].Length; ++col)
                     {
                         // without preset file
-                        if(m_bPresetLoaded == false)
+                        if (m_bPresetLoaded == false)
                         {
-                            m_book.setText(row/* + nRowOffset*/, col, arrStrings[row][col]);
+                            _row.CreateCell(col).SetCellValue(arrStrings[row][col]);
+                            //m_book.setText(row/* + nRowOffset*/, col, arrStrings[row][col]);
                         }
                         else    // converting with preset 
                         {
                             if(row == 0)
                             {
-                                this.MakeHeaders(ref m_book, nShift);
+                                this.MakeHeaders(ref currSheet, nShift);
                                 continue;
                             }
                             int nSelDelim = PresetList[col].nSelectedDelim;
@@ -333,7 +331,8 @@ namespace IMDBUtils
                             var arrDelimitedString = new List<string>();
                             if (nSelDelim == (int)EDelimiters.None)
                             {
-                                m_book.setText(row/* + nRowOffset*/, col+ nShift, arrStrings[row][col]);
+                                _row.CreateCell(col + nShift).SetCellValue(arrStrings[row][col]);
+                                //m_book.setText(row/* + nRowOffset*/, col+ nShift, arrStrings[row][col]);
                             }
                             else
                             {
@@ -346,7 +345,8 @@ namespace IMDBUtils
                                         if (arrDelimitedString.Count <= s)
                                             break;
 
-                                        m_book.setText(row, col+s+nShift, arrDelimitedString[s]);
+                                        _row.CreateCell(col + s + nShift).SetCellValue(arrDelimitedString[s]);
+                                        //m_book.setText(row, col+s+nShift, arrDelimitedString[s]);
                                         //string joined = string.Join(" / ", arrDelimitedString.ToArray());
                                         //m_book.setText(row, col, joined);
                                     }
@@ -359,15 +359,21 @@ namespace IMDBUtils
                 }
 
                 #region Apply Style
-                RangeStyle rangeStyle = m_book.getRangeStyle(0, 0, nMaxRow /*+ nRowOffset*/, nMaxCol);//get format from range B2:C3
-                rangeStyle.FontName = "Arial";
-                m_book.setRangeStyle(rangeStyle, 0, 0, nMaxRow /*+ nRowOffset*/, nMaxCol); //set format for range B2:C3
+                //RangeStyle rangeStyle = m_book.getRangeStyle(0, 0, nMaxRow /*+ nRowOffset*/, nMaxCol);//get format from range B2:C3
+                //rangeStyle.FontName = "Arial";
+                //m_book.setRangeStyle(rangeStyle, 0, 0, nMaxRow /*+ nRowOffset*/, nMaxCol); //set format for range B2:C3
                 #endregion
 
                 //m_book.AutoRecalc = false;
                 EStatus = EMode.ClosingFile;
-                m_book.recalc();
-                m_book.writeXLSX(strPath);
+
+                FileStream sw = File.Create(strPath);
+                m_book.Write(sw);
+                sw.Close();
+
+                Console.WriteLine("All done. file path : "+strPath);
+                //m_book.recalc();
+                //m_book.writeXLSX(strPath);
             }
             catch (Exception ex)
             {
@@ -383,9 +389,10 @@ namespace IMDBUtils
             return nMaxRow;
         }
 
-
-        private void MakeHeaders(ref WorkBook book, int nShift)
+        
+        private void MakeHeaders(ref XSSFSheet book, int nShift)
         {
+            IRow _row= book.CreateRow(0);
             for (int header_col = 0; header_col < PresetList.Count; ++header_col)
             {
                 int nHeaderDelimMax = Convert.ToInt32(PresetList[header_col].strMaximum);
@@ -395,15 +402,18 @@ namespace IMDBUtils
                 {
                     for (int s = 0; s < nHeaderDelimMax; s++)
                     {
-                        book.setText(0, header_col + nShift + s, PresetList[header_col].strTitle + (s + 1));
+                        _row.CreateCell(header_col + nShift + s).SetCellValue(PresetList[header_col].strTitle + (s + 1));
+                        //book.setText(0, header_col + nShift + s, PresetList[header_col].strTitle + (s + 1));
                     }
                     nShift += nHeaderDelimMax - 1;
                 }
                 else
                 {
-                    book.setText(0, header_col + nShift, PresetList[header_col].strTitle);
+                    _row.CreateCell(header_col + nShift).SetCellValue(PresetList[header_col].strTitle);
+                    //book.setText(0, header_col + nShift, PresetList[header_col].strTitle);
                 }
             }
+            Console.WriteLine("done to add headers.");
         }
 
         /// <summary>
@@ -636,17 +646,24 @@ namespace IMDBUtils
 
         private void Do_GrossAutomation(object sender, DoWorkEventArgs e)
         {
-            var wbWrite = new WorkBook();
-            wbWrite.setSheetName(0, "Gross");
-            wbWrite.Sheet = 0;
+            IWorkbook wbWrite = new XSSFWorkbook();
+            var shWrite = wbWrite.CreateSheet("Gross") as XSSFSheet;
+            
+            //var wbWrite = new WorkBook();
+            //wbWrite.setSheetName(0, "Gross");
+            //wbWrite.Sheet = 0;
 
-            var wbRead = new WorkBook();
+            IWorkbook wbRead = null;
+            XSSFSheet shRead = null;
+            //var wbRead = new WorkBook();
             if (File.Exists(strTargetAutomationFile) == true)    // if it already exists change into read mode.
             {
-                wbRead.readXLSX(strTargetAutomationFile);
+                wbRead= new XSSFWorkbook(strTargetAutomationFile);
+                //wbRead.readXLSX(strTargetAutomationFile);
                 this.Dispatcher.Invoke(new Action(delegate ()
                 {
-                    prgGrossAuto.Maximum = wbRead.LastRow;
+                    shRead = wbRead.GetSheetAt(0) as XSSFSheet;
+                    prgGrossAuto.Maximum = shRead.LastRowNum;
                 }));
             }
             else
@@ -655,20 +672,23 @@ namespace IMDBUtils
                 return;
             }
 
-            for(int row=0; row<wbRead.LastRow; ++row)
+            //for(int row=0; row<wbRead.LastRow; ++row)
+            for (int row = 0; row < shRead.LastRowNum; ++row)
             {
-                wbRead.Sheet = 0;
-                string strGrossWorld= wbRead.getText(row, 1);
+                //wbRead.Sheet = 0;
+                //string strGrossWorld= wbRead.getText(row, 1);
+                string strGrossWorld = shRead.CreateRow(row).GetCell(1).StringCellValue;
 
-                if(strGrossWorld.Trim().Equals("") == false)
+                IRow _row= shWrite.CreateRow(row);
+                if (strGrossWorld.Trim().Equals("") == false)
                 {
                     SplitGrossText(strGrossWorld, false);
                     lstGross= this.FilterByCountry("USA");
                     var lstFiltered= this.FilterByReleaseDate(4);
                     for (int item=0; item< lstFiltered.Count; ++item)
                     {
-                        wbWrite.setText(row, item, lstFiltered[item].AsString());
-                        
+                        //wbWrite.setText(row, item, lstFiltered[item].AsString());
+                        _row.CreateCell(item).SetCellValue(lstFiltered[item].AsString());
                     }
                     this.Dispatcher.Invoke(new Action(delegate ()
                     {
@@ -678,12 +698,17 @@ namespace IMDBUtils
                 }
                 else
                 {
-                    wbWrite.setText(row, 0, "null");
+                    _row.CreateCell(0).SetCellValue("null");
+                    //wbWrite.setText(row, 0, "null");
                 }
             }
-            
-            wbWrite.writeXLSX(@".\\Gross.xlsx");
-            MessageBox.Show("file was written");
+
+
+            //wbWrite.writeXLSX(@".\\Gross.xlsx");
+            FileStream sw = File.Create(@".\\Gross.xlsx");
+            wbWrite.Write(sw);
+            sw.Close();
+            MessageBox.Show("file has written");
 
         }
 
