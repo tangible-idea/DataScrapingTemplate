@@ -95,8 +95,7 @@ namespace IMDBUtils
                 m_PresetList = value;
             }
         }
-
-
+        
         public MainWindow()
         {
             InitializeComponent();
