@@ -12,7 +12,8 @@ namespace IMDBUtils.Models
         None= 0,
         Comma,
         CurrencySymbols,
-        DoubleSpace
+        DoubleSpace,
+        CommaAndRoundBracket
     }
 
     [Serializable]
@@ -32,9 +33,10 @@ namespace IMDBUtils.Models
             srcDelimits.Add(new Delimeters("Comma"));
             srcDelimits.Add(new Delimeters("Currency Symbols"));
             srcDelimits.Add(new Delimeters("Double Space"));
+            srcDelimits.Add(new Delimeters("Comma + Parentheses"));
 
             // if the new verison has more delimeters than older version, just init as 0.
-            if(nSelectedDelim > srcDelimits.Count)
+            if (nSelectedDelim > srcDelimits.Count)
             {
                 nSelectedDelim = (int)EDelimiters.None;
             }

@@ -68,7 +68,7 @@
                             Command="{Binding btnDelete_Conv}"/>
                     <Button x:Name="btnClear_Conv" Content="Clear" Margin="3" Grid.Column="1"
                             Command="{Binding btnClear_Conv}"/>
-                    <Button x:Name="btnOpenPath_Conv" Content="Open folder" Margin="3" Grid.Column="2"/>
+                    <Button x:Name="btnOpenPath_Conv" Content="Open folder" Margin="3" Grid.Column="2" Click="btnOpenPath_Conv_Click"/>
                 </Grid>
 
                 </StackPanel>

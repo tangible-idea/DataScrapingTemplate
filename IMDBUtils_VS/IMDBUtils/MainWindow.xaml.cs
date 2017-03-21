@@ -61,26 +61,41 @@ namespace IMDBUtils
                             btnExportToXLS.Content = "Export to XLS";
                             btnExportToXLS.IsEnabled = true;
                             btnLoad.IsEnabled = true;
+                            btnLoadConvertingPresetFile.IsEnabled = true;
+                            btnLoadPreset.IsEnabled = true;
+                            lstPreset.IsEnabled = true;
                             break;
                         case EMode.OpeningFile:
                             btnExportToXLS.Content = "Creating...";
                             btnExportToXLS.IsEnabled = false;
                             btnLoad.IsEnabled = false;
+                            btnLoadConvertingPresetFile.IsEnabled = false;
+                            btnLoadPreset.IsEnabled = false;
+                            lstPreset.IsEnabled = false;
                             break;
                         case EMode.ReadDataFile:
                             btnExportToXLS.Content = "Reading...";
                             btnExportToXLS.IsEnabled = false;
                             btnLoad.IsEnabled = false;
+                            btnLoadConvertingPresetFile.IsEnabled = false;
+                            btnLoadPreset.IsEnabled = false;
+                            lstPreset.IsEnabled = false;
                             break;
                         case EMode.WritingFile:
                             btnExportToXLS.Content = "Writing...";
                             btnExportToXLS.IsEnabled = false;
                             btnLoad.IsEnabled = false;
+                            btnLoadConvertingPresetFile.IsEnabled = false;
+                            btnLoadPreset.IsEnabled = false;
+                            lstPreset.IsEnabled = false;
                             break;
                         case EMode.ClosingFile:
                             btnExportToXLS.Content = "Saving...";
                             btnExportToXLS.IsEnabled = false;
                             btnLoad.IsEnabled = false;
+                            btnLoadConvertingPresetFile.IsEnabled = false;
+                            btnLoadPreset.IsEnabled = false;
+                            lstPreset.IsEnabled = false;
                             break;
                     }
                 }));
@@ -177,7 +192,7 @@ namespace IMDBUtils
             worker.RunWorkerAsync();
         }
 
-        private void ParseStringArray(ref List<string[]> arrStrings)
+        private void ParseStringArray(ref List<string[]> arrStrings, FilePath currPath)
         {
             string line = string.Empty;
 
@@ -185,18 +200,15 @@ namespace IMDBUtils
             {
                 prgExport.Maximum = lstFiles.Items.Count;
             }));
-
-            foreach (FilePath existFN in lstFiles.Items)
+            
+            // Read the file line by line.
+            EStatus = EMode.ReadDataFile;
+            System.IO.StreamReader file = new System.IO.StreamReader(currPath.Title);
+            while ((line = file.ReadLine()) != null)
             {
-                // Read the file line by line.
-                EStatus = EMode.ReadDataFile;
-                System.IO.StreamReader file = new System.IO.StreamReader(existFN.Title);
-                while ((line = file.ReadLine()) != null)
-                {
-                    arrStrings.Add(line.Split('|'));
-                }
-                file.Close();
+                arrStrings.Add(line.Split('|'));
             }
+            file.Close();
         }
 
         /// <summary>
@@ -206,33 +218,36 @@ namespace IMDBUtils
         /// <param name="e"></param>
         private void Do_ExportWork(object sender, DoWorkEventArgs e)
         {
-            int nRes = 0;
-            int nFileCounter = 0;
-            List<string[]> arrStrings = new List<string[]>();
-
-            this.ParseStringArray(ref arrStrings);
-
-            this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate ()
+            for(int i=0; i< lstFiles.Items.Count; ++i)
             {
-                lstFiles.SelectedIndex = nFileCounter;
-            }));
+                int nRes = 0;
+                List<string[]> arrStrings = new List<string[]>();
 
-            var path= lstFiles.Items[nFileCounter] as FilePath;
-            var strCurrName = System.IO.Path.GetFileNameWithoutExtension(path.Title);
-            var strCurrPath = System.IO.Path.GetDirectoryName(path.Title);
+                var path= lstFiles.Items[i] as FilePath;
+                var strCurrName = System.IO.Path.GetFileNameWithoutExtension(path.Title);
+                var strCurrPath = System.IO.Path.GetDirectoryName(path.Title);
 
-            EStatus = EMode.WritingFile;
-            nRes = AddToWorkbook(strCurrPath + "\\" + strCurrName + ".xlsx", arrStrings);
-            if (nRes == -1)
-            {
-                MessageBox.Show("error!");
-            }
-            else
-            {
+                this.ParseStringArray(ref arrStrings, path);
+
                 this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate ()
                 {
-                    prgExport.Value = ++nFileCounter;
+                    lstFiles.SelectedIndex = i;
                 }));
+
+                EStatus = EMode.WritingFile;
+                nRes = AddToWorkbook(strCurrPath + "\\" + strCurrName + ".xlsx", arrStrings);
+                if (nRes == -1)
+                {
+                    MessageBox.Show("error!");
+                }
+                else
+                {
+                    this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate ()
+                    {
+                        prgExport.Value = i + 1;
+                    }));
+                }
+
             }
 
         }
@@ -271,7 +286,7 @@ namespace IMDBUtils
             //int nRowOffset = 0;
             //WorkBook m_book = new WorkBook();
             //if (File.Exists(strPath) == true)    // if it already exists change into read mode.
-            //{
+            //{ 
             //    m_book.readXLSX(strPath);
             //    nRowOffset = m_book.LastRow;
             //}
@@ -417,6 +432,11 @@ namespace IMDBUtils
             {
                 arrRes = strContent.Split(new[] { "  " }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
+            else if (nSelDelim == (int)EDelimiters.CommaAndRoundBracket)
+            {
+                string strPattern = @"(,|(|))";
+                arrRes = Regex.Split(strContent, strPattern).ToList();
+            }
             return arrRes;
         }
 
@@ -424,7 +444,7 @@ namespace IMDBUtils
         {
             List<string[]> strArrays = new List<string[]>();
             EStatus = EMode.ReadDataFile;
-            this.ParseStringArray(ref strArrays);
+            this.ParseStringArray(ref strArrays, null);
 
             //string[] currMovieStringArr = null;
             this.Dispatcher.Invoke(new Action(delegate ()
@@ -481,7 +501,7 @@ namespace IMDBUtils
 
         private void SplitGrossText(string strTarget, bool bViewing)
         {
-            string strPattern = @"(\€|\$|\£| FRF | DEM | ARS | ESP | ITL | FIM | SEK | HKD | NLG )";
+            string strPattern = @"(\€|\$|\£| FRF | DEM | ARS | ESP | ITL | FIM | SEK | HKD | NLG | RUR)";
             List<string> substrings = Regex.Split(strTarget, strPattern).ToList();
             List<string> arrResult = new List<string>();
             string strSet = string.Empty;
@@ -969,6 +989,17 @@ namespace IMDBUtils
             p.nSelectedDelim = 0;
             PresetList.Insert(itemIndex, p);
         }
-        
+
+        private void btnOpenPath_Conv_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstFiles.Items.Count == 0)
+                return;
+
+            var path= lstFiles.Items[lstFiles.SelectedIndex] as FilePath;
+            var strCurrPath = System.IO.Path.GetDirectoryName(path.Title);
+
+            // opens the folder in explorer
+            Process.Start(strCurrPath);
+        }
     }
 }
