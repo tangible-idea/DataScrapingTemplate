@@ -1,11 +1,14 @@
 # DataMiner
+==========
 
-##What is this for?
+What is this for?
+------------
 It comprises One WPF C# app + One python script
 Firstly, for the python script, you can run this script at any isolated server.
 During parsing the data, manager or data administrator can monitor what's going on data mining(or scraping) server via the C# application.
 
-##What data you can scrap?
+What data you can scrap?
+------------
 For this project. It's for scrapping IMDB.com website. it can be mining every feature movie's data.
 For now, it supports 34 columns.
 1. Movie Name
@@ -43,7 +46,8 @@ For now, it supports 34 columns.
 34. connections
 For further information, please refer to comments of a python script.
 
-##Installation
+Installation
+------------
 * BeautifulSoup4
 Clone this repository:
 
@@ -65,7 +69,8 @@ cloning this repository:
 
     pip install git+https://github.com/milesrichardson/ParsePy.git
     
-##Introduction
+Introduction
+------------
 I wrote about this project more than 50 commits at TFS privately.
 Meanwhile, I thought it might be useful to make it public for people who like data mining.
 I've begun for scripting python with this project and data mining as well.
