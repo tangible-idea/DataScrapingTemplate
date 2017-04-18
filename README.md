@@ -3,7 +3,7 @@
 
 What is this for?
 ------------
-It comprises One WPF C# app + One python script
+It comprises One WPF C# app + One python script.
 Firstly, for the python script, you can run this script at any isolated server.
 During parsing the data, manager or data administrator can monitor what's going on data mining(or scraping) server via the C# application.
 
