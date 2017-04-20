@@ -62,5 +62,8 @@ print a.em.text
 table= soup.find("table", {"class":"boardList03"})
 arrMovies= table.tbody.find_all("tr")
 
+for idx,movie in enumerate(arrMovies):
+    click_content= movie.td.a['onclick']
+    print click_content
 
-#browser.quit()
+browser.quit()
