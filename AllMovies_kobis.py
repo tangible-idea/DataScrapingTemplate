@@ -6,6 +6,7 @@ import sys
 from datetime import datetime
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import logging  
 import ssl
 import Config
@@ -44,7 +45,22 @@ print url
 
 browser = webdriver.Chrome()
 browser.get(url)
-soup = BeautifulSoup(browser.page_source, "lxml")
 
+
+elem = browser.find_element_by_name('sOpenYearS')
+elem.send_keys('2004-01-01')
+
+elem = browser.find_element_by_name('sOpenYearE')
+elem.send_keys('2016-12-31')
+
+browser.execute_script("fn_searchList();")
+
+soup = BeautifulSoup(browser.page_source, "lxml")
 a= soup.find("div", { "class":"board_btm" })
 print a.em.text
+
+table= soup.find("table", {"class":"boardList03"})
+arrMovies= table.tbody.find_all("tr")
+
+
+#browser.quit()
