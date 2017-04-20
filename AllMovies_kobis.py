@@ -64,13 +64,16 @@ try:
 
     for idx,movie in enumerate(arrMovies):
         click_content= movie.td.a['onclick']
-        filtered= re.sub(r'\D', "", click_content) # sub non-digits by regex
+        movieNum= re.sub(r'\D', "", click_content) # sub non-digits by regex
 
-        if filtered:
-            print filtered
+        if movieNum:
+            print movieNum
+            browser.execute_script("dtlExcelDn('movie','box','" + movieNum + "')" )
+            alert = browser.switch_to_alert()
+            alert.accept()
         else:
             print "nothing found!"
-        
-#except Exception, e:
+except:
+    print "no alert to accept"
 finally:
     browser.quit()
