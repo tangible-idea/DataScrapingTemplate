@@ -46,24 +46,31 @@ print url
 browser = webdriver.Chrome()
 browser.get(url)
 
+try:
+    elem = browser.find_element_by_name('sOpenYearS')
+    elem.send_keys('2004-01-01')
 
-elem = browser.find_element_by_name('sOpenYearS')
-elem.send_keys('2004-01-01')
+    elem = browser.find_element_by_name('sOpenYearE')
+    elem.send_keys('2016-12-31')
 
-elem = browser.find_element_by_name('sOpenYearE')
-elem.send_keys('2016-12-31')
+    browser.execute_script("fn_searchList();")
 
-browser.execute_script("fn_searchList();")
+    soup = BeautifulSoup(browser.page_source, "lxml")
+    a= soup.find("div", { "class":"board_btm" })
+    print a.em.text
 
-soup = BeautifulSoup(browser.page_source, "lxml")
-a= soup.find("div", { "class":"board_btm" })
-print a.em.text
+    table= soup.find("table", {"class":"boardList03"})
+    arrMovies= table.tbody.find_all("tr")
 
-table= soup.find("table", {"class":"boardList03"})
-arrMovies= table.tbody.find_all("tr")
+    for idx,movie in enumerate(arrMovies):
+        click_content= movie.td.a['onclick']
+        filtered= re.sub(r'\D', "", click_content) # sub non-digits by regex
 
-for idx,movie in enumerate(arrMovies):
-    click_content= movie.td.a['onclick']
-    print click_content
-
-browser.quit()
+        if filtered:
+            print filtered
+        else:
+            print "nothing found!"
+        
+#except Exception, e:
+finally:
+    browser.quit()
