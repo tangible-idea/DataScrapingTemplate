@@ -5,6 +5,7 @@ import re
 import sys
 from datetime import datetime
 from bs4 import BeautifulSoup
+from selenium import webdriver
 import logging  
 import ssl
 import Config
@@ -38,8 +39,12 @@ url = ("http://kobis.or.kr/kobis/business/mast/mvie/searchMovieList.do")
 print url
 
 #idx= 0
-page = urllib2.urlopen(url)        
-soup = BeautifulSoup(page, "lxml")
+#page = urllib2.urlopen(url)        
+#soup = BeautifulSoup(page, "lxml")
+
+browser = webdriver.Chrome()
+browser.get(url)
+soup = BeautifulSoup(browser.page_source, "lxml")
 
 a= soup.find("div", { "class":"board_btm" })
 print a.em.text
