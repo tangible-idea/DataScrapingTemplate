@@ -39,7 +39,7 @@ class Parsing_err(Object):
 url = ("http://kobis.or.kr/kobis/business/mast/mvie/searchMovieList.do")
 print url
 
-#idx= 0
+MOVIES_PER_PAGE= 10
 #page = urllib2.urlopen(url)        
 #soup = BeautifulSoup(page, "lxml")
 
@@ -56,8 +56,13 @@ try:
     browser.execute_script("fn_searchList();")
 
     soup = BeautifulSoup(browser.page_source, "lxml")
-    a= soup.find("div", { "class":"board_btm" })
-    print a.em.text
+    countMovies= soup.find("div", { "class":"board_btm" })
+    countMovies_filtered= re.sub(r'\D', "", countMovies.em.text)
+    print "retrieved movies : "+countMovies_filtered
+    TOTAL_PAGES = int(countMovies_filtered) / MOVIES_PER_PAGE
+    print "total pages : "+ str(TOTAL_PAGES)
+
+    #for x in range(0, TOTAL_PAGES):
 
     table= soup.find("table", {"class":"boardList03"})
     arrMovies= table.tbody.find_all("tr")
