@@ -50,14 +50,15 @@ def move_to_download_folder(downloadPath, newFileName, fileExtension):
     while got_file == False:
         try: 
             currentFile = glob.glob(downloadPath + "*.xls")
-            got_file = True
+            if len(currentFile) != 0:
+                got_file = True
 
         except:
             print "File has not finished downloading"
-            time.sleep(20)
+            time.sleep(1)
 
     ## Create new file name
-    fileDestination = "C:\Users\fanta\Documents\Movie_DataMiner\KOBIS_download" + newFileName +"." + fileExtension
+    fileDestination = "C:\\Users\\fanta\\Documents\\Movie_DataMiner\\KOBIS_download\\" + newFileName +"." + fileExtension
     os.rename(currentFile[0], fileDestination)
     return
 
@@ -80,18 +81,22 @@ def isAlertPresent(browser):
    except NoAlertPresentException: 
         return None
 
-def parseThisPage(soup, browser, page_num):
+def parseThisPage(browser, page_num):
     browser.execute_script("goPage('" + str(page_num) + "')" )
 
+    time.sleep(1)
+
+    soup = BeautifulSoup(browser.page_source, "lxml")
     table= soup.find("table", {"class":"boardList03"})
     arrMovies= table.tbody.find_all("tr")
 
     for idx,movie in enumerate(arrMovies):
         click_content= movie.td.a['onclick']
+        movieName= movie.td.a.text
         movieNum= re.sub(r'\D', "", click_content) # sub non-digits by regex
 
         if movieNum:
-            print movieNum
+            print movieNum +","+ movieName
             # dtlExcelDn('movie','box','20080828');
             browser.execute_script("dtlExcelDn('movie','box','" + movieNum + "');" )
             #print result
@@ -102,7 +107,7 @@ def parseThisPage(soup, browser, page_num):
             alert= browser.switch_to_alert()
             alert.accept()
 
-            move_to_download_folder("C:\\Users\\fanta\\Downloads\\", "new_file_test", "xls")
+            move_to_download_folder("C:\\Users\\fanta\\Downloads\\", movieName, "xls")
             #FindAndAcceptAlert(browser)
         else:
             print "nothing found!"
@@ -148,7 +153,7 @@ try:
 
     for x in range(1, TOTAL_PAGES):
         print "current page : " + str(x)
-        parseThisPage(soup, browser, x)
+        parseThisPage(browser, x)
 except Exception, e:
     print str(e)
 finally:
