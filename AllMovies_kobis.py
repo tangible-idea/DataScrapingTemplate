@@ -36,14 +36,33 @@ class Parsing_err(Object):
 # currError.save()
 # print "saved"
 
+def parseThisPage(soup, browser, page_num):
+    table= soup.find("table", {"class":"boardList03"})
+    arrMovies= table.tbody.find_all("tr")
+
+    for idx,movie in enumerate(arrMovies):
+        click_content= movie.td.a['onclick']
+        movieNum= re.sub(r'\D', "", click_content) # sub non-digits by regex
+
+        if movieNum:
+            print movieNum
+            browser.execute_script("dtlExcelDn('movie','box','" + movieNum + "')" )
+            alert = browser.switch_to_alert()
+            alert.accept()
+        else:
+            print "nothing found!"
+
 url = ("http://kobis.or.kr/kobis/business/mast/mvie/searchMovieList.do")
 print url
 
 MOVIES_PER_PAGE= 10
-#page = urllib2.urlopen(url)        
-#soup = BeautifulSoup(page, "lxml")
 
-browser = webdriver.Chrome()
+chromeOptions = webdriver.ChromeOptions()
+prefs = {"download.default_directory" : "/KOBIS_download"}
+chromeOptions.add_experimental_option("prefs",prefs)
+chromedriver = "chromedriver.exe"
+browser = webdriver.Chrome(executable_path=chromedriver, chrome_options=chromeOptions)
+
 browser.get(url)
 
 try:
@@ -62,22 +81,8 @@ try:
     TOTAL_PAGES = int(countMovies_filtered) / MOVIES_PER_PAGE
     print "total pages : "+ str(TOTAL_PAGES)
 
-    #for x in range(0, TOTAL_PAGES):
-
-    table= soup.find("table", {"class":"boardList03"})
-    arrMovies= table.tbody.find_all("tr")
-
-    for idx,movie in enumerate(arrMovies):
-        click_content= movie.td.a['onclick']
-        movieNum= re.sub(r'\D', "", click_content) # sub non-digits by regex
-
-        if movieNum:
-            print movieNum
-            browser.execute_script("dtlExcelDn('movie','box','" + movieNum + "')" )
-            alert = browser.switch_to_alert()
-            alert.accept()
-        else:
-            print "nothing found!"
+    for x in range(0, TOTAL_PAGES):
+        parseThisPage(soup, browser, x)
 except:
     print "no alert to accept"
 finally:
