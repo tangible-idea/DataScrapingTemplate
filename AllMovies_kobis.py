@@ -56,9 +56,13 @@ def move_to_download_folder(downloadPath, newFileName, fileExtension):
         except:
             print "File has not finished downloading"
             time.sleep(1)
+    
+    # Validate windows path by regex
+    cleaned_up_filename = re.sub(r'[/\\:*?"<>|]', '', newFileName)
 
     ## Create new file name
-    fileDestination = "C:\\Users\\fanta\\Documents\\Movie_DataMiner\\KOBIS_download\\" + newFileName +"." + fileExtension
+    fileDestination = "C:\\Users\\fanta\\Documents\\Movie_DataMiner\\KOBIS_download\\" + cleaned_up_filename +"." + fileExtension
+    print "fileDestination : " +fileDestination
     os.rename(currentFile[0], fileDestination)
     return
 
@@ -107,7 +111,7 @@ def parseThisPage(browser, page_num):
             alert= browser.switch_to_alert()
             alert.accept()
 
-            move_to_download_folder("C:\\Users\\fanta\\Downloads\\", movieName, "xls")
+            move_to_download_folder("C:\\Users\\fanta\\Downloads\\", movieName + "_"+ str(movieNum), "xls")
             #FindAndAcceptAlert(browser)
         else:
             print "nothing found!"
