@@ -43,6 +43,7 @@ class Parsing_err(Object):
 # currError = Parsing_err(page_num=0, entity_num=1, err_url="test", status="pending")
 # currError.save()
 # print "saved"
+USER_NAME= "Mark"
 
 def move_to_download_folder(downloadPath, newFileName, fileExtension):
     got_file = False   
@@ -61,7 +62,7 @@ def move_to_download_folder(downloadPath, newFileName, fileExtension):
     cleaned_up_filename = re.sub(r'[/\\:*?"<>|]', '', newFileName)
 
     ## Create new file name
-    fileDestination = "C:\\Users\\fanta\\Documents\\Movie_DataMiner\\KOBIS_download\\" + cleaned_up_filename +"." + fileExtension
+    fileDestination = "C:\\Users\\" + USER_NAME +"\\Source\\Repos\\Movie_DataMiner\\KOBIS_download\\" + cleaned_up_filename +"." + fileExtension
     print "fileDestination : " +fileDestination
     os.rename(currentFile[0], fileDestination)
     return
@@ -111,7 +112,7 @@ def parseThisPage(browser, page_num):
             alert= browser.switch_to_alert()
             alert.accept()
 
-            move_to_download_folder("C:\\Users\\fanta\\Downloads\\", movieName + "_"+ str(movieNum), "xls")
+            move_to_download_folder("C:\\Users\\"+USER_NAME+"\\Downloads\\", movieName + "_"+ str(movieNum), "xls")
             #FindAndAcceptAlert(browser)
         else:
             print "nothing found!"
