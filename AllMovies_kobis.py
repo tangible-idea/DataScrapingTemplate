@@ -44,7 +44,7 @@ class Parsing_err(Object):
 # currError = Parsing_err(page_num=0, entity_num=1, err_url="test", status="pending")
 # currError.save()
 # print "saved"
-USER_NAME= "fanta"
+USER_NAME= os.getenv('username')
 
 def move_to_download_folder(downloadPath, newFileName, fileExtension):
     got_file = False   

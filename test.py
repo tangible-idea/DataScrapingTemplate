@@ -1,5 +1,7 @@
 import re
+import os
 
+print os.getenv('username')
 sample_txt = "mstView('movie','20140561');return false;"
 
 def extractMovieNum(txt):
