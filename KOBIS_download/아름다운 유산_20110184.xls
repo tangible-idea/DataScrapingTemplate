@@ -1,0 +1,160 @@
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>'아름다운 유산' 일자별 통계정보</title>
+</head>
+<body>
+<table border="1" class="boardList02">
+	<caption>'아름다운 유산' 일자별 통계정보</caption>
+	<thead>
+		<tr>
+			<th scope="col" class="row"><span>날짜</span></th>
+			<th scope="col" class="row"><span>스크린수</span></th>
+			<th scope="col" class="row"><span>스크린점유율</span></th>
+			<th scope="col" class="row"><span>상영횟수</span></th>
+			<th scope="col" class="row"><span>상영점유율</span></th>
+			<th scope="col" class="row"><span>좌석수</span></th>
+			<th scope="col" class="row"><span>좌석점유율</span></th>
+			<th scope="col" class="row"><span>매출액</span></th>
+			<th scope="col" class="row"><span>매출액증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>관객수</span></th>
+			<th scope="col" class="row"><span>관객수증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>누적매출액</span></th>
+			<th scope="col" class="row"><span>누적관객수</span></th>
+			<!--th scope="col" class="row"><span>예매매출액(점유율)</span></th-->
+			<!--th scope="col" class="row"><span>예매건수(점유율)</span></th-->
+			<th scope="col" class="row"><span>순위</span></th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		<tr>
+			<td>2011-04-14</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>9</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>1,268</td>
+			<td style=mso-number-format:"0.0%">19.6%</td>
+			<td>1,270,500</td>
+			<td>1270500(     100.0%)</td>
+			<td>249</td>
+			<td>249(     100.0%)</td>
+			<td>1,270,500</td>
+			<td>249</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>22</td>
+		</tr>
+	
+		<tr>
+			<td>2011-04-15</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>4</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>664</td>
+			<td style=mso-number-format:"0.0%">16.4%</td>
+			<td>518,000</td>
+			<td>-752500(     -59.2%)</td>
+			<td>109</td>
+			<td>-140(     -56.2%)</td>
+			<td>1,788,500</td>
+			<td>358</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>32</td>
+		</tr>
+	
+		<tr>
+			<td>2011-04-16</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>5</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>804</td>
+			<td style=mso-number-format:"0.0%">14.6%</td>
+			<td>560,500</td>
+			<td>42500(       8.2%)</td>
+			<td>117</td>
+			<td>8(       7.3%)</td>
+			<td>2,349,000</td>
+			<td>475</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>32</td>
+		</tr>
+	
+		<tr>
+			<td>2011-04-17</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>5</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>804</td>
+			<td style=mso-number-format:"0.0%">15.3%</td>
+			<td>602,000</td>
+			<td>41500(       7.4%)</td>
+			<td>123</td>
+			<td>6(       5.1%)</td>
+			<td>2,951,000</td>
+			<td>598</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>31</td>
+		</tr>
+	
+		<tr>
+			<td>2011-04-18</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>572</td>
+			<td style=mso-number-format:"0.0%">5.2%</td>
+			<td>150,000</td>
+			<td>-452000(     -75.1%)</td>
+			<td>30</td>
+			<td>-93(     -75.6%)</td>
+			<td>3,101,000</td>
+			<td>628</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>41</td>
+		</tr>
+	
+		<tr>
+			<td>2011-04-19</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>5</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>852</td>
+			<td style=mso-number-format:"0.0%">5.9%</td>
+			<td>296,500</td>
+			<td>146500(      97.7%)</td>
+			<td>50</td>
+			<td>20(      66.7%)</td>
+			<td>3,397,500</td>
+			<td>678</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>37</td>
+		</tr>
+	
+	</tbody>
+</table>
+</body>
+</html>

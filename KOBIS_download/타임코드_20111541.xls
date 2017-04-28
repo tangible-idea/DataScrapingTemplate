@@ -1,0 +1,160 @@
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>'타임코드' 일자별 통계정보</title>
+</head>
+<body>
+<table border="1" class="boardList02">
+	<caption>'타임코드' 일자별 통계정보</caption>
+	<thead>
+		<tr>
+			<th scope="col" class="row"><span>날짜</span></th>
+			<th scope="col" class="row"><span>스크린수</span></th>
+			<th scope="col" class="row"><span>스크린점유율</span></th>
+			<th scope="col" class="row"><span>상영횟수</span></th>
+			<th scope="col" class="row"><span>상영점유율</span></th>
+			<th scope="col" class="row"><span>좌석수</span></th>
+			<th scope="col" class="row"><span>좌석점유율</span></th>
+			<th scope="col" class="row"><span>매출액</span></th>
+			<th scope="col" class="row"><span>매출액증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>관객수</span></th>
+			<th scope="col" class="row"><span>관객수증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>누적매출액</span></th>
+			<th scope="col" class="row"><span>누적관객수</span></th>
+			<!--th scope="col" class="row"><span>예매매출액(점유율)</span></th-->
+			<!--th scope="col" class="row"><span>예매건수(점유율)</span></th-->
+			<th scope="col" class="row"><span>순위</span></th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		<tr>
+			<td>2011-07-22</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>155</td>
+			<td style=mso-number-format:"0.0%">91.6%</td>
+			<td>1,136,000</td>
+			<td>1136000(     100.0%)</td>
+			<td>142</td>
+			<td>142(     100.0%)</td>
+			<td>1,136,000</td>
+			<td>142</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>21</td>
+		</tr>
+	
+		<tr>
+			<td>2011-07-27</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>348</td>
+			<td style=mso-number-format:"0.0%">15.5%</td>
+			<td>424,000</td>
+			<td>424000(     100.0%)</td>
+			<td>54</td>
+			<td>54(     100.0%)</td>
+			<td>1,560,000</td>
+			<td>196</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>30</td>
+		</tr>
+	
+		<tr>
+			<td>2011-07-31</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>232</td>
+			<td style=mso-number-format:"0.0%">14.7%</td>
+			<td>289,000</td>
+			<td>289000(     100.0%)</td>
+			<td>34</td>
+			<td>34(     100.0%)</td>
+			<td>1,849,000</td>
+			<td>230</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>40</td>
+		</tr>
+	
+		<tr>
+			<td>2011-08-01</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>232</td>
+			<td style=mso-number-format:"0.0%">12.5%</td>
+			<td>227,000</td>
+			<td>-62000(     -21.5%)</td>
+			<td>29</td>
+			<td>-5(     -14.7%)</td>
+			<td>2,076,000</td>
+			<td>259</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>37</td>
+		</tr>
+	
+		<tr>
+			<td>2011-08-02</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>232</td>
+			<td style=mso-number-format:"0.0%">8.2%</td>
+			<td>149,000</td>
+			<td>-78000(     -34.4%)</td>
+			<td>19</td>
+			<td>-10(     -34.5%)</td>
+			<td>2,225,000</td>
+			<td>278</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>50</td>
+		</tr>
+	
+		<tr>
+			<td>2011-08-03</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>232</td>
+			<td style=mso-number-format:"0.0%">14.7%</td>
+			<td>256,000</td>
+			<td>107000(      71.8%)</td>
+			<td>34</td>
+			<td>15(      78.9%)</td>
+			<td>2,481,000</td>
+			<td>312</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>40</td>
+		</tr>
+	
+	</tbody>
+</table>
+</body>
+</html>

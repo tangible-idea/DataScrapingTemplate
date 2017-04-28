@@ -1,0 +1,749 @@
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>'투어리스트' 일자별 통계정보</title>
+</head>
+<body>
+<table border="1" class="boardList02">
+	<caption>'투어리스트' 일자별 통계정보</caption>
+	<thead>
+		<tr>
+			<th scope="col" class="row"><span>날짜</span></th>
+			<th scope="col" class="row"><span>스크린수</span></th>
+			<th scope="col" class="row"><span>스크린점유율</span></th>
+			<th scope="col" class="row"><span>상영횟수</span></th>
+			<th scope="col" class="row"><span>상영점유율</span></th>
+			<th scope="col" class="row"><span>좌석수</span></th>
+			<th scope="col" class="row"><span>좌석점유율</span></th>
+			<th scope="col" class="row"><span>매출액</span></th>
+			<th scope="col" class="row"><span>매출액증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>관객수</span></th>
+			<th scope="col" class="row"><span>관객수증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>누적매출액</span></th>
+			<th scope="col" class="row"><span>누적관객수</span></th>
+			<!--th scope="col" class="row"><span>예매매출액(점유율)</span></th-->
+			<!--th scope="col" class="row"><span>예매건수(점유율)</span></th-->
+			<th scope="col" class="row"><span>순위</span></th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		<tr>
+			<td>2010-12-08</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>262</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>0</td>
+			<td>0(       0.0%)</td>
+			<td>0</td>
+			<td>0(       0.0%)</td>
+			<td>0</td>
+			<td>0</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>71</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-09</td>
+			<td>388</td>
+			<td style=mso-number-format:"0.0%">14.1%</td>
+			<td>2,166</td>
+			<td style=mso-number-format:"0.0%">18.7%</td>
+			<td>435,963</td>
+			<td style=mso-number-format:"0.0%">19.4%</td>
+			<td>599,212,000</td>
+			<td>599212000(     100.0%)</td>
+			<td>84,722</td>
+			<td>84722(     100.0%)</td>
+			<td>599,212,000</td>
+			<td>84,722</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>1</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-10</td>
+			<td>395</td>
+			<td style=mso-number-format:"0.0%">14.0%</td>
+			<td>2,278</td>
+			<td style=mso-number-format:"0.0%">18.7%</td>
+			<td>457,438</td>
+			<td style=mso-number-format:"0.0%">20.3%</td>
+			<td>689,252,000</td>
+			<td>90040000(      15.0%)</td>
+			<td>92,884</td>
+			<td>8162(       9.6%)</td>
+			<td>1,288,464,000</td>
+			<td>177,606</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>1</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-11</td>
+			<td>411</td>
+			<td style=mso-number-format:"0.0%">13.5%</td>
+			<td>2,408</td>
+			<td style=mso-number-format:"0.0%">18.2%</td>
+			<td>490,240</td>
+			<td style=mso-number-format:"0.0%">31.1%</td>
+			<td>1,181,849,500</td>
+			<td>492597500(      71.5%)</td>
+			<td>152,478</td>
+			<td>59594(      64.2%)</td>
+			<td>2,470,313,500</td>
+			<td>330,084</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>2</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-12</td>
+			<td>418</td>
+			<td style=mso-number-format:"0.0%">13.7%</td>
+			<td>2,302</td>
+			<td style=mso-number-format:"0.0%">18.3%</td>
+			<td>468,916</td>
+			<td style=mso-number-format:"0.0%">27.7%</td>
+			<td>1,000,420,500</td>
+			<td>-181429000(     -15.4%)</td>
+			<td>129,683</td>
+			<td>-22795(     -14.9%)</td>
+			<td>3,470,734,000</td>
+			<td>459,767</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>2</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-13</td>
+			<td>396</td>
+			<td style=mso-number-format:"0.0%">14.3%</td>
+			<td>2,157</td>
+			<td style=mso-number-format:"0.0%">19.2%</td>
+			<td>447,090</td>
+			<td style=mso-number-format:"0.0%">10.6%</td>
+			<td>330,807,000</td>
+			<td>-669613500(     -66.9%)</td>
+			<td>47,378</td>
+			<td>-82305(     -63.5%)</td>
+			<td>3,801,541,000</td>
+			<td>507,145</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>2</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-14</td>
+			<td>397</td>
+			<td style=mso-number-format:"0.0%">14.1%</td>
+			<td>2,165</td>
+			<td style=mso-number-format:"0.0%">19.2%</td>
+			<td>449,354</td>
+			<td style=mso-number-format:"0.0%">10.3%</td>
+			<td>326,375,000</td>
+			<td>-4432000(      -1.3%)</td>
+			<td>46,404</td>
+			<td>-974(      -2.1%)</td>
+			<td>4,127,916,000</td>
+			<td>553,549</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>3</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-15</td>
+			<td>327</td>
+			<td style=mso-number-format:"0.0%">12.4%</td>
+			<td>1,659</td>
+			<td style=mso-number-format:"0.0%">15.1%</td>
+			<td>273,328</td>
+			<td style=mso-number-format:"0.0%">13.2%</td>
+			<td>254,784,000</td>
+			<td>-71591000(     -21.9%)</td>
+			<td>35,969</td>
+			<td>-10435(     -22.5%)</td>
+			<td>4,382,700,000</td>
+			<td>589,518</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>4</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-16</td>
+			<td>342</td>
+			<td style=mso-number-format:"0.0%">12.5%</td>
+			<td>1,658</td>
+			<td style=mso-number-format:"0.0%">14.8%</td>
+			<td>272,850</td>
+			<td style=mso-number-format:"0.0%">12.7%</td>
+			<td>248,087,500</td>
+			<td>-6696500(      -2.6%)</td>
+			<td>34,570</td>
+			<td>-1399(      -3.9%)</td>
+			<td>4,630,787,500</td>
+			<td>624,088</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>4</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-17</td>
+			<td>330</td>
+			<td style=mso-number-format:"0.0%">12.1%</td>
+			<td>1,738</td>
+			<td style=mso-number-format:"0.0%">14.8%</td>
+			<td>278,424</td>
+			<td style=mso-number-format:"0.0%">14.6%</td>
+			<td>311,313,500</td>
+			<td>63226000(      25.5%)</td>
+			<td>40,746</td>
+			<td>6176(      17.9%)</td>
+			<td>4,942,101,000</td>
+			<td>664,834</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>4</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-18</td>
+			<td>349</td>
+			<td style=mso-number-format:"0.0%">11.5%</td>
+			<td>1,718</td>
+			<td style=mso-number-format:"0.0%">13.5%</td>
+			<td>267,042</td>
+			<td style=mso-number-format:"0.0%">29.1%</td>
+			<td>593,792,500</td>
+			<td>282479000(      90.7%)</td>
+			<td>77,816</td>
+			<td>37070(      91.0%)</td>
+			<td>5,535,893,500</td>
+			<td>742,650</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>5</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-19</td>
+			<td>334</td>
+			<td style=mso-number-format:"0.0%">11.7%</td>
+			<td>1,641</td>
+			<td style=mso-number-format:"0.0%">13.4%</td>
+			<td>254,312</td>
+			<td style=mso-number-format:"0.0%">26.0%</td>
+			<td>514,705,000</td>
+			<td>-79087500(     -13.3%)</td>
+			<td>66,104</td>
+			<td>-11712(     -15.1%)</td>
+			<td>6,050,598,500</td>
+			<td>808,754</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>6</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-20</td>
+			<td>321</td>
+			<td style=mso-number-format:"0.0%">11.9%</td>
+			<td>1,612</td>
+			<td style=mso-number-format:"0.0%">14.5%</td>
+			<td>258,565</td>
+			<td style=mso-number-format:"0.0%">9.6%</td>
+			<td>180,996,000</td>
+			<td>-333709000(     -64.8%)</td>
+			<td>24,927</td>
+			<td>-41177(     -62.3%)</td>
+			<td>6,231,594,500</td>
+			<td>833,681</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>4</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-21</td>
+			<td>330</td>
+			<td style=mso-number-format:"0.0%">11.9%</td>
+			<td>1,630</td>
+			<td style=mso-number-format:"0.0%">14.5%</td>
+			<td>263,993</td>
+			<td style=mso-number-format:"0.0%">10.9%</td>
+			<td>201,135,500</td>
+			<td>20139500(      11.1%)</td>
+			<td>28,858</td>
+			<td>3931(      15.8%)</td>
+			<td>6,432,730,000</td>
+			<td>862,539</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>4</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-22</td>
+			<td>126</td>
+			<td style=mso-number-format:"0.0%">4.3%</td>
+			<td>300</td>
+			<td style=mso-number-format:"0.0%">2.7%</td>
+			<td>42,715</td>
+			<td style=mso-number-format:"0.0%">11.1%</td>
+			<td>32,243,500</td>
+			<td>-168892000(     -84.0%)</td>
+			<td>4,733</td>
+			<td>-24125(     -83.6%)</td>
+			<td>6,464,973,500</td>
+			<td>867,272</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>10</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-23</td>
+			<td>114</td>
+			<td style=mso-number-format:"0.0%">3.7%</td>
+			<td>267</td>
+			<td style=mso-number-format:"0.0%">2.3%</td>
+			<td>38,058</td>
+			<td style=mso-number-format:"0.0%">10.4%</td>
+			<td>27,543,000</td>
+			<td>-4700500(     -14.6%)</td>
+			<td>3,964</td>
+			<td>-769(     -16.2%)</td>
+			<td>6,492,516,500</td>
+			<td>871,236</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>11</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-24</td>
+			<td>105</td>
+			<td style=mso-number-format:"0.0%">3.3%</td>
+			<td>259</td>
+			<td style=mso-number-format:"0.0%">2%</td>
+			<td>36,008</td>
+			<td style=mso-number-format:"0.0%">18.2%</td>
+			<td>50,982,000</td>
+			<td>23439000(      85.1%)</td>
+			<td>6,548</td>
+			<td>2584(      65.2%)</td>
+			<td>6,543,498,500</td>
+			<td>877,784</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>10</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-25</td>
+			<td>99</td>
+			<td style=mso-number-format:"0.0%">3.1%</td>
+			<td>240</td>
+			<td style=mso-number-format:"0.0%">1.8%</td>
+			<td>32,395</td>
+			<td style=mso-number-format:"0.0%">35.1%</td>
+			<td>88,376,500</td>
+			<td>37394500(      73.3%)</td>
+			<td>11,371</td>
+			<td>4823(      73.7%)</td>
+			<td>6,631,875,000</td>
+			<td>889,155</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>10</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-26</td>
+			<td>100</td>
+			<td style=mso-number-format:"0.0%">3.1%</td>
+			<td>212</td>
+			<td style=mso-number-format:"0.0%">1.7%</td>
+			<td>29,309</td>
+			<td style=mso-number-format:"0.0%">18.5%</td>
+			<td>42,932,500</td>
+			<td>-45444000(     -51.4%)</td>
+			<td>5,432</td>
+			<td>-5939(     -52.2%)</td>
+			<td>6,674,807,500</td>
+			<td>894,587</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>11</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-27</td>
+			<td>96</td>
+			<td style=mso-number-format:"0.0%">3.1%</td>
+			<td>200</td>
+			<td style=mso-number-format:"0.0%">1.7%</td>
+			<td>29,154</td>
+			<td style=mso-number-format:"0.0%">9.1%</td>
+			<td>19,293,500</td>
+			<td>-23639000(     -55.1%)</td>
+			<td>2,656</td>
+			<td>-2776(     -51.1%)</td>
+			<td>6,694,101,000</td>
+			<td>897,243</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>12</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-28</td>
+			<td>98</td>
+			<td style=mso-number-format:"0.0%">3.2%</td>
+			<td>199</td>
+			<td style=mso-number-format:"0.0%">1.7%</td>
+			<td>29,980</td>
+			<td style=mso-number-format:"0.0%">10.6%</td>
+			<td>23,509,000</td>
+			<td>4215500(      21.8%)</td>
+			<td>3,184</td>
+			<td>528(      19.9%)</td>
+			<td>6,717,610,000</td>
+			<td>900,427</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>11</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-29</td>
+			<td>5</td>
+			<td style=mso-number-format:"0.0%">0.2%</td>
+			<td>14</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>1,476</td>
+			<td style=mso-number-format:"0.0%">34.6%</td>
+			<td>3,881,000</td>
+			<td>-19628000(     -83.5%)</td>
+			<td>510</td>
+			<td>-2674(     -84.0%)</td>
+			<td>6,721,491,000</td>
+			<td>900,937</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>16</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-30</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>8</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>910</td>
+			<td style=mso-number-format:"0.0%">44.0%</td>
+			<td>3,116,000</td>
+			<td>-765000(     -19.7%)</td>
+			<td>400</td>
+			<td>-110(     -21.6%)</td>
+			<td>6,724,607,000</td>
+			<td>901,337</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>19</td>
+		</tr>
+	
+		<tr>
+			<td>2010-12-31</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>10</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>1,088</td>
+			<td style=mso-number-format:"0.0%">46.5%</td>
+			<td>4,265,000</td>
+			<td>1149000(      36.9%)</td>
+			<td>506</td>
+			<td>106(      26.5%)</td>
+			<td>6,728,872,000</td>
+			<td>901,843</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>18</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-01</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>11</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>1,204</td>
+			<td style=mso-number-format:"0.0%">56.0%</td>
+			<td>5,659,000</td>
+			<td>1394000(      32.7%)</td>
+			<td>674</td>
+			<td>168(      33.2%)</td>
+			<td>6,734,531,000</td>
+			<td>902,517</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>17</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-02</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>11</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>1,204</td>
+			<td style=mso-number-format:"0.0%">42.8%</td>
+			<td>4,380,000</td>
+			<td>-1279000(     -22.6%)</td>
+			<td>515</td>
+			<td>-159(     -23.6%)</td>
+			<td>6,738,911,000</td>
+			<td>903,032</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>16</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-03</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>9</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>996</td>
+			<td style=mso-number-format:"0.0%">30.4%</td>
+			<td>2,380,000</td>
+			<td>-2000000(     -45.7%)</td>
+			<td>303</td>
+			<td>-212(     -41.2%)</td>
+			<td>6,741,291,000</td>
+			<td>903,335</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>19</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-04</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>10</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>1,142</td>
+			<td style=mso-number-format:"0.0%">24.9%</td>
+			<td>2,217,000</td>
+			<td>-163000(      -6.8%)</td>
+			<td>284</td>
+			<td>-19(      -6.3%)</td>
+			<td>6,743,508,000</td>
+			<td>903,619</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>21</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-05</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>7</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>704</td>
+			<td style=mso-number-format:"0.0%">35.7%</td>
+			<td>1,967,000</td>
+			<td>-250000(     -11.3%)</td>
+			<td>251</td>
+			<td>-33(     -11.6%)</td>
+			<td>6,745,475,000</td>
+			<td>903,870</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>20</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-06</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>6</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>588</td>
+			<td style=mso-number-format:"0.0%">34.2%</td>
+			<td>1,570,000</td>
+			<td>-397000(     -20.2%)</td>
+			<td>201</td>
+			<td>-50(     -19.9%)</td>
+			<td>6,747,045,000</td>
+			<td>904,071</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>23</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-07</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>8</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>766</td>
+			<td style=mso-number-format:"0.0%">46.2%</td>
+			<td>3,077,000</td>
+			<td>1507000(      96.0%)</td>
+			<td>354</td>
+			<td>153(      76.1%)</td>
+			<td>6,750,122,000</td>
+			<td>904,425</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>18</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-08</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>7</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>650</td>
+			<td style=mso-number-format:"0.0%">57.8%</td>
+			<td>3,260,000</td>
+			<td>183000(       5.9%)</td>
+			<td>376</td>
+			<td>22(       6.2%)</td>
+			<td>6,753,382,000</td>
+			<td>904,801</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>22</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-09</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>6</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>588</td>
+			<td style=mso-number-format:"0.0%">48.1%</td>
+			<td>2,476,000</td>
+			<td>-784000(     -24.0%)</td>
+			<td>283</td>
+			<td>-93(     -24.7%)</td>
+			<td>6,755,858,000</td>
+			<td>905,084</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>22</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-10</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>7</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>704</td>
+			<td style=mso-number-format:"0.0%">22.9%</td>
+			<td>1,218,000</td>
+			<td>-1258000(     -50.8%)</td>
+			<td>161</td>
+			<td>-122(     -43.1%)</td>
+			<td>6,757,076,000</td>
+			<td>905,245</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>24</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-11</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>7</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>704</td>
+			<td style=mso-number-format:"0.0%">26.7%</td>
+			<td>1,465,000</td>
+			<td>247000(      20.3%)</td>
+			<td>188</td>
+			<td>27(      16.8%)</td>
+			<td>6,758,541,000</td>
+			<td>905,433</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>26</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-12</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>7</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>704</td>
+			<td style=mso-number-format:"0.0%">22.4%</td>
+			<td>1,218,000</td>
+			<td>-247000(     -16.9%)</td>
+			<td>158</td>
+			<td>-30(     -16.0%)</td>
+			<td>6,759,759,000</td>
+			<td>905,591</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>25</td>
+		</tr>
+	
+		<tr>
+			<td>2011-01-15</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>43</td>
+			<td style=mso-number-format:"0.0%">76.7%</td>
+			<td>264,000</td>
+			<td>264000(     100.0%)</td>
+			<td>33</td>
+			<td>33(     100.0%)</td>
+			<td>6,760,023,000</td>
+			<td>905,624</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>40</td>
+		</tr>
+	
+	</tbody>
+</table>
+</body>
+</html>

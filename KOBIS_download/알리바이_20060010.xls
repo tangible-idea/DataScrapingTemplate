@@ -1,0 +1,179 @@
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>'알리바이' 일자별 통계정보</title>
+</head>
+<body>
+<table border="1" class="boardList02">
+	<caption>'알리바이' 일자별 통계정보</caption>
+	<thead>
+		<tr>
+			<th scope="col" class="row"><span>날짜</span></th>
+			<th scope="col" class="row"><span>스크린수</span></th>
+			<th scope="col" class="row"><span>스크린점유율</span></th>
+			<th scope="col" class="row"><span>상영횟수</span></th>
+			<th scope="col" class="row"><span>상영점유율</span></th>
+			<th scope="col" class="row"><span>좌석수</span></th>
+			<th scope="col" class="row"><span>좌석점유율</span></th>
+			<th scope="col" class="row"><span>매출액</span></th>
+			<th scope="col" class="row"><span>매출액증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>관객수</span></th>
+			<th scope="col" class="row"><span>관객수증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>누적매출액</span></th>
+			<th scope="col" class="row"><span>누적관객수</span></th>
+			<!--th scope="col" class="row"><span>예매매출액(점유율)</span></th-->
+			<!--th scope="col" class="row"><span>예매건수(점유율)</span></th-->
+			<th scope="col" class="row"><span>순위</span></th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		<tr>
+			<td>2006-01-12</td>
+			<td>37</td>
+			<td style=mso-number-format:"0.0%">2.6%</td>
+			<td>122</td>
+			<td style=mso-number-format:"0.0%">1.7%</td>
+			<td>15,494</td>
+			<td style=mso-number-format:"0.0%">8.6%</td>
+			<td>8,074,000</td>
+			<td>8074000(     100.0%)</td>
+			<td>1,325</td>
+			<td>1325(     100.0%)</td>
+			<td>8,074,000</td>
+			<td>1,325</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>10</td>
+		</tr>
+	
+		<tr>
+			<td>2006-01-13</td>
+			<td>38</td>
+			<td style=mso-number-format:"0.0%">2.6%</td>
+			<td>147</td>
+			<td style=mso-number-format:"0.0%">2%</td>
+			<td>18,401</td>
+			<td style=mso-number-format:"0.0%">11.6%</td>
+			<td>13,276,000</td>
+			<td>5202000(      64.4%)</td>
+			<td>2,135</td>
+			<td>810(      61.1%)</td>
+			<td>21,350,000</td>
+			<td>3,460</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>10</td>
+		</tr>
+	
+		<tr>
+			<td>2006-01-14</td>
+			<td>40</td>
+			<td style=mso-number-format:"0.0%">2.6%</td>
+			<td>135</td>
+			<td style=mso-number-format:"0.0%">1.7%</td>
+			<td>16,865</td>
+			<td style=mso-number-format:"0.0%">18.7%</td>
+			<td>20,225,500</td>
+			<td>6949500(      52.3%)</td>
+			<td>3,161</td>
+			<td>1026(      48.1%)</td>
+			<td>41,575,500</td>
+			<td>6,621</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>11</td>
+		</tr>
+	
+		<tr>
+			<td>2006-01-15</td>
+			<td>38</td>
+			<td style=mso-number-format:"0.0%">2.5%</td>
+			<td>126</td>
+			<td style=mso-number-format:"0.0%">1.7%</td>
+			<td>15,603</td>
+			<td style=mso-number-format:"0.0%">19.3%</td>
+			<td>19,370,000</td>
+			<td>-855500(      -4.2%)</td>
+			<td>3,018</td>
+			<td>-143(      -4.5%)</td>
+			<td>60,945,500</td>
+			<td>9,639</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>11</td>
+		</tr>
+	
+		<tr>
+			<td>2006-01-16</td>
+			<td>39</td>
+			<td style=mso-number-format:"0.0%">2.7%</td>
+			<td>134</td>
+			<td style=mso-number-format:"0.0%">1.8%</td>
+			<td>16,523</td>
+			<td style=mso-number-format:"0.0%">9.6%</td>
+			<td>9,684,000</td>
+			<td>-9686000(     -50.0%)</td>
+			<td>1,587</td>
+			<td>-1431(     -47.4%)</td>
+			<td>70,629,500</td>
+			<td>11,226</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>10</td>
+		</tr>
+	
+		<tr>
+			<td>2006-01-17</td>
+			<td>38</td>
+			<td style=mso-number-format:"0.0%">2.6%</td>
+			<td>135</td>
+			<td style=mso-number-format:"0.0%">1.9%</td>
+			<td>16,360</td>
+			<td style=mso-number-format:"0.0%">10.1%</td>
+			<td>10,102,500</td>
+			<td>418500(       4.3%)</td>
+			<td>1,657</td>
+			<td>70(       4.4%)</td>
+			<td>80,732,000</td>
+			<td>12,883</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>10</td>
+		</tr>
+	
+		<tr>
+			<td>2006-01-18</td>
+			<td>37</td>
+			<td style=mso-number-format:"0.0%">2.5%</td>
+			<td>123</td>
+			<td style=mso-number-format:"0.0%">1.7%</td>
+			<td>14,712</td>
+			<td style=mso-number-format:"0.0%">9.8%</td>
+			<td>8,858,000</td>
+			<td>-1244500(     -12.3%)</td>
+			<td>1,444</td>
+			<td>-213(     -12.9%)</td>
+			<td>89,590,000</td>
+			<td>14,327</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>12</td>
+		</tr>
+	
+	</tbody>
+</table>
+</body>
+</html>
