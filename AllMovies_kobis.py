@@ -44,7 +44,7 @@ class Parsing_err(Object):
 # currError = Parsing_err(page_num=0, entity_num=1, err_url="test", status="pending")
 # currError.save()
 # print "saved"
-USER_NAME= "Mark"
+USER_NAME= "fanta"
 
 def move_to_download_folder(downloadPath, newFileName, fileExtension):
     got_file = False   
@@ -63,7 +63,8 @@ def move_to_download_folder(downloadPath, newFileName, fileExtension):
     cleaned_up_filename = re.sub(r'[/\\:*?"<>|]', '', newFileName)
 
     ## Create new file name
-    fileDestination = "C:\\Users\\" + USER_NAME +"\\Source\\Repos\\Movie_DataMiner\\KOBIS_download\\" + cleaned_up_filename +"." + fileExtension
+    #fileDestination = "C:\\Users\\" + USER_NAME +"\\Source\\Repos\\Movie_DataMiner\\KOBIS_download\\" + cleaned_up_filename +"." + fileExtension
+    fileDestination = ".\\KOBIS_download\\" + cleaned_up_filename +"." + fileExtension
     print "fileDestination : " +fileDestination
     #os.rename(currentFile[0], fileDestination)
     move(currentFile[0], fileDestination)
@@ -82,11 +83,23 @@ def FindAndAcceptAlert(browser):
 
 def isAlertPresent(browser):
    try:
-       
         alert= browser.driver.switch_to_alert()
         return alert
    except NoAlertPresentException: 
         return None
+
+def extractMovieNum(txt):
+    movieNum= re.sub(r'\D', "", txt) # sub non-digits by regex
+    if len(movieNum) == 8:
+        return movieNum
+    else:
+        del1= txt.find(",")
+        del2= txt.find(")")
+        movieNum= txt[del1+1:del2].replace("'","")
+        if len(movieNum) == 8:
+            return movieNum
+        else:
+            return None
 
 def parseThisPage(browser, page_num):
     browser.execute_script("goPage('" + str(page_num) + "')" )
@@ -100,7 +113,7 @@ def parseThisPage(browser, page_num):
     for idx,movie in enumerate(arrMovies):
         click_content= movie.td.a['onclick']
         movieName= movie.td.a.text
-        movieNum= re.sub(r'\D', "", click_content) # sub non-digits by regex
+        movieNum= extractMovieNum(click_content)
 
         if movieNum:
             print movieNum +","+ movieName
@@ -117,7 +130,7 @@ def parseThisPage(browser, page_num):
             move_to_download_folder("C:\\Users\\"+USER_NAME+"\\Downloads\\", movieName + "_"+ str(movieNum), "xls")
             #FindAndAcceptAlert(browser)
         else:
-            print "nothing found!"
+            print "couldn't find movie corresponding with : "+ movieName
 
 url = ("http://kobis.or.kr/kobis/business/mast/mvie/searchMovieList.do")
 print url
