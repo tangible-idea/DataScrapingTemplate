@@ -2,6 +2,7 @@
 import urllib2  
 import string
 import os
+from shutil import move
 import re
 import sys
 import time
@@ -64,7 +65,8 @@ def move_to_download_folder(downloadPath, newFileName, fileExtension):
     ## Create new file name
     fileDestination = "C:\\Users\\" + USER_NAME +"\\Source\\Repos\\Movie_DataMiner\\KOBIS_download\\" + cleaned_up_filename +"." + fileExtension
     print "fileDestination : " +fileDestination
-    os.rename(currentFile[0], fileDestination)
+    #os.rename(currentFile[0], fileDestination)
+    move(currentFile[0], fileDestination)
     return
 
 def FindAndAcceptAlert(browser):
@@ -147,7 +149,7 @@ try:
     elem.send_keys('2016-12-31')
 
     browser.execute_script("fn_searchList();")
-    time.sleep(1)
+    time.sleep(0.5)
 
     soup = BeautifulSoup(browser.page_source, "lxml")
     countMovies= soup.find("div", { "class":"board_btm" })
@@ -156,7 +158,8 @@ try:
     TOTAL_PAGES = (int(countMovies_filtered) / MOVIES_PER_PAGE)+1
     print "total pages : "+ str(TOTAL_PAGES)
 
-    for x in range(1, TOTAL_PAGES):
+    STARTING_PAGE= 457
+    for x in range(STARTING_PAGE, TOTAL_PAGES):
         print "current page : " + str(x)
         parseThisPage(browser, x)
 except Exception, e:
