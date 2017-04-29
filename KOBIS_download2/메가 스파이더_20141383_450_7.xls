@@ -1,0 +1,179 @@
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>'메가 스파이더' 일자별 통계정보</title>
+</head>
+<body>
+<table border="1" class="boardList02">
+	<caption>'메가 스파이더' 일자별 통계정보</caption>
+	<thead>
+		<tr>
+			<th scope="col" class="row"><span>날짜</span></th>
+			<th scope="col" class="row"><span>스크린수</span></th>
+			<th scope="col" class="row"><span>스크린점유율</span></th>
+			<th scope="col" class="row"><span>상영횟수</span></th>
+			<th scope="col" class="row"><span>상영점유율</span></th>
+			<th scope="col" class="row"><span>좌석수</span></th>
+			<th scope="col" class="row"><span>좌석점유율</span></th>
+			<th scope="col" class="row"><span>매출액</span></th>
+			<th scope="col" class="row"><span>매출액증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>관객수</span></th>
+			<th scope="col" class="row"><span>관객수증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>누적매출액</span></th>
+			<th scope="col" class="row"><span>누적관객수</span></th>
+			<!--th scope="col" class="row"><span>예매매출액(점유율)</span></th-->
+			<!--th scope="col" class="row"><span>예매건수(점유율)</span></th-->
+			<th scope="col" class="row"><span>순위</span></th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		<tr>
+			<td>2014-09-12</td>
+			<td>21</td>
+			<td style=mso-number-format:"0.0%">0.5%</td>
+			<td>21</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>3,871</td>
+			<td style=mso-number-format:"0.0%">32.5%</td>
+			<td>5,065,000</td>
+			<td>5065000(     100.0%)</td>
+			<td>1,259</td>
+			<td>1259(     100.0%)</td>
+			<td>5,065,000</td>
+			<td>1,259</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>12</td>
+		</tr>
+	
+		<tr>
+			<td>2014-09-13</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>376</td>
+			<td style=mso-number-format:"0.0%">55.9%</td>
+			<td>500,000</td>
+			<td>-4565000(     -90.1%)</td>
+			<td>210</td>
+			<td>-1049(     -83.3%)</td>
+			<td>5,565,000</td>
+			<td>1,469</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>33</td>
+		</tr>
+	
+		<tr>
+			<td>2014-09-14</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>376</td>
+			<td style=mso-number-format:"0.0%">55.9%</td>
+			<td>500,000</td>
+			<td>0(       0.0%)</td>
+			<td>210</td>
+			<td>0(       0.0%)</td>
+			<td>6,065,000</td>
+			<td>1,679</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>28</td>
+		</tr>
+	
+		<tr>
+			<td>2014-09-15</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>376</td>
+			<td style=mso-number-format:"0.0%">55.9%</td>
+			<td>500,000</td>
+			<td>0(       0.0%)</td>
+			<td>210</td>
+			<td>0(       0.0%)</td>
+			<td>6,565,000</td>
+			<td>1,889</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>26</td>
+		</tr>
+	
+		<tr>
+			<td>2014-09-16</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>376</td>
+			<td style=mso-number-format:"0.0%">55.9%</td>
+			<td>500,000</td>
+			<td>0(       0.0%)</td>
+			<td>210</td>
+			<td>0(       0.0%)</td>
+			<td>7,065,000</td>
+			<td>2,099</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>27</td>
+		</tr>
+	
+		<tr>
+			<td>2014-09-17</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>376</td>
+			<td style=mso-number-format:"0.0%">55.9%</td>
+			<td>500,000</td>
+			<td>0(       0.0%)</td>
+			<td>210</td>
+			<td>0(       0.0%)</td>
+			<td>7,565,000</td>
+			<td>2,309</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>35</td>
+		</tr>
+	
+		<tr>
+			<td>2014-09-18</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>376</td>
+			<td style=mso-number-format:"0.0%">55.9%</td>
+			<td>500,000</td>
+			<td>0(       0.0%)</td>
+			<td>210</td>
+			<td>0(       0.0%)</td>
+			<td>8,065,000</td>
+			<td>2,519</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>27</td>
+		</tr>
+	
+	</tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,179 @@
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>'러브렉트' 일자별 통계정보</title>
+</head>
+<body>
+<table border="1" class="boardList02">
+	<caption>'러브렉트' 일자별 통계정보</caption>
+	<thead>
+		<tr>
+			<th scope="col" class="row"><span>날짜</span></th>
+			<th scope="col" class="row"><span>스크린수</span></th>
+			<th scope="col" class="row"><span>스크린점유율</span></th>
+			<th scope="col" class="row"><span>상영횟수</span></th>
+			<th scope="col" class="row"><span>상영점유율</span></th>
+			<th scope="col" class="row"><span>좌석수</span></th>
+			<th scope="col" class="row"><span>좌석점유율</span></th>
+			<th scope="col" class="row"><span>매출액</span></th>
+			<th scope="col" class="row"><span>매출액증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>관객수</span></th>
+			<th scope="col" class="row"><span>관객수증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>누적매출액</span></th>
+			<th scope="col" class="row"><span>누적관객수</span></th>
+			<!--th scope="col" class="row"><span>예매매출액(점유율)</span></th-->
+			<!--th scope="col" class="row"><span>예매건수(점유율)</span></th-->
+			<th scope="col" class="row"><span>순위</span></th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		<tr>
+			<td>2009-09-03</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>9</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>1,044</td>
+			<td style=mso-number-format:"0.0%">4.9%</td>
+			<td>391,000</td>
+			<td>391000(     100.0%)</td>
+			<td>51</td>
+			<td>51(     100.0%)</td>
+			<td>391,000</td>
+			<td>51</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>37</td>
+		</tr>
+	
+		<tr>
+			<td>2009-09-04</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>8</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>928</td>
+			<td style=mso-number-format:"0.0%">5.0%</td>
+			<td>381,000</td>
+			<td>-10000(      -2.6%)</td>
+			<td>46</td>
+			<td>-5(      -9.8%)</td>
+			<td>772,000</td>
+			<td>97</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>38</td>
+		</tr>
+	
+		<tr>
+			<td>2009-09-05</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>4</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>464</td>
+			<td style=mso-number-format:"0.0%">15.9%</td>
+			<td>638,000</td>
+			<td>257000(      67.5%)</td>
+			<td>74</td>
+			<td>28(      60.9%)</td>
+			<td>1,410,000</td>
+			<td>171</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>40</td>
+		</tr>
+	
+		<tr>
+			<td>2009-09-06</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>4</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>464</td>
+			<td style=mso-number-format:"0.0%">14.9%</td>
+			<td>570,000</td>
+			<td>-68000(     -10.7%)</td>
+			<td>69</td>
+			<td>-5(      -6.8%)</td>
+			<td>1,980,000</td>
+			<td>240</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>35</td>
+		</tr>
+	
+		<tr>
+			<td>2009-09-07</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>4</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>464</td>
+			<td style=mso-number-format:"0.0%">7.5%</td>
+			<td>277,000</td>
+			<td>-293000(     -51.4%)</td>
+			<td>35</td>
+			<td>-34(     -49.3%)</td>
+			<td>2,257,000</td>
+			<td>275</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>35</td>
+		</tr>
+	
+		<tr>
+			<td>2009-09-08</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>4</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>464</td>
+			<td style=mso-number-format:"0.0%">8.4%</td>
+			<td>301,000</td>
+			<td>24000(       8.7%)</td>
+			<td>39</td>
+			<td>4(      11.4%)</td>
+			<td>2,558,000</td>
+			<td>314</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>33</td>
+		</tr>
+	
+		<tr>
+			<td>2009-09-09</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>116</td>
+			<td style=mso-number-format:"0.0%">1.7%</td>
+			<td>16,000</td>
+			<td>-285000(     -94.7%)</td>
+			<td>2</td>
+			<td>-37(     -94.9%)</td>
+			<td>2,574,000</td>
+			<td>316</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>68</td>
+		</tr>
+	
+	</tbody>
+</table>
+</body>
+</html>

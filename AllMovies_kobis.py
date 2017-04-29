@@ -64,7 +64,7 @@ def move_to_download_folder(downloadPath, newFileName, fileExtension):
 
     ## Create new file name
     #fileDestination = "C:\\Users\\" + USER_NAME +"\\Source\\Repos\\Movie_DataMiner\\KOBIS_download\\" + cleaned_up_filename +"." + fileExtension
-    fileDestination = ".\\KOBIS_download\\" + cleaned_up_filename +"." + fileExtension
+    fileDestination = ".\\KOBIS_download2\\" + cleaned_up_filename +"." + fileExtension
     print "fileDestination : " +fileDestination
     #os.rename(currentFile[0], fileDestination)
     move(currentFile[0], fileDestination)
@@ -127,7 +127,7 @@ def parseThisPage(browser, page_num):
             alert= browser.switch_to_alert()
             alert.accept()
 
-            move_to_download_folder("C:\\Users\\"+USER_NAME+"\\Downloads\\", movieName + "_"+ str(movieNum), "xls")
+            move_to_download_folder("C:\\Users\\"+USER_NAME+"\\Downloads\\", movieName + "_"+ str(movieNum) + "_" + str(page_num) +"_"+str(idx), "xls")
             #FindAndAcceptAlert(browser)
         else:
             print "couldn't find movie corresponding with : "+ movieName
@@ -171,7 +171,7 @@ try:
     TOTAL_PAGES = (int(countMovies_filtered) / MOVIES_PER_PAGE)+1
     print "total pages : "+ str(TOTAL_PAGES)
 
-    STARTING_PAGE= 457
+    STARTING_PAGE= 891
     for x in range(STARTING_PAGE, TOTAL_PAGES):
         print "current page : " + str(x)
         parseThisPage(browser, x)

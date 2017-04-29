@@ -1,0 +1,255 @@
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>'적도' 일자별 통계정보</title>
+</head>
+<body>
+<table border="1" class="boardList02">
+	<caption>'적도' 일자별 통계정보</caption>
+	<thead>
+		<tr>
+			<th scope="col" class="row"><span>날짜</span></th>
+			<th scope="col" class="row"><span>스크린수</span></th>
+			<th scope="col" class="row"><span>스크린점유율</span></th>
+			<th scope="col" class="row"><span>상영횟수</span></th>
+			<th scope="col" class="row"><span>상영점유율</span></th>
+			<th scope="col" class="row"><span>좌석수</span></th>
+			<th scope="col" class="row"><span>좌석점유율</span></th>
+			<th scope="col" class="row"><span>매출액</span></th>
+			<th scope="col" class="row"><span>매출액증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>관객수</span></th>
+			<th scope="col" class="row"><span>관객수증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>누적매출액</span></th>
+			<th scope="col" class="row"><span>누적관객수</span></th>
+			<!--th scope="col" class="row"><span>예매매출액(점유율)</span></th-->
+			<!--th scope="col" class="row"><span>예매건수(점유율)</span></th-->
+			<th scope="col" class="row"><span>순위</span></th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		<tr>
+			<td>2015-05-21</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>274</td>
+			<td style=mso-number-format:"0.0%">100.0%</td>
+			<td>2,192,000</td>
+			<td>2192000(     100.0%)</td>
+			<td>274</td>
+			<td>274(     100.0%)</td>
+			<td>2,192,000</td>
+			<td>274</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>22</td>
+		</tr>
+	
+		<tr>
+			<td>2015-05-27</td>
+			<td>4</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>4</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>796</td>
+			<td style=mso-number-format:"0.0%">100.0%</td>
+			<td>5,572,000</td>
+			<td>5572000(     100.0%)</td>
+			<td>796</td>
+			<td>796(     100.0%)</td>
+			<td>7,764,000</td>
+			<td>1,070</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>14</td>
+		</tr>
+	
+		<tr>
+			<td>2015-05-28</td>
+			<td>69</td>
+			<td style=mso-number-format:"0.0%">1.7%</td>
+			<td>105</td>
+			<td style=mso-number-format:"0.0%">0.7%</td>
+			<td>14,510</td>
+			<td style=mso-number-format:"0.0%">2.8%</td>
+			<td>2,909,500</td>
+			<td>-2662500(     -47.8%)</td>
+			<td>412</td>
+			<td>-384(     -48.2%)</td>
+			<td>10,673,500</td>
+			<td>1,482</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>21</td>
+		</tr>
+	
+		<tr>
+			<td>2015-05-29</td>
+			<td>65</td>
+			<td style=mso-number-format:"0.0%">1.6%</td>
+			<td>100</td>
+			<td style=mso-number-format:"0.0%">0.7%</td>
+			<td>13,405</td>
+			<td style=mso-number-format:"0.0%">2.9%</td>
+			<td>2,930,000</td>
+			<td>20500(       0.7%)</td>
+			<td>385</td>
+			<td>-27(      -6.6%)</td>
+			<td>13,603,500</td>
+			<td>1,867</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>19</td>
+		</tr>
+	
+		<tr>
+			<td>2015-05-30</td>
+			<td>71</td>
+			<td style=mso-number-format:"0.0%">1.5%</td>
+			<td>98</td>
+			<td style=mso-number-format:"0.0%">0.6%</td>
+			<td>13,606</td>
+			<td style=mso-number-format:"0.0%">4.7%</td>
+			<td>4,775,500</td>
+			<td>1845500(      63.0%)</td>
+			<td>645</td>
+			<td>260(      67.5%)</td>
+			<td>18,379,000</td>
+			<td>2,512</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>20</td>
+		</tr>
+	
+		<tr>
+			<td>2015-05-31</td>
+			<td>68</td>
+			<td style=mso-number-format:"0.0%">1.5%</td>
+			<td>96</td>
+			<td style=mso-number-format:"0.0%">0.6%</td>
+			<td>13,540</td>
+			<td style=mso-number-format:"0.0%">3.4%</td>
+			<td>3,586,500</td>
+			<td>-1189000(     -24.9%)</td>
+			<td>462</td>
+			<td>-183(     -28.4%)</td>
+			<td>21,965,500</td>
+			<td>2,974</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>19</td>
+		</tr>
+	
+		<tr>
+			<td>2015-06-01</td>
+			<td>62</td>
+			<td style=mso-number-format:"0.0%">1.6%</td>
+			<td>95</td>
+			<td style=mso-number-format:"0.0%">0.7%</td>
+			<td>12,591</td>
+			<td style=mso-number-format:"0.0%">2.0%</td>
+			<td>1,837,500</td>
+			<td>-1749000(     -48.8%)</td>
+			<td>255</td>
+			<td>-207(     -44.8%)</td>
+			<td>23,803,000</td>
+			<td>3,229</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>20</td>
+		</tr>
+	
+		<tr>
+			<td>2015-06-02</td>
+			<td>57</td>
+			<td style=mso-number-format:"0.0%">1.4%</td>
+			<td>89</td>
+			<td style=mso-number-format:"0.0%">0.6%</td>
+			<td>12,282</td>
+			<td style=mso-number-format:"0.0%">2.0%</td>
+			<td>1,721,500</td>
+			<td>-116000(      -6.3%)</td>
+			<td>244</td>
+			<td>-11(      -4.3%)</td>
+			<td>25,524,500</td>
+			<td>3,473</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>20</td>
+		</tr>
+	
+		<tr>
+			<td>2015-06-03</td>
+			<td>36</td>
+			<td style=mso-number-format:"0.0%">0.9%</td>
+			<td>41</td>
+			<td style=mso-number-format:"0.0%">0.3%</td>
+			<td>5,861</td>
+			<td style=mso-number-format:"0.0%">2.0%</td>
+			<td>900,000</td>
+			<td>-821500(     -47.7%)</td>
+			<td>120</td>
+			<td>-124(     -50.8%)</td>
+			<td>26,424,500</td>
+			<td>3,593</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>23</td>
+		</tr>
+	
+		<tr>
+			<td>2015-06-10</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>164</td>
+			<td style=mso-number-format:"0.0%">1.2%</td>
+			<td>14,000</td>
+			<td>14000(     100.0%)</td>
+			<td>2</td>
+			<td>2(     100.0%)</td>
+			<td>26,438,500</td>
+			<td>3,595</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>71</td>
+		</tr>
+	
+		<tr>
+			<td>2015-06-18</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>84</td>
+			<td style=mso-number-format:"0.0%">100.0%</td>
+			<td>588,000</td>
+			<td>588000(     100.0%)</td>
+			<td>84</td>
+			<td>84(     100.0%)</td>
+			<td>27,026,500</td>
+			<td>3,679</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>34</td>
+		</tr>
+	
+	</tbody>
+</table>
+</body>
+</html>

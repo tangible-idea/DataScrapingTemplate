@@ -1,0 +1,1224 @@
+
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>'스테이션 에이전트' 일자별 통계정보</title>
+</head>
+<body>
+<table border="1" class="boardList02">
+	<caption>'스테이션 에이전트' 일자별 통계정보</caption>
+	<thead>
+		<tr>
+			<th scope="col" class="row"><span>날짜</span></th>
+			<th scope="col" class="row"><span>스크린수</span></th>
+			<th scope="col" class="row"><span>스크린점유율</span></th>
+			<th scope="col" class="row"><span>상영횟수</span></th>
+			<th scope="col" class="row"><span>상영점유율</span></th>
+			<th scope="col" class="row"><span>좌석수</span></th>
+			<th scope="col" class="row"><span>좌석점유율</span></th>
+			<th scope="col" class="row"><span>매출액</span></th>
+			<th scope="col" class="row"><span>매출액증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>관객수</span></th>
+			<th scope="col" class="row"><span>관객수증감(전일대비)</span></th>
+			<th scope="col" class="row"><span>누적매출액</span></th>
+			<th scope="col" class="row"><span>누적관객수</span></th>
+			<!--th scope="col" class="row"><span>예매매출액(점유율)</span></th-->
+			<!--th scope="col" class="row"><span>예매건수(점유율)</span></th-->
+			<th scope="col" class="row"><span>순위</span></th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	
+		<tr>
+			<td>2006-01-27</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">23.8%</td>
+			<td>479,500</td>
+			<td>479500(     100.0%)</td>
+			<td>70</td>
+			<td>70(     100.0%)</td>
+			<td>479,500</td>
+			<td>70</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>22</td>
+		</tr>
+	
+		<tr>
+			<td>2006-01-28</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">36.4%</td>
+			<td>740,000</td>
+			<td>260500(      54.3%)</td>
+			<td>107</td>
+			<td>37(      52.9%)</td>
+			<td>1,219,500</td>
+			<td>177</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>20</td>
+		</tr>
+	
+		<tr>
+			<td>2006-01-29</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">33.0%</td>
+			<td>669,500</td>
+			<td>-70500(      -9.5%)</td>
+			<td>97</td>
+			<td>-10(      -9.3%)</td>
+			<td>1,889,000</td>
+			<td>274</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>21</td>
+		</tr>
+	
+		<tr>
+			<td>2006-01-30</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">63.9%</td>
+			<td>1,288,000</td>
+			<td>618500(      92.4%)</td>
+			<td>188</td>
+			<td>91(      93.8%)</td>
+			<td>3,177,000</td>
+			<td>462</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>21</td>
+		</tr>
+	
+		<tr>
+			<td>2006-01-31</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">25.9%</td>
+			<td>519,000</td>
+			<td>-769000(     -59.7%)</td>
+			<td>76</td>
+			<td>-112(     -59.6%)</td>
+			<td>3,696,000</td>
+			<td>538</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>21</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-01</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">20.7%</td>
+			<td>416,000</td>
+			<td>-103000(     -19.8%)</td>
+			<td>61</td>
+			<td>-15(     -19.7%)</td>
+			<td>4,112,000</td>
+			<td>599</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>23</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-02</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">22.8%</td>
+			<td>462,000</td>
+			<td>46000(      11.1%)</td>
+			<td>67</td>
+			<td>6(       9.8%)</td>
+			<td>4,574,000</td>
+			<td>666</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>20</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-03</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">22.4%</td>
+			<td>450,500</td>
+			<td>-11500(      -2.5%)</td>
+			<td>66</td>
+			<td>-1(      -1.5%)</td>
+			<td>5,024,500</td>
+			<td>732</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>23</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-04</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">50.7%</td>
+			<td>1,028,000</td>
+			<td>577500(     128.2%)</td>
+			<td>149</td>
+			<td>83(     125.8%)</td>
+			<td>6,052,500</td>
+			<td>881</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>22</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-05</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">52.0%</td>
+			<td>1,050,000</td>
+			<td>22000(       2.1%)</td>
+			<td>153</td>
+			<td>4(       2.7%)</td>
+			<td>7,102,500</td>
+			<td>1,034</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>21</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-06</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">22.4%</td>
+			<td>448,500</td>
+			<td>-601500(     -57.3%)</td>
+			<td>66</td>
+			<td>-87(     -56.9%)</td>
+			<td>7,551,000</td>
+			<td>1,100</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>21</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-07</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">14.6%</td>
+			<td>297,000</td>
+			<td>-151500(     -33.8%)</td>
+			<td>43</td>
+			<td>-23(     -34.8%)</td>
+			<td>7,848,000</td>
+			<td>1,143</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>24</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-08</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">24.1%</td>
+			<td>486,500</td>
+			<td>189500(      63.8%)</td>
+			<td>71</td>
+			<td>28(      65.1%)</td>
+			<td>8,334,500</td>
+			<td>1,214</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>24</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-12</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">43.9%</td>
+			<td>886,500</td>
+			<td>886500(     100.0%)</td>
+			<td>129</td>
+			<td>129(     100.0%)</td>
+			<td>9,221,000</td>
+			<td>1,343</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>20</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-13</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">10.9%</td>
+			<td>217,500</td>
+			<td>-669000(     -75.5%)</td>
+			<td>32</td>
+			<td>-97(     -75.2%)</td>
+			<td>9,438,500</td>
+			<td>1,375</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>27</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-14</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">12.6%</td>
+			<td>251,500</td>
+			<td>34000(      15.6%)</td>
+			<td>37</td>
+			<td>5(      15.6%)</td>
+			<td>9,690,000</td>
+			<td>1,412</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>27</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-15</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">19.7%</td>
+			<td>401,500</td>
+			<td>150000(      59.6%)</td>
+			<td>58</td>
+			<td>21(      56.8%)</td>
+			<td>10,091,500</td>
+			<td>1,470</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>27</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-16</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">14.3%</td>
+			<td>290,000</td>
+			<td>-111500(     -27.8%)</td>
+			<td>42</td>
+			<td>-16(     -27.6%)</td>
+			<td>10,381,500</td>
+			<td>1,512</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>26</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-17</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>147</td>
+			<td style=mso-number-format:"0.0%">10.2%</td>
+			<td>102,500</td>
+			<td>-187500(     -64.7%)</td>
+			<td>15</td>
+			<td>-27(     -64.3%)</td>
+			<td>10,484,000</td>
+			<td>1,527</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>31</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-18</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">29.3%</td>
+			<td>587,500</td>
+			<td>485000(     473.2%)</td>
+			<td>86</td>
+			<td>71(     473.3%)</td>
+			<td>11,071,500</td>
+			<td>1,613</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>28</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-19</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">27.9%</td>
+			<td>562,500</td>
+			<td>-25000(      -4.3%)</td>
+			<td>82</td>
+			<td>-4(      -4.7%)</td>
+			<td>11,634,000</td>
+			<td>1,695</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>27</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-20</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">17.7%</td>
+			<td>357,500</td>
+			<td>-205000(     -36.4%)</td>
+			<td>52</td>
+			<td>-30(     -36.6%)</td>
+			<td>11,991,500</td>
+			<td>1,747</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>26</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-21</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">22.1%</td>
+			<td>446,500</td>
+			<td>89000(      24.9%)</td>
+			<td>65</td>
+			<td>13(      25.0%)</td>
+			<td>12,438,000</td>
+			<td>1,812</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>26</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-22</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">14.3%</td>
+			<td>289,500</td>
+			<td>-157000(     -35.2%)</td>
+			<td>42</td>
+			<td>-23(     -35.4%)</td>
+			<td>12,727,500</td>
+			<td>1,854</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>29</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-23</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">11.2%</td>
+			<td>222,500</td>
+			<td>-67000(     -23.1%)</td>
+			<td>33</td>
+			<td>-9(     -21.4%)</td>
+			<td>12,950,000</td>
+			<td>1,887</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>31</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-24</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">13.6%</td>
+			<td>272,000</td>
+			<td>49500(      22.2%)</td>
+			<td>40</td>
+			<td>7(      21.2%)</td>
+			<td>13,222,000</td>
+			<td>1,927</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>31</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-25</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">38.1%</td>
+			<td>772,000</td>
+			<td>500000(     183.8%)</td>
+			<td>112</td>
+			<td>72(     180.0%)</td>
+			<td>13,994,000</td>
+			<td>2,039</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>30</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-26</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">27.2%</td>
+			<td>549,500</td>
+			<td>-222500(     -28.8%)</td>
+			<td>80</td>
+			<td>-32(     -28.6%)</td>
+			<td>14,543,500</td>
+			<td>2,119</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>29</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-27</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">18.7%</td>
+			<td>378,000</td>
+			<td>-171500(     -31.2%)</td>
+			<td>55</td>
+			<td>-25(     -31.3%)</td>
+			<td>14,921,500</td>
+			<td>2,174</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>28</td>
+		</tr>
+	
+		<tr>
+			<td>2006-02-28</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">19.7%</td>
+			<td>394,000</td>
+			<td>16000(       4.2%)</td>
+			<td>58</td>
+			<td>3(       5.5%)</td>
+			<td>15,315,500</td>
+			<td>2,232</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>31</td>
+		</tr>
+	
+		<tr>
+			<td>2006-03-01</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">21.1%</td>
+			<td>426,500</td>
+			<td>32500(       8.2%)</td>
+			<td>62</td>
+			<td>4(       6.9%)</td>
+			<td>15,742,000</td>
+			<td>2,294</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>34</td>
+		</tr>
+	
+		<tr>
+			<td>2006-03-02</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">6.5%</td>
+			<td>131,000</td>
+			<td>-295500(     -69.3%)</td>
+			<td>19</td>
+			<td>-43(     -69.4%)</td>
+			<td>15,873,000</td>
+			<td>2,313</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>28</td>
+		</tr>
+	
+		<tr>
+			<td>2006-03-03</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">10.2%</td>
+			<td>203,000</td>
+			<td>72000(      55.0%)</td>
+			<td>30</td>
+			<td>11(      57.9%)</td>
+			<td>16,076,000</td>
+			<td>2,343</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>27</td>
+		</tr>
+	
+		<tr>
+			<td>2006-03-04</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">22.1%</td>
+			<td>448,000</td>
+			<td>245000(     120.7%)</td>
+			<td>65</td>
+			<td>35(     116.7%)</td>
+			<td>16,524,000</td>
+			<td>2,408</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>28</td>
+		</tr>
+	
+		<tr>
+			<td>2006-03-05</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">26.2%</td>
+			<td>533,000</td>
+			<td>85000(      19.0%)</td>
+			<td>77</td>
+			<td>12(      18.5%)</td>
+			<td>17,057,000</td>
+			<td>2,485</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>29</td>
+		</tr>
+	
+		<tr>
+			<td>2006-03-06</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">7.5%</td>
+			<td>148,500</td>
+			<td>-384500(     -72.1%)</td>
+			<td>22</td>
+			<td>-55(     -71.4%)</td>
+			<td>17,205,500</td>
+			<td>2,507</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>27</td>
+		</tr>
+	
+		<tr>
+			<td>2006-03-07</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">8.2%</td>
+			<td>164,000</td>
+			<td>15500(      10.4%)</td>
+			<td>24</td>
+			<td>2(       9.1%)</td>
+			<td>17,369,500</td>
+			<td>2,531</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>29</td>
+		</tr>
+	
+		<tr>
+			<td>2006-03-08</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>294</td>
+			<td style=mso-number-format:"0.0%">16.7%</td>
+			<td>333,500</td>
+			<td>169500(     103.4%)</td>
+			<td>49</td>
+			<td>25(     104.2%)</td>
+			<td>17,703,000</td>
+			<td>2,580</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>25</td>
+		</tr>
+	
+		<tr>
+			<td>2006-04-21</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>603</td>
+			<td style=mso-number-format:"0.0%">3.5%</td>
+			<td>109,000</td>
+			<td>109000(     100.0%)</td>
+			<td>21</td>
+			<td>21(     100.0%)</td>
+			<td>17,812,000</td>
+			<td>2,601</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>43</td>
+		</tr>
+	
+		<tr>
+			<td>2006-04-22</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>402</td>
+			<td style=mso-number-format:"0.0%">8.2%</td>
+			<td>165,000</td>
+			<td>56000(      51.4%)</td>
+			<td>33</td>
+			<td>12(      57.1%)</td>
+			<td>17,977,000</td>
+			<td>2,634</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>43</td>
+		</tr>
+	
+		<tr>
+			<td>2006-04-23</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>603</td>
+			<td style=mso-number-format:"0.0%">4.1%</td>
+			<td>125,000</td>
+			<td>-40000(     -24.2%)</td>
+			<td>25</td>
+			<td>-8(     -24.2%)</td>
+			<td>18,102,000</td>
+			<td>2,659</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>46</td>
+		</tr>
+	
+		<tr>
+			<td>2006-04-24</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>402</td>
+			<td style=mso-number-format:"0.0%">1.7%</td>
+			<td>35,000</td>
+			<td>-90000(     -72.0%)</td>
+			<td>7</td>
+			<td>-18(     -72.0%)</td>
+			<td>18,137,000</td>
+			<td>2,666</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>45</td>
+		</tr>
+	
+		<tr>
+			<td>2006-04-25</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>603</td>
+			<td style=mso-number-format:"0.0%">1.8%</td>
+			<td>55,000</td>
+			<td>20000(      57.1%)</td>
+			<td>11</td>
+			<td>4(      57.1%)</td>
+			<td>18,192,000</td>
+			<td>2,677</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>44</td>
+		</tr>
+	
+		<tr>
+			<td>2006-04-26</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>402</td>
+			<td style=mso-number-format:"0.0%">2.2%</td>
+			<td>45,000</td>
+			<td>-10000(     -18.2%)</td>
+			<td>9</td>
+			<td>-2(     -18.2%)</td>
+			<td>18,237,000</td>
+			<td>2,686</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>41</td>
+		</tr>
+	
+		<tr>
+			<td>2006-04-27</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>402</td>
+			<td style=mso-number-format:"0.0%">4.7%</td>
+			<td>95,000</td>
+			<td>50000(     111.1%)</td>
+			<td>19</td>
+			<td>10(     111.1%)</td>
+			<td>18,332,000</td>
+			<td>2,705</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>32</td>
+		</tr>
+	
+		<tr>
+			<td>2006-04-28</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>402</td>
+			<td style=mso-number-format:"0.0%">4.2%</td>
+			<td>85,000</td>
+			<td>-10000(     -10.5%)</td>
+			<td>17</td>
+			<td>-2(     -10.5%)</td>
+			<td>18,417,000</td>
+			<td>2,722</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>37</td>
+		</tr>
+	
+		<tr>
+			<td>2006-04-29</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>603</td>
+			<td style=mso-number-format:"0.0%">4.5%</td>
+			<td>135,000</td>
+			<td>50000(      58.8%)</td>
+			<td>27</td>
+			<td>10(      58.8%)</td>
+			<td>18,552,000</td>
+			<td>2,749</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>35</td>
+		</tr>
+	
+		<tr>
+			<td>2006-04-30</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>402</td>
+			<td style=mso-number-format:"0.0%">5.0%</td>
+			<td>100,000</td>
+			<td>-35000(     -25.9%)</td>
+			<td>20</td>
+			<td>-7(     -25.9%)</td>
+			<td>18,652,000</td>
+			<td>2,769</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>36</td>
+		</tr>
+	
+		<tr>
+			<td>2006-05-01</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>603</td>
+			<td style=mso-number-format:"0.0%">5.3%</td>
+			<td>160,000</td>
+			<td>60000(      60.0%)</td>
+			<td>32</td>
+			<td>12(      60.0%)</td>
+			<td>18,812,000</td>
+			<td>2,801</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>35</td>
+		</tr>
+	
+		<tr>
+			<td>2006-05-02</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>402</td>
+			<td style=mso-number-format:"0.0%">3.0%</td>
+			<td>60,000</td>
+			<td>-100000(     -62.5%)</td>
+			<td>12</td>
+			<td>-20(     -62.5%)</td>
+			<td>18,872,000</td>
+			<td>2,813</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>39</td>
+		</tr>
+	
+		<tr>
+			<td>2006-05-03</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>3</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>603</td>
+			<td style=mso-number-format:"0.0%">7.0%</td>
+			<td>210,000</td>
+			<td>150000(     250.0%)</td>
+			<td>42</td>
+			<td>30(     250.0%)</td>
+			<td>19,082,000</td>
+			<td>2,855</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>26</td>
+		</tr>
+	
+		<tr>
+			<td>2006-05-04</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.1%</td>
+			<td>2</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>402</td>
+			<td style=mso-number-format:"0.0%">7.0%</td>
+			<td>140,000</td>
+			<td>-70000(     -33.3%)</td>
+			<td>28</td>
+			<td>-14(     -33.3%)</td>
+			<td>19,222,000</td>
+			<td>2,883</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>30</td>
+		</tr>
+	
+		<tr>
+			<td>2006-12-23</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>147</td>
+			<td style=mso-number-format:"0.0%">34.0%</td>
+			<td>227,600</td>
+			<td>227600(     100.0%)</td>
+			<td>50</td>
+			<td>50(     100.0%)</td>
+			<td>19,449,600</td>
+			<td>2,933</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>31</td>
+		</tr>
+	
+		<tr>
+			<td>2006-12-30</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>147</td>
+			<td style=mso-number-format:"0.0%">38.1%</td>
+			<td>255,800</td>
+			<td>255800(     100.0%)</td>
+			<td>56</td>
+			<td>56(     100.0%)</td>
+			<td>19,705,400</td>
+			<td>2,989</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>25</td>
+		</tr>
+	
+		<tr>
+			<td>2007-01-08</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>147</td>
+			<td style=mso-number-format:"0.0%">42.2%</td>
+			<td>291,800</td>
+			<td>291800(     100.0%)</td>
+			<td>62</td>
+			<td>62(     100.0%)</td>
+			<td>19,997,200</td>
+			<td>3,051</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>26</td>
+		</tr>
+	
+		<tr>
+			<td>2007-01-11</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>147</td>
+			<td style=mso-number-format:"0.0%">23.8%</td>
+			<td>167,600</td>
+			<td>167600(     100.0%)</td>
+			<td>35</td>
+			<td>35(     100.0%)</td>
+			<td>20,164,800</td>
+			<td>3,086</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>32</td>
+		</tr>
+	
+		<tr>
+			<td>2007-01-15</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>147</td>
+			<td style=mso-number-format:"0.0%">10.2%</td>
+			<td>64,200</td>
+			<td>64200(     100.0%)</td>
+			<td>15</td>
+			<td>15(     100.0%)</td>
+			<td>20,229,000</td>
+			<td>3,101</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>31</td>
+		</tr>
+	
+		<tr>
+			<td>2007-01-18</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>147</td>
+			<td style=mso-number-format:"0.0%">32.0%</td>
+			<td>220,000</td>
+			<td>220000(     100.0%)</td>
+			<td>47</td>
+			<td>47(     100.0%)</td>
+			<td>20,449,000</td>
+			<td>3,148</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>28</td>
+		</tr>
+	
+		<tr>
+			<td>2008-10-02</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>138</td>
+			<td style=mso-number-format:"0.0%">5.8%</td>
+			<td>52,000</td>
+			<td>52000(     100.0%)</td>
+			<td>8</td>
+			<td>8(     100.0%)</td>
+			<td>20,501,000</td>
+			<td>3,156</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>50</td>
+		</tr>
+	
+		<tr>
+			<td>2008-10-05</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>138</td>
+			<td style=mso-number-format:"0.0%">11.6%</td>
+			<td>124,000</td>
+			<td>124000(     100.0%)</td>
+			<td>16</td>
+			<td>16(     100.0%)</td>
+			<td>20,625,000</td>
+			<td>3,172</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>46</td>
+		</tr>
+	
+		<tr>
+			<td>2008-10-07</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>138</td>
+			<td style=mso-number-format:"0.0%">6.5%</td>
+			<td>63,000</td>
+			<td>63000(     100.0%)</td>
+			<td>9</td>
+			<td>9(     100.0%)</td>
+			<td>20,688,000</td>
+			<td>3,181</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>52</td>
+		</tr>
+	
+		<tr>
+			<td>2008-10-15</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0.0%</td>
+			<td>1</td>
+			<td style=mso-number-format:"0.0%">0%</td>
+			<td>138</td>
+			<td style=mso-number-format:"0.0%">13.8%</td>
+			<td>131,000</td>
+			<td>131000(     100.0%)</td>
+			<td>19</td>
+			<td>19(     100.0%)</td>
+			<td>20,819,000</td>
+			<td>3,200</td>
+			<!--td>(%)</td-->
+			<!--td>(%)</td-->
+			<td>38</td>
+		</tr>
+	
+	</tbody>
+</table>
+</body>
+</html>
