@@ -127,7 +127,11 @@ def parseThisPage(browser, page_num):
             alert= browser.switch_to_alert()
             alert.accept()
 
+<<<<<<< HEAD
             move_to_download_folder("C:\\Users\\"+USER_NAME+"\\Downloads\\", movieName + "_"+ str(movieNum) + "_" + str(page_num) +"_"+str(idx), "xls")
+=======
+            move_to_download_folder("C:\\Users\\"+USER_NAME+"\\Downloads\\", movieName + "_"+ str(movieNum) + "_" + str(page_num) +"_"+idx, "xls")
+>>>>>>> 126aa13cef39717bde307c679fa01eeb365bc18d
             #FindAndAcceptAlert(browser)
         else:
             print "couldn't find movie corresponding with : "+ movieName
