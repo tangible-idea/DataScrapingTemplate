@@ -168,10 +168,10 @@ try:
     countMovies= soup.find("div", { "class":"board_btm" })
     countMovies_filtered= re.sub(r'\D', "", countMovies.em.text)
     print "retrieved movies : "+countMovies_filtered
-    TOTAL_PAGES = (int(countMovies_filtered) / MOVIES_PER_PAGE)+1
+    TOTAL_PAGES = (int(countMovies_filtered) / MOVIES_PER_PAGE)+2
     print "total pages : "+ str(TOTAL_PAGES)
 
-    STARTING_PAGE= 891
+    STARTING_PAGE= 958
     for x in range(STARTING_PAGE, TOTAL_PAGES):
         print "current page : " + str(x)
         parseThisPage(browser, x)
