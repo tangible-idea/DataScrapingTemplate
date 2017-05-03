@@ -1,3 +1,4 @@
+# written by python 2.*
 #-*- coding: utf-8 -*-
 import urllib2  
 import string
