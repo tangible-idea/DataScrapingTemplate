@@ -1,4 +1,4 @@
-# written by python 3.6
+# written by python 3.*
 #-*- coding: utf-8 -*-
 import glob, os, sys
 import codecs

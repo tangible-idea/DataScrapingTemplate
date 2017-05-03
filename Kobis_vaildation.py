@@ -1,4 +1,4 @@
-# written by python 3.*
+# written by python 2.*
 #-*- coding: utf-8 -*-
 import glob, os, sys
 reload(sys)
