@@ -1,3 +1,4 @@
+# written by python 2.7
 
 from AllMovies_imdb import get_all_movies, add_empty_data, get_connections, get_business_of_movie, check_worksheets, get_companycredits_of_movie, get_fullcredits_of_movie, get_releaseinfo_of_movie, get_techinfo_of_movie, get_detail_of_movie, register_toServer, upload_data, init_page
 import Config
