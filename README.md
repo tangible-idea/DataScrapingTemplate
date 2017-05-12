@@ -9,6 +9,8 @@ Currently, this project supports below sites. For further information, please re
 Dependency : BeautifulSoup4, lxml, ParsePy
 * kobis.or.kr
 Dependency : BeautifulSoup4, lxml, Selenium
+* boxofficemojo.com
+Dependency : BeautifulSoup4, lxml
 
 IMDB.com project
 ------------
