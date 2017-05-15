@@ -39,7 +39,7 @@ def get_movie_foreign(link, arrData):
         return arrData
     except Exception as e:
         logging.exception(e)
-
+        return arrData
 
 def get_movie_detail(movies_list, link, arrData):
 
@@ -83,7 +83,7 @@ def get_movie_detail(movies_list, link, arrData):
             
 
         #print contents2[0]
-        return arrData
+    return arrData
         
 def get_all_movies():  
     """ returns all the movie urls from boxofficemojo.com in a list"""
