@@ -4,8 +4,77 @@ from bs4 import BeautifulSoup
 import logging  
 logging.basicConfig(level=logging.DEBUG)
 
+def save_to_file(filePath, data):
+    text_file = open(filePath, "a")
+    #for data in arrData:
+    #    text_file.write(str(data) + "|")
+    text_file.write(str(data))
+    text_file.write('\n')
+    text_file.close()
 
 
+def get_movie_detail(movies_list, link):
+    # next_td_tag = row.td.findNext('td')
+    # studio = next_td_tag.font.contents[0]
+
+    # next_td_tag = row.td.findNext('td').findNext('td')
+    # gross = next_td_tag.font.contents[0]
+
+    # next_td_tag = row.td.findNext('td').findNext('td').findNext('td')
+    # gross_th = next_td_tag.font.contents[0]
+
+    # next_td_tag = row.td.findNext('td').findNext('td').findNext('td').findNext('td')
+    # opening = next_td_tag.font.contents[0]
+
+    # next_td_tag = row.td.findNext('td').findNext('td').findNext('td').findNext('td').findNext('td')
+    # opening_th = next_td_tag.font.contents[0]
+
+    # next_td_tag = row.td.findNext('td').findNext('td').findNext('td').findNext('td').findNext('td').findNext('td')                            
+    # if next_td_tag.font.a is not NoneType:
+    #     opendate = next_td_tag.font.a.getText()
+
+    
+    result= ""
+    if link not in movies_list:
+        #print link + '|' +  studio# + '|' + gross + '|' + gross_th+ '|' + opening + '|' + opening_th+ '|' + opendate
+        #print link
+        movies_list.append(link)
+
+        url2 = "http://www.boxofficemojo.com"+ link
+        page2 = urlopen(url2)
+        soup2 = BeautifulSoup(page2, "lxml")
+        #contents2 = soup2.find(id="body").find("table").find("table").find("table").find("table").find_all("td")
+        #print soup2.find(id="body").find_all("table")[1]
+        contents2= soup2.find('table', attrs={'border': '0' , 'cellspacing':'1', 'cellpadding':'4' , 'bgcolor':'#dcdcdc', 'width':'95%'})
+        tabledata2= contents2.find_all("td")
+
+        name_table2= soup2.find('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0' , 'width':'100%', 'style':'padding-top: 5px;'})
+        name2= name_table2.font.b.getText()
+        #print name2
+        
+        if len(tabledata2) == 6:
+            Distributor= tabledata2[0].b.getText()
+            ReleaseDate= tabledata2[1].b.getText()
+            Genre = tabledata2[2].b.getText()
+            Runtime= tabledata2[3].b.getText()
+            Rating = tabledata2[4].b.getText()
+            Budget = tabledata2[5].b.getText()
+            result += name2 +'|'+ url2 +'|'+ Distributor+'|'+ ReleaseDate+'|'+Genre +'|'+Runtime +'|'+ Rating+'|'+Budget
+        elif len(tabledata2) == 7:
+            TotalGross = tabledata2[0].b.getText()
+            Distributor= tabledata2[1].b.getText()
+            ReleaseDate= tabledata2[2].b.getText()
+            Genre = tabledata2[3].b.getText()
+            Runtime= tabledata2[4].b.getText()
+            Rating = tabledata2[5].b.getText()
+            Budget = tabledata2[6].b.getText()
+            result += name2 +'|'+ url2 +'|'+ Distributor+'|'+ ReleaseDate+'|'+Genre +'|'+Runtime +'|'+ Rating+'|'+Budget +'|'+TotalGross
+
+            #print (result)
+            save_to_file("./boxofficemojo.com/movie_data.txt", result)
+
+        #print contents2[0]
+        
 def get_all_movies():  
     """ returns all the movie urls from boxofficemojo.com in a list"""
 
@@ -37,65 +106,7 @@ def get_all_movies():
                         # skip index row
                         if counter > 1:
                             link = row.td.font.a['href']
-
-                            # next_td_tag = row.td.findNext('td')
-                            # studio = next_td_tag.font.contents[0]
-
-                            # next_td_tag = row.td.findNext('td').findNext('td')
-                            # gross = next_td_tag.font.contents[0]
-
-                            # next_td_tag = row.td.findNext('td').findNext('td').findNext('td')
-                            # gross_th = next_td_tag.font.contents[0]
-
-                            # next_td_tag = row.td.findNext('td').findNext('td').findNext('td').findNext('td')
-                            # opening = next_td_tag.font.contents[0]
-
-                            # next_td_tag = row.td.findNext('td').findNext('td').findNext('td').findNext('td').findNext('td')
-                            # opening_th = next_td_tag.font.contents[0]
-
-                            # next_td_tag = row.td.findNext('td').findNext('td').findNext('td').findNext('td').findNext('td').findNext('td')                            
-                            # if next_td_tag.font.a is not NoneType:
-                            #     opendate = next_td_tag.font.a.getText()
-
-                            
-
-                            if link not in movies_list:
-                                #print link + '|' +  studio# + '|' + gross + '|' + gross_th+ '|' + opening + '|' + opening_th+ '|' + opendate
-                                #print link
-                                movies_list.append(link)
-
-                                url2 = "http://www.boxofficemojo.com"+ link
-                                page2 = urlopen(url2)
-                                soup2 = BeautifulSoup(page2, "lxml")
-                                #contents2 = soup2.find(id="body").find("table").find("table").find("table").find("table").find_all("td")
-                                #print soup2.find(id="body").find_all("table")[1]
-                                contents2= soup2.find('table', attrs={'border': '0' , 'cellspacing':'1', 'cellpadding':'4' , 'bgcolor':'#dcdcdc', 'width':'95%'})
-                                tabledata2= contents2.find_all("td")
-
-                                name_table2= soup2.find('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0' , 'width':'100%', 'style':'padding-top: 5px;'})
-                                name2= name_table2.font.b.getText()
-                                #print name2
-                                
-                                if len(tabledata2) == 6:
-                                    Distributor= tabledata2[0].b.getText()
-                                    ReleaseDate= tabledata2[1].b.getText()
-                                    Genre = tabledata2[2].b.getText()
-                                    Runtime= tabledata2[3].b.getText()
-                                    Rating = tabledata2[4].b.getText()
-                                    Budget = tabledata2[5].b.getText()
-                                    print(name2 +'|'+ url2 +'|'+ Distributor+'|'+ ReleaseDate+'|'+Genre +'|'+Runtime +'|'+ Rating+'|'+Budget)
-                                elif len(tabledata2) == 7:
-                                    TotalGross = tabledata2[0].b.getText()
-                                    Distributor= tabledata2[1].b.getText()
-                                    ReleaseDate= tabledata2[2].b.getText()
-                                    Genre = tabledata2[3].b.getText()
-                                    Runtime= tabledata2[4].b.getText()
-                                    Rating = tabledata2[5].b.getText()
-                                    Budget = tabledata2[6].b.getText()
-                                    print(name2 +'|'+ url2 +'|'+ Distributor+'|'+ ReleaseDate+'|'+Genre +'|'+Runtime +'|'+ Rating+'|'+Budget +'|'+TotalGross)
-
-
-                                #print contents2[0]
+                            get_movie_detail(movies_list, link)                           
 
                         counter += 1
             except Exception as e:
