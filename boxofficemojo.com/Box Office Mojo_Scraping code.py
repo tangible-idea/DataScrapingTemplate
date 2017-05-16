@@ -22,6 +22,33 @@ def save_to_file(filePath, arrData, countriesData=None):
     text_file.write('\n')
     text_file.close()
  
+def get_total_lifetime_grosses(link, arrData):
+    
+    url = "http://www.boxofficemojo.com"+ link
+    page = urlopen(url)
+    soup = BeautifulSoup(page, "lxml")
+
+    #div_body= soup.find("div", {"id", "body"})
+    #main_tbl= div_body.table.findNext('table').tbody.tr.td.table
+
+    #print(main_tbl)
+    tables = soup.find_all('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0' , 'width':'100%'})
+    
+    print( len(tables))
+    if len(tables) == 4:
+        #print(tables[3]) # Total lifetime grosses
+        mp_boxes= tables[3].find_all("div", {"class", "mp_box_tab"})
+        a= len(mp_boxes)
+        for box in mp_boxes:
+            if(box.text == "Total Lifetime Grosses"):
+                print(box.findNext('div'))
+            if(box.text == "Domestic Summary"):
+                print(box.findNext('div'))
+            if(box.text == "The Players"):
+                print(box.findNext('div'))
+
+    return arrData
+
 
 def get_movie_foreign(link, arrData):
 
@@ -126,8 +153,9 @@ def get_all_movies():
                         # skip index row
                         if counter > 1:
                             link = row.td.font.a['href']
-                            arrData= get_movie_detail(movies_list, link, arrData) 
-                            arrData= get_movie_foreign(link, arrData)
+                            arrData = get_movie_detail(movies_list, link, arrData) 
+                            arrData = get_total_lifetime_grosses(link, arrData)
+                            arrData = get_movie_foreign(link, arrData)
                             save_to_file(FILE_PATH, arrData)
                             arrData.clear()
                         counter += 1
