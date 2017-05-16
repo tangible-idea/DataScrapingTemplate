@@ -49,12 +49,34 @@ def get_total_lifetime_grosses(link, arrData):
                 for tr in trs:
                     tds= tr.find_all('td')
                     if len(tds) == 3:
-                        arrData.insert(td_count, tds[1].text.strip())
-                        arrData.insert(td_count+1, tds[2].text.strip())
+                        arrData.insert(td_count, tds[1].text.strip()) # 9. 
+                        arrData.insert(td_count+1, tds[2].text.strip()) # 10.
                         td_count += 2
             if(box.text == "Domestic Summary"):
-                #print(box.findNext('div'))
-                a= 0
+                div_content= box.findNext('div')
+                DS_tables= div_content.find_all('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0'})
+                for DS_table in DS_tables:
+                    DS_trs= DS_table.find_all('tr')
+                    for DS_tr in DS_trs:
+                        DS_tr_title = DS_tr.td.text.strip()
+                        if DS_tr_title == "Opening\xa0Weekend:":
+                            DS_tr_content= DS_tr.findNext('td')
+                            if DS_tr_content:
+                                arrData.insert(td_count+2, DS_tr_content.text.strip()) # 11.
+                        elif "(#" in DS_tr_title:
+                            arrData.insert(td_count+3, DS_tr_title) # 12.
+                        elif "%\xa0of\xa0Total\xa0Gross" in DS_tr_title:
+                            arrData.insert(td_count+4, DS_tr_title) # 13.
+                        elif DS_tr_title == "Wildest\xa0Release:":
+                            DS_tr_content= DS_tr.findNext('td')
+                            if DS_tr_content:
+                                arrData.insert(td_count+5, DS_tr_content.text.strip()) # 14.
+                        elif DS_tr_title == "In\xa0Release:":
+                            DS_tr_content= DS_tr.findNext('td')
+                            if DS_tr_content:
+                                arrData.insert(td_count+6, DS_tr_content.text.strip()) # 15.
+                            
+                        
             if(box.text == "The Players"):
                 #print(box.findNext('div'))
                 b= 0
@@ -83,8 +105,9 @@ def get_movie_foreign(link, arrData):
                         if(idx < 3): # don't save unncessary data
                             continue
                         tds= tr.find_all("td")
-                        td_count = 11
+                        td_count = 16
                         for td in tds:
+                            # 11. Country, 12.Dist, 13. Release Date, 14.OW, 15.% of Total, 16.Total gross, 17. as of
                             eachCountry.insert(td_count, td.text.strip())
                             td_count += 1
                         save_to_file(FILE_PATH, arrData, eachCountry)
