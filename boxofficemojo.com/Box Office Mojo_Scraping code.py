@@ -14,14 +14,14 @@ def add_empty_data(arrData, count):
     return arrData
 
 def save_to_file(filePath, arrData, countriesData=None):
-    text_file = open(filePath, "a")
+    text_file = open(filePath, "ab")
     for data in arrData:
-        text_file.write(str(data) + "|")
+        text_file.write((data + u"|").encode('utf-8'))
 
     if countriesData:
         for data in countriesData:
-            text_file.write(str(data) + "|")
-    text_file.write('\n')
+            text_file.write((data + u"|").encode('utf-8'))
+    text_file.write("\n".encode('utf-8'))
     text_file.close()
  
 def get_total_lifetime_grosses(link, arrData):
@@ -49,13 +49,15 @@ def get_total_lifetime_grosses(link, arrData):
                 for tr in trs:
                     tds= tr.find_all('td')
                     if len(tds) == 3:
-                        arrData.insert(td_count, tds[1].text)
-                        arrData.insert(td_count+1, tds[2].text)
+                        arrData.insert(td_count, tds[1].text.strip())
+                        arrData.insert(td_count+1, tds[2].text.strip())
                         td_count += 2
             if(box.text == "Domestic Summary"):
-                print(box.findNext('div'))
+                #print(box.findNext('div'))
+                a= 0
             if(box.text == "The Players"):
-                print(box.findNext('div'))
+                #print(box.findNext('div'))
+                b= 0
 
     return arrData
 
@@ -83,7 +85,7 @@ def get_movie_foreign(link, arrData):
                         tds= tr.find_all("td")
                         td_count = 11
                         for td in tds:
-                            eachCountry.insert(td_count, td.text)
+                            eachCountry.insert(td_count, td.text.strip())
                             td_count += 1
                         save_to_file(FILE_PATH, arrData, eachCountry)
                         eachCountry.clear()
