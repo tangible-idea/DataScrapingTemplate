@@ -4,38 +4,50 @@ from bs4 import BeautifulSoup
 import logging  
 logging.basicConfig(level=logging.DEBUG)
 
+FILE_PATH = "./boxofficemojo.com/movie_data.txt"
+
 def add_empty_data(arrData, count):
     for i in range(0,count):
         arrData.append(" ")
     return arrData
 
-def save_to_file(filePath, arrData):
+def save_to_file(filePath, arrData, countriesData=None):
     text_file = open(filePath, "a")
     for data in arrData:
         text_file.write(str(data) + "|")
-    #text_file.write(str(data))
+
+    if countriesData:
+        for data in countriesData:
+            text_file.write(str(data) + "|")
     text_file.write('\n')
     text_file.close()
+ 
 
 def get_movie_foreign(link, arrData):
 
     try:
-        each_column=""
+        eachCountry = []
         url = "http://www.boxofficemojo.com"+ link + "&page=intl"
         page = urlopen(url)
         soup = BeautifulSoup(page, "lxml")
 
-        contents= soup.find('table', attrs={'border': '3' , 'cellspacing':'0', 'cellpadding':'5', 'align':'center', 'style':'margin-top: 5px;'})
+        contents = soup.find('table', attrs={'border': '3' , 'cellspacing':'0', 'cellpadding':'5', 'align':'center', 'style':'margin-top: 5px;'})
         if len(contents) == 1:
-            print(contents)
-            intl_table= contents.tr.td.table
+            #print(contents)
+            intl_table = contents.tr.td.table
             if intl_table:
-                trs= intl_table.find_all("tr")
+                trs = intl_table.find_all("tr")
                 if len(trs) == 3:
                     print ("no data")
                 else:
-                    for tbl in intl_table:
-                        arrData.append(tbl.text)
+                    for idx,tr in enumerate(trs):
+                        if(idx < 3): # don't save unncessary data
+                            continue
+                        tds= tr.find_all("td")
+                        for td in tds:
+                            eachCountry.append(td.text)
+                        save_to_file(FILE_PATH, arrData, eachCountry)
+                        eachCountry.clear()
         return arrData
     except Exception as e:
         logging.exception(e)
@@ -43,38 +55,33 @@ def get_movie_foreign(link, arrData):
 
 def get_movie_detail(movies_list, link, arrData):
 
-    #result= ""
     if link not in movies_list:
-        #print link + '|' +  studio# + '|' + gross + '|' + gross_th+ '|' + opening + '|' + opening_th+ '|' + opendate
-        #print link
         movies_list.append(link)
 
         url = "http://www.boxofficemojo.com"+ link
         page = urlopen(url)
         soup = BeautifulSoup(page, "lxml")
-        #contents = soup.find(id="body").find("table").find("table").find("table").find("table").find_all("td")
-        #print soup.find(id="body").find_all("table")[1]
         contents= soup.find('table', attrs={'border': '0' , 'cellspacing':'1', 'cellpadding':'4' , 'bgcolor':'#dcdcdc', 'width':'95%'})
-        tabledata= contents.find_all("td")
+        tabledata = contents.find_all("td")
 
-        name_table= soup.find('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0' , 'width':'100%', 'style':'padding-top: 5px;'})
-        name= name_table.font.b.getText()
-        #print name
+        name_table = soup.find('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0' , 'width':'100%', 'style':'padding-top: 5px;'})
+        name = name_table.font.b.getText()
         
         if len(tabledata) == 6:
-            Distributor= tabledata[0].b.getText()
-            ReleaseDate= tabledata[1].b.getText()
+            Distributor = tabledata[0].b.getText()
+            ReleaseDate = tabledata[1].b.getText()
             Genre = tabledata[2].b.getText()
-            Runtime= tabledata[3].b.getText()
+            Runtime = tabledata[3].b.getText()
             Rating = tabledata[4].b.getText()
             Budget = tabledata[5].b.getText()
             arrData.extend([name , url , Distributor, ReleaseDate,Genre ,Runtime , Rating,Budget])
+            add_empty_data(arrData, 1) # match gap for missing column
         elif len(tabledata) == 7:
             TotalGross = tabledata[0].b.getText()
-            Distributor= tabledata[1].b.getText()
-            ReleaseDate= tabledata[2].b.getText()
+            Distributor = tabledata[1].b.getText()
+            ReleaseDate = tabledata[2].b.getText()
             Genre = tabledata[3].b.getText()
-            Runtime= tabledata[4].b.getText()
+            Runtime = tabledata[4].b.getText()
             Rating = tabledata[5].b.getText()
             Budget = tabledata[6].b.getText()
             arrData.extend([ name , url , Distributor, ReleaseDate,Genre ,Runtime , Rating,Budget ,TotalGross])
@@ -121,7 +128,8 @@ def get_all_movies():
                             link = row.td.font.a['href']
                             arrData= get_movie_detail(movies_list, link, arrData) 
                             arrData= get_movie_foreign(link, arrData)
-                            save_to_file("./boxofficemojo.com/movie_data.txt", arrData)
+                            save_to_file(FILE_PATH, arrData)
+                            arrData.clear()
                         counter += 1
             except Exception as e:
                 logging.exception(e)
