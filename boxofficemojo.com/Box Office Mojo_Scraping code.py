@@ -1,3 +1,5 @@
+# written by python 3.6.1
+#-*- coding: utf-8 -*-
 from urllib.request import urlopen
 import string
 from bs4 import BeautifulSoup  
@@ -35,13 +37,21 @@ def get_total_lifetime_grosses(link, arrData):
     tables = soup.find_all('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0' , 'width':'100%'})
     
     print( len(tables))
+    td_count = 9
     if len(tables) == 4:
         #print(tables[3]) # Total lifetime grosses
         mp_boxes= tables[3].find_all("div", {"class", "mp_box_tab"})
         a= len(mp_boxes)
         for box in mp_boxes:
             if(box.text == "Total Lifetime Grosses"):
-                print(box.findNext('div'))
+                div_content= box.findNext('div')
+                trs= div_content.find_all('tr')
+                for tr in trs:
+                    tds= tr.find_all('td')
+                    if len(tds) == 3:
+                        arrData.insert(td_count, tds[1].text)
+                        arrData.insert(td_count+1, tds[2].text)
+                        td_count += 2
             if(box.text == "Domestic Summary"):
                 print(box.findNext('div'))
             if(box.text == "The Players"):
@@ -71,8 +81,10 @@ def get_movie_foreign(link, arrData):
                         if(idx < 3): # don't save unncessary data
                             continue
                         tds= tr.find_all("td")
+                        td_count = 11
                         for td in tds:
-                            eachCountry.append(td.text)
+                            eachCountry.insert(td_count, td.text)
+                            td_count += 1
                         save_to_file(FILE_PATH, arrData, eachCountry)
                         eachCountry.clear()
         return arrData
@@ -85,15 +97,16 @@ def get_movie_detail(movies_list, link, arrData):
     if link not in movies_list:
         movies_list.append(link)
 
-        url = "http://www.boxofficemojo.com"+ link
+        url = "http://www.boxofficemojo.com"+ link # 1. URL
         page = urlopen(url)
         soup = BeautifulSoup(page, "lxml")
         contents= soup.find('table', attrs={'border': '0' , 'cellspacing':'1', 'cellpadding':'4' , 'bgcolor':'#dcdcdc', 'width':'95%'})
         tabledata = contents.find_all("td")
 
         name_table = soup.find('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0' , 'width':'100%', 'style':'padding-top: 5px;'})
-        name = name_table.font.b.getText()
+        name = name_table.font.b.getText() # 0. Name
         
+        # 2. Distributor, 3. Release Date, 4. Genre, 5. Runtime, 6. Rating, 7. Budget, 8. TotalGross
         if len(tabledata) == 6:
             Distributor = tabledata[0].b.getText()
             ReleaseDate = tabledata[1].b.getText()

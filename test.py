@@ -1,7 +1,15 @@
 import re
 import os
 
-print os.getenv('username')
+yes=[]
+yes.insert(0, "aaa")
+yes.insert(1, "bbb")
+yes.insert(3, "cccc")
+
+for y in yes:
+    print(y)
+
+print(os.getenv('username'))
 sample_txt = "mstView('movie','20140561');return false;"
 
 def extractMovieNum(txt):
@@ -17,5 +25,5 @@ def extractMovieNum(txt):
         else:
             return None
 
-print extractMovieNum(sample_txt)
+print(extractMovieNum(sample_txt))
 #movieNum= re.sub(r'\D', "", sample_txt) # sub non-digits by regex
