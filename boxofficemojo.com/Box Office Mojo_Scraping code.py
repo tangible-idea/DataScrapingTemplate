@@ -3,6 +3,7 @@
 from urllib.request import urlopen
 import json
 import string
+import re
 from bs4 import BeautifulSoup  
 import logging  
 logging.basicConfig(level=logging.DEBUG)
@@ -14,11 +15,18 @@ def add_empty_data(arrData, count):
         arrData.append(" ")
     return arrData
 
-#def remove_special_chars(dictData):
- #   for data in arrData:
-        
+def remove_special_chars(dictData):
+    
+    for key in dictData:
+        new_key= re.sub(r'\W+', '', key)
+        dictData[new_key] = dictData.pop(key)
+    return dictData
 
 def save_to_json(filePath, dictData, countriesData=None):
+    
+    dictData = remove_special_chars(dictData)
+    countriesData = remove_special_chars(countriesData)
+    
     if countriesData:
         merged = dict(dictData)
         merged.update(countriesData)
@@ -27,14 +35,20 @@ def save_to_json(filePath, dictData, countriesData=None):
     with open(filePath, "a") as outfile:
         json.dump(dictData, outfile, ensure_ascii=False)
 
-def save_to_file(filePath, arrData, countriesData=None):
+def save_to_file(filePath, dictData, countriesData=None):
+    
+    dictData = remove_special_chars(dictData)
+    countriesData = remove_special_chars(countriesData)
+    
+    #dictData= sorted(dictData.items())
+
     text_file = open(filePath, "ab")
-    for data in arrData:
-        text_file.write((data + u"|").encode('utf-8'))
+    for key, value in sorted(dictData.items()):
+        text_file.write((value + u"|").encode('utf-8'))
 
     if countriesData:
-        for data in countriesData:
-            text_file.write((data + u"|").encode('utf-8'))
+        for key, value in sorted(countriesData.items()):
+            text_file.write((value + u"|").encode('utf-8'))
     text_file.write("\n".encode('utf-8'))
     text_file.close()
  
@@ -144,8 +158,8 @@ def get_movie_foreign(link, arrData):
                         for column, td in enumerate(tds):
                             # 11. Country, 12.Dist, 13. Release Date, 14.OW, 15.% of Total, 16.Total gross, 17. as of
                             eachCountry[ColumnHeaders[column]] = td.text.strip()
-                        #save_to_file(FILE_PATH, arrData, eachCountry)
-                        save_to_json(FILE_PATH, arrData, eachCountry)
+                        save_to_file(FILE_PATH, arrData, eachCountry)
+                        #save_to_json(FILE_PATH, arrData, eachCountry)
                         eachCountry.clear()
         return arrData
     except Exception as e:
