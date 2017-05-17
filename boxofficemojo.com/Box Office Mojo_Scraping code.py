@@ -90,7 +90,7 @@ def get_total_lifetime_grosses(link, arrData):
     #print(main_tbl)
     tables = soup.find_all('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0' , 'width':'100%'})
     
-    print( len(tables))
+    #print( len(tables))
     #td_count = 9
     if len(tables) == 4:
         #print(tables[3]) # Total lifetime grosses
@@ -169,7 +169,8 @@ def get_movie_foreign(link, arrData):
             if intl_table:
                 trs = intl_table.find_all("tr")
                 if len(trs) == 3:
-                    print ("no data")
+                    #print ("no data")
+                    temp= 0
                 else:
                     for row,tr in enumerate(trs):
                         if row == 0:
@@ -271,7 +272,7 @@ def get_all_movies():
     for letter in index:
         # Loop through the pages within each letter
         for num in range(1, 20):
-            print("begin to scrap letter : " + letter + ", page : " + num)
+            print("begin to scrap letter : " + letter + ", page : " + str(num))
 
             url = ("http://www.boxofficemojo.com/movies/alphabetical.htm?"
                    "letter=" + letter + "&page=" + str(num))
