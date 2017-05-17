@@ -35,20 +35,41 @@ def save_to_json(filePath, dictData, countriesData=None):
     with open(filePath, "a") as outfile:
         json.dump(dictData, outfile, ensure_ascii=False)
 
+
 def save_to_file(filePath, dictData, countriesData=None):
     
     dictData = remove_special_chars(dictData)
     countriesData = remove_special_chars(countriesData)
     
-    #dictData= sorted(dictData.items())
+    if countriesData:
+        merged = dict(dictData)
+        merged.update(countriesData)
+        dictData = merged
 
+    Arranged= []
+    add_empty_data(Arranged, 50)
+
+    Keys = ["Name", "URL", "Genre","Runtime", "Rating", "MovieRanking"
+    , "PercentageofTotalGross", "WidestRelease", "CloseDate", "InRelease", "TotalGross"
+    , "Distributor", "ReleaseDate", "Budget", "Domestic_Gross", "Domestic_Percentage"
+    , "Foreign_Gross", "Foreign_Percentage", "Worldwide_Gross", "OpeningWeekend"
+    , "Countryclicktoviewweekendbreakdown", "Dist", "ReleaseDate", "ReleaseDate"
+    , "OpeningWknd", "% ofTotal", "Total Gross ", " As Of"]
+
+    # Write a header
+    for header in Keys:
+        text_file.write((header + u"|").encode('utf-8'))
+    text_file.write("\n".encode('utf-8'))
+        
     text_file = open(filePath, "ab")
     for key, value in sorted(dictData.items()):
-        text_file.write((value + u"|").encode('utf-8'))
+        for i ,k in enumerate(Keys):
+            if key == k:
+                Arranged.insert(i, value)
+        
+    for data in Arranged:
+        text_file.write((data + u"|").encode('utf-8'))
 
-    if countriesData:
-        for key, value in sorted(countriesData.items()):
-            text_file.write((value + u"|").encode('utf-8'))
     text_file.write("\n".encode('utf-8'))
     text_file.close()
  
@@ -181,6 +202,8 @@ def get_movie_detail(movies_list, link, arrData):
         name = name_table.font.b.getText() # 0. Name
         
         # 2. Distributor, 3. Release Date, 4. Genre, 5. Runtime, 6. Rating, 7. Budget, 8. TotalGross
+        arrData['Name'] = name
+        arrData['URL'] = url
         if len(tabledata) == 6:
             Distributor = tabledata[0].b.getText()
             ReleaseDate = tabledata[1].b.getText()

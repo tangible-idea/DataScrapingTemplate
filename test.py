@@ -2,12 +2,14 @@ import re
 import os
 
 yes=[]
+yes.reverse()
+yes.extend(["","","","","","","","","","","",""])
 yes.insert(0, "aaa")
 yes.insert(1, "bbb")
-yes.insert(3, "cccc")
+yes.insert(10, "cccc")
 
 for y in yes:
-    print(y)
+    print(y + "|")
 
 print(os.getenv('username'))
 sample_txt = "mstView('movie','20140561');return false;"
