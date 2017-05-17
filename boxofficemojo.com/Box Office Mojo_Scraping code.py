@@ -10,6 +10,13 @@ logging.basicConfig(level=logging.DEBUG)
 
 FILE_PATH = "./boxofficemojo.com/movie_data.txt"
 
+Keys = ["Name", "URL", "Genre","Runtime", "Rating", "MovieRanking"
+    , "PercentageofTotalGross", "WidestRelease", "CloseDate", "InRelease", "TotalGross"
+    , "Distributor", "ReleaseDate", "Budget", "Domestic_Gross", "Domestic_Percentage"
+    , "Foreign_Gross", "Foreign_Percentage", "Worldwide_Gross", "OpeningWeekend"
+    , "Countryclicktoviewweekendbreakdown", "Dist", "ReleaseDate", "ReleaseDate"
+    , "OpeningWknd", "% ofTotal", "Total Gross ", " As Of"]
+
 def add_empty_data(arrData, count):
     for i in range(0,count):
         arrData.append(" ")
@@ -35,6 +42,14 @@ def save_to_json(filePath, dictData, countriesData=None):
     with open(filePath, "a") as outfile:
         json.dump(dictData, outfile, ensure_ascii=False)
 
+def write_header(filePath):
+    # Write a header
+    text_file = open(filePath, "ab")
+
+    for header in Keys:
+        text_file.write((header + u"|").encode('utf-8'))
+    text_file.write("\n".encode('utf-8'))
+    text_file.close()
 
 def save_to_file(filePath, dictData, countriesData=None):
     
@@ -49,18 +64,6 @@ def save_to_file(filePath, dictData, countriesData=None):
     Arranged= []
     add_empty_data(Arranged, 50)
 
-    Keys = ["Name", "URL", "Genre","Runtime", "Rating", "MovieRanking"
-    , "PercentageofTotalGross", "WidestRelease", "CloseDate", "InRelease", "TotalGross"
-    , "Distributor", "ReleaseDate", "Budget", "Domestic_Gross", "Domestic_Percentage"
-    , "Foreign_Gross", "Foreign_Percentage", "Worldwide_Gross", "OpeningWeekend"
-    , "Countryclicktoviewweekendbreakdown", "Dist", "ReleaseDate", "ReleaseDate"
-    , "OpeningWknd", "% ofTotal", "Total Gross ", " As Of"]
-
-    # Write a header
-    for header in Keys:
-        text_file.write((header + u"|").encode('utf-8'))
-    text_file.write("\n".encode('utf-8'))
-        
     text_file = open(filePath, "ab")
     for key, value in sorted(dictData.items()):
         for i ,k in enumerate(Keys):
@@ -257,6 +260,8 @@ def get_all_movies():
 
     # data
     arrData = {'arrData' : 0}
+
+    write_header(FILE_PATH)
 
     # Loop through the pages for each letter
     for letter in index:
