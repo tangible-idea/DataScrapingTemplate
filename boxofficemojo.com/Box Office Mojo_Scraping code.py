@@ -1,6 +1,7 @@
 # written by python 3.6.1
 #-*- coding: utf-8 -*-
 from urllib.request import urlopen
+import json
 import string
 from bs4 import BeautifulSoup  
 import logging  
@@ -12,6 +13,19 @@ def add_empty_data(arrData, count):
     for i in range(0,count):
         arrData.append(" ")
     return arrData
+
+#def remove_special_chars(dictData):
+ #   for data in arrData:
+        
+
+def save_to_json(filePath, dictData, countriesData=None):
+    if countriesData:
+        merged = dict(dictData)
+        merged.update(countriesData)
+        dictData = merged
+
+    with open(filePath, "a") as outfile:
+        json.dump(dictData, outfile, ensure_ascii=False)
 
 def save_to_file(filePath, arrData, countriesData=None):
     text_file = open(filePath, "ab")
@@ -98,7 +112,8 @@ def get_total_lifetime_grosses(link, arrData):
 def get_movie_foreign(link, arrData):
 
     try:
-        eachCountry = []
+        eachCountry = {}
+        ColumnHeaders= []
         url = "http://www.boxofficemojo.com"+ link + "&page=intl"
         page = urlopen(url)
         soup = BeautifulSoup(page, "lxml")
@@ -112,14 +127,25 @@ def get_movie_foreign(link, arrData):
                 if len(trs) == 3:
                     print ("no data")
                 else:
-                    for idx,tr in enumerate(trs):
-                        if(idx < 3): # don't save unncessary data
+                    for row,tr in enumerate(trs):
+                        if row == 0:
+                            tds= tr.find_all("td") # get each header's text
+                            for td in tds:
+                                header= td.text.strip()
+                                if "/" in header:
+                                    divided_header = header.split('/')
+                                    ColumnHeaders.append(divided_header[0])
+                                    ColumnHeaders.append(divided_header[1])
+                                else:
+                                    ColumnHeaders.append(td.text.strip()) 
+                        if(row < 3): # don't save unncessary data
                             continue
                         tds= tr.find_all("td")
-                        for td in tds:
+                        for column, td in enumerate(tds):
                             # 11. Country, 12.Dist, 13. Release Date, 14.OW, 15.% of Total, 16.Total gross, 17. as of
-                            eachCountry.append(td.text.strip())
-                        save_to_file(FILE_PATH, arrData, eachCountry)
+                            eachCountry[ColumnHeaders[column]] = td.text.strip()
+                        #save_to_file(FILE_PATH, arrData, eachCountry)
+                        save_to_json(FILE_PATH, arrData, eachCountry)
                         eachCountry.clear()
         return arrData
     except Exception as e:
