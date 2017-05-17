@@ -65,10 +65,10 @@ def save_to_file(filePath, dictData, countriesData=None):
     add_empty_data(Arranged, 50)
 
     text_file = open(filePath, "ab")
-    for key, value in sorted(dictData.items()):
+    for key, value in dictData.items():
         for i ,k in enumerate(Keys):
             if key == k:
-                Arranged.insert(i, value)
+                Arranged[i]= value
         
     for data in Arranged:
         text_file.write((data + u"|").encode('utf-8'))
