@@ -37,7 +37,7 @@ def get_total_lifetime_grosses(link, arrData):
     tables = soup.find_all('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0' , 'width':'100%'})
     
     print( len(tables))
-    td_count = 9
+    #td_count = 9
     if len(tables) == 4:
         #print(tables[3]) # Total lifetime grosses
         mp_boxes= tables[3].find_all("div", {"class", "mp_box_tab"})
@@ -45,36 +45,35 @@ def get_total_lifetime_grosses(link, arrData):
         for box in mp_boxes:
             if(box.text == "Total Lifetime Grosses"):
                 div_content= box.findNext('div')
-                trs= div_content.find_all('tr')
+                trs = div_content.find_all('tr')
                 for tr in trs:
-                    tds= tr.find_all('td')
+                    tds = tr.find_all('td')
                     if len(tds) == 3:
-                        arrData.insert(td_count, tds[1].text.strip()) # 9. 
-                        arrData.insert(td_count+1, tds[2].text.strip()) # 10.
-                        td_count += 2
+                        arrData[tds[0].text.strip()] = [tds[1].text.strip(), tds[2].text.strip()]
             if(box.text == "Domestic Summary"):
-                div_content= box.findNext('div')
-                DS_tables= div_content.find_all('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0'})
+                div_content = box.findNext('div')
+                DS_tables = div_content.find_all('table', attrs = { 'border': '0' , 'cellspacing':'0', 'cellpadding':'0'})
                 for DS_table in DS_tables:
-                    DS_trs= DS_table.find_all('tr')
+                    DS_trs = DS_table.find_all('tr')
                     for DS_tr in DS_trs:
                         DS_tr_title = DS_tr.td.text.strip()
                         if DS_tr_title == "Opening\xa0Weekend:":
-                            DS_tr_content= DS_tr.findNext('td')
+                            DS_tr_content = DS_tr.findNext('td')
                             if DS_tr_content:
-                                arrData.insert(td_count+2, DS_tr_content.text.strip()) # 11.
+                                arrData[DS_tr_title] = DS_tr_content.text.strip()
+                                #arrData.insert(td_count+2, DS_tr_content.text.strip()) # 11.
                         elif "(#" in DS_tr_title:
-                            arrData.insert(td_count+3, DS_tr_title) # 12.
+                            arrData['movie_rank'] = DS_tr_title
                         elif "%\xa0of\xa0Total\xa0Gross" in DS_tr_title:
-                            arrData.insert(td_count+4, DS_tr_title) # 13.
+                            arrData['percentage_of_gross'] = DS_tr_title
                         elif DS_tr_title == "Wildest\xa0Release:":
-                            DS_tr_content= DS_tr.findNext('td')
+                            DS_tr_content = DS_tr.findNext('td')
                             if DS_tr_content:
-                                arrData.insert(td_count+5, DS_tr_content.text.strip()) # 14.
+                                arrData['wildest_release'] = DS_tr_content.text.strip() # 14.
                         elif DS_tr_title == "In\xa0Release:":
-                            DS_tr_content= DS_tr.findNext('td')
+                            DS_tr_content = DS_tr.findNext('td')
                             if DS_tr_content:
-                                arrData.insert(td_count+6, DS_tr_content.text.strip()) # 15.
+                                arrData['in_release'] = DS_tr_content.text.strip() # 15.
                             
                         
             if(box.text == "The Players"):
@@ -105,11 +104,9 @@ def get_movie_foreign(link, arrData):
                         if(idx < 3): # don't save unncessary data
                             continue
                         tds= tr.find_all("td")
-                        td_count = 16
                         for td in tds:
                             # 11. Country, 12.Dist, 13. Release Date, 14.OW, 15.% of Total, 16.Total gross, 17. as of
-                            eachCountry.insert(td_count, td.text.strip())
-                            td_count += 1
+                            eachCountry.append(td.text.strip())
                         save_to_file(FILE_PATH, arrData, eachCountry)
                         eachCountry.clear()
         return arrData
@@ -139,8 +136,16 @@ def get_movie_detail(movies_list, link, arrData):
             Runtime = tabledata[3].b.getText()
             Rating = tabledata[4].b.getText()
             Budget = tabledata[5].b.getText()
-            arrData.extend([name , url , Distributor, ReleaseDate,Genre ,Runtime , Rating,Budget])
-            add_empty_data(arrData, 1) # match gap for missing column
+
+            arrData['Distributor'] = Distributor
+            arrData['ReleaseDate'] = ReleaseDate
+            arrData['Genre'] = Genre
+            arrData['Runtime'] = Runtime
+            arrData['Rating'] = Rating
+            arrData['Budget'] = Budget
+            
+            #arrData.extend([name , url , Distributor, ReleaseDate,Genre ,Runtime , Rating,Budget])
+            #add_empty_data(arrData, 1) # match gap for missing column
         elif len(tabledata) == 7:
             TotalGross = tabledata[0].b.getText()
             Distributor = tabledata[1].b.getText()
@@ -149,7 +154,15 @@ def get_movie_detail(movies_list, link, arrData):
             Runtime = tabledata[4].b.getText()
             Rating = tabledata[5].b.getText()
             Budget = tabledata[6].b.getText()
-            arrData.extend([ name , url , Distributor, ReleaseDate,Genre ,Runtime , Rating,Budget ,TotalGross])
+
+            arrData['TotalGross'] = TotalGross
+            arrData['Distributor'] = Distributor
+            arrData['ReleaseDate'] = ReleaseDate
+            arrData['Genre'] = Genre
+            arrData['Runtime'] = Runtime
+            arrData['Rating'] = Rating
+            arrData['Budget'] = Budget
+            #arrData.extend([ name , url , Distributor, ReleaseDate,Genre ,Runtime , Rating,Budget ,TotalGross])
 
             #print (result)
             
@@ -168,7 +181,7 @@ def get_all_movies():
     movies_list = []
 
     # data
-    arrData = []
+    arrData = {'arrData' : 0}
 
     # Loop through the pages for each letter
     for letter in index:
@@ -194,7 +207,7 @@ def get_all_movies():
                             arrData = get_movie_detail(movies_list, link, arrData) 
                             arrData = get_total_lifetime_grosses(link, arrData)
                             arrData = get_movie_foreign(link, arrData)
-                            save_to_file(FILE_PATH, arrData)
+                            #save_to_file(FILE_PATH, arrData)
                             arrData.clear()
                         counter += 1
             except Exception as e:
