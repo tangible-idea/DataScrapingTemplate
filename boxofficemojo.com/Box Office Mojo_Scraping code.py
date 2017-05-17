@@ -82,9 +82,8 @@ def get_total_lifetime_grosses(link, arrData):
     page = urlopen(url)
     soup = BeautifulSoup(page, "lxml")
 
-    #div_body= soup.find("div", {"id", "body"})
-    #main_tbl= div_body.table.findNext('table').tbody.tr.td.table
-
+    # Assume that domestic info is from USA
+    arrData['Countryclicktoviewweekendbreakdown']= "USA"
     #print(main_tbl)
     tables = soup.find_all('table', attrs={'border': '0' , 'cellspacing':'0', 'cellpadding':'0' , 'width':'100%'})
     
@@ -284,10 +283,10 @@ def get_all_movies():
                         # skip index row
                         if counter > 1:
                             link = row.td.font.a['href']
-                            arrData = get_movie_detail(movies_list, link, arrData) 
-                            arrData = get_total_lifetime_grosses(link, arrData)
+                            arrData = get_movie_detail(movies_list, link, arrData)
                             arrData = get_movie_foreign(link, arrData)
-                            #save_to_file(FILE_PATH, arrData)
+                            arrData = get_total_lifetime_grosses(link, arrData)
+                            save_to_file(FILE_PATH, arrData)
                             arrData.clear()
                         counter += 1
             except Exception as e:
