@@ -254,9 +254,7 @@ def get_movie_detail(movies_list, link, arrData):
         #print contents2[0]
     return arrData
         
-def get_all_movies():  
-    """ returns all the movie urls from boxofficemojo.com in a list"""
-
+def get_all_movies():
     # Alphabet loop for how movies are indexed including
     # movies that start with a special character or number
     index = ["NUM"] + list(string.ascii_uppercase)
@@ -268,12 +266,13 @@ def get_all_movies():
     arrData = {}
 
     write_header(FILE_PATH)
-
+    print("running...")
     # Loop through the pages for each letter
     for letter in index:
-
         # Loop through the pages within each letter
         for num in range(1, 20):
+            print("begin to scrap letter : " + letter + ", page : " + num)
+
             url = ("http://www.boxofficemojo.com/movies/alphabetical.htm?"
                    "letter=" + letter + "&page=" + str(num))
             try:
@@ -298,8 +297,8 @@ def get_all_movies():
                         counter += 1
             except Exception as e:
                 logging.exception(e)
+    print('done.')
 
-    return movies_list
 
 
 
