@@ -12,10 +12,10 @@ FILE_PATH = "./boxofficemojo.com/movie_data.txt"
 
 Keys = ["Name", "URL", "Genre","Runtime", "Rating", "MovieRanking"
     , "PercentageofTotalGross", "WidestRelease", "CloseDate", "InRelease", "TotalGross"
-    , "Distributor", "ReleaseDate", "Budget", "Domestic_Gross", "Domestic_Percentage"
+    , "Distributor", "Budget", "Domestic_Gross", "Domestic_Percentage"
     , "Foreign_Gross", "Foreign_Percentage", "Worldwide_Gross", "OpeningWeekend"
-    , "Countryclicktoviewweekendbreakdown", "Dist", "ReleaseDate", "ReleaseDate"
-    , "OpeningWknd", "% ofTotal", "Total Gross ", " As Of"]
+    , "Countryclicktoviewweekendbreakdown", "Dist", "ReleaseDate"
+    , "OpeningWknd", "ofTotal", "TotalGross", "AsOf"]
 
 def add_empty_data(arrData, count):
     for i in range(0,count):
@@ -24,10 +24,11 @@ def add_empty_data(arrData, count):
 
 def remove_special_chars(dictData):
     
+    newDict= {}
     for key in dictData:
         new_key= re.sub(r'\W+', '', key)
-        dictData[new_key] = dictData.pop(key)
-    return dictData
+        newDict[new_key] = dictData[key]
+    return newDict
 
 def save_to_json(filePath, dictData, countriesData=None):
     
@@ -54,7 +55,9 @@ def write_header(filePath):
 def save_to_file(filePath, dictData, countriesData=None):
     
     dictData = remove_special_chars(dictData)
-    countriesData = remove_special_chars(countriesData)
+
+    if countriesData:
+        countriesData = remove_special_chars(countriesData)
     
     if countriesData:
         merged = dict(dictData)
@@ -100,6 +103,9 @@ def get_total_lifetime_grosses(link, arrData):
                 for tr in trs:
                     tds = tr.find_all('td')
                     if len(tds) == 3:
+                        if tds[0].text.strip() == "Domestic:":
+                            arrData["Total Gross"] = tds[1].text.strip()
+                            arrData["% ofTotal"] = tds[2].text.strip()
                         arrData[tds[0].text.strip()+"_Gross"] = tds[1].text.strip()
                         arrData[tds[0].text.strip()+"_Percentage"] = tds[2].text.strip()
                         
@@ -114,6 +120,7 @@ def get_total_lifetime_grosses(link, arrData):
                             DS_tr_content = DS_tr.td.findNext('td')
                             if DS_tr_content:
                                 arrData["Opening Weekend"] = DS_tr_content.text.strip()
+                                arrData["OpeningWknd"] = DS_tr_content.text.strip()
                                 
                         elif "(#" in DS_tr_title:
                             arrData['Movie Ranking'] = DS_tr_title
@@ -257,8 +264,8 @@ def get_all_movies():
     # List of movie urls
     movies_list = []
 
-    # data
-    arrData = {'arrData' : 0}
+    # dict data
+    arrData = {}
 
     write_header(FILE_PATH)
 
