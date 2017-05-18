@@ -119,7 +119,7 @@ def get_total_lifetime_grosses(link, arrData):
                     DS_trs = DS_table.find_all('tr')
                     for DS_tr in DS_trs:
                         DS_tr_title = DS_tr.td.text.strip()
-                        if(DS_tr_title == "Opening\xa0Weekend:".encode('utf-8')) or (DS_tr_title == "Opening Weekend:"):
+                        if(DS_tr_title == "Opening\xa0Weekend:") or (DS_tr_title == "Opening Weekend:"):
                             DS_tr_content = DS_tr.td.findNext('td')
                             if DS_tr_content:
                                 arrData["Opening Weekend"] = DS_tr_content.text.strip()
@@ -128,22 +128,22 @@ def get_total_lifetime_grosses(link, arrData):
                         elif "(#" in DS_tr_title:
                             arrData['Movie Ranking'] = DS_tr_title
 
-                        elif "%\xa0of\xa0Total\xa0Gross".encode('utf-8') in DS_tr_title or "% of Total Gross" in DS_tr_title:
+                        elif "%\xa0of\xa0Total\xa0Gross" in DS_tr_title or "% of Total Gross" in DS_tr_title:
                             DS_tr_content = DS_tr.td.findNext('td')
                             if DS_tr_content:
                                 arrData['Percentage of Total Gross'] = DS_tr_content.text.strip()
 
-                        elif DS_tr_title == "Widest\xa0Release:".encode('utf-8') or DS_tr_title == "Widest Release:":
+                        elif DS_tr_title == "Widest\xa0Release:" or DS_tr_title == "Widest Release:":
                             DS_tr_content = DS_tr.td.findNext('td')
                             if DS_tr_content:
                                 arrData['Widest Release'] = DS_tr_content.text.strip() # 14.
 
-                        elif DS_tr_title == "Close\xa0Date:".encode('utf-8') or DS_tr_title == "Close Date:":
+                        elif DS_tr_title == "Close\xa0Date:" or DS_tr_title == "Close Date:":
                             DS_tr_content = DS_tr.td.findNext('td')
                             if DS_tr_content:
                                 arrData['Close Date'] = DS_tr_content.text.strip() # 15.
 
-                        elif DS_tr_title == "In\xa0Release:".encode('utf-8') or DS_tr_title == "In Release:":
+                        elif DS_tr_title == "In\xa0Release:" or DS_tr_title == "In Release:":
                             DS_tr_content = DS_tr.td.findNext('td')
                             if DS_tr_content:
                                 arrData['In Release'] = DS_tr_content.text.strip() # 15.
