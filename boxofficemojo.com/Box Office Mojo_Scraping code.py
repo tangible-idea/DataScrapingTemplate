@@ -5,10 +5,12 @@ import json
 import string
 import re
 from bs4 import BeautifulSoup  
-import logging  
-logging.basicConfig(level=logging.DEBUG)
+import logging
 
 FILE_PATH = "./boxofficemojo.com/movie_data.txt"
+LOG_PATH = "./boxofficemojo.com/scraping.log"
+
+logging.basicConfig(filename=LOG_PATH,level=logging.DEBUG)
 
 Keys = ["Name", "URL", "Genre","Runtime", "Rating", "MovieRanking"
     , "PercentageofTotalGross", "WidestRelease", "CloseDate", "InRelease", "TotalGross"
