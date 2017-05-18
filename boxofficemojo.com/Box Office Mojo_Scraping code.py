@@ -273,7 +273,7 @@ def get_all_movies():
     lapTime= 0.0
 
     write_header(FILE_PATH)
-    logging.debug("running...")
+    logging.debug("running...start at : " + str(time.time()))
     # Loop through the pages for each letter
     for letter in index:
 
@@ -305,6 +305,7 @@ def get_all_movies():
                     counter = 1
                     for row in rows:
 
+                        trackingStartTime= time.time()
                         # skip index row
                         if counter > 1:
                             link = row.td.font.a['href']
@@ -313,13 +314,14 @@ def get_all_movies():
                             arrData = get_total_lifetime_grosses(link, arrData)
                             save_to_file(FILE_PATH, arrData)
                             arrData.clear()
-                            lapTime= (time.time() - lapTime)
+
+                            lapTime= time.time() - trackingStartTime
                             logging.debug("each movie's lapTime : " + str(lapTime))
                         counter += 1
             except Exception as e:
                 logging.exception(e)
 
-    TotalElaspedTime= (time.time() - start_time)
+    TotalElaspedTime= (time.time() - startTime)
     logging.debug('done.' + str(TotalElaspedTime))
     
     
