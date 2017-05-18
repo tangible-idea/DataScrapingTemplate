@@ -272,8 +272,20 @@ def get_all_movies():
     print("running...")
     # Loop through the pages for each letter
     for letter in index:
+
+        url = ("http://www.boxofficemojo.com/movies/alphabetical.htm?letter=" + letter)
+        page1 = urlopen(url)
+        soup1 = BeautifulSoup(page1, "lxml")
+        navi = soup1.find('div', attrs={"class" : "alpha-nav-holder"})
+        bs= navi.font.find_all('b')
+        count_bs= len(bs)
+        print("pages count : " + str(count_bs))
+
+        if letter == "NUM":
+            count_bs = 1
+
         # Loop through the pages within each letter
-        for num in range(1, 20):
+        for num in range(1, count_bs+1):
             print("begin to scrap letter : " + letter + ", page : " + str(num))
 
             url = ("http://www.boxofficemojo.com/movies/alphabetical.htm?"

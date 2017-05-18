@@ -1,6 +1,9 @@
 import re
 import os
 
+for num in range(1, 10):
+    print(num)
+
 yes=[]
 yes.reverse()
 yes.extend(["","","","","","","","","","","",""])
