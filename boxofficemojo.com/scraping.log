@@ -1,0 +1,93 @@
+DEBUG:root:running...
+DEBUG:root:pages count : 1
+DEBUG:root:begin to scrap letter : NUM, page : 1
+DEBUG:root:each movie's lapTime : 1495100670.3497589
+DEBUG:root:each movie's lapTime : 2.3426241874694824
+DEBUG:root:each movie's lapTime : 1495100672.577386
+ERROR:root:IncompleteRead(31954 bytes read)
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py", line 546, in _get_chunk_left
+    chunk_left = self._read_next_chunk_size()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py", line 513, in _read_next_chunk_size
+    return int(line, 16)
+ValueError: invalid literal for int() with base 16: b''
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py", line 563, in _readall_chunked
+    chunk_left = self._get_chunk_left()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py", line 548, in _get_chunk_left
+    raise IncompleteRead(b'')
+http.client.IncompleteRead: IncompleteRead(0 bytes read)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/admin/Movie_DataMiner/boxofficemojo.com/Box Office Mojo_Scraping code.py", line 166, in get_movie_foreign
+    soup = BeautifulSoup(page, "lxml")
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/bs4/__init__.py", line 191, in __init__
+    markup = markup.read()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py", line 456, in read
+    return self._readall_chunked()
+  File "/Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/http/client.py", line 570, in _readall_chunked
+    raise IncompleteRead(b''.join(value))
+http.client.IncompleteRead: IncompleteRead(31954 bytes read)
+DEBUG:root:each movie's lapTime : 7.497225046157837
+DEBUG:root:each movie's lapTime : 1495100674.5888178
+DEBUG:root:each movie's lapTime : 9.589047193527222
+DEBUG:root:each movie's lapTime : 1495100676.2418947
+DEBUG:root:each movie's lapTime : 11.669852256774902
+DEBUG:root:each movie's lapTime : 1495100680.9954257
+DEBUG:root:each movie's lapTime : 13.938700437545776
+DEBUG:root:each movie's lapTime : 1495100683.0756507
+DEBUG:root:each movie's lapTime : 16.632110118865967
+DEBUG:root:each movie's lapTime : 1495100685.1877058
+DEBUG:root:each movie's lapTime : 18.99050807952881
+DEBUG:root:each movie's lapTime : 1495100687.4461598
+DEBUG:root:each movie's lapTime : 20.8163902759552
+DEBUG:root:each movie's lapTime : 1495100691.0989578
+DEBUG:root:each movie's lapTime : 22.93814706802368
+DEBUG:root:each movie's lapTime : 1495100694.4892528
+DEBUG:root:each movie's lapTime : 26.416566133499146
+DEBUG:root:each movie's lapTime : 1495100697.543521
+DEBUG:root:each movie's lapTime : 28.4395751953125
+DEBUG:root:each movie's lapTime : 1495100699.78827
+DEBUG:root:each movie's lapTime : 31.963490962982178
+DEBUG:root:each movie's lapTime : 1495100702.758852
+DEBUG:root:each movie's lapTime : 35.7576379776001
+DEBUG:root:each movie's lapTime : 1495100706.321855
+DEBUG:root:each movie's lapTime : 37.32360076904297
+DEBUG:root:each movie's lapTime : 1495100708.5038333
+DEBUG:root:each movie's lapTime : 40.383625745773315
+DEBUG:root:each movie's lapTime : 1495100711.0698392
+DEBUG:root:each movie's lapTime : 43.67135787010193
+DEBUG:root:each movie's lapTime : 1495100714.473576
+DEBUG:root:each movie's lapTime : 45.78551006317139
+DEBUG:root:each movie's lapTime : 1495100716.6704428
+DEBUG:root:each movie's lapTime : 54.64781928062439
+DEBUG:root:each movie's lapTime : 1495100718.9570289
+DEBUG:root:each movie's lapTime : 57.06818509101868
+DEBUG:root:each movie's lapTime : 1495100721.07201
+DEBUG:root:each movie's lapTime : 61.27197790145874
+DEBUG:root:each movie's lapTime : 1495100723.158443
+DEBUG:root:each movie's lapTime : 63.77856206893921
+DEBUG:root:each movie's lapTime : 1495100725.717429
+DEBUG:root:each movie's lapTime : 65.34898805618286
+DEBUG:root:each movie's lapTime : 1495100728.3468049
+DEBUG:root:each movie's lapTime : 67.72555112838745
+DEBUG:root:each movie's lapTime : 1495100731.670343
+DEBUG:root:each movie's lapTime : 71.44089102745056
+DEBUG:root:each movie's lapTime : 1495100734.173271
+DEBUG:root:each movie's lapTime : 75.85930824279785
+DEBUG:root:each movie's lapTime : 1495100736.4017327
+DEBUG:root:each movie's lapTime : 77.95753026008606
+DEBUG:root:each movie's lapTime : 1495100738.6567607
+DEBUG:root:each movie's lapTime : 80.2742133140564
+DEBUG:root:each movie's lapTime : 1495100744.3904066
+DEBUG:root:each movie's lapTime : 82.5542254447937
+DEBUG:root:each movie's lapTime : 1495100746.4926476
+DEBUG:root:each movie's lapTime : 84.95187950134277
+DEBUG:root:each movie's lapTime : 1495100751.0585015
+DEBUG:root:each movie's lapTime : 89.27422761917114
+DEBUG:root:each movie's lapTime : 1495100753.1518183

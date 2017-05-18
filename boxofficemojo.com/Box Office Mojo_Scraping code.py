@@ -318,8 +318,11 @@ def get_all_movies():
                         counter += 1
             except Exception as e:
                 logging.exception(e)
-    logging.debug('done.')
 
+    TotalElaspedTime= (time.time() - start_time)
+    logging.debug('done.' + str(TotalElaspedTime))
+    
+    
 
 
 get_all_movies()
