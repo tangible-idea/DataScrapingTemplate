@@ -6,6 +6,7 @@ import string
 import re
 from bs4 import BeautifulSoup  
 import logging
+import time
 
 FILE_PATH = "./boxofficemojo.com/movie_data.txt"
 LOG_PATH = "./boxofficemojo.com/scraping.log"
@@ -268,8 +269,11 @@ def get_all_movies():
     # dict data
     arrData = {}
 
+    startTime = time.time()
+    lapTime= 0.0
+
     write_header(FILE_PATH)
-    print("running...")
+    logging.debug("running...")
     # Loop through the pages for each letter
     for letter in index:
 
@@ -279,14 +283,14 @@ def get_all_movies():
         navi = soup1.find('div', attrs={"class" : "alpha-nav-holder"})
         bs= navi.font.find_all('b')
         count_bs= len(bs)
-        print("pages count : " + str(count_bs))
+        logging.debug("pages count : " + str(count_bs))
 
         if letter == "NUM":
             count_bs = 1
 
         # Loop through the pages within each letter
         for num in range(1, count_bs+1):
-            print("begin to scrap letter : " + letter + ", page : " + str(num))
+            logging.debug("begin to scrap letter : " + letter + ", page : " + str(num))
 
             url = ("http://www.boxofficemojo.com/movies/alphabetical.htm?"
                    "letter=" + letter + "&page=" + str(num))
@@ -309,11 +313,12 @@ def get_all_movies():
                             arrData = get_total_lifetime_grosses(link, arrData)
                             save_to_file(FILE_PATH, arrData)
                             arrData.clear()
+                            lapTime= (time.time() - lapTime)
+                            logging.debug("each movie's lapTime : " + str(lapTime))
                         counter += 1
             except Exception as e:
                 logging.exception(e)
-    print('done.')
-
+    logging.debug('done.')
 
 
 
