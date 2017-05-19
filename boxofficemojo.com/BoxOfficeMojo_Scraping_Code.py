@@ -307,7 +307,7 @@ def get_all_movies():
             logging.debug("begin to scrap letter : " + letter + ", page : " + str(num))
 
             if JumpToPage:
-                if num < JumpToPage and IsJumpTarget == True:
+                if num < JumpToPage and IsJumpTarget == True: # do not jump this page, if it's not target letter
                     logging.debug("skip this page")
                     continue
 
