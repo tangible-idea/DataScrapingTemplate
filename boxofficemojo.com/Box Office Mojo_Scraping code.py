@@ -273,13 +273,18 @@ def get_all_movies():
     lapTime= 0.0
 
     # if you want to jump directly to somewhere (Set None to be not skipped)
-    JumpTo= None
+    JumpTo= 'S'
     JumpToPage= 0
 
     write_header(FILE_PATH)
     logging.debug("running...start at : " + str(time.time()))
     # Loop through the pages for each letter
-    for letter in index:
+    for letter_idx, letter in enumerate(index):
+
+        if JumpTo:
+            indexOfTargetLetter = index.index(JumpTo)
+            if letter_idx < indexOfTargetLetter:
+                continue
 
         url = ("http://www.boxofficemojo.com/movies/alphabetical.htm?letter=" + letter)
         page1 = urlopen(url)
