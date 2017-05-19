@@ -272,6 +272,10 @@ def get_all_movies():
     startTime = time.time()
     lapTime= 0.0
 
+    # if you want to jump directly to somewhere (Set None to be not skipped)
+    JumpTo= None
+    JumpToPage= 0
+
     write_header(FILE_PATH)
     logging.debug("running...start at : " + str(time.time()))
     # Loop through the pages for each letter
