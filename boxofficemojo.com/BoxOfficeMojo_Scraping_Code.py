@@ -273,8 +273,9 @@ def get_all_movies():
     lapTime= 0.0
 
     # if you want to jump directly to somewhere (Set None to be not skipped)
-    JumpTo= 'S'
-    JumpToPage= 8
+    JumpTo = 'S'
+    IsJumpTarget = False
+    JumpToPage = 8
 
     write_header(FILE_PATH)
     logging.debug("running...start at : " + str(time.time()))
@@ -285,7 +286,10 @@ def get_all_movies():
             indexOfTargetLetter = index.index(JumpTo)
             if letter_idx < indexOfTargetLetter:
                 logging.debug("skip this letter")
+                IsJumpTarget= False
                 continue
+            elif letter_idx == indexOfTargetLetter:
+                IsJumpTarget= True
 
         url = ("http://www.boxofficemojo.com/movies/alphabetical.htm?letter=" + letter)
         page1 = urlopen(url)
@@ -303,7 +307,7 @@ def get_all_movies():
             logging.debug("begin to scrap letter : " + letter + ", page : " + str(num))
 
             if JumpToPage:
-                if num < JumpToPage:
+                if num < JumpToPage and IsJumpTarget == True:
                     logging.debug("skip this page")
                     continue
 
