@@ -462,6 +462,10 @@ namespace IMDBUtils
                     arrRes.Add(g.AsString());
                 }
             }
+            else if (nSelDelim == (int)EDelimiters.SingleSpace)
+            {
+                arrRes = strContent.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            }
             else if (nSelDelim == (int)EDelimiters.DoubleSpace)
             {
                 arrRes = strContent.Split(new[] { "  " }, StringSplitOptions.RemoveEmptyEntries).ToList();
@@ -470,6 +474,15 @@ namespace IMDBUtils
             {
                 string strPattern = @"(,|(|))";
                 arrRes = Regex.Split(strContent, strPattern).ToList();
+            }
+            else if (nSelDelim == (int)EDelimiters.RoundBracket)
+            {
+                string strPattern = @"(|)";
+                arrRes = Regex.Split(strContent, strPattern).ToList();
+            }
+            else if (nSelDelim == (int)EDelimiters.Colon)
+            {
+                arrRes = strContent.Split(new[] { ":" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
             return arrRes;
         }
