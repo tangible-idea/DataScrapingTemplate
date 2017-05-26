@@ -186,18 +186,34 @@ namespace IMDBUtils
         private void ParseStringArray(ref List<string[]> arrStrings, FilePath currPath)
         {
             string line = string.Empty;
+            bool bAutomacTruncate = false;
 
             this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate ()
             {
                 prgExport.Maximum = lstFiles.Items.Count;
+                bAutomacTruncate = (bool)chkAutoTruncate.IsChecked;
             }));
             
+
             // Read the file line by line.
             EStatus = EMode.ReadDataFile;
             System.IO.StreamReader file = new System.IO.StreamReader(currPath.Title);
             while ((line = file.ReadLine()) != null)
             {
-                arrStrings.Add(line.Split('|'));
+                var arrSplited = line.Split('|');
+                if (bAutomacTruncate == true)
+                {
+                    for(int i=0; i<arrSplited.ToList().Count; ++i)
+                    {
+                        if (arrSplited[i].Length > 32767)
+                        {
+                            Console.WriteLine("Make this cell truncated to : " + arrSplited[i].Length);
+                            String truncated = Utils.Utils.TruncateWithOutDot(arrSplited[i], 32767);
+                            arrSplited[i] = (truncated);
+                        }
+                    }
+                }
+                arrStrings.Add(arrSplited);
             }
             file.Close();
         }
@@ -270,10 +286,9 @@ namespace IMDBUtils
             }));
 
             IWorkbook m_book = new XSSFWorkbook();
-            //WorkBook m_book = new WorkBook();
-            Console.WriteLine("This file alreay exist.");
             if (File.Exists(strPath) == true)    // if it already exists change into read mode.
             {
+                Console.WriteLine("This file alreay exist.");
                 File.Delete(strPath);
                 Console.WriteLine("Old file has deleted.");
             }
@@ -292,6 +307,8 @@ namespace IMDBUtils
 
             int nMaxRow = 0;
             int nMaxCol = 0;
+
+
 
             try
             {
@@ -315,7 +332,11 @@ namespace IMDBUtils
                         // without preset file
                         if (m_bPresetLoaded == false)
                         {
-                            _row.CreateCell(col).SetCellValue(arrStrings[row][col]);
+                            
+                            {
+                                _row.CreateCell(col).SetCellValue(arrStrings[row][col]);
+                            }
+                            //Console.WriteLine("length : " + arrStrings[row][col].Length);
                             //m_book.setText(row/* + nRowOffset*/, col, arrStrings[row][col]);
                         }
                         else    // converting with preset 
@@ -377,8 +398,11 @@ namespace IMDBUtils
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                return -1;
+                //if (bErrorIgnored)
+                {
+                    MessageBox.Show(ex.Message);
+                    return -1;
+                }
             }
             finally
             {
