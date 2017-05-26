@@ -207,7 +207,7 @@ namespace IMDBUtils
                     {
                         if (arrSplited[i].Length > 32767)
                         {
-                            Console.WriteLine("Make this cell truncated to : " + arrSplited[i].Length);
+                            Console.WriteLine("exceed the cell limit : " + arrSplited[i].Length);
                             String truncated = Utils.Utils.TruncateWithOutDot(arrSplited[i], 32767);
                             arrSplited[i] = (truncated);
                         }
