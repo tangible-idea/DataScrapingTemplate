@@ -468,12 +468,16 @@ namespace IMDBUtils
             }
             else if (nSelDelim == (int)EDelimiters.DoubleSpace)
             {
-                arrRes = strContent.Split(new[] { "  " }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                arrRes = strContent.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
             else if (nSelDelim == (int)EDelimiters.CommaAndRoundBracket)
             {
-                string strPattern = @"(,|(|))";
-                arrRes = Regex.Split(strContent, strPattern).ToList();
+                
+                arrRes = strContent.Split(new char[] { ',', '(', ')' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            }
+            else if (nSelDelim == (int)EDelimiters.Semicolon)
+            {
+                arrRes = strContent.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
             else if (nSelDelim == (int)EDelimiters.RoundBracket)
             {
