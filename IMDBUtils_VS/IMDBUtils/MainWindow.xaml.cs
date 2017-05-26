@@ -477,8 +477,8 @@ namespace IMDBUtils
             }
             else if (nSelDelim == (int)EDelimiters.RoundBracket)
             {
-                string strPattern = @"(|)";
-                arrRes = Regex.Split(strContent, strPattern).ToList();
+                arrRes = strContent.Split(new string[] { "(", ")" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
             }
             else if (nSelDelim == (int)EDelimiters.Colon)
             {
