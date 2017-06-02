@@ -731,11 +731,14 @@ namespace IMDBUtils
                 return;
             }
 
+            btnRunForAuto.IsEnabled = false;
+
             worker.DoWork += Do_GrossAutomation;
             worker.RunWorkerCompleted += Done_GrossAutomation;
             worker.RunWorkerAsync();
         }
 
+        public string CompletePath { get; set; }
         private void Do_GrossAutomation(object sender, DoWorkEventArgs e)
         {
             IWorkbook wbWrite = new XSSFWorkbook();
@@ -796,11 +799,11 @@ namespace IMDBUtils
                     var lstFiltered = new List<IExcelData>();
                     string currDataType = string.Empty;
 
-                    if (SplitDataType.Equals("D"))   //Distributer
+                    if (SplitDataType.Equals("Distributers"))   //Distributer
                     {
                         lstFiltered = SplitDistributeText(strTargetWord);
                     }
-                    else if (SplitDataType.Equals("G"))  //Gross
+                    else if (SplitDataType.Equals("Gross"))  //Gross
                     {
                         SplitGrossText(strTargetWord, false);
                         lstGross = this.FilterByCountry("USA");
@@ -825,12 +828,12 @@ namespace IMDBUtils
                 }));
             }
 
-            var path= Path.GetPathRoot(strTargetAutomationFile);
-            FileStream sw = File.Create(path + @".\Gross.xlsx");
+            
+            var path = Path.GetDirectoryName(strTargetAutomationFile);
+            CompletePath = path + @"\" + SplitDataType + ".xlsx";
+            FileStream sw = File.Create(CompletePath);
             wbWrite.Write(sw);
             sw.Close();
-            MessageBox.Show("file has written");
-
         }
 
 
@@ -848,13 +851,32 @@ namespace IMDBUtils
         public string SplitDataType { get; set; }
         private void cboDataType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SplitDataType = (cboDataType.SelectedItem as ComboBoxItem).Tag as string;            
+            SplitDataType = (cboDataType.SelectedItem as ComboBoxItem).Content as string;            
         }
 
-        private void Done_GrossAutomation(object sender, RunWorkerCompletedEventArgs e)
+        private async void Done_GrossAutomation(object sender, RunWorkerCompletedEventArgs e)
         {
             worker.DoWork -= Do_GrossAutomation;
             worker.RunWorkerCompleted -= Done_GrossAutomation;
+
+            btnRunForAuto.IsEnabled = true;
+
+            var mySettings = new MetroDialogSettings()
+            {
+                AffirmativeButtonText = "확인",
+                NegativeButtonText = "폴더 열기",
+                ColorScheme = MetroDialogOptions.ColorScheme
+            };
+
+            var res = await this.ShowMessageAsync("작업 완료"
+                , "파일이 아래 경로에 정상적으로 쓰기 완료되었습니다.\n"
+                + CompletePath, MessageDialogStyle.AffirmativeAndNegative
+                , mySettings);
+            if (res == MessageDialogResult.Negative)
+            {
+                string argument = "/select, \"" + CompletePath + "\"";
+                Process.Start("explorer.exe", argument);
+            }
         }
 
         public async void RefreshRemoteTable()
