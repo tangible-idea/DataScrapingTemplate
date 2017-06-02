@@ -550,6 +550,44 @@ namespace IMDBUtils
             this.SplitGrossText(txtBefore.Text, true);
         }
 
+        private List<string> SplitDistributeText(string strTarget)
+        {
+            List<string> res = new List<string>();
+            List<string> ListOfDistribute = strTarget.Split('|').ToList();
+
+            foreach(string Distribute in ListOfDistribute)
+            {
+                if (Distribute.Trim().Equals(""))
+                    continue;
+
+                bool bNeccessary = false;
+                var ListSplited = Distribute.Split(new string[] { "(", ")" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                var foundUSA = ListSplited.SingleOrDefault(x => x.Equals("USA"));
+                var foundTheatrical = ListSplited.SingleOrDefault(x => x.Equals("theatrical"));
+                var foundAllMedia = ListSplited.SingleOrDefault(x => x.Equals("all media"));
+
+                if(foundUSA != null && foundTheatrical != null)
+                {
+                    bNeccessary = true;
+                }
+                else if (foundUSA != null && foundAllMedia != null)
+                {
+                    bNeccessary = true;
+                }
+                else if (foundTheatrical == null && foundUSA == null && foundAllMedia != null)
+                {
+                    bNeccessary = true;
+                }
+
+                if(bNeccessary)
+                {
+                    res.Add(Distribute);
+                }
+            }
+            return res;
+
+        }
+
         private void SplitGrossText(string strTarget, bool bViewing)
         {
             string strPattern = @"(\€|\$|\£| FRF | DEM | ARS | ESP | ITL | FIM | SEK | HKD | NLG | RUR)";
@@ -697,13 +735,13 @@ namespace IMDBUtils
             IWorkbook wbRead = null;
             XSSFSheet shRead = null;
             //var wbRead = new WorkBook();
-            if (File.Exists(strTargetAutomationFile) == true)    // if it already exists change into read mode.
+            if (File.Exists(strTargetAutomationFile) == true)    // if it already exists, change into read mode.
             {
                 wbRead= new XSSFWorkbook(strTargetAutomationFile);
                 //wbRead.readXLSX(strTargetAutomationFile);
+                shRead = wbRead.GetSheetAt(0) as XSSFSheet;
                 this.Dispatcher.Invoke(new Action(delegate ()
                 {
-                    shRead = wbRead.GetSheetAt(0) as XSSFSheet;
                     prgGrossAuto.Maximum = shRead.LastRowNum;
                 }));
             }
@@ -716,19 +754,33 @@ namespace IMDBUtils
             //for(int row=0; row<wbRead.LastRow; ++row)
             for (int row = 0; row < shRead.LastRowNum; ++row)
             {
-                //wbRead.Sheet = 0;
-                //string strGrossWorld= wbRead.getText(row, 1);
-                string strGrossWorld = shRead.CreateRow(row).GetCell(1).StringCellValue;
+                string strTargetWord = string.Empty;
+                if (bAlreadyDelimited)  // if data is already delimited
+                {
+                    var listOfCell = shRead.GetRow(row).ToList();
+                    foreach (var cell in listOfCell)
+                    {   // combine all contents of this row into one string
+                        strTargetWord += cell.StringCellValue + "|";
+                    }
+                }
+                else
+                {
+                    var Cell = shRead.GetRow(row).GetCell(NumberOfColumnForSpliting);
+                    if (Cell == null)
+                        continue;
+
+                    strTargetWord = Cell.StringCellValue;
+                }
 
                 IRow _row= shWrite.CreateRow(row);
-                if (strGrossWorld.Trim().Equals("") == false)
+                if (strTargetWord.Trim().Equals("") == false)
                 {
-                    SplitGrossText(strGrossWorld, false);
+                    SplitDistributeText(strTargetWord);
+                    //SplitGrossText(strTargetWord, false);
                     lstGross= this.FilterByCountry("USA");
                     var lstFiltered= this.FilterByReleaseDate(4);
                     for (int item=0; item< lstFiltered.Count; ++item)
                     {
-                        //wbWrite.setText(row, item, lstFiltered[item].AsString());
                         _row.CreateCell(item).SetCellValue(lstFiltered[item].AsString());
                     }
                     this.Dispatcher.Invoke(new Action(delegate ()
@@ -751,6 +803,19 @@ namespace IMDBUtils
             sw.Close();
             MessageBox.Show("file has written");
 
+        }
+
+
+        public int NumberOfColumnForSpliting { get; set; }
+        private void txtColumnNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            NumberOfColumnForSpliting= Convert.ToInt32((sender as TextBox).Text);
+        }
+
+        public bool bAlreadyDelimited { get; set; }
+        private void chkAlreadyDelimited_Checked(object sender, RoutedEventArgs e)
+        {
+            bAlreadyDelimited = (bool)(sender as CheckBox).IsChecked;
         }
 
         private void Done_GrossAutomation(object sender, RunWorkerCompletedEventArgs e)
@@ -1067,5 +1132,6 @@ namespace IMDBUtils
             // opens the folder in explorer
             Process.Start(strCurrPath);
         }
+
     }
 }

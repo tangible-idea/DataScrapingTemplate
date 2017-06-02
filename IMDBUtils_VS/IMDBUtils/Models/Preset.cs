@@ -16,7 +16,8 @@ namespace IMDBUtils.Models
         DoubleSpace,
         CommaAndRoundBracket,
         RoundBracket,
-        Colon
+        Colon,
+        Semicolon
     }
 
     [Serializable]
@@ -38,8 +39,10 @@ namespace IMDBUtils.Models
             srcDelimits.Add(new Delimeters("Single Space"));
             srcDelimits.Add(new Delimeters("Double Space"));
             srcDelimits.Add(new Delimeters("Comma + Parentheses"));
+            srcDelimits.Add(new Delimeters("Semicolon"));
             srcDelimits.Add(new Delimeters("Parentheses"));
             srcDelimits.Add(new Delimeters("Colon"));
+
 
 
             // if the new verison has more delimeters than older version, just init as 0.
