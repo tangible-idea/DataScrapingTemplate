@@ -272,10 +272,19 @@
 
                     <StackPanel Grid.Column="3" Margin="5">
                         <Label Content="Column Index : "></Label>
-                        <TextBox Name="txtColumnNumber" TextChanged="txtColumnNumber_TextChanged" />
+                        <TextBox Name="txtColumnNumber" TextChanged="txtColumnNumber_TextChanged"
+                                 Margin="0,5,0,5"/>
+
+                        <Label Content="Data Type : "></Label>
+                        <ComboBox Name="cboDataType" Margin="0,5,0,5"
+                                  SelectionChanged="cboDataType_SelectionChanged">
+                            <ComboBoxItem Tag="D">Distributers</ComboBoxItem>
+                            <ComboBoxItem Tag="G">Gross</ComboBoxItem>
+                        </ComboBox>
 
                         <CheckBox x:Name="chkAlreadyDelimited" Content="Already delimited"
-                                  Checked="chkAlreadyDelimited_Checked"/>
+                                  Checked="chkAlreadyDelimited_Checked"
+                                  Margin="0,5,0,5"/>
                         <Button Name="btnRunForAuto"  Content="Run"
                             Grid.Column="2" Click="btnRunForAuto_Click"></Button>
                     </StackPanel>

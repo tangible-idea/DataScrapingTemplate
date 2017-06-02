@@ -158,8 +158,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Delimeters.cs" />
+    <Compile Include="Models\Distribute.cs" />
     <Compile Include="Models\Files.cs" />
     <Compile Include="Models\Gross.cs" />
+    <Compile Include="Models\IExcelData.cs" />
     <Compile Include="Models\Preset.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Utils\Utils.cs" />

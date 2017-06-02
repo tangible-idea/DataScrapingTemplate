@@ -550,9 +550,9 @@ namespace IMDBUtils
             this.SplitGrossText(txtBefore.Text, true);
         }
 
-        private List<string> SplitDistributeText(string strTarget)
+        private List<IExcelData> SplitDistributeText(string strTarget)
         {
-            List<string> res = new List<string>();
+            var res = new List<IExcelData>();
             List<string> ListOfDistribute = strTarget.Split('|').ToList();
 
             foreach(string Distribute in ListOfDistribute)
@@ -562,9 +562,9 @@ namespace IMDBUtils
 
                 bool bNeccessary = false;
                 var ListSplited = Distribute.Split(new string[] { "(", ")" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-                var foundUSA = ListSplited.SingleOrDefault(x => x.Equals("USA"));
-                var foundTheatrical = ListSplited.SingleOrDefault(x => x.Equals("theatrical"));
-                var foundAllMedia = ListSplited.SingleOrDefault(x => x.Equals("all media"));
+                var foundUSA = ListSplited.FirstOrDefault(x => x.Equals("USA"));
+                var foundTheatrical = ListSplited.FirstOrDefault(x => x.Equals("theatrical"));
+                var foundAllMedia = ListSplited.FirstOrDefault(x => x.Equals("all media"));
 
                 if(foundUSA != null && foundTheatrical != null)
                 {
@@ -581,7 +581,7 @@ namespace IMDBUtils
 
                 if(bNeccessary)
                 {
-                    res.Add(Distribute);
+                    res.Add(new Distribute(Distribute));
                 }
             }
             return res;
@@ -686,14 +686,21 @@ namespace IMDBUtils
             return lstFilteredGross;
         }
 
-        private List<Gross> FilterByReleaseDate(int nFirstN)
+        private List<IExcelData> FilterByReleaseDate(int nFirstN)
         {
+            var res = new List<IExcelData>();
             var lstFilteredGross = new List<Gross>();
             lstFilteredGross = lstGross.ToList();
             lstFilteredGross.Sort((x, y) => DateTime.Compare(x.Releasedate, y.Releasedate));
             lstFilteredGross = lstFilteredGross.Take(nFirstN).ToList();
 
-            return lstFilteredGross;
+            // convert into List<IExcelData>
+            foreach(var data in lstFilteredGross)
+            {
+                res.Add(data);
+            }
+
+            return res;
         }
 
         private string strTargetAutomationFile = string.Empty;
@@ -718,6 +725,12 @@ namespace IMDBUtils
 
         private void btnRunForAuto_Click(object sender, RoutedEventArgs e)
         {
+            if(SplitDataType == null)
+            {
+                MessageBox.Show("Please select a type of Data.");
+                return;
+            }
+
             worker.DoWork += Do_GrossAutomation;
             worker.RunWorkerCompleted += Done_GrossAutomation;
             worker.RunWorkerAsync();
@@ -757,7 +770,12 @@ namespace IMDBUtils
                 string strTargetWord = string.Empty;
                 if (bAlreadyDelimited)  // if data is already delimited
                 {
-                    var listOfCell = shRead.GetRow(row).ToList();
+                    var IRow = shRead.GetRow(row);
+
+                    if (IRow == null)
+                        continue;
+
+                    var listOfCell = IRow.ToList();
                     foreach (var cell in listOfCell)
                     {   // combine all contents of this row into one string
                         strTargetWord += cell.StringCellValue + "|";
@@ -775,30 +793,40 @@ namespace IMDBUtils
                 IRow _row= shWrite.CreateRow(row);
                 if (strTargetWord.Trim().Equals("") == false)
                 {
-                    SplitDistributeText(strTargetWord);
-                    //SplitGrossText(strTargetWord, false);
-                    lstGross= this.FilterByCountry("USA");
-                    var lstFiltered= this.FilterByReleaseDate(4);
-                    for (int item=0; item< lstFiltered.Count; ++item)
+                    var lstFiltered = new List<IExcelData>();
+                    string currDataType = string.Empty;
+
+                    if (SplitDataType.Equals("D"))   //Distributer
+                    {
+                        lstFiltered = SplitDistributeText(strTargetWord);
+                    }
+                    else if (SplitDataType.Equals("G"))  //Gross
+                    {
+                        SplitGrossText(strTargetWord, false);
+                        lstGross = this.FilterByCountry("USA");
+                        lstFiltered = this.FilterByReleaseDate(4);                        
+                    }
+
+                    for (int item = 0; item < lstFiltered.Count; ++item)
                     {
                         _row.CreateCell(item).SetCellValue(lstFiltered[item].AsString());
                     }
-                    this.Dispatcher.Invoke(new Action(delegate ()
-                    {
-                        lstGross.Clear();
-                        prgGrossAuto.Value = row;
-                    }));
                 }
                 else
                 {
                     _row.CreateCell(0).SetCellValue("null");
                     //wbWrite.setText(row, 0, "null");
                 }
+
+                this.Dispatcher.Invoke(new Action(delegate ()
+                {
+                    lstGross.Clear();
+                    prgGrossAuto.Value = row;
+                }));
             }
 
-
-            //wbWrite.writeXLSX(@".\\Gross.xlsx");
-            FileStream sw = File.Create(@".\\Gross.xlsx");
+            var path= Path.GetPathRoot(strTargetAutomationFile);
+            FileStream sw = File.Create(path + @".\Gross.xlsx");
             wbWrite.Write(sw);
             sw.Close();
             MessageBox.Show("file has written");
@@ -816,6 +844,11 @@ namespace IMDBUtils
         private void chkAlreadyDelimited_Checked(object sender, RoutedEventArgs e)
         {
             bAlreadyDelimited = (bool)(sender as CheckBox).IsChecked;
+        }
+        public string SplitDataType { get; set; }
+        private void cboDataType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SplitDataType = (cboDataType.SelectedItem as ComboBoxItem).Tag as string;            
         }
 
         private void Done_GrossAutomation(object sender, RunWorkerCompletedEventArgs e)
@@ -1132,6 +1165,5 @@ namespace IMDBUtils
             // opens the folder in explorer
             Process.Start(strCurrPath);
         }
-
     }
 }
