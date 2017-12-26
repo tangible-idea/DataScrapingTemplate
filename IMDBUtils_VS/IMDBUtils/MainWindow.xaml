@@ -51,6 +51,8 @@
                                 Content="Load Preset"
                                 Click="btnLoadConvertingPresetFile_Click"/>
                     </StackPanel>
+                    <CheckBox x:Name="chkAutoTruncate" Content="Auto truncate" Margin="0,5,0,5"/>
+                    <!--<CheckBox x:Name="chkCombineIntoOne" Content="Combine into one" Margin="0,5,0,5"/>-->
                 </StackPanel>
 
                 <StackPanel Grid.Row="1">
@@ -238,8 +240,6 @@
                     <TextBox Name="txtAutoFilePath" IsReadOnly="True"/>
                     <Button Name="btnLoadForAuto"  Content="Load File"
                             Grid.Column="1" Click="btnLoadForAuto_Click"></Button>
-                    <Button Name="btnRunForAuto"  Content="Run"
-                            Grid.Column="2" Click="btnRunForAuto_Click"></Button>
                 </Grid>
                     <ProgressBar Name="prgGrossAuto" Margin="3,0,3,0" Height="10" Background="GhostWhite"/>
                 </StackPanel>
@@ -257,6 +257,8 @@
 
                     <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Button Name="btnSplit"  Content="Single Split" Click="btnSplit_Click"></Button>
+                        <Label Content="Country Filter : "></Label>
+                        <TextBox Name="txtFilter" TextChanged="txtFilter_TextChanged"></TextBox>
                     </StackPanel>
 
                     <DataGrid Name="dgAfter" Grid.Column="2" BorderBrush="Gray" BorderThickness="1">
@@ -269,8 +271,22 @@
                     </DataGrid>
 
                     <StackPanel Grid.Column="3" Margin="5">
-                        <Label Content="Country Filter : "></Label>
-                        <TextBox Name="txtFilter" TextChanged="txtFilter_TextChanged"></TextBox>
+                        <Label Content="Column Index : "></Label>
+                        <TextBox Name="txtColumnNumber" TextChanged="txtColumnNumber_TextChanged"
+                                 Margin="0,5,0,5"/>
+
+                        <Label Content="Data Type : "></Label>
+                        <ComboBox Name="cboDataType" Margin="0,5,0,5"
+                                  SelectionChanged="cboDataType_SelectionChanged">
+                            <ComboBoxItem Tag="D">Distributers</ComboBoxItem>
+                            <ComboBoxItem Tag="G">Gross</ComboBoxItem>
+                        </ComboBox>
+
+                        <CheckBox x:Name="chkAlreadyDelimited" Content="Already delimited"
+                                  Checked="chkAlreadyDelimited_Checked"
+                                  Margin="0,5,0,5"/>
+                        <Button Name="btnRunForAuto"  Content="Run"
+                            Grid.Column="2" Click="btnRunForAuto_Click"></Button>
                     </StackPanel>
 
                     <!--<TextBox Name="txtAfter" Grid.Column="2" Text="" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" 

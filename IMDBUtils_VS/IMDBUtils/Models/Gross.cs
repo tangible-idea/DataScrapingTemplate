@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IMDBUtils.Models
 {
-    class Gross
+    class Gross : IExcelData
     {
         public Gross()
         {
@@ -25,6 +25,7 @@ namespace IMDBUtils.Models
             this.Releasedate= DateTime.Parse(_releasedate);
         }
 
+        // from interface
         public string AsString()
         {
             string str = string.Empty;

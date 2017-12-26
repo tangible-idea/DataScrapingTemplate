@@ -186,18 +186,34 @@ namespace IMDBUtils
         private void ParseStringArray(ref List<string[]> arrStrings, FilePath currPath)
         {
             string line = string.Empty;
+            bool bAutomacTruncate = false;
 
             this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(delegate ()
             {
                 prgExport.Maximum = lstFiles.Items.Count;
+                bAutomacTruncate = (bool)chkAutoTruncate.IsChecked;
             }));
             
+
             // Read the file line by line.
             EStatus = EMode.ReadDataFile;
             System.IO.StreamReader file = new System.IO.StreamReader(currPath.Title);
             while ((line = file.ReadLine()) != null)
             {
-                arrStrings.Add(line.Split('|'));
+                var arrSplited = line.Split('|');
+                if (bAutomacTruncate == true)
+                {
+                    for(int i=0; i<arrSplited.ToList().Count; ++i)
+                    {
+                        if (arrSplited[i].Length > 32767)
+                        {
+                            Console.WriteLine("exceed the cell limit : " + arrSplited[i].Length);
+                            String truncated = Utils.Utils.TruncateWithOutDot(arrSplited[i], 32767);
+                            arrSplited[i] = (truncated);
+                        }
+                    }
+                }
+                arrStrings.Add(arrSplited);
             }
             file.Close();
         }
@@ -270,10 +286,9 @@ namespace IMDBUtils
             }));
 
             IWorkbook m_book = new XSSFWorkbook();
-            //WorkBook m_book = new WorkBook();
-            Console.WriteLine("This file alreay exist.");
             if (File.Exists(strPath) == true)    // if it already exists change into read mode.
             {
+                Console.WriteLine("This file alreay exist.");
                 File.Delete(strPath);
                 Console.WriteLine("Old file has deleted.");
             }
@@ -292,6 +307,8 @@ namespace IMDBUtils
 
             int nMaxRow = 0;
             int nMaxCol = 0;
+
+
 
             try
             {
@@ -315,7 +332,11 @@ namespace IMDBUtils
                         // without preset file
                         if (m_bPresetLoaded == false)
                         {
-                            _row.CreateCell(col).SetCellValue(arrStrings[row][col]);
+                            
+                            {
+                                _row.CreateCell(col).SetCellValue(arrStrings[row][col]);
+                            }
+                            //Console.WriteLine("length : " + arrStrings[row][col].Length);
                             //m_book.setText(row/* + nRowOffset*/, col, arrStrings[row][col]);
                         }
                         else    // converting with preset 
@@ -377,8 +398,11 @@ namespace IMDBUtils
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                return -1;
+                //if (bErrorIgnored)
+                {
+                    MessageBox.Show(ex.Message);
+                    return -1;
+                }
             }
             finally
             {
@@ -438,6 +462,10 @@ namespace IMDBUtils
                     arrRes.Add(g.AsString());
                 }
             }
+            else if (nSelDelim == (int)EDelimiters.SingleSpace)
+            {
+                arrRes = strContent.Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            }
             else if (nSelDelim == (int)EDelimiters.DoubleSpace)
             {
                 arrRes = strContent.Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries).ToList();
@@ -450,6 +478,15 @@ namespace IMDBUtils
             else if (nSelDelim == (int)EDelimiters.Semicolon)
             {
                 arrRes = strContent.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            }
+            else if (nSelDelim == (int)EDelimiters.RoundBracket)
+            {
+                arrRes = strContent.Split(new string[] { "(", ")" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+
+            }
+            else if (nSelDelim == (int)EDelimiters.Colon)
+            {
+                arrRes = strContent.Split(new[] { ":" }, StringSplitOptions.RemoveEmptyEntries).ToList();
             }
             return arrRes;
         }
@@ -511,6 +548,44 @@ namespace IMDBUtils
         private void btnSplit_Click(object sender, RoutedEventArgs e)
         {
             this.SplitGrossText(txtBefore.Text, true);
+        }
+
+        private List<IExcelData> SplitDistributeText(string strTarget)
+        {
+            var res = new List<IExcelData>();
+            List<string> ListOfDistribute = strTarget.Split('|').ToList();
+
+            foreach(string Distribute in ListOfDistribute)
+            {
+                if (Distribute.Trim().Equals(""))
+                    continue;
+
+                bool bNeccessary = false;
+                var ListSplited = Distribute.Split(new string[] { "(", ")" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+                var foundUSA = ListSplited.FirstOrDefault(x => x.Equals("USA"));
+                var foundTheatrical = ListSplited.FirstOrDefault(x => x.Equals("theatrical"));
+                var foundAllMedia = ListSplited.FirstOrDefault(x => x.Equals("all media"));
+
+                if(foundUSA != null && foundTheatrical != null)
+                {
+                    bNeccessary = true;
+                }
+                else if (foundUSA != null && foundAllMedia != null)
+                {
+                    bNeccessary = true;
+                }
+                else if (foundTheatrical == null && foundUSA == null && foundAllMedia != null)
+                {
+                    bNeccessary = true;
+                }
+
+                if(bNeccessary)
+                {
+                    res.Add(new Distribute(Distribute));
+                }
+            }
+            return res;
+
         }
 
         private void SplitGrossText(string strTarget, bool bViewing)
@@ -611,14 +686,21 @@ namespace IMDBUtils
             return lstFilteredGross;
         }
 
-        private List<Gross> FilterByReleaseDate(int nFirstN)
+        private List<IExcelData> FilterByReleaseDate(int nFirstN)
         {
+            var res = new List<IExcelData>();
             var lstFilteredGross = new List<Gross>();
             lstFilteredGross = lstGross.ToList();
             lstFilteredGross.Sort((x, y) => DateTime.Compare(x.Releasedate, y.Releasedate));
             lstFilteredGross = lstFilteredGross.Take(nFirstN).ToList();
 
-            return lstFilteredGross;
+            // convert into List<IExcelData>
+            foreach(var data in lstFilteredGross)
+            {
+                res.Add(data);
+            }
+
+            return res;
         }
 
         private string strTargetAutomationFile = string.Empty;
@@ -643,11 +725,20 @@ namespace IMDBUtils
 
         private void btnRunForAuto_Click(object sender, RoutedEventArgs e)
         {
+            if(SplitDataType == null)
+            {
+                MessageBox.Show("Please select a type of Data.");
+                return;
+            }
+
+            btnRunForAuto.IsEnabled = false;
+
             worker.DoWork += Do_GrossAutomation;
             worker.RunWorkerCompleted += Done_GrossAutomation;
             worker.RunWorkerAsync();
         }
 
+        public string CompletePath { get; set; }
         private void Do_GrossAutomation(object sender, DoWorkEventArgs e)
         {
             IWorkbook wbWrite = new XSSFWorkbook();
@@ -660,13 +751,13 @@ namespace IMDBUtils
             IWorkbook wbRead = null;
             XSSFSheet shRead = null;
             //var wbRead = new WorkBook();
-            if (File.Exists(strTargetAutomationFile) == true)    // if it already exists change into read mode.
+            if (File.Exists(strTargetAutomationFile) == true)    // if it already exists, change into read mode.
             {
                 wbRead= new XSSFWorkbook(strTargetAutomationFile);
                 //wbRead.readXLSX(strTargetAutomationFile);
+                shRead = wbRead.GetSheetAt(0) as XSSFSheet;
                 this.Dispatcher.Invoke(new Action(delegate ()
                 {
-                    shRead = wbRead.GetSheetAt(0) as XSSFSheet;
                     prgGrossAuto.Maximum = shRead.LastRowNum;
                 }));
             }
@@ -679,47 +770,113 @@ namespace IMDBUtils
             //for(int row=0; row<wbRead.LastRow; ++row)
             for (int row = 0; row < shRead.LastRowNum; ++row)
             {
-                //wbRead.Sheet = 0;
-                //string strGrossWorld= wbRead.getText(row, 1);
-                string strGrossWorld = shRead.CreateRow(row).GetCell(1).StringCellValue;
+                string strTargetWord = string.Empty;
+                if (bAlreadyDelimited)  // if data is already delimited
+                {
+                    var IRow = shRead.GetRow(row);
+
+                    if (IRow == null)
+                        continue;
+
+                    var listOfCell = IRow.ToList();
+                    foreach (var cell in listOfCell)
+                    {   // combine all contents of this row into one string
+                        strTargetWord += cell.StringCellValue + "|";
+                    }
+                }
+                else
+                {
+                    var Cell = shRead.GetRow(row).GetCell(NumberOfColumnForSpliting);
+                    if (Cell == null)
+                        continue;
+
+                    strTargetWord = Cell.StringCellValue;
+                }
 
                 IRow _row= shWrite.CreateRow(row);
-                if (strGrossWorld.Trim().Equals("") == false)
+                if (strTargetWord.Trim().Equals("") == false)
                 {
-                    SplitGrossText(strGrossWorld, false);
-                    lstGross= this.FilterByCountry("USA");
-                    var lstFiltered= this.FilterByReleaseDate(4);
-                    for (int item=0; item< lstFiltered.Count; ++item)
+                    var lstFiltered = new List<IExcelData>();
+                    string currDataType = string.Empty;
+
+                    if (SplitDataType.Equals("Distributers"))   //Distributer
                     {
-                        //wbWrite.setText(row, item, lstFiltered[item].AsString());
+                        lstFiltered = SplitDistributeText(strTargetWord);
+                    }
+                    else if (SplitDataType.Equals("Gross"))  //Gross
+                    {
+                        SplitGrossText(strTargetWord, false);
+                        lstGross = this.FilterByCountry("USA");
+                        lstFiltered = this.FilterByReleaseDate(4);                        
+                    }
+
+                    for (int item = 0; item < lstFiltered.Count; ++item)
+                    {
                         _row.CreateCell(item).SetCellValue(lstFiltered[item].AsString());
                     }
-                    this.Dispatcher.Invoke(new Action(delegate ()
-                    {
-                        lstGross.Clear();
-                        prgGrossAuto.Value = row;
-                    }));
                 }
                 else
                 {
                     _row.CreateCell(0).SetCellValue("null");
                     //wbWrite.setText(row, 0, "null");
                 }
+
+                this.Dispatcher.Invoke(new Action(delegate ()
+                {
+                    lstGross.Clear();
+                    prgGrossAuto.Value = row;
+                }));
             }
 
-
-            //wbWrite.writeXLSX(@".\\Gross.xlsx");
-            FileStream sw = File.Create(@".\\Gross.xlsx");
+            
+            var path = Path.GetDirectoryName(strTargetAutomationFile);
+            CompletePath = path + @"\" + SplitDataType + ".xlsx";
+            FileStream sw = File.Create(CompletePath);
             wbWrite.Write(sw);
             sw.Close();
-            MessageBox.Show("file has written");
-
         }
 
-        private void Done_GrossAutomation(object sender, RunWorkerCompletedEventArgs e)
+
+        public int NumberOfColumnForSpliting { get; set; }
+        private void txtColumnNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            NumberOfColumnForSpliting= Convert.ToInt32((sender as TextBox).Text);
+        }
+
+        public bool bAlreadyDelimited { get; set; }
+        private void chkAlreadyDelimited_Checked(object sender, RoutedEventArgs e)
+        {
+            bAlreadyDelimited = (bool)(sender as CheckBox).IsChecked;
+        }
+        public string SplitDataType { get; set; }
+        private void cboDataType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SplitDataType = (cboDataType.SelectedItem as ComboBoxItem).Content as string;            
+        }
+
+        private async void Done_GrossAutomation(object sender, RunWorkerCompletedEventArgs e)
         {
             worker.DoWork -= Do_GrossAutomation;
             worker.RunWorkerCompleted -= Done_GrossAutomation;
+
+            btnRunForAuto.IsEnabled = true;
+
+            var mySettings = new MetroDialogSettings()
+            {
+                AffirmativeButtonText = "확인",
+                NegativeButtonText = "폴더 열기",
+                ColorScheme = MetroDialogOptions.ColorScheme
+            };
+
+            var res = await this.ShowMessageAsync("작업 완료"
+                , "파일이 아래 경로에 정상적으로 쓰기 완료되었습니다.\n"
+                + CompletePath, MessageDialogStyle.AffirmativeAndNegative
+                , mySettings);
+            if (res == MessageDialogResult.Negative)
+            {
+                string argument = "/select, \"" + CompletePath + "\"";
+                Process.Start("explorer.exe", argument);
+            }
         }
 
         public async void RefreshRemoteTable()
