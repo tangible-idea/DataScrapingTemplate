@@ -1,5 +1,6 @@
+![C#](https://img.shields.io/badge/C%23-.net4.5-blue.svg)
 ![python](https://img.shields.io/badge/python-3.x-blue.svg)
-![licence](https://img.shields.io/badge/License-Apache2.0-blue.svg)
+![licence](https://img.shields.io/badge/License-Apache2.0-green.svg)
 
 # DataMiner
 ==========
