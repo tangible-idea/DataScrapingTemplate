@@ -1,5 +1,4 @@
-
-# written by python 2.*
+# written in python 3.7
 from urllib.request import urlopen
 import string
 import os
