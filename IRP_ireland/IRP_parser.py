@@ -44,21 +44,20 @@ def TryToParse(TESTorREAL):
     print("TryToParse()")
 
     try:
-        url = "https://s3.ap-northeast-2.amazonaws.com/mitchin/web/sign.html"
-
+        #url = "https://s3.ap-northeast-2.amazonaws.com/mitchin/web/sign.html"
+        url = "https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm"
         # if TESTorREAL == "TEST":
         #     url = "http://softinus.com/upbit_tracker/upbit_tdd1.html"
 
-        browser = webdriver.Chrome(
-            'C:\\Users\\Mark\\Documents\\Movie_DataMiner\\IRP_ireland\\chromedriver.exe')
+        browser = webdriver.Chrome()
         # browser.implicitly_wait(11) # seconds
         browser.get(url)
-
+        print(browser.title)
         delay = 100  # seconds
         while True:
             try:
                 myElem = WebDriverWait(browser, delay).until(
-                    EC.presence_of_element_located((By.CLASS_NAME, "btn-warning")))
+                    EC.presence_of_element_located((By.CLASS_NAME, "btn-success")))
                 print("Page is ready!")
                 # it will break from the loop once the specific element will be present.
                 break
@@ -67,11 +66,14 @@ def TryToParse(TESTorREAL):
                 browser.quit()
                 return
 
+        print("test")
         select = Select(browser.find_element_by_id('Category'))
 
         # select by visible text
-        select.select_by_value('All')
         print("select_by_visible_text: All")
+        result1 = select.select_by_value('All')
+
+        print("select_by_visible_text: All: " + result1)
         browser.implicitly_wait(11)  # seconds
         # select by value
         # select.select_by_value('1')
