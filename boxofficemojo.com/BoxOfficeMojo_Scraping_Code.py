@@ -1,4 +1,4 @@
-# written by python 3.6.1
+# written in python 3.6.1
 #-*- coding: utf-8 -*-
 from urllib.request import urlopen
 import json

@@ -1,4 +1,4 @@
-# written by python 2.*
+# written in python 2.*
 import urllib2  
 import string
 import os
