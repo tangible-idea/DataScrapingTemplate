@@ -8,6 +8,7 @@ import re
 import sys
 import logging
 from datetime import datetime
+from datetime import timedelta
 
 history_list = []
 f = open("versions.txt","r")  
@@ -47,27 +48,46 @@ for i in range(len(arr_datetime)-1, 0, -1):
     arr_final_datetime.append(replaced)
 
 
-def endloop(x):
-    prev_dt= x
-    print(x)
+
+def printOneLine(x,y):
+    print(x.strftime('%d.%b.%Y') + "    " + x.strftime('%H:%M') + "    " + y.strftime('%H:%M'))
+    gap_to_next= ""
 
 start_worktime= ""
 end_worktime= ""
-prev_dt= ""
-for i in arr_final_datetime:
-    if prev_dt != "":
-        timediff_withprev= start_worktime - prev_dt
-    #test= arr_datetime[i-1] - arr_datetime[i]
-    #print(str(arr_datetime[i]) + " - " + str(arr_datetime[i-1]) + " = " + str(test) + ", " + str(test.seconds))
+gap_to_next= ""
+append_nexttime = False
+
+for idx, i in enumerate(arr_final_datetime):
+    #print(i)
     if start_worktime == "":
-        start_worktime= i
-        endloop(i)
+        start_worktime = i
+        #print("init starting time.")
+
+    # the last idx
+    if idx == len(arr_final_datetime)-1:
+        end_worktime = start_worktime + timedelta(minutes=30)
+        append_nexttime = False
+        printOneLine(start_worktime, end_worktime)
+        start_worktime=""
+        end_worktime = ""
         continue
 
-    # if end_worktime == "":
-    #     end_worktime= arr_datetime[i]
-    #     continue 
-    
-    endloop(i)
+    gap_to_next= arr_final_datetime[idx+1] - arr_final_datetime[idx]
+    #print(gap_to_next)
+
+    if gap_to_next > timedelta(minutes=75):
+        if append_nexttime == True:
+            end_worktime = i
+        else:
+            end_worktime = start_worktime + timedelta(minutes=30)
+
+        append_nexttime = False
+        printOneLine(start_worktime, end_worktime)
+        start_worktime=""
+        end_worktime=""
+    else:
+        append_nexttime = True
+
     
     
