@@ -45,3 +45,522 @@ Traceback (most recent call last):
     os.path.basename(self.path), self.start_error_message)
 selenium.common.exceptions.WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
 
+2019-03-02 04:18:59,755 Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 54, in TryToParse
+    browser = webdriver.Chrome()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 81, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:19:21,613 Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 54, in TryToParse
+    browser = webdriver.Chrome()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 81, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:20:05,680 Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 81, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:21:04,115 Message: 'chromedriver.exe' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 81, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver.exe' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:21:12,598 Message: 'chromedriver.exe' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('./chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 81, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver.exe' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:27:43,600 Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('/0.Devs/DataScrapingTemplate/IRP_ireland/chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 86, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:27:57,321 Message: 'chromedriver.exe' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 81, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver.exe' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:28:03,110 Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('/0.Devs/DataScrapingTemplate/IRP_ireland/chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 86, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:28:07,501 Message: '2chromedriver.exe' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('/0.Devs/DataScrapingTemplate/IRP_ireland/2chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 81, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: '2chromedriver.exe' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:28:10,450 Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('/0.Devs/DataScrapingTemplate/IRP_ireland/chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 86, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:28:53,928 Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('/0.Devs/DataScrapingTemplate/IRP_ireland/chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 86, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:29:50,594 Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('IRP_ireland/chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 86, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:31:38,004 Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('IRP_ireland/chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 86, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver.exe' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:31:43,697 [Errno 8] Exec format error
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('IRP_ireland/chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 74, in start
+    stdout=self.log_file, stderr=self.log_file)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 8] Exec format error
+2019-03-02 04:31:53,393 [Errno 8] Exec format error
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('/0.Devs/DataScrapingTemplate/IRP_ireland/chromedriver.exe')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 74, in start
+    stdout=self.log_file, stderr=self.log_file)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 710, in __init__
+    errread, errwrite)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/subprocess.py", line 1335, in _execute_child
+    raise child_exception
+OSError: [Errno 8] Exec format error
+2019-03-02 04:32:07,827 POST http://127.0.0.1:54083/session {"capabilities": {"alwaysMatch": {"platform": "ANY", "browserName": "chrome", "version": "", "chromeOptions": {"args": [], "extensions": []}}, "firstMatch": []}, "desiredCapabilities": {"platform": "ANY", "browserName": "chrome", "version": "", "chromeOptions": {"args": [], "extensions": []}}}
+2019-03-02 04:32:08,796 Finished Request
+2019-03-02 04:32:08,797 POST http://127.0.0.1:54083/session/c9c789850ad3f24ede70a03344279c08/url {"url": "https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm", "sessionId": "c9c789850ad3f24ede70a03344279c08"}
+2019-03-02 04:32:18,000 Finished Request
+2019-03-02 04:32:18,000 GET http://127.0.0.1:54083/session/c9c789850ad3f24ede70a03344279c08/title {"sessionId": "c9c789850ad3f24ede70a03344279c08"}
+2019-03-02 04:32:18,010 Finished Request
+2019-03-02 04:32:18,011 POST http://127.0.0.1:54083/session/c9c789850ad3f24ede70a03344279c08/element {"using": "class name", "sessionId": "c9c789850ad3f24ede70a03344279c08", "value": "btn-success"}
+2019-03-02 04:32:18,029 Finished Request
+2019-03-02 04:32:18,029 POST http://127.0.0.1:54083/session/c9c789850ad3f24ede70a03344279c08/element {"using": "id", "sessionId": "c9c789850ad3f24ede70a03344279c08", "value": "Category"}
+2019-03-02 04:32:18,045 Finished Request
+2019-03-02 04:32:18,045 GET http://127.0.0.1:54083/session/c9c789850ad3f24ede70a03344279c08/element/0.17513735791324336-2/name {"sessionId": "c9c789850ad3f24ede70a03344279c08", "id": "0.17513735791324336-2"}
+2019-03-02 04:32:18,056 Finished Request
+2019-03-02 04:32:18,056 GET http://127.0.0.1:54083/session/c9c789850ad3f24ede70a03344279c08/element/0.17513735791324336-2/attribute/multiple {"sessionId": "c9c789850ad3f24ede70a03344279c08", "name": "multiple", "id": "0.17513735791324336-2"}
+2019-03-02 04:32:18,066 Finished Request
+2019-03-02 04:32:18,066 POST http://127.0.0.1:54083/session/c9c789850ad3f24ede70a03344279c08/element/0.17513735791324336-2/elements {"using": "css selector", "sessionId": "c9c789850ad3f24ede70a03344279c08", "id": "0.17513735791324336-2", "value": "option[value =\"All\"]"}
+2019-03-02 04:32:18,082 Finished Request
+2019-03-02 04:32:18,082 GET http://127.0.0.1:54083/session/c9c789850ad3f24ede70a03344279c08/element/0.17513735791324336-3/selected {"sessionId": "c9c789850ad3f24ede70a03344279c08", "id": "0.17513735791324336-3"}
+2019-03-02 04:32:18,096 Finished Request
+2019-03-02 04:32:18,097 POST http://127.0.0.1:54083/session/c9c789850ad3f24ede70a03344279c08/element/0.17513735791324336-3/click {"sessionId": "c9c789850ad3f24ede70a03344279c08", "id": "0.17513735791324336-3"}
+2019-03-02 04:32:18,146 Finished Request
+2019-03-02 04:32:18,146 Message: unknown error: call function result missing 'value'
+  (Session info: chrome=72.0.3626.119)
+  (Driver info: chromedriver=2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b),platform=Mac OS X 10.13.4 x86_64)
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 80, in TryToParse
+    result1 = select.select_by_value('All')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/support/select.py", line 82, in select_by_value
+    self._setSelected(opt)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/support/select.py", line 212, in _setSelected
+    option.click()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/remote/webelement.py", line 77, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/remote/webelement.py", line 493, in _execute
+    return self._parent.execute(command, params)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/remote/webdriver.py", line 252, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: unknown error: call function result missing 'value'
+  (Session info: chrome=72.0.3626.119)
+  (Driver info: chromedriver=2.29.461585 (0be2cd95f834e9ee7c46bcc7cf405b483f5ae83b),platform=Mac OS X 10.13.4 x86_64)
+
+2019-03-02 04:37:34,559 Message: '' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('IRP_ireland/')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 86, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: '' executable may have wrong permissions. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2019-03-02 04:37:53,774 'module' object has no attribute 'FireFox'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.FireFox('IRP_ireland/')
+AttributeError: 'module' object has no attribute 'FireFox'
+2019-03-02 04:37:58,394 Message: 'geckodriver' executable needs to be in PATH. 
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox('IRP_ireland/')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 142, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 81, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'geckodriver' executable needs to be in PATH. 
+
+2019-03-02 04:39:04,622 POST http://127.0.0.1:55866/session {"capabilities": {"alwaysMatch": {"platform": "ANY", "browserName": "chrome", "version": "", "chromeOptions": {"args": [], "extensions": []}}, "firstMatch": []}, "desiredCapabilities": {"platform": "ANY", "browserName": "chrome", "version": "", "chromeOptions": {"args": [], "extensions": []}}}
+2019-03-02 04:39:05,639 Finished Request
+2019-03-02 04:39:05,639 POST http://127.0.0.1:55866/session/cbcd428b6c554fded10568c9a422f57d/url {"url": "https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm", "sessionId": "cbcd428b6c554fded10568c9a422f57d"}
+2019-03-02 04:39:14,183 Finished Request
+2019-03-02 04:39:14,183 GET http://127.0.0.1:55866/session/cbcd428b6c554fded10568c9a422f57d/title {"sessionId": "cbcd428b6c554fded10568c9a422f57d"}
+2019-03-02 04:39:14,195 Finished Request
+2019-03-02 04:39:14,195 POST http://127.0.0.1:55866/session/cbcd428b6c554fded10568c9a422f57d/element {"using": "class name", "sessionId": "cbcd428b6c554fded10568c9a422f57d", "value": "btn-success"}
+2019-03-02 04:39:14,227 Finished Request
+2019-03-02 04:39:14,227 POST http://127.0.0.1:55866/session/cbcd428b6c554fded10568c9a422f57d/element {"using": "id", "sessionId": "cbcd428b6c554fded10568c9a422f57d", "value": "Category"}
+2019-03-02 04:39:14,242 Finished Request
+2019-03-02 04:39:14,242 GET http://127.0.0.1:55866/session/cbcd428b6c554fded10568c9a422f57d/element/0.7846504469387023-2/name {"sessionId": "cbcd428b6c554fded10568c9a422f57d", "id": "0.7846504469387023-2"}
+2019-03-02 04:39:14,254 Finished Request
+2019-03-02 04:39:14,254 GET http://127.0.0.1:55866/session/cbcd428b6c554fded10568c9a422f57d/element/0.7846504469387023-2/attribute/multiple {"sessionId": "cbcd428b6c554fded10568c9a422f57d", "name": "multiple", "id": "0.7846504469387023-2"}
+2019-03-02 04:39:14,261 Finished Request
+2019-03-02 04:39:14,262 POST http://127.0.0.1:55866/session/cbcd428b6c554fded10568c9a422f57d/element/0.7846504469387023-2/elements {"using": "css selector", "sessionId": "cbcd428b6c554fded10568c9a422f57d", "id": "0.7846504469387023-2", "value": "option[value =\"All\"]"}
+2019-03-02 04:39:14,281 Finished Request
+2019-03-02 04:39:14,282 GET http://127.0.0.1:55866/session/cbcd428b6c554fded10568c9a422f57d/element/0.7846504469387023-3/selected {"sessionId": "cbcd428b6c554fded10568c9a422f57d", "id": "0.7846504469387023-3"}
+2019-03-02 04:39:14,297 Finished Request
+2019-03-02 04:39:14,297 POST http://127.0.0.1:55866/session/cbcd428b6c554fded10568c9a422f57d/element/0.7846504469387023-3/click {"sessionId": "cbcd428b6c554fded10568c9a422f57d", "id": "0.7846504469387023-3"}
+2019-03-02 04:39:14,361 Finished Request
+2019-03-02 04:39:14,361 cannot concatenate 'str' and 'NoneType' objects
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 82, in TryToParse
+    print("select_by_visible_text: All: " + result1)
+TypeError: cannot concatenate 'str' and 'NoneType' objects
+2019-03-02 04:39:55,558 POST http://127.0.0.1:56108/session {"capabilities": {"alwaysMatch": {"platform": "ANY", "browserName": "chrome", "version": "", "chromeOptions": {"args": [], "extensions": []}}, "firstMatch": []}, "desiredCapabilities": {"platform": "ANY", "browserName": "chrome", "version": "", "chromeOptions": {"args": [], "extensions": []}}}
+2019-03-02 04:39:56,536 Finished Request
+2019-03-02 04:39:56,536 POST http://127.0.0.1:56108/session/0388952684ff3aaa7e446339ca254274/url {"url": "https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm", "sessionId": "0388952684ff3aaa7e446339ca254274"}
+2019-03-02 04:40:04,682 Finished Request
+2019-03-02 04:40:04,683 GET http://127.0.0.1:56108/session/0388952684ff3aaa7e446339ca254274/title {"sessionId": "0388952684ff3aaa7e446339ca254274"}
+2019-03-02 04:40:04,687 Finished Request
+2019-03-02 04:40:04,687 POST http://127.0.0.1:56108/session/0388952684ff3aaa7e446339ca254274/element {"using": "class name", "sessionId": "0388952684ff3aaa7e446339ca254274", "value": "btn-success"}
+2019-03-02 04:40:04,699 Finished Request
+2019-03-02 04:40:04,699 POST http://127.0.0.1:56108/session/0388952684ff3aaa7e446339ca254274/element {"using": "id", "sessionId": "0388952684ff3aaa7e446339ca254274", "value": "Category"}
+2019-03-02 04:40:04,714 Finished Request
+2019-03-02 04:40:04,714 GET http://127.0.0.1:56108/session/0388952684ff3aaa7e446339ca254274/element/0.3457142389758465-2/name {"sessionId": "0388952684ff3aaa7e446339ca254274", "id": "0.3457142389758465-2"}
+2019-03-02 04:40:04,720 Finished Request
+2019-03-02 04:40:04,721 GET http://127.0.0.1:56108/session/0388952684ff3aaa7e446339ca254274/element/0.3457142389758465-2/attribute/multiple {"sessionId": "0388952684ff3aaa7e446339ca254274", "name": "multiple", "id": "0.3457142389758465-2"}
+2019-03-02 04:40:04,726 Finished Request
+2019-03-02 04:40:04,727 POST http://127.0.0.1:56108/session/0388952684ff3aaa7e446339ca254274/element/0.3457142389758465-2/elements {"using": "css selector", "sessionId": "0388952684ff3aaa7e446339ca254274", "id": "0.3457142389758465-2", "value": "option[value =\"All\"]"}
+2019-03-02 04:40:04,742 Finished Request
+2019-03-02 04:40:04,742 GET http://127.0.0.1:56108/session/0388952684ff3aaa7e446339ca254274/element/0.3457142389758465-3/selected {"sessionId": "0388952684ff3aaa7e446339ca254274", "id": "0.3457142389758465-3"}
+2019-03-02 04:40:04,757 Finished Request
+2019-03-02 04:40:04,757 POST http://127.0.0.1:56108/session/0388952684ff3aaa7e446339ca254274/element/0.3457142389758465-3/click {"sessionId": "0388952684ff3aaa7e446339ca254274", "id": "0.3457142389758465-3"}
+2019-03-02 04:40:04,809 Finished Request
+2019-03-02 04:40:04,810 POST http://127.0.0.1:56108/session/0388952684ff3aaa7e446339ca254274/timeouts/implicit_wait {"sessionId": "0388952684ff3aaa7e446339ca254274", "ms": 11000.0}
+2019-03-02 04:40:04,812 Finished Request
+2019-03-02 04:40:50,957 POST http://127.0.0.1:56375/session {"capabilities": {"alwaysMatch": {"platform": "ANY", "browserName": "chrome", "version": "", "chromeOptions": {"args": [], "extensions": []}}, "firstMatch": []}, "desiredCapabilities": {"platform": "ANY", "browserName": "chrome", "version": "", "chromeOptions": {"args": [], "extensions": []}}}
+2019-03-02 04:40:51,978 Finished Request
+2019-03-02 04:40:51,978 POST http://127.0.0.1:56375/session/acbb0cd7346f69c3db2f38ccc531ecd1/url {"url": "https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm", "sessionId": "acbb0cd7346f69c3db2f38ccc531ecd1"}
+2019-03-02 04:41:02,436 Finished Request
+2019-03-02 04:41:02,437 GET http://127.0.0.1:56375/session/acbb0cd7346f69c3db2f38ccc531ecd1/title {"sessionId": "acbb0cd7346f69c3db2f38ccc531ecd1"}
+2019-03-02 04:41:02,453 Finished Request
+2019-03-02 04:41:02,454 POST http://127.0.0.1:56375/session/acbb0cd7346f69c3db2f38ccc531ecd1/element {"using": "class name", "sessionId": "acbb0cd7346f69c3db2f38ccc531ecd1", "value": "btn-success"}
+2019-03-02 04:41:02,482 Finished Request
+2019-03-02 04:42:07,539 POST http://127.0.0.1:56739/session {"capabilities": {"alwaysMatch": {"platform": "ANY", "browserName": "chrome", "version": "", "chromeOptions": {"args": [], "extensions": []}}, "firstMatch": []}, "desiredCapabilities": {"platform": "ANY", "browserName": "chrome", "version": "", "chromeOptions": {"args": [], "extensions": []}}}
+2019-03-02 04:42:07,542 Finished Request
+2019-03-02 04:42:07,549 Message: chromeOptions is not the name of a known capability or extension capability
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome('IRP_ireland/geckodriver')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 69, in __init__
+    desired_capabilities=desired_capabilities)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/remote/webdriver.py", line 98, in __init__
+    self.start_session(desired_capabilities, browser_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/remote/webdriver.py", line 188, in start_session
+    response = self.execute(Command.NEW_SESSION, parameters)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/remote/webdriver.py", line 252, in execute
+    self.error_handler.check_response(response)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/remote/errorhandler.py", line 194, in check_response
+    raise exception_class(message, screen, stacktrace)
+WebDriverException: Message: chromeOptions is not the name of a known capability or extension capability
+
+2019-03-02 04:42:12,768 [Errno 20] Not a directory: 'IRP_ireland/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox('IRP_ireland/geckodriver')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: 'IRP_ireland/geckodriver'
+2019-03-02 04:42:28,532 [Errno 20] Not a directory: 'IRP_ireland/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox('IRP_ireland/geckodriver')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: 'IRP_ireland/geckodriver'
+2019-03-02 04:42:35,867 Message: 'geckodriver' executable needs to be in PATH. 
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 142, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 81, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'geckodriver' executable needs to be in PATH. 
+
+2019-03-02 04:42:41,650 [Errno 20] Not a directory: 'IRP_ireland/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox('IRP_ireland/geckodriver')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: 'IRP_ireland/geckodriver'
+2019-03-02 04:43:22,901 'module' object has no attribute 'FirefoxDriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.FirefoxDriver('IRP_ireland/geckodriver')
+AttributeError: 'module' object has no attribute 'FirefoxDriver'
+2019-03-02 04:44:16,469 Message: 'geckodriver' executable needs to be in PATH. 
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 142, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 81, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'geckodriver' executable needs to be in PATH. 
+
+2019-03-02 04:45:01,420 [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox('/0.Devs/DataScrapingTemplate/geckodriver')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/geckodriver'
+2019-03-02 04:45:03,516 [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox('/0.Devs/DataScrapingTemplate/geckodriver')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/geckodriver'
+2019-03-02 04:45:10,985 [Errno 2] No such file or directory: '0.Devs/DataScrapingTemplate/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox('0.Devs/DataScrapingTemplate/geckodriver')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 2] No such file or directory: '0.Devs/DataScrapingTemplate/geckodriver'
+2019-03-02 04:46:44,352 [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox("/0.Devs/DataScrapingTemplate/geckodriver")
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/geckodriver'
+2019-03-02 04:47:51,025 [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox("/0.Devs/DataScrapingTemplate/geckodriver")
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/geckodriver'
+2019-03-02 04:48:11,667 [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox("/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver")
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver'
+2019-03-02 04:48:27,380 [Errno 2] No such file or directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox("/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe")
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 2] No such file or directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe'
+2019-03-02 04:48:31,227 [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox("/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver")
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver'
+2019-03-02 04:48:35,787 [Errno 2] No such file or directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox("/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe")
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 2] No such file or directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe'
+2019-03-02 04:49:12,423 [Errno 2] No such file or directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox("/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe")
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 2] No such file or directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe'
+2019-03-02 04:49:20,544 [Errno 2] No such file or directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox("/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe")
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 2] No such file or directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe'
+2019-03-02 04:49:44,176 [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox("/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe")
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver.exe'
+2019-03-02 04:49:47,190 [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox("/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver")
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver'
+2019-03-02 04:50:10,668 [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox('/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver'
+2019-03-02 04:50:29,168 [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver'
+Traceback (most recent call last):
+  File "/0.Devs/DataScrapingTemplate/IRP_ireland/IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Firefox('/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver')
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/webdriver.py", line 132, in __init__
+    firefox_profile = FirefoxProfile(firefox_profile)
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/firefox/firefox_profile.py", line 78, in __init__
+    ignore=shutil.ignore_patterns("parent.lock", "lock", ".parentlock"))
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/shutil.py", line 171, in copytree
+    names = os.listdir(src)
+OSError: [Errno 20] Not a directory: '/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver'

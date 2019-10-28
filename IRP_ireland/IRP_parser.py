@@ -1,7 +1,9 @@
 # written in python 3.7
-import urllib.request
-import urllib.error
-import urllib.parse
+#-*- coding: utf-8 -*-
+import urllib2  
+# import urllib.request
+# import urllib.error
+# import urllib.parse
 from threading import Timer
 from time import sleep
 import time
@@ -30,6 +32,10 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import Select
 import ssl
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+
 logging.basicConfig(filename="log.txt",
                     format='%(asctime)s %(message)s', level=logging.DEBUG)
 # create logger
@@ -49,7 +55,7 @@ def TryToParse(TESTorREAL):
         # if TESTorREAL == "TEST":
         #     url = "http://softinus.com/upbit_tracker/upbit_tdd1.html"
 
-        browser = webdriver.Chrome()
+        browser = webdriver.Firefox('/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver')
         # browser.implicitly_wait(11) # seconds
         browser.get(url)
         print(browser.title)
@@ -73,38 +79,12 @@ def TryToParse(TESTorREAL):
         print("select_by_visible_text: All")
         result1 = select.select_by_value('All')
 
-        print("select_by_visible_text: All: " + result1)
+        print("select_by_visible_text: All: " + str(result1))
         browser.implicitly_wait(11)  # seconds
-        # select by value
-        # select.select_by_value('1')
-
-        # #wait = WebDriverWait(driver, 10)
-        # #element = wait.until(EC.element_to_be_clickable((By.ID, 'someid')))
-
-        # soup = BeautifulSoup(browser.page_source, "lxml")
-        # #page = urllib2.urlopen(url)
-        # #soup = BeautifulSoup(page, "lxml")
-
-        # ul_top = soup.find("ul", {"class": "ty05"})
-        # div_scrollB = ul_top.findNext('div').find("div", {"class": "scrollB"})
-        # strPriceList = div_scrollB.div.div.table.tbody.text.strip()
-        # arrPriceList = strPriceList.split('--')
-        # # print arrPriceList
-        # #str_count_caption= "총 " +str(len(arrPriceList)) +" 개 코인\n"
-        # # save last total coin count here except 1st row
-        # LAST_TOTAL_COIN_COUNT = len(arrPriceList) - 1
-        # print(str(LAST_TOTAL_COIN_COUNT))
-
-        # LAST_UNDER_READY_COIN_COUNT = 0
-        # for coin in arrPriceList:
-        #     if "준비중" in coin:
-        #         LAST_UNDER_READY_COIN_COUNT = LAST_UNDER_READY_COIN_COUNT + 1
-
         # browser.quit()
     except Exception as e:
         logging.exception(e)
         print(e)
-        #sendTelegramMsg("TryToParse()에서 Exception 발생 : " + str(e))
         pass
     # except StaleElementReferenceException:  # ignore this error
     #     pass  # TODO: consider logging the exception
