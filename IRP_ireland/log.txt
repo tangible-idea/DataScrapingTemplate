@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2019-10-01 20:47:17,930 Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
 Traceback (most recent call last):
   File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\common\service.py", line 76, in start
@@ -18,4 +19,15 @@ Traceback (most recent call last):
   File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\common\service.py", line 83, in start
     os.path.basename(self.path), self.start_error_message)
 selenium.common.exceptions.WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+=======
+2019-03-02 04:20:33,594 Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+Traceback (most recent call last):
+  File "IRP_parser.py", line 58, in TryToParse
+    browser = webdriver.Chrome()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/chrome/webdriver.py", line 62, in __init__
+    self.service.start()
+  File "/Library/Python/2.7/site-packages/selenium/webdriver/common/service.py", line 81, in start
+    os.path.basename(self.path), self.start_error_message)
+WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+>>>>>>> 160f521d2470224f6b6d70a3c2ce00ad1a06d8b6
 

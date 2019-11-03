@@ -1,7 +1,9 @@
 # written in python 3.7
-import urllib.request
-import urllib.error
-import urllib.parse
+#-*- coding: utf-8 -*-
+import urllib2  
+# import urllib.request
+# import urllib.error
+# import urllib.parse
 from threading import Timer
 from time import sleep
 import time
@@ -30,6 +32,10 @@ from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.support.ui import Select
 import ssl
 
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+
 logging.basicConfig(filename="log.txt",
                     format='%(asctime)s %(message)s', level=logging.DEBUG)
 # create logger
@@ -49,7 +55,7 @@ def TryToParse(TESTorREAL):
         # if TESTorREAL == "TEST":
         #     url = "http://softinus.com/upbit_tracker/upbit_tdd1.html"
 
-        browser = webdriver.Chrome()
+        browser = webdriver.Firefox('/0.Devs/DataScrapingTemplate/IRP_ireland/geckodriver')
         # browser.implicitly_wait(11) # seconds
         browser.get(url)
         print(browser.title)
@@ -73,6 +79,7 @@ def TryToParse(TESTorREAL):
         print("select_by_visible_text: All")
         result1 = select.select_by_value('All')
 
+<<<<<<< HEAD
         print("select_by_visible_text: All: " + result1)
         # Wait to load page
         time.sleep(1)
@@ -101,11 +108,14 @@ def TryToParse(TESTorREAL):
         #     if "준비중" in coin:
         #         LAST_UNDER_READY_COIN_COUNT = LAST_UNDER_READY_COIN_COUNT + 1
 
+=======
+        print("select_by_visible_text: All: " + str(result1))
+        browser.implicitly_wait(11)  # seconds
+>>>>>>> 160f521d2470224f6b6d70a3c2ce00ad1a06d8b6
         # browser.quit()
     except Exception as e:
         logging.exception(e)
         print(e)
-        #sendTelegramMsg("TryToParse()에서 Exception 발생 : " + str(e))
         pass
     # except StaleElementReferenceException:  # ignore this error
     #     pass  # TODO: consider logging the exception
