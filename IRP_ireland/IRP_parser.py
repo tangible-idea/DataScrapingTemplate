@@ -74,7 +74,8 @@ def TryToParse(TESTorREAL):
         result1 = select.select_by_value('All')
 
         print("select_by_visible_text: All: " + result1)
-        browser.implicitly_wait(11)  # seconds
+        # Wait to load page
+        time.sleep(1)
         # select by value
         # select.select_by_value('1')
 

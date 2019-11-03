@@ -69,5 +69,3 @@ for i in arr_final_datetime:
     #     continue 
     
     endloop(i)
-    
-    

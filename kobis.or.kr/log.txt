@@ -1,0 +1,296 @@
+2019-10-01 18:29:02,809 POST http://127.0.0.1:1972/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2019-10-01 18:29:02,812 Starting new HTTP connection (1): 127.0.0.1:1972
+2019-10-01 18:29:06,628 http://127.0.0.1:1972 "POST /session HTTP/1.1" 200 778
+2019-10-01 18:29:06,630 Finished Request
+2019-10-01 18:29:06,631 POST http://127.0.0.1:1972/session/8e55a81963334680a800b4fbf7f12f74/url {"url": "https://docs.google.com/spreadsheets/d/1iUkEp4rFI-rJIQThCM0E3MVXx_a6RWJ1kSqMpkCHrXM/edit#gid=116309450", "sessionId": "8e55a81963334680a800b4fbf7f12f74"}
+2019-10-01 18:29:06,635 Resetting dropped connection: 127.0.0.1
+2019-10-01 18:29:08,069 http://127.0.0.1:1972 "POST /session/8e55a81963334680a800b4fbf7f12f74/url HTTP/1.1" 200 346
+2019-10-01 18:29:08,070 Finished Request
+2019-10-01 18:29:08,070 Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+Traceback (most recent call last):
+  File ".\workinghour.py", line 54, in TryToParse
+    browser.get(url)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+
+2019-10-01 18:35:29,914 POST http://127.0.0.1:2216/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2019-10-01 18:35:29,916 Starting new HTTP connection (1): 127.0.0.1:2216
+2019-10-01 18:35:33,735 http://127.0.0.1:2216 "POST /session HTTP/1.1" 200 778
+2019-10-01 18:35:33,736 Finished Request
+2019-10-01 18:35:33,736 POST http://127.0.0.1:2216/session/5ed900962f933a29d1b9ea58b345d52e/url {"url": "https://docs.google.com/spreadsheets/d/1iUkEp4rFI-rJIQThCM0E3MVXx_a6RWJ1kSqMpkCHrXM/edit#gid=116309450", "sessionId": "5ed900962f933a29d1b9ea58b345d52e"}
+2019-10-01 18:35:33,737 Resetting dropped connection: 127.0.0.1
+2019-10-01 18:35:35,723 http://127.0.0.1:2216 "POST /session/5ed900962f933a29d1b9ea58b345d52e/url HTTP/1.1" 200 346
+2019-10-01 18:35:35,724 Finished Request
+2019-10-01 18:35:35,724 Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+Traceback (most recent call last):
+  File ".\workinghour.py", line 54, in TryToParse
+    browser.get(url)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+
+2019-10-01 18:35:48,960 POST http://127.0.0.1:2264/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2019-10-01 18:35:48,963 Starting new HTTP connection (1): 127.0.0.1:2264
+2019-10-01 18:35:52,454 http://127.0.0.1:2264 "POST /session HTTP/1.1" 200 776
+2019-10-01 18:35:52,456 Finished Request
+2019-10-01 18:35:52,456 POST http://127.0.0.1:2264/session/8c23bfa2a44f1396f9b799b0a307302b/url {"url": "https://docs.google.com/spreadsheets/d/1iUkEp4rFI-rJIQThCM0E3MVXx_a6RWJ1kSqMpkCHrXM/edit#gid=116309450", "sessionId": "8c23bfa2a44f1396f9b799b0a307302b"}
+2019-10-01 18:35:52,458 Resetting dropped connection: 127.0.0.1
+2019-10-01 18:35:53,602 http://127.0.0.1:2264 "POST /session/8c23bfa2a44f1396f9b799b0a307302b/url HTTP/1.1" 200 346
+2019-10-01 18:35:53,603 Finished Request
+2019-10-01 18:35:53,603 Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+Traceback (most recent call last):
+  File ".\workinghour.py", line 54, in TryToParse
+    browser.get(url)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+
+2019-10-01 18:37:56,598 POST http://127.0.0.1:2358/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2019-10-01 18:37:56,600 Starting new HTTP connection (1): 127.0.0.1:2358
+2019-10-01 18:38:00,150 http://127.0.0.1:2358 "POST /session HTTP/1.1" 200 777
+2019-10-01 18:38:00,151 Finished Request
+2019-10-01 18:38:00,151 POST http://127.0.0.1:2358/session/3f5440ddbd3fd5960bfdc69f89414656/url {"url": "https://docs.google.com/spreadsheets/d/1iUkEp4rFI-rJIQThCM0E3MVXx_a6RWJ1kSqMpkCHrXM/edit#gid=116309450", "sessionId": "3f5440ddbd3fd5960bfdc69f89414656"}
+2019-10-01 18:38:00,152 Resetting dropped connection: 127.0.0.1
+2019-10-01 18:38:01,630 http://127.0.0.1:2358 "POST /session/3f5440ddbd3fd5960bfdc69f89414656/url HTTP/1.1" 200 346
+2019-10-01 18:38:01,631 Finished Request
+2019-10-01 18:38:01,631 Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+Traceback (most recent call last):
+  File ".\workinghour.py", line 54, in TryToParse
+    browser.get(url)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+
+2019-10-01 18:39:25,432 POST http://127.0.0.1:2449/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2019-10-01 18:39:25,435 Starting new HTTP connection (1): 127.0.0.1:2449
+2019-10-01 18:39:28,998 http://127.0.0.1:2449 "POST /session HTTP/1.1" 200 778
+2019-10-01 18:39:28,999 Finished Request
+2019-10-01 18:39:29,000 POST http://127.0.0.1:2449/session/8e99165c5073fa0b0de501ebb2f6bf73/url {"url": "https://docs.google.com/spreadsheets/d/1iUkEp4rFI-rJIQThCM0E3MVXx_a6RWJ1kSqMpkCHrXM/edit#gid=116309450", "sessionId": "8e99165c5073fa0b0de501ebb2f6bf73"}
+2019-10-01 18:39:29,001 Resetting dropped connection: 127.0.0.1
+2019-10-01 18:39:30,880 http://127.0.0.1:2449 "POST /session/8e99165c5073fa0b0de501ebb2f6bf73/url HTTP/1.1" 200 346
+2019-10-01 18:39:30,881 Finished Request
+2019-10-01 18:39:30,881 Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+Traceback (most recent call last):
+  File ".\workinghour.py", line 54, in TryToParse
+    browser.get(url)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+
+2019-10-01 18:52:42,372 POST http://127.0.0.1:2993/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2019-10-01 18:52:42,374 Starting new HTTP connection (1): 127.0.0.1:2993
+2019-10-01 18:52:45,870 http://127.0.0.1:2993 "POST /session HTTP/1.1" 200 778
+2019-10-01 18:52:45,870 Finished Request
+2019-10-01 18:52:45,870 POST http://127.0.0.1:2993/session/cbc2beeca7fa11d8ceee4ca889872bf7/url {"url": "https://docs.google.com/spreadsheets/d/1iUkEp4rFI-rJIQThCM0E3MVXx_a6RWJ1kSqMpkCHrXM/edit#gid=116309450", "sessionId": "cbc2beeca7fa11d8ceee4ca889872bf7"}
+2019-10-01 18:52:45,871 Resetting dropped connection: 127.0.0.1
+2019-10-01 18:52:47,184 http://127.0.0.1:2993 "POST /session/cbc2beeca7fa11d8ceee4ca889872bf7/url HTTP/1.1" 200 346
+2019-10-01 18:52:47,184 Finished Request
+2019-10-01 18:52:47,185 Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+Traceback (most recent call last):
+  File ".\workinghour.py", line 54, in TryToParse
+    browser.get(url)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+
+2019-10-01 20:10:22,249 POST http://127.0.0.1:6034/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2019-10-01 20:10:22,251 Starting new HTTP connection (1): 127.0.0.1:6034
+2019-10-01 20:10:26,022 http://127.0.0.1:6034 "POST /session HTTP/1.1" 200 777
+2019-10-01 20:10:26,023 Finished Request
+2019-10-01 20:10:26,023 POST http://127.0.0.1:6034/session/afe001c18988f7a70e9305b547d7fe2f/url {"url": "https://docs.google.com/spreadsheets/d/1iUkEp4rFI-rJIQThCM0E3MVXx_a6RWJ1kSqMpkCHrXM/edit#gid=116309450", "sessionId": "afe001c18988f7a70e9305b547d7fe2f"}
+2019-10-01 20:10:26,024 Resetting dropped connection: 127.0.0.1
+2019-10-01 20:10:27,610 http://127.0.0.1:6034 "POST /session/afe001c18988f7a70e9305b547d7fe2f/url HTTP/1.1" 200 346
+2019-10-01 20:10:27,611 Finished Request
+2019-10-01 20:10:27,612 Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+Traceback (most recent call last):
+  File ".\workinghour.py", line 54, in TryToParse
+    browser.get(url)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+
+2019-10-01 20:46:10,561 POST http://127.0.0.1:6317/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2019-10-01 20:46:10,562 Starting new HTTP connection (1): 127.0.0.1:6317
+2019-10-01 20:46:14,219 http://127.0.0.1:6317 "POST /session HTTP/1.1" 200 778
+2019-10-01 20:46:14,220 Finished Request
+2019-10-01 20:46:14,220 POST http://127.0.0.1:6317/session/b08577edf298f71a008372450e109ea4/url {"url": "https://docs.google.com/spreadsheets/d/1iUkEp4rFI-rJIQThCM0E3MVXx_a6RWJ1kSqMpkCHrXM/edit#gid=116309450", "sessionId": "b08577edf298f71a008372450e109ea4"}
+2019-10-01 20:46:14,222 Resetting dropped connection: 127.0.0.1
+2019-10-01 20:46:15,525 http://127.0.0.1:6317 "POST /session/b08577edf298f71a008372450e109ea4/url HTTP/1.1" 200 346
+2019-10-01 20:46:15,525 Finished Request
+2019-10-01 20:46:15,526 Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+Traceback (most recent call last):
+  File ".\workinghour.py", line 54, in TryToParse
+    browser.get(url)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+
+2019-10-01 20:47:44,476 POST http://127.0.0.1:6363/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2019-10-01 20:47:44,478 Starting new HTTP connection (1): 127.0.0.1:6363
+2019-10-01 20:47:48,175 http://127.0.0.1:6363 "POST /session HTTP/1.1" 200 776
+2019-10-01 20:47:48,175 Finished Request
+2019-10-01 20:47:48,176 POST http://127.0.0.1:6363/session/f1487e76b1f51627dea0cca88867c6fe/url {"url": "https://burghquayregistrationoffice.inis.gov.ie/Website/AMSREG/AMSRegWeb.nsf/AppSelect?OpenForm", "sessionId": "f1487e76b1f51627dea0cca88867c6fe"}
+2019-10-01 20:47:48,176 Resetting dropped connection: 127.0.0.1
+2019-10-01 20:48:01,324 http://127.0.0.1:6363 "POST /session/f1487e76b1f51627dea0cca88867c6fe/url HTTP/1.1" 200 72
+2019-10-01 20:48:01,325 Finished Request
+2019-10-01 20:48:01,326 GET http://127.0.0.1:6363/session/f1487e76b1f51627dea0cca88867c6fe/title {"sessionId": "f1487e76b1f51627dea0cca88867c6fe"}
+2019-10-01 20:48:01,327 Resetting dropped connection: 127.0.0.1
+2019-10-01 20:48:01,361 http://127.0.0.1:6363 "GET /session/f1487e76b1f51627dea0cca88867c6fe/title HTTP/1.1" 200 114
+2019-10-01 20:48:01,361 Finished Request
+2019-10-01 20:48:01,362 POST http://127.0.0.1:6363/session/f1487e76b1f51627dea0cca88867c6fe/element {"using": "class name", "value": "btn-success", "sessionId": "f1487e76b1f51627dea0cca88867c6fe"}
+2019-10-01 20:48:01,364 Resetting dropped connection: 127.0.0.1
+2019-10-01 20:48:01,414 http://127.0.0.1:6363 "POST /session/f1487e76b1f51627dea0cca88867c6fe/element HTTP/1.1" 200 103
+2019-10-01 20:48:01,415 Finished Request
+2019-10-01 20:48:01,420 POST http://127.0.0.1:6363/session/f1487e76b1f51627dea0cca88867c6fe/element {"using": "id", "value": "Category", "sessionId": "f1487e76b1f51627dea0cca88867c6fe"}
+2019-10-01 20:48:01,421 Resetting dropped connection: 127.0.0.1
+2019-10-01 20:48:01,464 http://127.0.0.1:6363 "POST /session/f1487e76b1f51627dea0cca88867c6fe/element HTTP/1.1" 200 103
+2019-10-01 20:48:01,465 Finished Request
+2019-10-01 20:48:01,465 GET http://127.0.0.1:6363/session/f1487e76b1f51627dea0cca88867c6fe/element/0.23528556325466976-2/name {"id": "0.23528556325466976-2", "sessionId": "f1487e76b1f51627dea0cca88867c6fe"}
+2019-10-01 20:48:01,466 Resetting dropped connection: 127.0.0.1
+2019-10-01 20:48:01,502 http://127.0.0.1:6363 "GET /session/f1487e76b1f51627dea0cca88867c6fe/element/0.23528556325466976-2/name HTTP/1.1" 200 76
+2019-10-01 20:48:01,502 Finished Request
+2019-10-01 20:48:01,503 GET http://127.0.0.1:6363/session/f1487e76b1f51627dea0cca88867c6fe/element/0.23528556325466976-2/attribute/multiple {"name": "multiple", "id": "0.23528556325466976-2", "sessionId": "f1487e76b1f51627dea0cca88867c6fe"}
+2019-10-01 20:48:01,504 Resetting dropped connection: 127.0.0.1
+2019-10-01 20:48:01,539 http://127.0.0.1:6363 "GET /session/f1487e76b1f51627dea0cca88867c6fe/element/0.23528556325466976-2/attribute/multiple HTTP/1.1" 200 72
+2019-10-01 20:48:01,539 Finished Request
+2019-10-01 20:48:01,540 POST http://127.0.0.1:6363/session/f1487e76b1f51627dea0cca88867c6fe/element/0.23528556325466976-2/elements {"using": "css selector", "value": "option[value =\"All\"]", "id": "0.23528556325466976-2", "sessionId": "f1487e76b1f51627dea0cca88867c6fe"}
+2019-10-01 20:48:01,542 Resetting dropped connection: 127.0.0.1
+2019-10-01 20:48:01,600 http://127.0.0.1:6363 "POST /session/f1487e76b1f51627dea0cca88867c6fe/element/0.23528556325466976-2/elements HTTP/1.1" 200 105
+2019-10-01 20:48:01,600 Finished Request
+2019-10-01 20:48:01,601 GET http://127.0.0.1:6363/session/f1487e76b1f51627dea0cca88867c6fe/element/0.23528556325466976-3/selected {"id": "0.23528556325466976-3", "sessionId": "f1487e76b1f51627dea0cca88867c6fe"}
+2019-10-01 20:48:01,602 Resetting dropped connection: 127.0.0.1
+2019-10-01 20:48:01,636 http://127.0.0.1:6363 "GET /session/f1487e76b1f51627dea0cca88867c6fe/element/0.23528556325466976-3/selected HTTP/1.1" 200 73
+2019-10-01 20:48:01,637 Finished Request
+2019-10-01 20:48:01,637 POST http://127.0.0.1:6363/session/f1487e76b1f51627dea0cca88867c6fe/element/0.23528556325466976-3/click {"id": "0.23528556325466976-3", "sessionId": "f1487e76b1f51627dea0cca88867c6fe"}
+2019-10-01 20:48:01,638 Resetting dropped connection: 127.0.0.1
+2019-10-01 20:48:01,736 http://127.0.0.1:6363 "POST /session/f1487e76b1f51627dea0cca88867c6fe/element/0.23528556325466976-3/click HTTP/1.1" 200 297
+2019-10-01 20:48:01,737 Finished Request
+2019-10-01 20:48:01,737 Message: unknown error: call function result missing 'value'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+Traceback (most recent call last):
+  File ".\IRP_parser.py", line 74, in TryToParse
+    result1 = select.select_by_value('All')
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\support\select.py", line 82, in select_by_value
+    self._setSelected(opt)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\support\select.py", line 212, in _setSelected
+    option.click()
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webelement.py", line 80, in click
+    self._execute(Command.CLICK_ELEMENT)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webelement.py", line 633, in _execute
+    return self._parent.execute(command, params)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: call function result missing 'value'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+
+2019-10-02 00:09:05,974 POST http://127.0.0.1:7905/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2019-10-02 00:09:05,979 Starting new HTTP connection (1): 127.0.0.1:7905
+2019-10-02 00:09:10,420 http://127.0.0.1:7905 "POST /session HTTP/1.1" 200 778
+2019-10-02 00:09:10,422 Finished Request
+2019-10-02 00:09:10,423 POST http://127.0.0.1:7905/session/4311cd9d5dc13998d111bff48c58df84/url {"url": "https://docs.google.com/spreadsheets/d/1iUkEp4rFI-rJIQThCM0E3MVXx_a6RWJ1kSqMpkCHrXM/edit#gid=116309450", "sessionId": "4311cd9d5dc13998d111bff48c58df84"}
+2019-10-02 00:09:10,425 Resetting dropped connection: 127.0.0.1
+2019-10-02 00:09:12,091 http://127.0.0.1:7905 "POST /session/4311cd9d5dc13998d111bff48c58df84/url HTTP/1.1" 200 346
+2019-10-02 00:09:12,092 Finished Request
+2019-10-02 00:09:12,092 Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+Traceback (most recent call last):
+  File ".\workinghour.py", line 54, in TryToParse
+    browser.get(url)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 333, in get
+    self.execute(Command.GET, {'url': url})
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: cannot determine loading status
+from unknown error: missing or invalid 'entry.level'
+  (Session info: chrome=77.0.3865.90)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 10.0.18362 x86_64)
+
