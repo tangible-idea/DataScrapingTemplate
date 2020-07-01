@@ -48,11 +48,16 @@ def AllClickOnThisPage():
     allcheck= browser.find_element_by_xpath('//input[@title="전체선택"]')
     allcheck.click()
 
+    countof_disabled = 0 # 선택불가항목 카운트
+
     checkelems = browser.find_elements_by_xpath('//div[@class="w2selectbox_native_innerDiv"]')
     for elem in checkelems:
         select1= elem.find_element_by_tag_name("select")
+        if select1.get_attribute("disabled") == True:
+            print("변경할 수 없는 선택항목 (면세 또는 공제 불가항목)")
+            countof_disabled = countof_disabled + 1
         select2= Select(select1)
-        select2.select_by_visible_text('공제')
+        select2.select_by_visible_text(TO_BE_CHANGED)
 
     clickIFclickable('trigger19',0.3)
 
@@ -69,6 +74,7 @@ def AllClickOnThisPage():
     except TimeoutException:
         print("no alert")
 
+    return countof_disabled
     
 
 def clickIFclickable(id, waittime=3):
@@ -96,6 +102,8 @@ def hoverIFpresented(id):
     hover = ActionChains(browser).move_to_element(btn)
     hover.perform()
 
+INQ_CONDITION = "공제대상" # 공제대상 또는 불공제대상
+TO_BE_CHANGED = "불공제" # 공제 또는 불공제 
 browser = None
 def TryToParse(TESTorREAL):
     global browser
@@ -145,8 +153,10 @@ def TryToParse(TESTorREAL):
         menu_list= []
         for y in year_options:
             for q in qrt_options:
-                menu_list.append("불공제항목 조회: "+y.text+":" +q.text)
-        menu_list.append("전체체크 시작.")
+                menu_list.append(INQ_CONDITION+ " 항목 조회: "+y.text+":" +q.text)
+        menu_list.append("전체 아이템을 "+ TO_BE_CHANGED +" 항목으로 변경하기.")
+        #menu_list.append("조회대상 수정 (현재:"+INQ_CONDITION+")")
+        #menu_list.append("변경대상 수정 (현재:"+TO_BE_CHANGED+")")
         menu_list.append("종료.")
 
         while(True):
@@ -159,7 +169,7 @@ def TryToParse(TESTorREAL):
                 }]
             answer = prompt(questions)["menu"]
 
-            if('불공제항목 조회' in answer):
+            if('조회' in answer):
                 clickIFclickable('rdoSearch_input_2', 0.3) #분기별 옵션 선택
 
                 splited_answer= answer.split(':')
@@ -172,12 +182,14 @@ def TryToParse(TESTorREAL):
                 ui_qrt.select_by_visible_text(selected_qrt)
 
                 ui_selectbox4= Select(browser.find_element_by_id('selectbox4'))
-                ui_selectbox4.select_by_visible_text('불공제대상')
+                ui_selectbox4.select_by_visible_text(INQ_CONDITION) # 불공제대상 또는 공제대상
                 clickIFclickable('btnSearch',0.1)
                 browser.implicitly_wait(1)
                 continue
 
-            elif(answer == '전체체크 시작.'):
+            if('조회' in answer):
+
+            elif('변경하기.' in answer):
                 while True:
                     textof_DOM_total= browser.find_element_by_id('txtTotal').text
                     textof_DOM_totalpage= browser.find_element_by_id('txtTotalPage').text
@@ -189,20 +201,20 @@ def TryToParse(TESTorREAL):
                     if(total == 0): # 항목이 없으면 종료.
                         break
 
-                    AllClickOnThisPage()
-                    #if totalpage <= 10:
-                    #    for x in range(1,totalpage+1):
-                    #        clickIFclickable("pglNavi_page_"+str(x))
-                    #        AllClickOnThisPage()
-                    #else: # 10페이지 이상 남았을 경우:
-                    #    for x in range(1,11):
-                    #        clickIFclickable("pglNavi_page_"+str(x))
-                    #        AllClickOnThisPage()
-                    #        totalpage = totalpage - 10
-                    #        if x == 10:
-                                #clickIFclickable('pglNavi_next_btn',0.5)
-
-                    
+                    countof_disabled= AllClickOnThisPage()
+                    print("이 페이지에서 선택불가항목: " + str(countof_disabled))
+                    if(countof_disabled == total): # 더 이상 선택할 항목이 없고
+                        wait = WebDriverWait(browser, 5)
+                        
+                    elif(countof_disabled == 10):
+                        btn = wait.until(EC.element_to_be_clickable((By.ID, pglNavi_next_btn)))
+                        print("다음 페이지 버튼이 있는지? " + str(btn.is_displayed()))
+                        if btn.is_displayed():
+                            print("다음 페이지로 넘어갑니다!")
+                            clickIFclickable('pglNavi_next_btn',0.5)
+                        else: # 다음 페이지 버튼도 없고 선택불가항목만 남아있으면 종료.
+                            print("더 이상 선택할 항목이 없습니다!")
+                            break
                 continue
             else:
                 exit(0)
