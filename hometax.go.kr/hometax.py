@@ -11,13 +11,10 @@ import string
 import os
 import re
 import sys
-import logging
 from datetime import datetime
-from PyInquirer import prompt, print_json
 
-# pip install BeautifulSoup4
-# pip install lxml
-from bs4 import BeautifulSoup
+# pip install PyInquirer
+from PyInquirer import prompt, print_json
 
 # pip install selenium
 from selenium import webdriver
@@ -63,7 +60,12 @@ def AllClickOnThisPage():
         WebDriverWait(browser, 3).until(EC.alert_is_present())
         alert = browser.switch_to.alert
         alert.accept()
-        print("alert accepted")
+        print("alert accepted:1")
+        time.sleep(0.5)
+        WebDriverWait(browser, 3).until(EC.alert_is_present())
+        alert = browser.switch_to.alert
+        alert.accept()
+        print("alert accepted:2")
     except TimeoutException:
         print("no alert")
 
@@ -101,7 +103,6 @@ def TryToParse(TESTorREAL):
     print("TryToParse()")
     try:
         url = "https://www.hometax.go.kr/"
-        #url = "https://www.hometax.go.kr/websquare/websquare.wq?w2xPath=/ui/pp/index_pp.xml"
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("window-size=1400x600")
         chrome_options.add_argument("--disable-popup-blocking");
@@ -114,7 +115,6 @@ def TryToParse(TESTorREAL):
         clickIFclickable('textbox81212912',2)
         while True:
             try:
-                #btn_new= browser.find_element_by_css_selector('#textbox915')
                 btn_new= browser.find_element_by_css_selector('#textbox81212912')
                 if(btn_new.text == "로그아웃"):
                     print("로그인됨.")
@@ -133,7 +133,7 @@ def TryToParse(TESTorREAL):
         browser.switch_to_frame(browser.find_element_by_xpath('//iframe[@id="txppIframe"]'))
 
         time.sleep(1.5)
-        clickIFclickable('rdoSearch_input_2',0.3)
+        clickIFclickable('rdoSearch_input_2',0.3) #분기별 옵션 선택
 
         select_year= browser.find_element_by_id('selectYear')
         select_qrt= browser.find_element_by_id('selectQrt')
@@ -160,6 +160,8 @@ def TryToParse(TESTorREAL):
             answer = prompt(questions)["menu"]
 
             if('불공제항목 조회' in answer):
+                clickIFclickable('rdoSearch_input_2', 0.3) #분기별 옵션 선택
+
                 splited_answer= answer.split(':')
                 selected_year= splited_answer[1].strip()
                 selected_qrt= splited_answer[2].strip()
@@ -176,21 +178,31 @@ def TryToParse(TESTorREAL):
                 continue
 
             elif(answer == '전체체크 시작.'):
-                DOM_totalpage= browser.find_element_by_id('txtTotalPage')
-                textof_DOM_totalpage= DOM_totalpage.text
-                totalpage= int(textof_DOM_totalpage)
-                print("총 페이지 수: " + str(totalpage))
-                if totalpage <= 10:
-                    for x in range(1,totalpage):
-                        clickIFclickable("pglNavi_page_"+str(x))
-                        AllClickOnThisPage()
-                else: # 10페이지 이상 남았을 경우:
-                    for x in range(1,11):
-                        clickIFclickable("pglNavi_page_"+str(x))
-                        AllClickOnThisPage()
-                        totalpage = totalpage - 10
-                        if x == 10:
-                            clickIFclickable('pglNavi_next_btn',0.5)
+                while True:
+                    textof_DOM_total= browser.find_element_by_id('txtTotal').text
+                    textof_DOM_totalpage= browser.find_element_by_id('txtTotalPage').text
+                    total= int(textof_DOM_total)
+                    totalpage= int(textof_DOM_totalpage)
+                    print("총 페이지: " + str(totalpage))
+                    print("총 항목개수: " + str(total))
+
+                    if(total == 0): # 항목이 없으면 종료.
+                        break
+
+                    AllClickOnThisPage()
+                    #if totalpage <= 10:
+                    #    for x in range(1,totalpage+1):
+                    #        clickIFclickable("pglNavi_page_"+str(x))
+                    #        AllClickOnThisPage()
+                    #else: # 10페이지 이상 남았을 경우:
+                    #    for x in range(1,11):
+                    #        clickIFclickable("pglNavi_page_"+str(x))
+                    #        AllClickOnThisPage()
+                    #        totalpage = totalpage - 10
+                    #        if x == 10:
+                                #clickIFclickable('pglNavi_next_btn',0.5)
+
+                    
                 continue
             else:
                 exit(0)
