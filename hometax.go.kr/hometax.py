@@ -187,7 +187,7 @@ def TryToParse(TESTorREAL):
                 browser.implicitly_wait(1)
                 continue
 
-            if('조회' in answer):
+            #if('조회' in answer):
 
             elif('변경하기.' in answer):
                 while True:
