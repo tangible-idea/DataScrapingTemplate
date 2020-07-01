@@ -97,11 +97,11 @@ def hoverIFpresented(id):
 browser = None
 def TryToParse(TESTorREAL):
     global browser
-    # PARSING_COUNT = PARSING_COUNT + 1  # add count
-    # target url
+
     print("TryToParse()")
     try:
         url = "https://www.hometax.go.kr/"
+        #url = "https://www.hometax.go.kr/websquare/websquare.wq?w2xPath=/ui/pp/index_pp.xml"
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("window-size=1400x600")
         chrome_options.add_argument("--disable-popup-blocking");
@@ -110,19 +110,6 @@ def TryToParse(TESTorREAL):
         
         browser.get(url)
         print(browser.title)
-
-        delay = 10  # seconds
-        while True:
-            try:
-                myElem = WebDriverWait(browser, delay).until(
-                    EC.element_to_be_clickable((By.ID, "textbox81212912")))
-                print("Page is ready!")
-                # it will break from the loop once the specific element will be present.
-                break
-            except TimeoutException:
-                print("Loading took too much time!")
-                browser.quit()
-                return
 
         clickIFclickable('textbox81212912',2)
         while True:
@@ -140,29 +127,39 @@ def TryToParse(TESTorREAL):
                 pass
         
         browser.get("https://hometax.go.kr/websquare/websquare.wq?w2xPath=/ui/pp/index_pp.xml&tmIdx=1&tm2lIdx=0105040000&tm3lIdx=0105040400")
-        #clickIFclickable('textbox81212923',1)
-        #clickIFclickable('a_0105040000')
-        #clickIFclickable('a_0105040400')
-        #clickIFclickable('textbox81212923',1)
-        #clickIFclickable('menuAtag_0105040400',1)
 
-        #clickIFclickable('rdoSearch_input_2')
-        #browser.implicitly_wait(5)
-        #time.sleep(5)
-        browser.switch_to_frame(browser.find_element_by_xpath('//iframe[@src="https://tecr.hometax.go.kr/websquare/websquare.html?w2xPath=/ui/cr/c/b/UTECRCB023.xml"]'))
+        time.sleep(0.5)
+        #browser.switch_to_frame(browser.find_element_by_xpath('//iframe[@src="https://tecr.hometax.go.kr/websquare/websquare.html?w2xPath=/ui/cr/c/b/UTECRCB023.xml"]'))
+        browser.switch_to_frame(browser.find_element_by_xpath('//iframe[@id="txppIframe"]'))
+
+        time.sleep(1.5)
+        clickIFclickable('rdoSearch_input_2',0.3)
+
+        select_year= browser.find_element_by_id('selectYear')
+        select_qrt= browser.find_element_by_id('selectQrt')
+
+        year_options= select_year.find_elements_by_tag_name("option")
+        qrt_options= select_qrt.find_elements_by_tag_name("option")
+
+        #메뉴만들기
+        menu_list= []
+        for y in year_options:
+            for q in qrt_options:
+                menu_list.append("불공제항목 조회: "+y.text+":" +q.text)
+        menu_list.append("전체체크 시작.")
+        menu_list.append("종료.")
 
         while(True):
-            menus = ['불공제항목 조회.', '전체체크 시작.', '종료.']
             questions = [
                 {
                     'type': 'list',
                     'name': 'menu',
-                    'message': 'What do you need',
-                    'choices': menus
+                    'message': '무엇을 도와드릴까요?',
+                    'choices': menu_list
                 }]
             answer = prompt(questions)["menu"]
             #print(answer)
-            if(answer == '불공제항목 조회.'):
+            if('불공제항목 조회' in answer):
                 clickIFclickable('rdoSearch_input_2',0.1)
                 selectbox4= Select(browser.find_element_by_id('selectbox4'))
                 selectbox4.select_by_visible_text('불공제대상')
@@ -187,25 +184,6 @@ def TryToParse(TESTorREAL):
                         if x == 10:
                             clickIFclickable('pglNavi_next_btn',0.5)
                 continue
-
-            #browser.find_element_by_xpath('//select/option[text()="BROILER RATES (WEST BENGAL)"]').click() # Replace text with required value
-            #browser.switch_to_default_content() # to quit from iframe
-
-
-
-        #subscribe_checkbox = browser.find_element_by_id('selectbox4')
-        #wait = WebDriverWait(browser, 10)
-        #result = wait.until(ec.element_to_be_selected(subscribe_checkbox))
-        #print(result)
-
-        #ddelement= Select(browser.find_element_by_id('selectbox4'))
-        #clickIFclickable('btnSearch')
-        #<input type="checkbox" colid="chk" title="전체선택">
-
-        #WebDriverWait(browser, 5).until(EC.element_to_be_clickable((By.XPATH, '//select/option[text()="불공제대상"]'))).click()
-        
-        #browser.find_element_by_xpath('//select/option[text()="전체선택"]').click()
-
         
     except Exception as e:
         print(e)
