@@ -31,6 +31,26 @@ from selenium.webdriver.support.ui import Select
 from selenium.webdriver import ActionChains
 import ssl
 
+
+INQ_CONDITION = "불공제대상" # 공제대상 또는 불공제대상
+TO_BE_CHANGED = "공제" # 공제 또는 불공제 
+browser = None
+
+#메뉴만들기
+def MakeMenuList(year_options, qrt_options):
+    global INQ_CONDITION
+    global TO_BE_CHANGED
+
+    menu_list= []
+    for y in year_options:
+        for q in qrt_options:
+            menu_list.append(INQ_CONDITION+ " 항목 조회: "+y.text+":" +q.text)
+    menu_list.append("전체 아이템을 "+ TO_BE_CHANGED +" 항목으로 변경하기.")
+    menu_list.append("조회대상 수정 (현재:"+INQ_CONDITION+")")
+    menu_list.append("변경대상 수정 (현재:"+TO_BE_CHANGED+")")
+    menu_list.append("종료.")
+    return menu_list
+
 #def BSoup():
 #    html = browser.page_source
 #            print(html)
@@ -53,21 +73,23 @@ def AllClickOnThisPage():
     checkelems = browser.find_elements_by_xpath('//div[@class="w2selectbox_native_innerDiv"]')
     for elem in checkelems:
         select1= elem.find_element_by_tag_name("select")
-        if select1.get_attribute("disabled") == True:
+        #if select1.get_attribute("disabled") == True:
+        if select1.is_enabled() == False:
             print("변경할 수 없는 선택항목 (면세 또는 공제 불가항목)")
             countof_disabled = countof_disabled + 1
-        select2= Select(select1)
-        select2.select_by_visible_text(TO_BE_CHANGED)
+        else:
+            select2= Select(select1)
+            select2.select_by_visible_text(TO_BE_CHANGED)
 
     clickIFclickable('trigger19',0.3)
 
     try:
-        WebDriverWait(browser, 3).until(EC.alert_is_present())
+        WebDriverWait(browser, 2).until(EC.alert_is_present())
         alert = browser.switch_to.alert
         alert.accept()
         print("alert accepted:1")
         time.sleep(0.5)
-        WebDriverWait(browser, 3).until(EC.alert_is_present())
+        WebDriverWait(browser, 5).until(EC.alert_is_present())
         alert = browser.switch_to.alert
         alert.accept()
         print("alert accepted:2")
@@ -102,10 +124,9 @@ def hoverIFpresented(id):
     hover = ActionChains(browser).move_to_element(btn)
     hover.perform()
 
-INQ_CONDITION = "공제대상" # 공제대상 또는 불공제대상
-TO_BE_CHANGED = "불공제" # 공제 또는 불공제 
-browser = None
 def TryToParse(TESTorREAL):
+    global INQ_CONDITION
+    global TO_BE_CHANGED
     global browser
 
     print("TryToParse()")
@@ -148,17 +169,7 @@ def TryToParse(TESTorREAL):
 
         year_options= select_year.find_elements_by_tag_name("option")
         qrt_options= select_qrt.find_elements_by_tag_name("option")
-
-        #메뉴만들기
-        menu_list= []
-        for y in year_options:
-            for q in qrt_options:
-                menu_list.append(INQ_CONDITION+ " 항목 조회: "+y.text+":" +q.text)
-        menu_list.append("전체 아이템을 "+ TO_BE_CHANGED +" 항목으로 변경하기.")
-        #menu_list.append("조회대상 수정 (현재:"+INQ_CONDITION+")")
-        #menu_list.append("변경대상 수정 (현재:"+TO_BE_CHANGED+")")
-        menu_list.append("종료.")
-
+        menu_list= MakeMenuList(year_options, qrt_options)
         while(True):
             questions = [
                 {
@@ -169,7 +180,7 @@ def TryToParse(TESTorREAL):
                 }]
             answer = prompt(questions)["menu"]
 
-            if('조회' in answer):
+            if('항목 조회:' in answer):
                 clickIFclickable('rdoSearch_input_2', 0.3) #분기별 옵션 선택
 
                 splited_answer= answer.split(':')
@@ -187,8 +198,20 @@ def TryToParse(TESTorREAL):
                 browser.implicitly_wait(1)
                 continue
 
-            #if('조회' in answer):
-
+            elif('조회대상 수정' in answer):
+                if(INQ_CONDITION == "불공제대상"):
+                    INQ_CONDITION = "공제대상"
+                elif(INQ_CONDITION == "공제대상"):
+                    INQ_CONDITION = "불공제대상"
+                menu_list= MakeMenuList(year_options, qrt_options)
+                continue
+            elif('변경대상 수정' in answer):
+                if(TO_BE_CHANGED == "불공제"):
+                    TO_BE_CHANGED = "공제"
+                elif(TO_BE_CHANGED == "공제"):
+                    TO_BE_CHANGED = "불공제"
+                menu_list= MakeMenuList(year_options, qrt_options)
+                continue
             elif('변경하기.' in answer):
                 while True:
                     textof_DOM_total= browser.find_element_by_id('txtTotal').text
@@ -199,12 +222,14 @@ def TryToParse(TESTorREAL):
                     print("총 항목개수: " + str(total))
 
                     if(total == 0): # 항목이 없으면 종료.
-                        break
+                        print("더 이상 항목이 없으므로 종료!")
+                        continue
 
                     countof_disabled= AllClickOnThisPage()
                     print("이 페이지에서 선택불가항목: " + str(countof_disabled))
                     if(countof_disabled == total): # 더 이상 선택할 항목이 없고
-                        wait = WebDriverWait(browser, 5)
+                        print("선택불가항목 "+str(countof_disabled)+"만 남음!")
+                        continue
                         
                     elif(countof_disabled == 10):
                         btn = wait.until(EC.element_to_be_clickable((By.ID, pglNavi_next_btn)))
@@ -214,7 +239,7 @@ def TryToParse(TESTorREAL):
                             clickIFclickable('pglNavi_next_btn',0.5)
                         else: # 다음 페이지 버튼도 없고 선택불가항목만 남아있으면 종료.
                             print("더 이상 선택할 항목이 없습니다!")
-                            break
+                            continue
                 continue
             else:
                 exit(0)
