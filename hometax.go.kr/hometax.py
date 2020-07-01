@@ -158,16 +158,24 @@ def TryToParse(TESTorREAL):
                     'choices': menu_list
                 }]
             answer = prompt(questions)["menu"]
-            #print(answer)
+
             if('불공제항목 조회' in answer):
-                clickIFclickable('rdoSearch_input_2',0.1)
-                selectbox4= Select(browser.find_element_by_id('selectbox4'))
-                selectbox4.select_by_visible_text('불공제대상')
+                splited_answer= answer.split(':')
+                selected_year= splited_answer[1].strip()
+                selected_qrt= splited_answer[2].strip()
+
+                ui_year= Select(select_year)
+                ui_qrt= Select(select_qrt)
+                ui_year.select_by_visible_text(selected_year)
+                ui_qrt.select_by_visible_text(selected_qrt)
+
+                ui_selectbox4= Select(browser.find_element_by_id('selectbox4'))
+                ui_selectbox4.select_by_visible_text('불공제대상')
                 clickIFclickable('btnSearch',0.1)
                 browser.implicitly_wait(1)
                 continue
 
-            if(answer == '전체체크 시작.'):
+            elif(answer == '전체체크 시작.'):
                 DOM_totalpage= browser.find_element_by_id('txtTotalPage')
                 textof_DOM_totalpage= DOM_totalpage.text
                 totalpage= int(textof_DOM_totalpage)
@@ -184,6 +192,8 @@ def TryToParse(TESTorREAL):
                         if x == 10:
                             clickIFclickable('pglNavi_next_btn',0.5)
                 continue
+            else:
+                exit(0)
         
     except Exception as e:
         print(e)
