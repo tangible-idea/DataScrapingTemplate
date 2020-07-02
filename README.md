@@ -62,6 +62,6 @@ cloning this repository:
 * PyInquirer
 ```
     pip instsall PyInquirer
-    
+```
 Introduction
 ------------
