@@ -27,13 +27,8 @@ During parsing the data, manager or data administrator can monitor what is going
 
 Hometax project
 ------------
-* Selenium
-```
-   pip install selenium
-```
-* PyInquirer
-```
-    pip instsall PyInquirer
+Manipulations of select tag alert control.
+   
 ```
 Installation
 ------------
@@ -58,5 +53,14 @@ cloning this repository:
 ```
     pip install git+https://github.com/milesrichardson/ParsePy.git
 ```
+
+* Selenium
+```
+   pip install selenium
+```
+* PyInquirer
+```
+    pip instsall PyInquirer
+    
 Introduction
 ------------
