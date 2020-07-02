@@ -29,13 +29,14 @@ Hometax project
 ------------
 Manipulations of select tag alert control, iframe switching.
    
-```
+
 Installation
 ------------
 * BeautifulSoup4
 Clone this repository:
-
+```
     pip install BeautifulSoup4
+ ```
 or manually download the package from here : 
 https://pypi.python.org/pypi/beautifulsoup4
 
