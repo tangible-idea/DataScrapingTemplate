@@ -27,7 +27,7 @@ During parsing the data, manager or data administrator can monitor what is going
 
 Hometax project
 ------------
-Manipulations of select tag alert control.
+Manipulations of select tag alert control, iframe switching.
    
 ```
 Installation
