@@ -1003,9 +1003,10 @@ namespace IMDBUtils
                 {
                     var task = new Models.Task();
                     task.PO = PO;
-                    task.Progress = Convert.ToDouble(PO["done_count"]);
+                    // TODO:
+                    //task.Progress = Convert.ToDouble(PO["done_count"]);
                     task.ProgressMax = 50 - Convert.ToInt32(PO["entity_num"]);
-                    task.Status = PO["status"] as string;
+                    //task.Status = PO["status"] as string;
                     task.strErrIdx = Convert.ToString(PO["entity_num"]);
                     task.strErrPage = Convert.ToString(PO["page_num"]);
 

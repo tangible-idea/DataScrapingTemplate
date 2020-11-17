@@ -1,0 +1,457 @@
+2020-05-17 18:41:54,638 POST http://127.0.0.1:13899/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-05-17 18:41:54,639 Starting new HTTP connection (1): 127.0.0.1:13899
+2020-05-17 18:41:56,405 http://127.0.0.1:13899 "POST /session HTTP/1.1" 500 1020
+2020-05-17 18:41:56,406 Finished Request
+2020-05-17 18:42:48,417 POST http://127.0.0.1:13946/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-05-17 18:42:48,417 Starting new HTTP connection (1): 127.0.0.1:13946
+2020-05-17 18:42:51,702 http://127.0.0.1:13946 "POST /session HTTP/1.1" 200 718
+2020-05-17 18:42:51,703 Finished Request
+2020-05-17 18:42:51,704 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/url {"url": "https://docs.google.com/spreadsheets/d/1Pg30XVEQtW2dkhtmCR2uIJW8CfJhPzyvEJ1KO110CTM/edit#gid=923745817"}
+2020-05-17 18:42:58,889 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/url HTTP/1.1" 200 14
+2020-05-17 18:42:58,889 Finished Request
+2020-05-17 18:42:58,890 GET http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/title {}
+2020-05-17 18:42:58,898 http://127.0.0.1:13946 "GET /session/8229dfde1ab5ab0726c534a087b0fc01/title HTTP/1.1" 200 78
+2020-05-17 18:42:58,899 Finished Request
+2020-05-17 18:42:58,899 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:42:58,913 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:42:58,913 Finished Request
+2020-05-17 18:42:59,415 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:42:59,692 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:42:59,693 Finished Request
+2020-05-17 18:43:00,194 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:00,202 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:00,202 Finished Request
+2020-05-17 18:43:00,703 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:00,710 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:00,711 Finished Request
+2020-05-17 18:43:01,212 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:01,219 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:01,220 Finished Request
+2020-05-17 18:43:01,721 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:01,729 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:01,729 Finished Request
+2020-05-17 18:43:02,229 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:02,277 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:02,278 Finished Request
+2020-05-17 18:43:02,779 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:02,786 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:02,786 Finished Request
+2020-05-17 18:43:03,287 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:03,294 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:03,294 Finished Request
+2020-05-17 18:43:03,795 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:03,802 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:03,802 Finished Request
+2020-05-17 18:43:04,304 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:04,314 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:04,314 Finished Request
+2020-05-17 18:43:04,815 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:04,822 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:04,822 Finished Request
+2020-05-17 18:43:05,322 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:05,330 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:05,331 Finished Request
+2020-05-17 18:43:05,832 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:43:05,839 http://127.0.0.1:13946 "POST /session/8229dfde1ab5ab0726c534a087b0fc01/element HTTP/1.1" 404 1056
+2020-05-17 18:43:05,839 Finished Request
+2020-05-17 18:43:06,341 POST http://127.0.0.1:13946/session/8229dfde1ab5ab0726c534a087b0fc01/element {"using": "css selector", "value": "[id=\"identifierId\"]"}
+2020-05-17 18:44:35,982 POST http://127.0.0.1:14069/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-05-17 18:44:35,983 Starting new HTTP connection (1): 127.0.0.1:14069
+2020-05-17 18:44:39,275 http://127.0.0.1:14069 "POST /session HTTP/1.1" 200 719
+2020-05-17 18:44:39,276 Finished Request
+2020-05-17 18:44:39,277 POST http://127.0.0.1:14069/session/01ae532c1401083465c873de67b1a7bb/url {"url": "https://www.hometax.go.kr/"}
+2020-05-17 18:44:39,505 http://127.0.0.1:14069 "POST /session/01ae532c1401083465c873de67b1a7bb/url HTTP/1.1" 200 14
+2020-05-17 18:44:39,506 Finished Request
+2020-05-17 18:44:39,506 GET http://127.0.0.1:14069/session/01ae532c1401083465c873de67b1a7bb/title {}
+2020-05-17 18:44:39,512 http://127.0.0.1:14069 "GET /session/01ae532c1401083465c873de67b1a7bb/title HTTP/1.1" 200 31
+2020-05-17 18:44:39,512 Finished Request
+2020-05-17 18:44:39,512 POST http://127.0.0.1:14069/session/01ae532c1401083465c873de67b1a7bb/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:44:39,537 http://127.0.0.1:14069 "POST /session/01ae532c1401083465c873de67b1a7bb/element HTTP/1.1" 404 1057
+2020-05-17 18:44:39,537 Finished Request
+2020-05-17 18:44:40,038 POST http://127.0.0.1:14069/session/01ae532c1401083465c873de67b1a7bb/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:44:40,318 http://127.0.0.1:14069 "POST /session/01ae532c1401083465c873de67b1a7bb/element HTTP/1.1" 200 88
+2020-05-17 18:44:40,319 Finished Request
+2020-05-17 18:44:40,322 POST http://127.0.0.1:14069/session/01ae532c1401083465c873de67b1a7bb/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:44:40,466 http://127.0.0.1:14069 "POST /session/01ae532c1401083465c873de67b1a7bb/element HTTP/1.1" 200 88
+2020-05-17 18:44:40,466 Finished Request
+2020-05-17 18:44:40,467 POST http://127.0.0.1:14069/session/01ae532c1401083465c873de67b1a7bb/element/a2f29dcf-d4af-4883-a2b8-5690dba9d5f2/click {"id": "a2f29dcf-d4af-4883-a2b8-5690dba9d5f2"}
+2020-05-17 18:44:40,906 http://127.0.0.1:14069 "POST /session/01ae532c1401083465c873de67b1a7bb/element/a2f29dcf-d4af-4883-a2b8-5690dba9d5f2/click HTTP/1.1" 200 14
+2020-05-17 18:44:40,906 Finished Request
+2020-05-17 18:44:40,906 POST http://127.0.0.1:14069/session/01ae532c1401083465c873de67b1a7bb/timeouts {"implicit": 5000}
+2020-05-17 18:44:40,907 http://127.0.0.1:14069 "POST /session/01ae532c1401083465c873de67b1a7bb/timeouts HTTP/1.1" 200 14
+2020-05-17 18:44:40,907 Finished Request
+2020-05-17 18:44:40,908 name 'email' is not defined
+Traceback (most recent call last):
+  File "C:\Users\fanta\source\repos\DataScrapingTemplate\hometax.go.kr\hometax.go.kr\hometax.go.kr.py", line 89, in TryToParse
+    email.send_keys('fantasysa@gmail.com')
+NameError: name 'email' is not defined
+2020-05-17 18:45:56,249 POST http://127.0.0.1:14191/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-05-17 18:45:56,250 Starting new HTTP connection (1): 127.0.0.1:14191
+2020-05-17 18:45:59,893 http://127.0.0.1:14191 "POST /session HTTP/1.1" 200 718
+2020-05-17 18:45:59,894 Finished Request
+2020-05-17 18:45:59,894 POST http://127.0.0.1:14191/session/c809c8415ec986b484123bb455f83eb3/url {"url": "https://www.hometax.go.kr/"}
+2020-05-17 18:46:00,097 http://127.0.0.1:14191 "POST /session/c809c8415ec986b484123bb455f83eb3/url HTTP/1.1" 200 14
+2020-05-17 18:46:00,097 Finished Request
+2020-05-17 18:46:00,097 GET http://127.0.0.1:14191/session/c809c8415ec986b484123bb455f83eb3/title {}
+2020-05-17 18:46:00,107 http://127.0.0.1:14191 "GET /session/c809c8415ec986b484123bb455f83eb3/title HTTP/1.1" 200 31
+2020-05-17 18:46:00,107 Finished Request
+2020-05-17 18:46:00,108 POST http://127.0.0.1:14191/session/c809c8415ec986b484123bb455f83eb3/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:46:00,121 http://127.0.0.1:14191 "POST /session/c809c8415ec986b484123bb455f83eb3/element HTTP/1.1" 404 1057
+2020-05-17 18:46:00,121 Finished Request
+2020-05-17 18:46:00,622 POST http://127.0.0.1:14191/session/c809c8415ec986b484123bb455f83eb3/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:46:00,978 http://127.0.0.1:14191 "POST /session/c809c8415ec986b484123bb455f83eb3/element HTTP/1.1" 200 88
+2020-05-17 18:46:00,979 Finished Request
+2020-05-17 18:46:00,979 POST http://127.0.0.1:14191/session/c809c8415ec986b484123bb455f83eb3/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:46:01,129 http://127.0.0.1:14191 "POST /session/c809c8415ec986b484123bb455f83eb3/element HTTP/1.1" 200 88
+2020-05-17 18:46:01,129 Finished Request
+2020-05-17 18:46:01,129 POST http://127.0.0.1:14191/session/c809c8415ec986b484123bb455f83eb3/element/c0ae03c0-6af0-440b-8440-ac4411ee1a94/click {"id": "c0ae03c0-6af0-440b-8440-ac4411ee1a94"}
+2020-05-17 18:46:01,628 http://127.0.0.1:14191 "POST /session/c809c8415ec986b484123bb455f83eb3/element/c0ae03c0-6af0-440b-8440-ac4411ee1a94/click HTTP/1.1" 200 14
+2020-05-17 18:46:01,629 Finished Request
+2020-05-17 18:46:01,629 POST http://127.0.0.1:14191/session/c809c8415ec986b484123bb455f83eb3/timeouts {"implicit": 5000}
+2020-05-17 18:46:01,630 http://127.0.0.1:14191 "POST /session/c809c8415ec986b484123bb455f83eb3/timeouts HTTP/1.1" 200 14
+2020-05-17 18:46:01,630 Finished Request
+2020-05-17 18:46:01,631 POST http://127.0.0.1:14191/session/c809c8415ec986b484123bb455f83eb3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:46:06,674 http://127.0.0.1:14191 "POST /session/c809c8415ec986b484123bb455f83eb3/element HTTP/1.1" 404 1053
+2020-05-17 18:46:06,674 Finished Request
+2020-05-17 18:46:06,674 Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="iptUserId"]"}
+  (Session info: chrome=81.0.4044.138)
+Traceback (most recent call last):
+  File "C:\Users\fanta\source\repos\DataScrapingTemplate\hometax.go.kr\hometax.go.kr\hometax.go.kr.py", line 89, in TryToParse
+    email = browser.find_element_by_id('iptUserId')
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 360, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 978, in find_element
+    'value': value})['value']
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 321, in execute
+    self.error_handler.check_response(response)
+  File "C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"css selector","selector":"[id="iptUserId"]"}
+  (Session info: chrome=81.0.4044.138)
+
+2020-05-17 18:46:57,080 POST http://127.0.0.1:14292/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-05-17 18:46:57,081 Starting new HTTP connection (1): 127.0.0.1:14292
+2020-05-17 18:47:00,242 http://127.0.0.1:14292 "POST /session HTTP/1.1" 200 719
+2020-05-17 18:47:00,243 Finished Request
+2020-05-17 18:47:00,243 POST http://127.0.0.1:14292/session/4aae390fd440aada4c4f213bb6d91c1f/url {"url": "https://www.hometax.go.kr/"}
+2020-05-17 18:47:00,441 http://127.0.0.1:14292 "POST /session/4aae390fd440aada4c4f213bb6d91c1f/url HTTP/1.1" 200 14
+2020-05-17 18:47:00,441 Finished Request
+2020-05-17 18:47:00,442 GET http://127.0.0.1:14292/session/4aae390fd440aada4c4f213bb6d91c1f/title {}
+2020-05-17 18:47:00,490 http://127.0.0.1:14292 "GET /session/4aae390fd440aada4c4f213bb6d91c1f/title HTTP/1.1" 200 31
+2020-05-17 18:47:00,491 Finished Request
+2020-05-17 18:47:00,491 POST http://127.0.0.1:14292/session/4aae390fd440aada4c4f213bb6d91c1f/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:47:00,546 http://127.0.0.1:14292 "POST /session/4aae390fd440aada4c4f213bb6d91c1f/element HTTP/1.1" 404 1057
+2020-05-17 18:47:00,546 Finished Request
+2020-05-17 18:47:01,047 POST http://127.0.0.1:14292/session/4aae390fd440aada4c4f213bb6d91c1f/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:47:01,384 http://127.0.0.1:14292 "POST /session/4aae390fd440aada4c4f213bb6d91c1f/element HTTP/1.1" 200 88
+2020-05-17 18:47:01,384 Finished Request
+2020-05-17 18:47:01,385 POST http://127.0.0.1:14292/session/4aae390fd440aada4c4f213bb6d91c1f/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:47:01,542 http://127.0.0.1:14292 "POST /session/4aae390fd440aada4c4f213bb6d91c1f/element HTTP/1.1" 200 88
+2020-05-17 18:47:01,542 Finished Request
+2020-05-17 18:47:01,543 POST http://127.0.0.1:14292/session/4aae390fd440aada4c4f213bb6d91c1f/element/1eeb8e0c-6521-4ff9-8694-a848c709e26f/click {"id": "1eeb8e0c-6521-4ff9-8694-a848c709e26f"}
+2020-05-17 18:47:02,052 http://127.0.0.1:14292 "POST /session/4aae390fd440aada4c4f213bb6d91c1f/element/1eeb8e0c-6521-4ff9-8694-a848c709e26f/click HTTP/1.1" 200 14
+2020-05-17 18:47:02,052 Finished Request
+2020-05-17 18:47:02,052 POST http://127.0.0.1:14292/session/4aae390fd440aada4c4f213bb6d91c1f/timeouts {"implicit": 5000}
+2020-05-17 18:47:02,055 http://127.0.0.1:14292 "POST /session/4aae390fd440aada4c4f213bb6d91c1f/timeouts HTTP/1.1" 200 14
+2020-05-17 18:47:02,056 Finished Request
+2020-05-17 18:47:02,056 POST http://127.0.0.1:14292/session/4aae390fd440aada4c4f213bb6d91c1f/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:07,128 http://127.0.0.1:14292 "POST /session/4aae390fd440aada4c4f213bb6d91c1f/element HTTP/1.1" 404 1053
+2020-05-17 18:47:07,129 Finished Request
+2020-05-17 18:47:07,630 POST http://127.0.0.1:14292/session/4aae390fd440aada4c4f213bb6d91c1f/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:12,685 http://127.0.0.1:14292 "POST /session/4aae390fd440aada4c4f213bb6d91c1f/element HTTP/1.1" 404 1053
+2020-05-17 18:47:12,686 Finished Request
+2020-05-17 18:47:13,186 POST http://127.0.0.1:14292/session/4aae390fd440aada4c4f213bb6d91c1f/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:38,042 POST http://127.0.0.1:14370/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-05-17 18:47:38,043 Starting new HTTP connection (1): 127.0.0.1:14370
+2020-05-17 18:47:41,357 http://127.0.0.1:14370 "POST /session HTTP/1.1" 200 718
+2020-05-17 18:47:41,357 Finished Request
+2020-05-17 18:47:41,358 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/url {"url": "https://www.hometax.go.kr/"}
+2020-05-17 18:47:41,542 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/url HTTP/1.1" 200 14
+2020-05-17 18:47:41,543 Finished Request
+2020-05-17 18:47:41,543 GET http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/title {}
+2020-05-17 18:47:41,583 http://127.0.0.1:14370 "GET /session/626cbe5c91464fa8d3649f0c50e30ee3/title HTTP/1.1" 200 31
+2020-05-17 18:47:41,584 Finished Request
+2020-05-17 18:47:41,584 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:47:41,614 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1057
+2020-05-17 18:47:41,615 Finished Request
+2020-05-17 18:47:42,115 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:47:42,317 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 200 88
+2020-05-17 18:47:42,318 Finished Request
+2020-05-17 18:47:42,319 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:47:42,491 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 200 88
+2020-05-17 18:47:42,491 Finished Request
+2020-05-17 18:47:42,491 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element/17ef3392-50fc-4e15-ad5e-2a2168d0ce36/click {"id": "17ef3392-50fc-4e15-ad5e-2a2168d0ce36"}
+2020-05-17 18:47:42,702 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element/17ef3392-50fc-4e15-ad5e-2a2168d0ce36/click HTTP/1.1" 200 14
+2020-05-17 18:47:42,703 Finished Request
+2020-05-17 18:47:42,703 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:43,026 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:43,026 Finished Request
+2020-05-17 18:47:43,528 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:43,535 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:43,536 Finished Request
+2020-05-17 18:47:44,036 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:44,044 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:44,044 Finished Request
+2020-05-17 18:47:44,545 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:44,552 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:44,553 Finished Request
+2020-05-17 18:47:45,054 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:45,061 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:45,061 Finished Request
+2020-05-17 18:47:45,561 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:45,567 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:45,568 Finished Request
+2020-05-17 18:47:46,069 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:46,076 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:46,077 Finished Request
+2020-05-17 18:47:46,578 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:46,585 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:46,585 Finished Request
+2020-05-17 18:47:47,085 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:47,092 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:47,092 Finished Request
+2020-05-17 18:47:47,594 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:47,601 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:47,601 Finished Request
+2020-05-17 18:47:48,102 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:48,110 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:48,110 Finished Request
+2020-05-17 18:47:48,610 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:48,617 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:48,617 Finished Request
+2020-05-17 18:47:49,118 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:49,125 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:49,126 Finished Request
+2020-05-17 18:47:49,627 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:49,633 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:49,634 Finished Request
+2020-05-17 18:47:50,135 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:50,143 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:50,143 Finished Request
+2020-05-17 18:47:50,643 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:50,650 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:50,650 Finished Request
+2020-05-17 18:47:51,152 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:51,159 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:51,159 Finished Request
+2020-05-17 18:47:51,661 POST http://127.0.0.1:14370/session/626cbe5c91464fa8d3649f0c50e30ee3/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:47:51,669 http://127.0.0.1:14370 "POST /session/626cbe5c91464fa8d3649f0c50e30ee3/element HTTP/1.1" 404 1053
+2020-05-17 18:47:51,669 Finished Request
+2020-05-17 18:48:02,783 POST http://127.0.0.1:14422/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-05-17 18:48:02,785 Starting new HTTP connection (1): 127.0.0.1:14422
+2020-05-17 18:48:05,981 http://127.0.0.1:14422 "POST /session HTTP/1.1" 200 718
+2020-05-17 18:48:05,982 Finished Request
+2020-05-17 18:48:05,984 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/url {"url": "https://www.hometax.go.kr/"}
+2020-05-17 18:48:06,150 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/url HTTP/1.1" 200 14
+2020-05-17 18:48:06,151 Finished Request
+2020-05-17 18:48:06,152 GET http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/title {}
+2020-05-17 18:48:06,190 http://127.0.0.1:14422 "GET /session/d18f52b3c2e7a28ea95ff3fd158fd018/title HTTP/1.1" 200 31
+2020-05-17 18:48:06,191 Finished Request
+2020-05-17 18:48:06,192 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:48:06,206 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1057
+2020-05-17 18:48:06,207 Finished Request
+2020-05-17 18:48:06,707 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:48:06,912 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 200 88
+2020-05-17 18:48:06,913 Finished Request
+2020-05-17 18:48:06,914 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:48:07,076 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 200 88
+2020-05-17 18:48:07,076 Finished Request
+2020-05-17 18:48:07,077 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element/cb17d4df-30c1-4fdd-979d-ab2da49274b7/click {"id": "cb17d4df-30c1-4fdd-979d-ab2da49274b7"}
+2020-05-17 18:48:07,431 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element/cb17d4df-30c1-4fdd-979d-ab2da49274b7/click HTTP/1.1" 200 14
+2020-05-17 18:48:07,432 Finished Request
+2020-05-17 18:48:15,244 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:15,260 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:15,261 Finished Request
+2020-05-17 18:48:15,762 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:15,771 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:15,771 Finished Request
+2020-05-17 18:48:16,271 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:16,280 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:16,281 Finished Request
+2020-05-17 18:48:16,782 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:16,789 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:16,790 Finished Request
+2020-05-17 18:48:17,291 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:17,299 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:17,300 Finished Request
+2020-05-17 18:48:17,801 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:17,809 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:17,810 Finished Request
+2020-05-17 18:48:18,310 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:18,318 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:18,318 Finished Request
+2020-05-17 18:48:18,819 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:18,827 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:18,827 Finished Request
+2020-05-17 18:48:19,329 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:19,337 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:19,338 Finished Request
+2020-05-17 18:48:19,838 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:19,846 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:19,847 Finished Request
+2020-05-17 18:48:20,348 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:20,357 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:20,357 Finished Request
+2020-05-17 18:48:20,859 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:20,867 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:20,867 Finished Request
+2020-05-17 18:48:21,368 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:21,376 http://127.0.0.1:14422 "POST /session/d18f52b3c2e7a28ea95ff3fd158fd018/element HTTP/1.1" 404 1053
+2020-05-17 18:48:21,377 Finished Request
+2020-05-17 18:48:21,878 POST http://127.0.0.1:14422/session/d18f52b3c2e7a28ea95ff3fd158fd018/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:31,742 POST http://127.0.0.1:14544/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-05-17 18:48:31,743 Starting new HTTP connection (1): 127.0.0.1:14544
+2020-05-17 18:48:35,006 http://127.0.0.1:14544 "POST /session HTTP/1.1" 200 718
+2020-05-17 18:48:35,007 Finished Request
+2020-05-17 18:48:35,008 POST http://127.0.0.1:14544/session/970b706e151e99a157939a4b79415e3b/url {"url": "https://www.hometax.go.kr/"}
+2020-05-17 18:48:35,212 http://127.0.0.1:14544 "POST /session/970b706e151e99a157939a4b79415e3b/url HTTP/1.1" 200 14
+2020-05-17 18:48:35,213 Finished Request
+2020-05-17 18:48:35,213 GET http://127.0.0.1:14544/session/970b706e151e99a157939a4b79415e3b/title {}
+2020-05-17 18:48:35,222 http://127.0.0.1:14544 "GET /session/970b706e151e99a157939a4b79415e3b/title HTTP/1.1" 200 31
+2020-05-17 18:48:35,222 Finished Request
+2020-05-17 18:48:35,223 POST http://127.0.0.1:14544/session/970b706e151e99a157939a4b79415e3b/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:48:35,241 http://127.0.0.1:14544 "POST /session/970b706e151e99a157939a4b79415e3b/element HTTP/1.1" 404 1057
+2020-05-17 18:48:35,241 Finished Request
+2020-05-17 18:48:35,743 POST http://127.0.0.1:14544/session/970b706e151e99a157939a4b79415e3b/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:48:35,987 http://127.0.0.1:14544 "POST /session/970b706e151e99a157939a4b79415e3b/element HTTP/1.1" 200 88
+2020-05-17 18:48:35,988 Finished Request
+2020-05-17 18:48:35,998 POST http://127.0.0.1:14544/session/970b706e151e99a157939a4b79415e3b/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:48:36,157 http://127.0.0.1:14544 "POST /session/970b706e151e99a157939a4b79415e3b/element HTTP/1.1" 200 88
+2020-05-17 18:48:36,157 Finished Request
+2020-05-17 18:48:36,157 POST http://127.0.0.1:14544/session/970b706e151e99a157939a4b79415e3b/element/a0198e90-06f4-44ed-8ce9-9f67f351793a/click {"id": "a0198e90-06f4-44ed-8ce9-9f67f351793a"}
+2020-05-17 18:48:36,354 http://127.0.0.1:14544 "POST /session/970b706e151e99a157939a4b79415e3b/element/a0198e90-06f4-44ed-8ce9-9f67f351793a/click HTTP/1.1" 200 14
+2020-05-17 18:48:36,354 Finished Request
+2020-05-17 18:48:36,354 POST http://127.0.0.1:14544/session/970b706e151e99a157939a4b79415e3b/timeouts {"implicit": 5000}
+2020-05-17 18:48:36,355 http://127.0.0.1:14544 "POST /session/970b706e151e99a157939a4b79415e3b/timeouts HTTP/1.1" 200 14
+2020-05-17 18:48:36,356 Finished Request
+2020-05-17 18:48:36,356 POST http://127.0.0.1:14544/session/970b706e151e99a157939a4b79415e3b/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:48:56,702 POST http://127.0.0.1:14604/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-05-17 18:48:56,702 Starting new HTTP connection (1): 127.0.0.1:14604
+2020-05-17 18:48:59,864 http://127.0.0.1:14604 "POST /session HTTP/1.1" 200 718
+2020-05-17 18:48:59,864 Finished Request
+2020-05-17 18:48:59,865 POST http://127.0.0.1:14604/session/cd625f0220a889673b7e79c89bdcbb58/url {"url": "https://www.hometax.go.kr/"}
+2020-05-17 18:49:00,085 http://127.0.0.1:14604 "POST /session/cd625f0220a889673b7e79c89bdcbb58/url HTTP/1.1" 200 14
+2020-05-17 18:49:00,085 Finished Request
+2020-05-17 18:49:00,085 GET http://127.0.0.1:14604/session/cd625f0220a889673b7e79c89bdcbb58/title {}
+2020-05-17 18:49:00,099 http://127.0.0.1:14604 "GET /session/cd625f0220a889673b7e79c89bdcbb58/title HTTP/1.1" 200 31
+2020-05-17 18:49:00,100 Finished Request
+2020-05-17 18:49:00,101 POST http://127.0.0.1:14604/session/cd625f0220a889673b7e79c89bdcbb58/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:49:00,140 http://127.0.0.1:14604 "POST /session/cd625f0220a889673b7e79c89bdcbb58/element HTTP/1.1" 404 1057
+2020-05-17 18:49:00,140 Finished Request
+2020-05-17 18:49:00,642 POST http://127.0.0.1:14604/session/cd625f0220a889673b7e79c89bdcbb58/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:49:00,822 http://127.0.0.1:14604 "POST /session/cd625f0220a889673b7e79c89bdcbb58/element HTTP/1.1" 200 88
+2020-05-17 18:49:00,823 Finished Request
+2020-05-17 18:49:00,826 POST http://127.0.0.1:14604/session/cd625f0220a889673b7e79c89bdcbb58/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:49:00,996 http://127.0.0.1:14604 "POST /session/cd625f0220a889673b7e79c89bdcbb58/element HTTP/1.1" 200 88
+2020-05-17 18:49:00,996 Finished Request
+2020-05-17 18:49:00,996 POST http://127.0.0.1:14604/session/cd625f0220a889673b7e79c89bdcbb58/element/49960a65-25fa-4059-bd50-7c3cc923e57d/click {"id": "49960a65-25fa-4059-bd50-7c3cc923e57d"}
+2020-05-17 18:49:01,882 http://127.0.0.1:14604 "POST /session/cd625f0220a889673b7e79c89bdcbb58/element/49960a65-25fa-4059-bd50-7c3cc923e57d/click HTTP/1.1" 200 14
+2020-05-17 18:49:01,883 Finished Request
+2020-05-17 18:49:01,883 POST http://127.0.0.1:14604/session/cd625f0220a889673b7e79c89bdcbb58/timeouts {"implicit": 5000}
+2020-05-17 18:49:01,884 http://127.0.0.1:14604 "POST /session/cd625f0220a889673b7e79c89bdcbb58/timeouts HTTP/1.1" 200 14
+2020-05-17 18:49:01,884 Finished Request
+2020-05-17 18:49:01,884 POST http://127.0.0.1:14604/session/cd625f0220a889673b7e79c89bdcbb58/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:49:06,925 http://127.0.0.1:14604 "POST /session/cd625f0220a889673b7e79c89bdcbb58/element HTTP/1.1" 404 1053
+2020-05-17 18:49:06,925 Finished Request
+2020-05-17 18:49:07,427 POST http://127.0.0.1:14604/session/cd625f0220a889673b7e79c89bdcbb58/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:49:28,397 POST http://127.0.0.1:14685/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-05-17 18:49:28,398 Starting new HTTP connection (1): 127.0.0.1:14685
+2020-05-17 18:49:31,656 http://127.0.0.1:14685 "POST /session HTTP/1.1" 200 718
+2020-05-17 18:49:31,657 Finished Request
+2020-05-17 18:49:31,657 POST http://127.0.0.1:14685/session/1e12b3ee1425e2f416e327e5f0664939/url {"url": "https://www.hometax.go.kr/"}
+2020-05-17 18:49:31,826 http://127.0.0.1:14685 "POST /session/1e12b3ee1425e2f416e327e5f0664939/url HTTP/1.1" 200 14
+2020-05-17 18:49:31,826 Finished Request
+2020-05-17 18:49:31,827 GET http://127.0.0.1:14685/session/1e12b3ee1425e2f416e327e5f0664939/title {}
+2020-05-17 18:49:31,865 http://127.0.0.1:14685 "GET /session/1e12b3ee1425e2f416e327e5f0664939/title HTTP/1.1" 200 31
+2020-05-17 18:49:31,866 Finished Request
+2020-05-17 18:49:31,866 POST http://127.0.0.1:14685/session/1e12b3ee1425e2f416e327e5f0664939/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:49:31,879 http://127.0.0.1:14685 "POST /session/1e12b3ee1425e2f416e327e5f0664939/element HTTP/1.1" 404 1057
+2020-05-17 18:49:31,879 Finished Request
+2020-05-17 18:49:32,381 POST http://127.0.0.1:14685/session/1e12b3ee1425e2f416e327e5f0664939/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:49:32,586 http://127.0.0.1:14685 "POST /session/1e12b3ee1425e2f416e327e5f0664939/element HTTP/1.1" 200 88
+2020-05-17 18:49:32,586 Finished Request
+2020-05-17 18:49:32,588 POST http://127.0.0.1:14685/session/1e12b3ee1425e2f416e327e5f0664939/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:49:32,718 http://127.0.0.1:14685 "POST /session/1e12b3ee1425e2f416e327e5f0664939/element HTTP/1.1" 200 88
+2020-05-17 18:49:32,718 Finished Request
+2020-05-17 18:49:32,718 POST http://127.0.0.1:14685/session/1e12b3ee1425e2f416e327e5f0664939/element/6931b49b-bdf6-4cb1-b942-e9cb604ce00f/click {"id": "6931b49b-bdf6-4cb1-b942-e9cb604ce00f"}
+2020-05-17 18:49:33,001 http://127.0.0.1:14685 "POST /session/1e12b3ee1425e2f416e327e5f0664939/element/6931b49b-bdf6-4cb1-b942-e9cb604ce00f/click HTTP/1.1" 200 14
+2020-05-17 18:49:33,001 Finished Request
+2020-05-17 18:49:33,002 POST http://127.0.0.1:14685/session/1e12b3ee1425e2f416e327e5f0664939/timeouts {"implicit": 5000}
+2020-05-17 18:49:33,003 http://127.0.0.1:14685 "POST /session/1e12b3ee1425e2f416e327e5f0664939/timeouts HTTP/1.1" 200 14
+2020-05-17 18:49:33,003 Finished Request
+2020-05-17 18:49:33,003 POST http://127.0.0.1:14685/session/1e12b3ee1425e2f416e327e5f0664939/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:49:38,175 http://127.0.0.1:14685 "POST /session/1e12b3ee1425e2f416e327e5f0664939/element HTTP/1.1" 404 1053
+2020-05-17 18:49:38,175 Finished Request
+2020-05-17 18:49:38,676 POST http://127.0.0.1:14685/session/1e12b3ee1425e2f416e327e5f0664939/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:49:43,708 http://127.0.0.1:14685 "POST /session/1e12b3ee1425e2f416e327e5f0664939/element HTTP/1.1" 404 1053
+2020-05-17 18:49:43,708 Finished Request
+2020-05-17 18:49:44,208 POST http://127.0.0.1:14685/session/1e12b3ee1425e2f416e327e5f0664939/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:49:49,267 http://127.0.0.1:14685 "POST /session/1e12b3ee1425e2f416e327e5f0664939/element HTTP/1.1" 404 1053
+2020-05-17 18:49:49,267 Finished Request
+2020-05-17 18:49:49,768 POST http://127.0.0.1:14685/session/1e12b3ee1425e2f416e327e5f0664939/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:50:20,240 POST http://127.0.0.1:14778/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": []}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": []}}}
+2020-05-17 18:50:20,241 Starting new HTTP connection (1): 127.0.0.1:14778
+2020-05-17 18:50:23,555 http://127.0.0.1:14778 "POST /session HTTP/1.1" 200 719
+2020-05-17 18:50:23,556 Finished Request
+2020-05-17 18:50:23,556 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/url {"url": "https://www.hometax.go.kr/"}
+2020-05-17 18:50:23,777 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/url HTTP/1.1" 200 14
+2020-05-17 18:50:23,778 Finished Request
+2020-05-17 18:50:23,778 GET http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/title {}
+2020-05-17 18:50:23,786 http://127.0.0.1:14778 "GET /session/ca70f7edf220f3385a1601789d4c67b8/title HTTP/1.1" 200 31
+2020-05-17 18:50:23,786 Finished Request
+2020-05-17 18:50:23,786 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:50:23,800 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 404 1057
+2020-05-17 18:50:23,801 Finished Request
+2020-05-17 18:50:24,302 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:50:24,548 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 200 88
+2020-05-17 18:50:24,548 Finished Request
+2020-05-17 18:50:24,550 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"group88615548\"]"}
+2020-05-17 18:50:24,710 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 200 88
+2020-05-17 18:50:24,710 Finished Request
+2020-05-17 18:50:24,710 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element/a8390f30-3df7-414e-b662-a53d2aca5546/click {"id": "a8390f30-3df7-414e-b662-a53d2aca5546"}
+2020-05-17 18:50:24,933 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element/a8390f30-3df7-414e-b662-a53d2aca5546/click HTTP/1.1" 200 14
+2020-05-17 18:50:24,933 Finished Request
+2020-05-17 18:50:24,933 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/timeouts {"implicit": 3000}
+2020-05-17 18:50:24,934 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/timeouts HTTP/1.1" 200 14
+2020-05-17 18:50:24,935 Finished Request
+2020-05-17 18:50:24,935 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:50:28,094 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 404 1053
+2020-05-17 18:50:28,095 Finished Request
+2020-05-17 18:50:28,596 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:50:31,786 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 404 1053
+2020-05-17 18:50:31,786 Finished Request
+2020-05-17 18:50:32,288 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:50:35,492 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 404 1053
+2020-05-17 18:50:35,492 Finished Request
+2020-05-17 18:50:35,992 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:50:39,018 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 404 1053
+2020-05-17 18:50:39,019 Finished Request
+2020-05-17 18:50:39,519 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:50:42,562 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 404 1053
+2020-05-17 18:50:42,563 Finished Request
+2020-05-17 18:50:43,064 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:50:46,103 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 404 1053
+2020-05-17 18:50:46,104 Finished Request
+2020-05-17 18:50:46,605 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:50:49,661 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 404 1053
+2020-05-17 18:50:49,662 Finished Request
+2020-05-17 18:50:50,163 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:50:53,211 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 404 1053
+2020-05-17 18:50:53,212 Finished Request
+2020-05-17 18:50:53,713 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:50:56,726 http://127.0.0.1:14778 "POST /session/ca70f7edf220f3385a1601789d4c67b8/element HTTP/1.1" 404 1053
+2020-05-17 18:50:56,726 Finished Request
+2020-05-17 18:50:57,227 DELETE http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8 {}
+2020-05-17 18:50:57,335 http://127.0.0.1:14778 "DELETE /session/ca70f7edf220f3385a1601789d4c67b8 HTTP/1.1" 200 14
+2020-05-17 18:50:57,335 Finished Request
+2020-05-17 18:50:59,485 POST http://127.0.0.1:14778/session/ca70f7edf220f3385a1601789d4c67b8/element {"using": "css selector", "value": "[id=\"iptUserId\"]"}
+2020-05-17 18:50:59,486 Resetting dropped connection: 127.0.0.1
+2020-05-17 18:51:01,489 Incremented Retry for (url='/session/ca70f7edf220f3385a1601789d4c67b8/element'): Retry(total=2, connect=None, read=None, redirect=None, status=None)
+2020-05-17 18:51:01,489 Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002B106D20408>: Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다')': /session/ca70f7edf220f3385a1601789d4c67b8/element
+2020-05-17 18:51:01,490 Starting new HTTP connection (2): 127.0.0.1:14778
+2020-05-17 18:51:03,494 Incremented Retry for (url='/session/ca70f7edf220f3385a1601789d4c67b8/element'): Retry(total=1, connect=None, read=None, redirect=None, status=None)
+2020-05-17 18:51:03,494 Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002B106D43988>: Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다')': /session/ca70f7edf220f3385a1601789d4c67b8/element
+2020-05-17 18:51:03,494 Starting new HTTP connection (3): 127.0.0.1:14778
+2020-05-17 18:51:05,498 Incremented Retry for (url='/session/ca70f7edf220f3385a1601789d4c67b8/element'): Retry(total=0, connect=None, read=None, redirect=None, status=None)
+2020-05-17 18:51:05,498 Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002B106D43B48>: Failed to establish a new connection: [WinError 10061] 대상 컴퓨터에서 연결을 거부했으므로 연결하지 못했습니다')': /session/ca70f7edf220f3385a1601789d4c67b8/element
+2020-05-17 18:51:05,498 Starting new HTTP connection (4): 127.0.0.1:14778

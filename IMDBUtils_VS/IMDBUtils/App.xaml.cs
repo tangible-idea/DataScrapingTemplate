@@ -21,14 +21,19 @@ namespace IMDBUtils
 
             ParseClient.Initialize(new ParseClient.Configuration
             {
-                ApplicationId = "kj1rWYVT3D4u3hFE050P9u1GV6VSPUg7rPhB3VTK",
-                WindowsKey = "CMwKxa8AAz9CZwIXNPwar6W1VrMT3PTmFSL5g6hP",
-                Server = "https://pg-app-ld9iqyzik9lwgsdbx74gcbez5zkjh5.scalabl.cloud/1/"
+                //ApplicationId = "kj1rWYVT3D4u3hFE050P9u1GV6VSPUg7rPhB3VTK",
+                //WindowsKey = "CMwKxa8AAz9CZwIXNPwar6W1VrMT3PTmFSL5g6hP",
+                //Server = "https://pg-app-ld9iqyzik9lwgsdbx74gcbez5zkjh5.scalabl.cloud/1/"
 
 
                 //ApplicationId = "vh60sQDbtfnIlFxn5HrK6oBj5SN1rqYeqtixIngY",
                 //WindowsKey = "nhCNL1dnGWyWeZhnYx1m8HQ02pEU0B1xmIrNDu0Q",
                 //Server = "https://parseapi.back4app.com/"
+
+                ///
+                ApplicationId = "96vmgPDEyQ3IKq2F0u7u7kPrzva5Rd32uN66Z5Sq",
+                WindowsKey = "AMxosRjVPaeV1lVv00gtcbGNh9uaY2Q9jeATiOg4",
+                Server = "https://parseapi.back4app.com/"
 
             });
 
