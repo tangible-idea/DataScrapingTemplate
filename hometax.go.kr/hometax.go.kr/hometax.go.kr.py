@@ -84,12 +84,19 @@ def TryToParse(TESTorREAL):
         #select = Select(browser.find_element_by_id('identifierId'))
         loginbtn = browser.find_element_by_id('group88615548')
         loginbtn.click()
-        browser.implicitly_wait(3)
+        browser.implicitly_wait(5)
 
-        SeleniumWait("iptUserId", 30)
+        #browser.execute_script("$('#anchor15').click();")
+        #browser.execute_script("alert('test');")
+        #SeleniumWait("anchor15", 20) #iptUserPw
+        #loginmethodbtn = browser.find_element_by_id('anchor15')
+        #loginmethodbtn.click()
+        #browser.implicitly_wait(1)
+
+        SeleniumWait("iptUserId", 30) #iptUserPw
         print("iptUserId found")
         email = browser.find_element_by_id('iptUserId')
-        email.send_keys('fantasysa@gmail.com')
+        email.send_keys('tangibleidea')
         email.send_keys(Keys.ENTER)
         browser.implicitly_wait(5)
 
