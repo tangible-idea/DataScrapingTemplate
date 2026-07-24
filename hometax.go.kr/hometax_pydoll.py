@@ -22,8 +22,24 @@ import ssl
 
 
 INQ_CONDITION = "불공제대상" # 공제대상 또는 불공제대상
-TO_BE_CHANGED = "공제" # 공제 또는 불공제 
+TO_BE_CHANGED = "공제" # 공제 또는 불공제
 tab = None
+
+# --- 로그인 정보 (홈택스 개편(아이디 로그인 + 주민등록번호 확인) 대응) ---
+LOGIN_ID = 'tangibleidea'
+LOGIN_PW = 'f3bab@6845'
+# 주민등록번호는 개인정보이므로 코드에 직접 넣지 않는 것을 권장합니다.
+# 아래 값을 비워두면(''), 로그인 시 주민번호 입력창이 나타났을 때 콘솔에서 입력받습니다.
+JUMIN_FRONT = '900206'  # 주민등록번호 앞 6자리 (생년월일)
+JUMIN_BACK = '1'   # 주민등록번호 뒤 1자리 (성별 구분 숫자)
+
+# 아이디 로그인 화면의 요소 셀렉터 (2026 개편 기준)
+SEL_ID_LOGIN_TAB = '[data-tab="login_tab3"]'   # '아이디 로그인' 탭
+SEL_INPUT_ID     = 'input[name="iptUserId"]'    # 아이디 입력
+SEL_INPUT_PW     = 'input[name="iptUserPw"]'    # 비밀번호 입력
+SEL_JUMIN_FRONT  = 'input[name="iptUserJuminNo1"]'  # 주민번호 앞 6자리
+SEL_JUMIN_BACK   = 'input[name="iptUserJuminNo2"]'  # 주민번호 뒤 (1자리 입력)
+SEL_LOGIN_SUBMIT = 'a.logingbtn'                # 로그인 실행 버튼
 
 def show_menu(message, choices):
     """간단한 메뉴 시스템"""
@@ -138,6 +154,69 @@ async def hoverIFpresented(id):
     btn = await tab.find(id=id)
     await btn.hover()
 
+async def query_element(css, timeout=10):
+    """CSS 셀렉터로 요소를 찾는다. 없으면 None 반환."""
+    global tab
+    try:
+        return await tab.query(css, timeout=timeout, raise_exc=False)
+    except Exception as e:
+        print(f"요소 조회 실패({css}): {e}")
+        return None
+
+async def type_into(css, text, timeout=10):
+    """CSS 셀렉터로 찾은 입력창에 값을 입력한다."""
+    el = await query_element(css, timeout=timeout)
+    if el is None:
+        raise Exception(f"입력창을 찾을 수 없습니다: {css}")
+    await el.click()
+    await el.type_text(text)
+    return el
+
+async def fill_jumin_if_present():
+    """주민등록번호 입력창이 화면에 표시되어 있으면 앞 6자리 + 뒤 1자리를 입력한다.
+
+    개편된 홈택스 아이디 로그인은 본인확인을 위해 주민등록번호
+    앞 6자리(생년월일)와 뒤 1자리(성별 구분)를 요구한다.
+    입력창은 조건부로 노출되므로 존재/표시 여부를 확인 후 처리한다.
+    반환: 입력을 수행하면 True, 창이 없으면 False.
+    """
+    front_el = await query_element(SEL_JUMIN_FRONT, timeout=2)
+    if front_el is None:
+        return False
+    try:
+        if not await front_el.is_visible():
+            return False
+    except Exception:
+        return False
+
+    front = JUMIN_FRONT or input('주민등록번호 앞 6자리를 입력하세요: ').strip()
+    back = JUMIN_BACK or input('주민등록번호 뒤 1자리를 입력하세요: ').strip()
+
+    await front_el.click()
+    await front_el.type_text(front)
+    back_el = await query_element(SEL_JUMIN_BACK, timeout=5)
+    if back_el is not None:
+        await back_el.click()
+        await back_el.type_text(back)
+    print("주민등록번호 입력 완료")
+    return True
+
+async def is_logged_in():
+    """로그아웃 요소(또는 텍스트)가 있으면 로그인된 것으로 간주."""
+    global tab
+    try:
+        logout_btn = await tab.find(tag_name='a', title='로그아웃', timeout=2)
+        if logout_btn:
+            return True
+    except Exception:
+        pass
+    try:
+        result = await tab.execute_script(
+            "document.body && document.body.innerText.indexOf('로그아웃') > -1")
+        return bool(result)
+    except Exception:
+        return False
+
 async def TryToParse(TESTorREAL):
     global INQ_CONDITION
     global TO_BE_CHANGED
@@ -154,87 +233,79 @@ async def TryToParse(TESTorREAL):
             print(title)
 
             # 먼저 로그인 상태 확인
-            already_logged_in = False
-            try:
-                logout_btn = await tab.find(tag_name='a', title='로그아웃', timeout=3)
-                if logout_btn:
-                    print("이미 로그인된 상태입니다.")
-                    already_logged_in = True
-            except Exception:
-                pass
-            
+            already_logged_in = await is_logged_in()
+            if already_logged_in:
+                print("이미 로그인된 상태입니다.")
+
             if not already_logged_in:
-                # 로그인 버튼 찾아서 클릭 (여러 방법으로 시도)
-                login_success = False
+                # 1) 상단 '로그인' 클릭 → 로그인 페이지로 이동
                 try:
-                    # 방법 1: title 속성으로 찾기
                     login_btn = await tab.find(tag_name='a', title='로그인', timeout=5)
                     await login_btn.click()
-                    print("로그인 버튼 클릭 완료 (title 속성)")
-                    login_success = True
+                    print("로그인 페이지로 이동")
                 except Exception:
+                    # fallback: 텍스트가 '로그인'인 링크 찾기
                     try:
-                        # 방법 2: 텍스트로 찾기
                         login_links = await tab.find_all(tag_name='a', timeout=3)
                         for link in login_links:
                             link_text = await link.text
-                            if '로그인' in link_text:
+                            if link_text and link_text.strip() == '로그인':
                                 await link.click()
-                                print(f"로그인 버튼 클릭 완료 (텍스트: {link_text})")
-                                login_success = True
+                                print("로그인 페이지로 이동 (텍스트)")
                                 break
-                    except Exception:
-                        print("로그인 버튼을 찾을 수 없습니다.")
-                        login_success = False
-            
-            if login_success:
-                await asyncio.sleep(2)
-                
-                # 아이디 로그인 버튼 클릭
-                try:
-                    id_login_btn = await tab.find(tag_name='a', title='아이디 로그인', timeout=10)
-                    await id_login_btn.click()
-                    print("아이디 로그인 버튼 클릭 완료")
-                    await asyncio.sleep(2)
-                    
-                    # 아이디 입력
-                    id_input = await tab.find(tag_name='input', title='아이디 입력', timeout=10)
-                    await id_input.type_text('tangibleidea')
-                    print("아이디 입력 완료")
-                    
-                    # 비밀번호 입력
-                    pw_input = await tab.find(tag_name='input', title='비밀번호 입력', timeout=10)
-                    await pw_input.type_text('f3bab@6845')
-                    print("비밀번호 입력 완료")
-                    
-                    # 로그인 버튼 클릭 (실제 로그인 실행)
-                    try:
-                        # 로그인 버튼을 찾아서 클릭
-                        final_login_btn = await tab.find(tag_name='button', timeout=5)
-                        # 또는 submit 타입의 input 찾기
-                        if not final_login_btn:
-                            final_login_btn = await tab.find(tag_name='input', type='submit', timeout=5)
-                        
-                        await final_login_btn.click()
-                        print("로그인 실행 완료")
-                        await asyncio.sleep(3)
                     except Exception as e:
-                        print(f"로그인 버튼 클릭 실패: {e}")
-                        
+                        print(f"로그인 버튼을 찾을 수 없습니다: {e}")
+                await asyncio.sleep(2)
+
+                # 2) '아이디 로그인' 탭 선택 (data-tab="login_tab3")
+                try:
+                    id_tab = await query_element(SEL_ID_LOGIN_TAB, timeout=10)
+                    if id_tab is not None:
+                        await id_tab.click()
+                        print("아이디 로그인 탭 선택 완료")
+                        await asyncio.sleep(1.5)
+                    else:
+                        print("아이디 로그인 탭을 찾을 수 없습니다.")
+                except Exception as e:
+                    print(f"아이디 로그인 탭 선택 실패: {e}")
+
+                # 3) 아이디 / 비밀번호 입력 후 (필요 시) 주민등록번호 입력 → 로그인 실행
+                try:
+                    await type_into(SEL_INPUT_ID, LOGIN_ID)
+                    print("아이디 입력 완료")
+
+                    await type_into(SEL_INPUT_PW, LOGIN_PW)
+                    print("비밀번호 입력 완료")
+
+                    # 폼에 주민등록번호 입력창이 이미 표시된 경우 먼저 입력
+                    await fill_jumin_if_present()
+
+                    # 로그인 실행
+                    login_submit = await query_element(SEL_LOGIN_SUBMIT, timeout=10)
+                    if login_submit is not None:
+                        await login_submit.click()
+                        print("로그인 실행")
+                        await asyncio.sleep(2)
+                    else:
+                        print("로그인 실행 버튼을 찾을 수 없습니다.")
+
+                    # 로그인 클릭 후 주민등록번호 확인창이 뜨는 경우 입력 후 재실행
+                    if await fill_jumin_if_present():
+                        login_submit = await query_element(SEL_LOGIN_SUBMIT, timeout=10)
+                        if login_submit is not None:
+                            await login_submit.click()
+                            print("주민등록번호 입력 후 로그인 재실행")
+                            await asyncio.sleep(2)
                 except Exception as e:
                     print(f"로그인 과정 중 오류: {e}")
 
-            # 로그인 완료 확인 (로그아웃 버튼이 나타날 때까지 대기)
+            # 로그인 완료 확인 (로그아웃 상태가 될 때까지 대기)
             while True:
-                try:
-                    # 로그아웃 버튼을 찾아서 로그인 상태 확인
-                    logout_btn = await tab.find(tag_name='a', title='로그아웃', timeout=2)
-                    if logout_btn:
-                        print("로그인됨.")
-                        break
-                except Exception as e:
-                    print("홈택스 로그인 해주세요.")
-                    await asyncio.sleep(3)
+                if await is_logged_in():
+                    print("로그인됨.")
+                    break
+                print("홈택스 로그인 해주세요.")
+                await asyncio.sleep(3)
             
             await tab.go_to("https://hometax.go.kr/websquare/websquare.wq?w2xPath=/ui/pp/index_pp.xml&tmIdx=1&tm2lIdx=0105040000&tm3lIdx=0105040400")
 
