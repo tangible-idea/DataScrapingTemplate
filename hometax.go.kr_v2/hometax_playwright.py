@@ -10,6 +10,8 @@
 #
 # 시스템에 설치된 Google Chrome 을 사용합니다(channel="chrome").
 
+import getpass
+import os
 import sys
 import time
 
@@ -20,17 +22,46 @@ from playwright.sync_api import sync_playwright
 INQ_CONDITION = "불공제대상"  # 조회 대상: 공제대상 또는 불공제대상
 TO_BE_CHANGED = "공제"        # 변경 대상: 공제 또는 불공제
 
-# --- 로그인 정보 ---
-LOGIN_ID = "tangibleidea"
-LOGIN_PW = "f3bab@6845"
-# 주민등록번호는 개인정보이므로 아래를 비워두면('') 로그인 시 콘솔에서 입력받습니다.
-JUMIN_FRONT = "900206"  # 주민등록번호 앞 6자리 (생년월일)
-JUMIN_BACK = "1"        # 주민등록번호 뒤 1자리 (성별 구분 숫자)
+
+def load_dotenv(path):
+    """의존성 없이 .env 를 읽어 os.environ 에 채운다.
+
+    이미 환경변수로 설정된 값은 덮어쓰지 않는다(셸 export 가 우선).
+    KEY=VALUE 형식만 지원하며 '#' 로 시작하는 줄과 빈 줄은 무시한다.
+    """
+    if not os.path.isfile(path):
+        return
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, value = line.partition("=")
+            key = key.strip()
+            value = value.strip().strip("'\"")
+            if key and key not in os.environ:
+                os.environ[key] = value
+
+
+# 스크립트와 같은 폴더의 .env 를 읽는다. (.env 는 git 에 올리지 않는다)
+load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env"))
+
+# --- 로그인 정보 (환경변수 또는 .env) ---
+# 아이디/비밀번호/주민등록번호는 코드에 두지 않는다.
+# 비어 있으면 실행 중 콘솔에서 입력받는다.
+LOGIN_ID = os.environ.get("HOMETAX_ID", "")
+LOGIN_PW = os.environ.get("HOMETAX_PW", "")
+JUMIN_FRONT = os.environ.get("HOMETAX_JUMIN_FRONT", "")  # 주민등록번호 앞 6자리
+JUMIN_BACK = os.environ.get("HOMETAX_JUMIN_BACK", "")    # 주민등록번호 뒤 1자리
 
 BASE_URL = "https://www.hometax.go.kr/"
+# 메뉴 경로를 클릭했을 때 실제로 도달하는 URL (라이브 확인, 2026 개편 기준).
+# tmIdx=46(계산서·영수증·카드) / tm2lIdx=4608020000(사업용 신용카드 사용내역)
+#                              / tm3lIdx=4608020100(매입세액 공제 확인/변경)
+# 개편 전 URL(websquare.wq + tmIdx=1&tm2lIdx=0105040000&tm3lIdx=0105040400)은 더 이상 동작하지 않는다.
 DEDUCTION_URL = (
-    "https://hometax.go.kr/websquare/websquare.wq?w2xPath=/ui/pp/index_pp.xml"
-    "&tmIdx=1&tm2lIdx=0105040000&tm3lIdx=0105040400"
+    "https://hometax.go.kr/websquare/websquare.html?w2xPath=/ui/pp/index_pp.xml"
+    "&tmIdx=46&tm2lIdx=4608020000&tm3lIdx=4608020100"
 )
 
 # --- 아이디 로그인 화면 셀렉터 (라이브 페이지 검사로 확인, 2026 개편 기준) ---
@@ -43,6 +74,47 @@ SEL_JUMIN_FRONT = 'input[name="iptUserJuminNo1"]:visible'  # 주민번호 앞 6�
 SEL_JUMIN_BACK = 'input[name="iptUserJuminNo2"]:visible'   # 주민번호 뒤 1자리
 SEL_LOGIN_SUBMIT = 'a.logingbtn[title="로그인"]'            # 로그인 실행 버튼 (간편인증 버튼과 구분)
 SEL_2FA_CONFIRM = 'input[value="확인"]:visible'            # 2차 인증 모달의 '확인' 버튼
+
+# 도착 화면 이름. 제대로 들어왔는지 확인용.
+SCREEN_NAME = "사업용신용카드 매입세액 공제 확인/변경"
+
+# --- 메뉴 네비게이션 셀렉터 ---
+# 경로: 계산서·영수증·카드 > 신용카드 매입 > 사업용 신용카드 사용내역 > 매입세액 공제 확인/변경
+#
+# 기본은 DEDUCTION_URL 직접 이동이다. 메뉴를 클릭해서 들어가면 WebSquare 가
+# URL 만 바꾸고 화면 로더를 제대로 태우지 않아 본문 iframe 이 about:blank 로
+# 남는 경우가 있어서, 전체 페이지 로드로 들어가는 쪽이 안정적이다.
+# 아래 메뉴 클릭 경로는 URL 이 다시 바뀌었을 때를 대비해 남겨둔다
+# (USE_MENU_NAVIGATION = True 로 켤 수 있다).
+#
+# 상단 GNB 는 '전체메뉴' 오버레이 안에만 있다. 오버레이 좌측 레일에서 대분류를 고르면
+# 우측에 중분류 섹션들이 펼쳐지고, 소분류는 '+' 를 눌러야 나타난다.
+# 좌측 레일 링크의 id 는 WebSquare 가 만든 uuid(mf_wfHeader_wq_uuid_369 등)라 빌드마다
+# 바뀔 수 있으므로 텍스트로 찾고, 메뉴 항목은 안정적인 메뉴코드 id 를 쓴다.
+USE_MENU_NAVIGATION = False
+SEL_ALL_MENU = 'a.btn_all[title="전체메뉴"]'                  # '전체메뉴' 열기
+MENU_CATEGORY = "계산서·영수증·카드"                          # 대분류 (tmIdx=46)
+SEL_MENU_CATEGORY = f'//a[./span[normalize-space(text())="{MENU_CATEGORY}"]]'
+SEL_MENU_SECTION = "#menuUl46_4608000000"                    # 중분류 '신용카드 매입'
+SEL_MENU_CARD_USAGE = "#menuAtag_4608020000"                 # '사업용 신용카드 사용내역' (펼치기)
+SEL_MENU_DEDUCTION = "#menuAtag_4608020100"                  # '매입세액 공제 확인/변경'
+# 주의: '매입세액 공제 확인/변경'은 '화물운전자 복지카드' 아래(menuAtag_4608030100)에도
+# 같은 이름으로 존재한다. 반드시 메뉴코드로 구분해야 한다.
+
+# WebSquare 안내 팝업(네이티브 alert 아님. 예: "로그인 정보가 없습니다.")의 확인 버튼.
+# id 에 난수가 섞여 있어(mf_wfHeader_info3989364875_wframe_btn_confirm) class 로 잡는다.
+SEL_WS_POPUP_CONFIRM = 'input.w2trigger[value="확인"]:visible'
+
+# 업무 화면이 어느 컨텍스트에 그려졌는지 판별하는 마커.
+# 이 중 하나라도 있으면 그 컨텍스트가 업무 화면이다.
+# (개편 후 본문 iframe id 가 'txppIframe' → 'mf_txppIframe' 으로 바뀌었고,
+#  그 iframe 이 src="about:blank" 로 비어 있는 경우도 있어 iframe 을 고정하지 않는다.)
+SEL_WORK_MARKERS = ["#selectYear", "#selectQrt", "#btnSearch", "#rdoSearch_input_2"]
+
+# --- 조회 조건 (업무 화면 iframe 내부) ---
+# id 우선, 실패 시 라벨/텍스트로 폴백한다.
+SEL_QUARTERLY = ["#rdoSearch_input_2", 'label:text-is("분기별")', 'text="분기별"']
+SEL_SEARCH_BTN = ["#btnSearch", 'input[value="조회"]', 'a:text-is("조회")', 'button:text-is("조회")']
 
 
 # ============================ 공통 유틸 ============================
@@ -98,6 +170,92 @@ def click_if_clickable(ctx, elem_id, waittime=3):
             print(f"Second attempt failed: {e2}")
 
 
+def click_first_available(ctx, selectors, what, timeout=5000):
+    """셀렉터 후보를 순서대로 시도해 처음 클릭되는 것을 클릭.
+
+    홈택스 개편으로 id 가 바뀌어도 라벨/텍스트 폴백으로 살아남게 하기 위한 헬퍼.
+    ctx 는 Page 또는 Frame. 하나도 못 누르면 False 반환.
+    """
+    for sel in selectors:
+        try:
+            loc = ctx.locator(sel).first
+            loc.wait_for(state="visible", timeout=timeout)
+            loc.click(timeout=timeout)
+            print(f"{what} 클릭 ({sel})")
+            return True
+        except Exception:
+            continue
+    print(f"{what} 를 찾지 못했습니다. 시도한 셀렉터: {selectors}")
+    return False
+
+
+def click_menu_anchor(ctx, selector, what, timeout=10000, required=True):
+    """전체메뉴 오버레이의 메뉴 링크를 클릭한다.
+
+    메뉴 링크는 전부 href="javascript:void(0);" + 클릭 핸들러 구조라,
+    오버레이 애니메이션/반응형 레이아웃 탓에 요소가 '보이지 않는' 것으로
+    판정되어도 dispatch_event 로 핸들러를 직접 태우면 정상 동작한다.
+    실제로 전체메뉴 오버레이 항목은 대부분 이 경로로 눌린다. 일반 클릭에
+    긴 타임아웃을 주면 매번 그만큼 낭비되므로 짧게 시도하고 바로 폴백한다.
+    required=False 이면 실패해도 예외 없이 False 만 돌려준다.
+    """
+    loc = ctx.locator(selector).first
+    try:
+        loc.wait_for(state="attached", timeout=timeout)
+    except Exception:
+        if required:
+            raise
+        print(f"{what} 없음 (건너뜀)")
+        return False
+
+    try:
+        loc.scroll_into_view_if_needed(timeout=2000)
+    except Exception:
+        pass
+
+    try:
+        loc.click(timeout=2000)
+        print(f"{what} 클릭")
+        return True
+    except Exception:
+        try:
+            loc.dispatch_event("click")
+            print(f"{what} 클릭 (dispatch_event)")
+            return True
+        except Exception as e:
+            if required:
+                raise
+            print(f"{what} 클릭 실패 (건너뜀): {e}")
+            return False
+
+
+def dismiss_ws_popup(page):
+    """WebSquare 안내 팝업이 떠 있으면 '확인'을 눌러 닫는다.
+
+    홈택스는 네이티브 alert 대신 자체 모달(w2window)을 쓰는 곳이 많아
+    page.on("dialog") 핸들러로는 잡히지 않는다. 세션 만료/미로그인 시
+    "로그인 정보가 없습니다." 팝업이 이 형태로 뜬다.
+    반환: 닫았으면 True.
+    """
+    try:
+        btn = page.locator(SEL_WS_POPUP_CONFIRM)
+        if btn.count() == 0:
+            return False
+        try:
+            # w2window_content 전체를 읽으면 '레이어팝업시작' 같은 스크린리더용
+            # 텍스트가 섞이므로 본문 영역(.pop_cbox)만 읽는다.
+            msg = page.locator("div.pop_cbox").first.inner_text().strip()
+            if msg:
+                print(f"안내 팝업: {msg}")
+        except Exception:
+            pass
+        btn.first.click(timeout=5000)
+        page.wait_for_timeout(500)
+        return True
+    except Exception:
+        return False
+
+
 # ============================ 로그인 ============================
 def is_logged_in(page):
     """화면에 '로그아웃' 버튼/링크가 보이면 로그인된 것으로 간주.
@@ -144,10 +302,24 @@ def fill_jumin_if_present(page):
     return True
 
 
+def require_credentials():
+    """아이디/비밀번호를 확보한다. 환경변수에 없으면 콘솔에서 입력받는다."""
+    global LOGIN_ID, LOGIN_PW
+    if not LOGIN_ID:
+        LOGIN_ID = input("홈택스 아이디: ").strip()
+    if not LOGIN_PW:
+        # getpass 는 입력이 화면에 찍히지 않는다.
+        LOGIN_PW = getpass.getpass("홈택스 비밀번호: ")
+    if not LOGIN_ID or not LOGIN_PW:
+        raise RuntimeError("아이디/비밀번호가 필요합니다. .env 를 설정하세요.")
+
+
 def login(page):
     if is_logged_in(page):
         print("이미 로그인된 상태입니다.")
         return
+
+    require_credentials()
 
     # 1) 상단 '로그인' 클릭 → 로그인 페이지로 이동
     try:
@@ -201,6 +373,125 @@ def login(page):
     print("로그인됨.")
 
 
+# ============================ 메뉴 이동 ============================
+def goto_deduction_page(page):
+    """'사업용신용카드 매입세액 공제 확인/변경' 화면으로 이동한다.
+
+    기본은 DEDUCTION_URL 로 전체 페이지 로드. 메뉴를 클릭해서 들어가면
+    WebSquare 가 URL 만 바꾸고 본문 iframe 을 about:blank 로 남기는 일이 있어
+    직접 이동이 더 안정적이다.
+    USE_MENU_NAVIGATION = True 면 실제 메뉴 클릭 경로를 밟는다.
+    """
+    print(f"\n[화면 이동] {SCREEN_NAME}")
+
+    if not USE_MENU_NAVIGATION:
+        page.goto(DEDUCTION_URL)
+        page.wait_for_load_state("domcontentloaded")
+        page.wait_for_timeout(2500)
+        print(f"이동 완료: {page.title()}")
+        if dismiss_ws_popup(page):
+            raise RuntimeError("로그인 세션이 없습니다. 로그인 후 다시 시도하세요.")
+        return
+
+    print("[메뉴 경로] 계산서·영수증·카드 > 신용카드 매입 "
+          "> 사업용 신용카드 사용내역 > 매입세액 공제 확인/변경")
+    try:
+        # 1) '전체메뉴' 열기 — 상단 GNB 는 이 오버레이 안에만 있다.
+        page.locator(SEL_ALL_MENU).click(timeout=15000)
+        print("전체메뉴 열기")
+        page.wait_for_timeout(1200)
+
+        # 2) 좌측 레일에서 대분류 '계산서·영수증·카드' 선택.
+        #    오버레이를 열면 이 대분류가 기본 선택되어 있으므로 실패해도 진행한다.
+        click_menu_anchor(page, SEL_MENU_CATEGORY, MENU_CATEGORY, required=False)
+        page.wait_for_timeout(800)
+
+        # 3) 중분류 '신용카드 매입' 섹션 확인 (기본으로 펼쳐져 있다)
+        page.locator(SEL_MENU_SECTION).first.wait_for(state="attached", timeout=10000)
+        print("신용카드 매입 섹션 확인")
+
+        # 4) '사업용 신용카드 사용내역' 의 '+' 를 눌러 하위 메뉴를 펼친다.
+        click_menu_anchor(page, SEL_MENU_CARD_USAGE, "사업용 신용카드 사용내역 펼치기")
+        page.wait_for_timeout(1000)
+
+        # 5) '매입세액 공제 확인/변경' 클릭 → 업무 화면으로 이동
+        click_menu_anchor(page, SEL_MENU_DEDUCTION, "매입세액 공제 확인/변경")
+        page.wait_for_timeout(2500)
+    except Exception as e:
+        print(f"메뉴 클릭 실패({e}) → 딥링크 URL 로 이동합니다.")
+        page.goto(DEDUCTION_URL)
+        page.wait_for_timeout(2500)
+
+    # 세션이 끊겼으면 "로그인 정보가 없습니다." 팝업이 뜬다.
+    if dismiss_ws_popup(page):
+        raise RuntimeError("로그인 세션이 없습니다. 로그인 후 다시 시도하세요.")
+
+
+def dump_frames(page):
+    """진단용: 현재 페이지의 프레임 구성을 출력한다."""
+    print("\n--- 프레임 구성 진단 ---")
+    print(f"  page.url = {page.url}")
+    for f in page.frames:
+        try:
+            marks = [m for m in SEL_WORK_MARKERS if f.locator(m).count() > 0]
+        except Exception:
+            marks = []
+        print(f"  frame name={f.name!r} url={f.url[:80]!r} 발견된요소={marks}")
+    try:
+        for el in page.locator("iframe").all():
+            print(f"  iframe id={el.get_attribute('id')!r} "
+                  f"name={el.get_attribute('name')!r} "
+                  f"src={(el.get_attribute('src') or '')[:60]!r} "
+                  f"visible={el.is_visible()}")
+    except Exception:
+        pass
+    print("--- 진단 끝 ---\n")
+
+
+def open_work_context(page, timeout=30000):
+    """업무 화면이 실제로 그려진 컨텍스트(Frame 또는 Page)를 찾아 돌려준다.
+
+    개편 전에는 모든 업무 화면이 iframe(txppIframe) 안에 들어갔지만,
+    개편 후에는 mf_txppIframe 이 src="about:blank" 인 채로 숨겨져 남고
+    본문이 메인 문서나 다른 프레임에 직접 렌더링되는 경우가 있다.
+    그래서 iframe 을 고정해 기다리지 않고, 조회 조건 요소(SEL_WORK_MARKERS)가
+    실제로 존재하는 컨텍스트를 프레임 전체에서 찾는다.
+    """
+    deadline = time.time() + timeout / 1000.0
+    while time.time() < deadline:
+        # 메인 문서 → 하위 프레임 순으로 마커를 찾는다.
+        for ctx in [page] + list(page.frames):
+            for marker in SEL_WORK_MARKERS:
+                try:
+                    if ctx.locator(marker).count() > 0:
+                        where = "메인 문서" if ctx is page else f"프레임 {ctx.name or ctx.url[:50]!r}"
+                        print(f"업무 화면 발견: {where} (마커 {marker})")
+                        return ctx
+                except Exception:
+                    continue
+        page.wait_for_timeout(500)
+
+    dump_frames(page)
+    raise RuntimeError(
+        "업무 화면을 찾지 못했습니다. 위 '프레임 구성 진단' 출력을 확인하세요. "
+        "조회 조건 요소의 id 가 개편으로 바뀌었을 수 있습니다."
+    )
+
+
+def select_quarterly(frame):
+    """조회 기간 단위를 '분기별' 로 선택."""
+    return click_first_available(frame, SEL_QUARTERLY, "분기별")
+
+
+def click_search(frame):
+    """'조회' 실행."""
+    ok = click_first_available(frame, SEL_SEARCH_BTN, "조회")
+    if ok:
+        # ctx 는 Page 일 수도 Frame 일 수도 있는데 둘 다 wait_for_timeout 을 가진다.
+        frame.wait_for_timeout(1500)
+    return ok
+
+
 # ============================ 항목 변경 ============================
 def all_click_on_this_page(frame):
     """현재 페이지의 항목을 전체 선택하고 TO_BE_CHANGED 로 변경 후 적용."""
@@ -233,7 +524,7 @@ def all_click_on_this_page(frame):
 def run_menu(page, frame):
     global INQ_CONDITION, TO_BE_CHANGED
 
-    click_if_clickable(frame, "rdoSearch_input_2", 0.3)  # 분기별 옵션 선택
+    select_quarterly(frame)
 
     year_texts = [t.strip() for t in frame.locator("#selectYear option").all_inner_texts()]
     qrt_texts = [t.strip() for t in frame.locator("#selectQrt option").all_inner_texts()]
@@ -243,7 +534,7 @@ def run_menu(page, frame):
         answer = show_menu("무엇을 도와드릴까요?", menu_list)
 
         if "항목 조회:" in answer:
-            click_if_clickable(frame, "rdoSearch_input_2", 0.3)  # 분기별 옵션 선택
+            select_quarterly(frame)
 
             splited = answer.split(":")
             selected_year = splited[1].strip()
@@ -253,8 +544,7 @@ def run_menu(page, frame):
             frame.locator("#selectQrt").select_option(label=selected_qrt)
             frame.locator("#selectbox4").select_option(label=INQ_CONDITION)
 
-            click_if_clickable(frame, "btnSearch", 0.1)
-            time.sleep(1)
+            click_search(frame)
             continue
 
         elif "조회대상 수정" in answer:
@@ -320,17 +610,25 @@ def main():
         try:
             page.goto(BASE_URL)
             page.wait_for_load_state("domcontentloaded")
-            page.wait_for_timeout(3000)
+            # www.hometax.go.kr → WebSquare 메인으로 리다이렉트된다.
+            # '전체메뉴' 버튼이 생길 때까지 기다려야 메인 화면이 다 뜬 것.
+            page.wait_for_selector(SEL_ALL_MENU, timeout=30000)
+            page.wait_for_timeout(1000)
             print(page.title())
 
             login(page)
 
-            page.goto(DEDUCTION_URL)
-            page.wait_for_timeout(1500)
+            # 사업용신용카드 매입세액 공제 확인/변경 화면으로 이동
+            goto_deduction_page(page)
+            frame = open_work_context(page)
 
-            iframe_el = page.wait_for_selector("#txppIframe", timeout=30000)
-            frame = iframe_el.content_frame()
-            page.wait_for_timeout(1500)
+            # 분기별 → 조회 (기본 조회를 한 번 수행한 뒤 메뉴로 넘어간다)
+            select_quarterly(frame)
+            try:
+                frame.locator("#selectbox4").select_option(label=INQ_CONDITION)
+            except Exception as e:
+                print(f"조회대상({INQ_CONDITION}) 선택 생략: {e}")
+            click_search(frame)
 
             run_menu(page, frame)
         except Exception as e:

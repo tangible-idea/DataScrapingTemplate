@@ -7,3 +7,15 @@
 /IMDBUtils_VS/IMDBUtils/obj
 /IMDBUtils_VS/.vs/IMDBUtils/v16
 /hometax.go.kr/.vs/hometax.go.kr/v16/.suo
+
+# 자격증명 / 개인정보 — 절대 커밋하지 말 것
+.env
+*.env
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store
