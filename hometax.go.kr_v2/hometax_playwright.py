@@ -22,6 +22,13 @@ from playwright.sync_api import sync_playwright
 INQ_CONDITION = "불공제대상"  # 조회 대상: 공제대상 또는 불공제대상
 TO_BE_CHANGED = "공제"        # 변경 대상: 공제 또는 불공제
 
+# '일괄 변경' 메뉴가 처리할 (연도, 분기) 목록.
+# 화면의 선택박스 옵션 텍스트와 정확히 일치해야 한다. (예: '2026년', '1분기')
+BATCH_TARGETS = [
+    ("2026년", "1분기"),
+    ("2026년", "2분기"),
+]
+
 
 def load_dotenv(path):
     """의존성 없이 .env 를 읽어 os.environ 에 채운다.
@@ -137,6 +144,21 @@ SEL_TXT_TOTALPAGE = wsel("txtTotalPage")
 SEL_APPLY_BTN = wsel("trigger19")         # 변경 내용 적용
 SEL_NEXT_PAGE = wsel("pglNavi_nextPage_btn", "pglNavi_next_btn")
 
+# 목록 헤더의 전체선택 체크박스. 이걸 누르면 현재 페이지 항목이 전부 선택된다.
+# WebSquare 는 실제 input 을 감추고 label 만 보여주므로 label 을 눌러야 한다.
+#   <label class="w2checkbox_label" for="wq_uuid_..._chk_checkboxLabel__id">전체선택</label>
+# for 속성값은 uuid(wq_uuid_2012_...)라 빌드마다 바뀌므로 쓰지 않는다.
+# 라벨 텍스트로 잡으면 DOM 순서에 의존하지 않아 가장 안전하고,
+# 못 찾으면 맨 위(.first) 체크박스로 폴백한다.
+SEL_HEADER_CHECKBOX = [
+    'label.w2checkbox_label:text-is("전체선택")',
+    '.w2checkbox_label',
+]
+
+# '공제여부 결정' 열의 선택박스가 가지는 옵션.
+# 연도/분기/조회대상 선택박스와 구분하는 기준으로 쓴다.
+DEDUCTION_OPTIONS = {"공제", "불공제"}
+
 # 업무 화면이 어느 컨텍스트에 그려졌는지 판별하는 마커.
 # 이 중 하나라도 있으면 그 컨텍스트가 업무 화면이다.
 SEL_WORK_MARKERS = [SEL_SELECT_YEAR, wsel("btnSearch"), wsel("rdoSearch_input_2")]
@@ -168,6 +190,8 @@ def show_menu(message, choices):
 
 def make_menu_list(year_texts, qrt_texts):
     menu_list = []
+    targets = " + ".join(f"{y} {q}" for y, q in BATCH_TARGETS)
+    menu_list.append(f"[{targets}] 조회부터 변경까지 일괄 변경 ({INQ_CONDITION}→{TO_BE_CHANGED})")
     for y in year_texts:
         for q in qrt_texts:
             menu_list.append(f"{INQ_CONDITION} 항목 조회: {y}:{q}")
@@ -528,36 +552,156 @@ def click_search(frame):
 
 
 # ============================ 항목 변경 ============================
-def all_click_on_this_page(frame):
-    """현재 페이지의 항목을 전체 선택하고 TO_BE_CHANGED 로 변경 후 적용."""
-    frame.locator('//input[@title="전체선택"]').click()
+def row_deduction_selects(frame):
+    """'공제여부 결정' 열의 선택박스만 골라낸다.
+
+    연도/분기/조회대상 선택박스도 화면에 같이 있으므로 위치나 class 로
+    잡으면 섞인다. 옵션이 공제/불공제인 것만 행 선택박스로 판단한다.
+    """
+    picked = []
+    selects = frame.locator("select")
+    for i in range(selects.count()):
+        sel = selects.nth(i)
+        try:
+            opts = {t.strip() for t in sel.locator("option").all_inner_texts()}
+        except Exception:
+            continue
+        if DEDUCTION_OPTIONS <= opts:
+            picked.append(sel)
+    return picked
+
+
+def all_click_on_this_page(frame, page):
+    """맨 위 체크박스 클릭 → '공제여부 결정'을 TO_BE_CHANGED 로 변경 → 적용.
+
+    반환: (선택불가 개수, 실제로 값이 바뀐 개수)
+    """
+    if not click_first_available(frame, SEL_HEADER_CHECKBOX, "전체선택 체크박스"):
+        raise RuntimeError(
+            f"전체선택 체크박스를 찾지 못했습니다 ({SEL_HEADER_CHECKBOX})."
+        )
+
+    selects = row_deduction_selects(frame)
+    n = len(selects)
+    print(f"'공제여부 결정' 선택박스 {n}개 발견")
+    if n == 0:
+        raise RuntimeError(
+            "'공제여부 결정' 선택박스를 찾지 못했습니다. "
+            f"옵션 {DEDUCTION_OPTIONS} 를 가진 select 가 없습니다. "
+            "목록이 비었거나 화면 구조가 바뀐 것입니다."
+        )
 
     countof_disabled = 0  # 선택불가항목 카운트
-    selects = frame.locator('//div[@class="w2selectbox_native_innerDiv"]//select')
-    n = selects.count()
-    for i in range(n):
-        sel = selects.nth(i)
+    countof_changed = 0   # 실제로 값이 바뀐 개수
+    for i, sel in enumerate(selects):
         try:
             disabled = sel.is_disabled()
         except Exception:
             disabled = sel.get_attribute("disabled") is not None
         if disabled:
-            print("변경할 수 없는 선택항목 (면세 또는 공제 불가항목)")
             countof_disabled += 1
-        else:
-            try:
-                sel.select_option(label=TO_BE_CHANGED)
-            except Exception as e:
-                print(f"항목 변경 실패: {e}")
+            continue
+        try:
+            before = sel.input_value()
+            sel.select_option(label=TO_BE_CHANGED)
+            after = sel.input_value()
+            if before != after:
+                countof_changed += 1
+        except Exception as e:
+            print(f"  {i}번 항목 변경 실패: {e}")
+
+    print(f"선택불가 {countof_disabled}건 / 값 변경 {countof_changed}건")
+    if countof_changed == 0:
+        print("  주의: 값이 바뀐 항목이 없습니다. "
+              "이미 목표 상태이거나 선택박스 조작이 먹히지 않은 것입니다.")
 
     if not click_selector(frame, SEL_APPLY_BTN, "변경 적용"):
         raise RuntimeError(
             f"변경 적용 버튼을 찾지 못했습니다 ({SEL_APPLY_BTN}). "
             "id 가 바뀐 것으로 보입니다. dump_screen.py 로 실제 id 를 확인하세요."
         )
-    # alert 는 page.on("dialog") 핸들러가 자동 수락하므로 잠시 대기만.
-    time.sleep(1)
-    return countof_disabled
+
+    # 적용하면 확인 모달이 뜬다. 네이티브 alert 은 dialog 핸들러가 받지만
+    # WebSquare 자체 모달은 직접 '확인'을 눌러야 실제로 저장된다.
+    # (이걸 안 눌러서 아무것도 안 바뀌는 경우가 있다.)
+    for _ in range(6):
+        page.wait_for_timeout(500)
+        if dismiss_ws_popup(page):
+            print("  확인 모달 처리")
+    page.wait_for_timeout(1000)
+    return countof_disabled, countof_changed
+
+
+def read_total(frame):
+    """조회 결과의 총 항목수 / 총 페이지수를 읽는다."""
+    total = int(frame.locator(SEL_TXT_TOTAL).first.inner_text())
+    totalpage = int(frame.locator(SEL_TXT_TOTALPAGE).first.inner_text())
+    return total, totalpage
+
+
+def change_all_pages(frame, page):
+    """현재 조회 결과의 모든 페이지를 TO_BE_CHANGED 로 변경한다.
+
+    변경이 적용되면 해당 항목은 INQ_CONDITION 조건에서 빠지므로 목록이 줄어든다.
+    그래서 기본 전략은 '첫 페이지를 계속 처리'이고, 페이지 전체가 선택불가일
+    때만 다음 페이지로 넘어간다.
+    """
+    processed = 0
+    stagnant = 0  # 총건수가 줄지 않은 연속 횟수 (무한루프 방지)
+    prev_total = None
+
+    while True:
+        total, totalpage = read_total(frame)
+        print(f"\n총 항목개수: {total} / 총 페이지: {totalpage}")
+
+        if total == 0:
+            print("더 이상 항목이 없으므로 종료!")
+            break
+
+        if prev_total is not None and total >= prev_total:
+            stagnant += 1
+            if stagnant >= 3:
+                print(f"총건수가 3회 연속 줄지 않았습니다({total}건). "
+                      "더 진행해도 변화가 없어 중단합니다.")
+                break
+        else:
+            stagnant = 0
+        prev_total = total
+
+        countof_disabled, countof_changed = all_click_on_this_page(frame, page)
+        processed += countof_changed
+
+        if countof_changed == 0:
+            # 이 페이지가 전부 선택불가 → 다음 페이지 시도
+            nxt = frame.locator(SEL_NEXT_PAGE).first
+            try:
+                can_next = nxt.is_visible() and nxt.is_enabled()
+            except Exception:
+                can_next = False
+            if can_next:
+                print("이 페이지는 전부 선택불가 → 다음 페이지로 이동")
+                click_selector(frame, SEL_NEXT_PAGE, "다음 페이지", 0.5)
+            else:
+                print(f"선택불가항목 {countof_disabled}건만 남아 종료합니다.")
+                break
+
+    print(f"\n=> 이번 조회에서 변경한 항목: {processed}건")
+    return processed
+
+
+def process_quarter(frame, page, year, qrt):
+    """지정한 연도/분기를 조회한 뒤 전체를 TO_BE_CHANGED 로 변경한다."""
+    print(f"\n{'=' * 55}")
+    print(f"[{year} {qrt}] {INQ_CONDITION} → {TO_BE_CHANGED} 일괄 변경")
+    print("=" * 55)
+
+    select_quarterly(frame)
+    frame.locator(SEL_SELECT_YEAR).first.select_option(label=year)
+    frame.locator(SEL_SELECT_QRT).first.select_option(label=qrt)
+    frame.locator(SEL_SELECT_COND).first.select_option(label=INQ_CONDITION)
+    click_search(frame)
+
+    return change_all_pages(frame, page)
 
 
 def run_menu(page, frame):
@@ -598,36 +742,15 @@ def run_menu(page, frame):
             menu_list = make_menu_list(year_texts, qrt_texts)
             continue
 
+        elif "일괄 변경" in answer:
+            total = 0
+            for year, qrt in BATCH_TARGETS:
+                total += process_quarter(frame, page, year, qrt)
+            print(f"\n### {len(BATCH_TARGETS)}개 분기 합계 변경: {total}건")
+            continue
+
         elif "변경하기." in answer:
-            while True:
-                total = int(frame.locator(SEL_TXT_TOTAL).first.inner_text())
-                totalpage = int(frame.locator(SEL_TXT_TOTALPAGE).first.inner_text())
-                print("총 페이지: " + str(totalpage))
-                print("총 항목개수: " + str(total))
-
-                if total == 0:  # 항목이 없으면 종료.
-                    print("더 이상 항목이 없으므로 종료!")
-                    break
-
-                countof_disabled = all_click_on_this_page(frame)
-                print("이 페이지에서 선택불가항목: " + str(countof_disabled))
-
-                if countof_disabled == total:  # 선택 가능한 항목이 없음
-                    print("선택불가항목 " + str(countof_disabled) + "만 남음!")
-                    break
-                elif countof_disabled == 10:
-                    nxt = frame.locator(SEL_NEXT_PAGE).first
-                    try:
-                        visible = nxt.is_visible() and nxt.is_enabled()
-                    except Exception:
-                        visible = False
-                    print("다음 페이지 버튼이 있는지? " + str(visible))
-                    if visible:
-                        print("다음 페이지로 넘어갑니다!")
-                        click_selector(frame, SEL_NEXT_PAGE, "다음 페이지", 0.5)
-                    else:
-                        print("더 이상 선택할 항목이 없습니다!")
-                        break
+            change_all_pages(frame, page)
             continue
 
         else:
