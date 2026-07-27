@@ -103,18 +103,48 @@ SEL_MENU_DEDUCTION = "#menuAtag_4608020100"                  # '매입세액 공
 
 # WebSquare 안내 팝업(네이티브 alert 아님. 예: "로그인 정보가 없습니다.")의 확인 버튼.
 # id 에 난수가 섞여 있어(mf_wfHeader_info3989364875_wframe_btn_confirm) class 로 잡는다.
-SEL_WS_POPUP_CONFIRM = 'input.w2trigger[value="확인"]:visible'
+# 업무 화면의 일반 '확인' 버튼까지 누르지 않도록 반드시 팝업(w2window) 안으로 범위를 좁힌다.
+SEL_WS_POPUP_CONFIRM = '[class*="w2window"] input.w2trigger[value="확인"]:visible'
+
+# --- 업무 화면 요소 id ---
+# 2026 개편 후 업무 화면은 iframe(txppIframe)이 아니라 **메인 문서**에 직접 그려지고,
+# 모든 요소 id 에 'mf_txppWframe_' 접두사가 붙는다.
+#   개편 전: #selectYear        개편 후: #mf_txppWframe_selectYear
+# txppIframe 은 src="about:blank" 인 빈 껍데기로 남아 있으므로 거기서 찾으면 안 된다.
+WORK_ID_PREFIX = "mf_txppWframe_"
+
+
+def wsel(*names):
+    """업무 화면 요소의 id 셀렉터를 만든다.
+
+    접두사가 붙은 개편 후 id 와 접두사 없는 개편 전 id 를 모두 매칭하므로,
+    사이트가 어느 쪽이든 동작한다. 이름을 여러 개 주면 모두 후보에 넣는다
+    (예: pglNavi 는 개편으로 이름 자체가 next_btn → nextPage_btn 으로 바뀜).
+    여러 개가 매칭될 수 있으니 쓸 때는 .first 를 붙인다.
+    """
+    parts = []
+    for n in names:
+        parts.append(f"#{WORK_ID_PREFIX}{n}")
+        parts.append(f"#{n}")
+    return ", ".join(parts)
+
+
+SEL_SELECT_YEAR = wsel("selectYear")
+SEL_SELECT_QRT = wsel("selectQrt")
+SEL_SELECT_COND = wsel("selectbox4")      # 조회 대상(-all-/공제대상/불공제대상)
+SEL_TXT_TOTAL = wsel("txtTotal")
+SEL_TXT_TOTALPAGE = wsel("txtTotalPage")
+SEL_APPLY_BTN = wsel("trigger19")         # 변경 내용 적용
+SEL_NEXT_PAGE = wsel("pglNavi_nextPage_btn", "pglNavi_next_btn")
 
 # 업무 화면이 어느 컨텍스트에 그려졌는지 판별하는 마커.
 # 이 중 하나라도 있으면 그 컨텍스트가 업무 화면이다.
-# (개편 후 본문 iframe id 가 'txppIframe' → 'mf_txppIframe' 으로 바뀌었고,
-#  그 iframe 이 src="about:blank" 로 비어 있는 경우도 있어 iframe 을 고정하지 않는다.)
-SEL_WORK_MARKERS = ["#selectYear", "#selectQrt", "#btnSearch", "#rdoSearch_input_2"]
+SEL_WORK_MARKERS = [SEL_SELECT_YEAR, wsel("btnSearch"), wsel("rdoSearch_input_2")]
 
-# --- 조회 조건 (업무 화면 iframe 내부) ---
+# --- 조회 조건 ---
 # id 우선, 실패 시 라벨/텍스트로 폴백한다.
-SEL_QUARTERLY = ["#rdoSearch_input_2", 'label:text-is("분기별")', 'text="분기별"']
-SEL_SEARCH_BTN = ["#btnSearch", 'input[value="조회"]', 'a:text-is("조회")', 'button:text-is("조회")']
+SEL_QUARTERLY = [wsel("rdoSearch_input_2"), 'label:text-is("분기별")']
+SEL_SEARCH_BTN = [wsel("btnSearch"), 'input[value="조회"]']
 
 
 # ============================ 공통 유틸 ============================
@@ -148,26 +178,29 @@ def make_menu_list(year_texts, qrt_texts):
     return menu_list
 
 
-def click_if_clickable(ctx, elem_id, waittime=3):
-    """id 로 요소를 찾아 클릭. ctx 는 Page 또는 Frame."""
-    loc = ctx.locator(f"#{elem_id}")
+def click_selector(ctx, selector, what, waittime=0.3):
+    """셀렉터로 요소를 찾아 클릭. ctx 는 Page 또는 Frame.
+
+    보이지 않는다는 이유로 실패하면 dispatch_event 로 한 번 더 시도한다.
+    """
+    loc = ctx.locator(selector).first
     try:
         loc.wait_for(state="visible", timeout=10000)
-        try:
-            print(f"{loc.inner_text().strip()} is clickable.")
-        except Exception:
-            pass
         time.sleep(waittime)
         loc.click()
         time.sleep(waittime)
+        print(f"{what} 클릭")
+        return True
     except Exception as e:
-        print(e)
-        print("try another way")
+        print(f"{what} 클릭 실패: {e}")
         try:
-            ctx.locator(f"#{elem_id}").click(timeout=5000)
+            loc.dispatch_event("click")
             time.sleep(waittime)
+            print(f"{what} 클릭 (dispatch_event)")
+            return True
         except Exception as e2:
-            print(f"Second attempt failed: {e2}")
+            print(f"{what} 재시도도 실패: {e2}")
+            return False
 
 
 def click_first_available(ctx, selectors, what, timeout=5000):
@@ -452,8 +485,8 @@ def open_work_context(page, timeout=30000):
     """업무 화면이 실제로 그려진 컨텍스트(Frame 또는 Page)를 찾아 돌려준다.
 
     개편 전에는 모든 업무 화면이 iframe(txppIframe) 안에 들어갔지만,
-    개편 후에는 mf_txppIframe 이 src="about:blank" 인 채로 숨겨져 남고
-    본문이 메인 문서나 다른 프레임에 직접 렌더링되는 경우가 있다.
+    개편 후에는 본문이 **메인 문서**에 직접 그려지고 mf_txppIframe 은
+    src="about:blank" 인 빈 껍데기로 남는다.
     그래서 iframe 을 고정해 기다리지 않고, 조회 조건 요소(SEL_WORK_MARKERS)가
     실제로 존재하는 컨텍스트를 프레임 전체에서 찾는다.
     """
@@ -469,6 +502,8 @@ def open_work_context(page, timeout=30000):
                         return ctx
                 except Exception:
                     continue
+        # 안내 팝업이 떠 있으면 본문이 안 그려질 수 있으므로 닫아준다.
+        dismiss_ws_popup(page)
         page.wait_for_timeout(500)
 
     dump_frames(page)
@@ -515,7 +550,11 @@ def all_click_on_this_page(frame):
             except Exception as e:
                 print(f"항목 변경 실패: {e}")
 
-    click_if_clickable(frame, "trigger19", 0.3)
+    if not click_selector(frame, SEL_APPLY_BTN, "변경 적용"):
+        raise RuntimeError(
+            f"변경 적용 버튼을 찾지 못했습니다 ({SEL_APPLY_BTN}). "
+            "id 가 바뀐 것으로 보입니다. dump_screen.py 로 실제 id 를 확인하세요."
+        )
     # alert 는 page.on("dialog") 핸들러가 자동 수락하므로 잠시 대기만.
     time.sleep(1)
     return countof_disabled
@@ -526,8 +565,10 @@ def run_menu(page, frame):
 
     select_quarterly(frame)
 
-    year_texts = [t.strip() for t in frame.locator("#selectYear option").all_inner_texts()]
-    qrt_texts = [t.strip() for t in frame.locator("#selectQrt option").all_inner_texts()]
+    year_texts = [t.strip() for t in
+                  frame.locator(SEL_SELECT_YEAR).first.locator("option").all_inner_texts()]
+    qrt_texts = [t.strip() for t in
+                 frame.locator(SEL_SELECT_QRT).first.locator("option").all_inner_texts()]
     menu_list = make_menu_list(year_texts, qrt_texts)
 
     while True:
@@ -540,9 +581,9 @@ def run_menu(page, frame):
             selected_year = splited[1].strip()
             selected_qrt = splited[2].strip()
 
-            frame.locator("#selectYear").select_option(label=selected_year)
-            frame.locator("#selectQrt").select_option(label=selected_qrt)
-            frame.locator("#selectbox4").select_option(label=INQ_CONDITION)
+            frame.locator(SEL_SELECT_YEAR).first.select_option(label=selected_year)
+            frame.locator(SEL_SELECT_QRT).first.select_option(label=selected_qrt)
+            frame.locator(SEL_SELECT_COND).first.select_option(label=INQ_CONDITION)
 
             click_search(frame)
             continue
@@ -559,8 +600,8 @@ def run_menu(page, frame):
 
         elif "변경하기." in answer:
             while True:
-                total = int(frame.locator("#txtTotal").inner_text())
-                totalpage = int(frame.locator("#txtTotalPage").inner_text())
+                total = int(frame.locator(SEL_TXT_TOTAL).first.inner_text())
+                totalpage = int(frame.locator(SEL_TXT_TOTALPAGE).first.inner_text())
                 print("총 페이지: " + str(totalpage))
                 print("총 항목개수: " + str(total))
 
@@ -575,15 +616,15 @@ def run_menu(page, frame):
                     print("선택불가항목 " + str(countof_disabled) + "만 남음!")
                     break
                 elif countof_disabled == 10:
-                    nxt = frame.locator("#pglNavi_next_btn")
+                    nxt = frame.locator(SEL_NEXT_PAGE).first
                     try:
-                        visible = nxt.is_visible()
+                        visible = nxt.is_visible() and nxt.is_enabled()
                     except Exception:
                         visible = False
                     print("다음 페이지 버튼이 있는지? " + str(visible))
                     if visible:
                         print("다음 페이지로 넘어갑니다!")
-                        click_if_clickable(frame, "pglNavi_next_btn", 0.5)
+                        click_selector(frame, SEL_NEXT_PAGE, "다음 페이지", 0.5)
                     else:
                         print("더 이상 선택할 항목이 없습니다!")
                         break
@@ -625,7 +666,7 @@ def main():
             # 분기별 → 조회 (기본 조회를 한 번 수행한 뒤 메뉴로 넘어간다)
             select_quarterly(frame)
             try:
-                frame.locator("#selectbox4").select_option(label=INQ_CONDITION)
+                frame.locator(SEL_SELECT_COND).first.select_option(label=INQ_CONDITION)
             except Exception as e:
                 print(f"조회대상({INQ_CONDITION}) 선택 생략: {e}")
             click_search(frame)

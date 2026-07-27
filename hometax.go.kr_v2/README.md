@@ -98,19 +98,48 @@ URL 이 다시 바뀌면 `USE_MENU_NAVIGATION = True` 로 켜서 실제 메뉴�
 | 사업용 신용카드 사용내역 | `#menuAtag_4608020000` | '+' 를 눌러 하위 메뉴 펼치기 |
 | 매입세액 공제 확인/변경 | `#menuAtag_4608020100` | |
 
-## 업무 화면 컨텍스트 탐색
+## 업무 화면 요소 id — `mf_txppWframe_` 접두사
 
-`open_work_context()` 는 iframe 을 고정해 기다리지 않고, 조회 조건 요소
-(`#selectYear`, `#selectQrt`, `#btnSearch`, `#rdoSearch_input_2`) 가 실제로 있는
-컨텍스트를 메인 문서 + 모든 프레임에서 찾습니다. 못 찾으면 프레임 구성을
-진단 출력(`dump_frames()`)한 뒤 종료하므로, 개편으로 id 가 바뀌었을 때
-어디를 고쳐야 하는지 바로 알 수 있습니다.
+**개편으로 업무 화면이 iframe 밖으로 나왔습니다.** 예전에는 모든 업무 화면이
+`txppIframe` 안에 그려졌지만, 지금은 **메인 문서**에 직접 그려지고
+`txppIframe` 은 `src="about:blank"` 인 빈 껍데기로 남습니다.
+그리고 모든 요소 id 앞에 `mf_txppWframe_` 이 붙습니다.
+
+| 개편 전 | 개편 후 |
+|---------|---------|
+| `#selectYear` | `#mf_txppWframe_selectYear` |
+| `#selectQrt` | `#mf_txppWframe_selectQrt` |
+| `#selectbox4` | `#mf_txppWframe_selectbox4` |
+| `#rdoSearch_input_2` | `#mf_txppWframe_rdoSearch_input_2` |
+| `#btnSearch` | `#mf_txppWframe_btnSearch` |
+| `#pglNavi_next_btn` | `#mf_txppWframe_pglNavi_**nextPage**_btn` (이름도 바뀜) |
+
+`wsel()` 헬퍼가 접두사 있는 id 와 없는 id 를 **둘 다** 매칭하는 셀렉터를 만들어
+어느 쪽이든 동작합니다.
+
+```python
+wsel("selectYear")   # -> "#mf_txppWframe_selectYear, #selectYear"
+```
+
+`open_work_context()` 는 iframe 을 고정해 기다리지 않고, 조회 조건 요소가 실제로
+있는 컨텍스트를 메인 문서 + 모든 프레임에서 찾습니다. 못 찾으면 프레임 구성을
+진단 출력(`dump_frames()`)한 뒤 종료합니다.
+
+### 화면 요소 id 조사하기 — `dump_screen.py`
+
+개편으로 id 가 또 바뀌면 이 스크립트로 실제 id 를 확인할 수 있습니다.
+
+```bash
+python3 dump_screen.py
+```
+
+같은 로그인·이동 흐름을 탄 뒤 프레임 변화를 20초간 관찰하고, 프레임별로
+`select`(옵션 포함) / `radio`(라벨 포함) / 버튼·링크의 실제 id 를 덤프합니다.
 
 ### 개편으로 바뀐 점 (실제 사이트 확인)
 
-- **업무 화면 iframe id 가 `txppIframe` → `mf_txppIframe` 으로 변경.** 게다가 진입
-  방식에 따라 이 iframe 이 `src="about:blank"` 로 비어 있기도 해서, iframe 을
-  고정하지 않고 마커 요소로 컨텍스트를 찾습니다(위 참고).
+- **업무 화면이 iframe 밖으로 나오고 모든 id 에 `mf_txppWframe_` 접두사가 붙음**
+  (위 표 참고). `txppIframe` 은 `about:blank` 인 빈 껍데기로 남습니다.
 - **딥링크 URL 변경.** 개편 전 `websquare.wq?...&tmIdx=1&tm2lIdx=0105040000&tm3lIdx=0105040400`
   은 더 이상 동작하지 않고, 현재는
   `websquare.html?...&tmIdx=46&tm2lIdx=4608020000&tm3lIdx=4608020100` 입니다.
